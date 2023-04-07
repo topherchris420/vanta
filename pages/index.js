@@ -30,6 +30,9 @@ export default function Home() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <main className={styles.main} ref={vantaRef}></main>
+
+<div style="position: relative; overflow: hidden; padding-top: 56.25%;"><iframe src="https://share.synthesia.io/embeds/videos/a88d82f6-f66b-4554-a3d9-42569351f47e" loading="lazy" title="Synthesia video player - Your AI video" allow="encrypted-media; fullscreen;" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0; overflow:hidden;"></iframe></div>
+
 <h1><p>𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a>.</p>
 <p>𝚊 𝚕𝚘𝚟𝚎𝚛 𝚘𝚏 𝚛𝚎𝚊𝚍𝚒𝚗𝚐, 𝚍𝚎𝚌𝚎𝚗𝚝𝚛𝚊𝚕𝚒𝚣𝚊𝚝𝚒𝚘𝚗 𝚊𝚗𝚍 <a href="https://drive.google.com/file/d/1Q8ncGRs5X8pKnDFO2gc9ka480SHhMj22/view">𝓫𝓾𝓲𝓵𝓭𝓲𝓷𝓰 𝓷𝓮𝔀 𝓽𝓱𝓲𝓷𝓰𝓼</a>.<a href="https://ens.vision/0x/0x31686a4da3b7b04159d30c3ecf2821304f810f53"> 𝘌𝘕𝘚🌐</a>.</p>
 <p>𝙶𝚛𝚊𝚋 𝚖𝚢 <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/">𝓫𝓸𝓸𝓴</a> "🅻🅸🅵🅴 🅾🅵 🅰 🅻🅸🅽🅴" <a href="https://www.dailysybil.com/">𝒊f 𝒚o𝒗'𝒓𝒆 b𝒐𝒓ed</a>📓</p>
