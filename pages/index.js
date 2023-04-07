@@ -39,3 +39,53 @@ export default function Home() {
 </a></h1><iframe src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY" width="340" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pixelart-rain-programming-jnWMCLBfJb7CK4D8iY"></a></p> <a href="https://givebutter.com/h0CJIU">ᵈᵒⁿᵃᵗᵉ ᵃ ᶜᵒᶠᶠᵉᵉ</a> ₿ </div>
   );
 }
+// Define the AI response function
+function aiResponse(message) {
+  // Add your AI logic here
+  return "Sorry, I am just a demo chatbot and I don't have a response for that.";
+}
+
+// Get the necessary DOM elements
+var chatlog = document.getElementById("chatlog");
+var inputmsg = document.getElementById("inputmsg");
+var submitmsg = document.getElementById("submitmsg");
+
+// Define the function to add a user message to the chat log
+function addUserMessage(message) {
+  var msgElement = document.createElement("div");
+  msgElement.classList.add("usermsg");
+  msgElement.innerHTML = "<strong>You:</strong> " + message;
+  chatlog.appendChild(msgElement);
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+// Define the function to add an AI message to the chat log
+function addAIMessage(message) {
+  var msgElement = document.createElement("div");
+  msgElement.classList.add("aimsg");
+  msgElement.innerHTML = "<strong>AI:</strong> " + message;
+  chatlog.appendChild(msgElement);
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+// Define the function to handle user input
+function handleUserInput() {
+  var message = inputmsg.value;
+  if (message.trim() != "") {
+    addUserMessage(message);
+    inputmsg.value = "";
+    addAIMessage(aiResponse(message));
+  }
+}
+
+// Attach the event listener to the submit button
+submitmsg.addEventListener("click", handleUserInput);
+
+// Attach the event listener to the input field
+inputmsg.addEventListener("keypress", function(event) {
+  if (event.keyCode === 13) {
+    handleUserInput();
+  }
+});
+
+
