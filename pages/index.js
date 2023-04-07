@@ -41,3 +41,17 @@ export default function Home() {
   );
 }
 
+const container = document.getElementById("animation-container");
+const image = document.getElementById("animated-image");
+let position = 0;
+
+function animate() {
+  position += 5;
+  if (position > container.offsetWidth) {
+    position = -image.offsetWidth;
+  }
+  image.style.left = position + "px";
+  window.requestAnimationFrame(animate);
+}
+
+animate();
