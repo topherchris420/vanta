@@ -30,7 +30,53 @@ export default function Home() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <main className={styles.main} ref={vantaRef}></main>
-    <h1><p>𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a>.</p>
+  const botResponses = [
+  "Hello there!",
+  "How can I assist you today?",
+  "Nice to meet you!",
+  "I'm sorry, I don't understand.",
+  "That's a great question!",
+  "I'm still learning, please try again.",
+];
+
+const chatlog = document.getElementById("chatlog");
+const userinput = document.getElementById("userinput");
+const submitbtn = document.getElementById("submitbtn");
+
+function addMessageToChatlog(msg, sender) {
+  const newmsg = document.createElement("div");
+  newmsg.classList.add("message");
+  if (sender === "bot") {
+    newmsg.classList.add("botmessage");
+  } else {
+    newmsg.classList.add("usermessage");
+  }
+  newmsg.innerHTML = msg;
+  chatlog.appendChild(newmsg);
+  chatlog.scrollTop = chatlog.scrollHeight;
+}
+
+function processUserInput() {
+  const usermsg = userinput.value;
+  if (usermsg === "") {
+    return;
+  }
+  addMessageToChatlog(usermsg, "user");
+  userinput.value = "";
+  const botmsg = botResponses[Math.floor(Math.random() * botResponses.length)];
+  setTimeout(() => {
+    addMessageToChatlog(botmsg, "bot");
+  }, 1000);
+}
+
+submitbtn.addEventListener("click", processUserInput);
+userinput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    processUserInput();
+  }
+});
+
+  <h1><p>𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a>.</p>
 <p>𝚊 𝚕𝚘𝚟𝚎𝚛 𝚘𝚏 𝚛𝚎𝚊𝚍𝚒𝚗𝚐, 𝚍𝚎𝚌𝚎𝚗𝚝𝚛𝚊𝚕𝚒𝚣𝚊𝚝𝚒𝚘𝚗 𝚊𝚗𝚍 <a href="https://drive.google.com/file/d/1Q8ncGRs5X8pKnDFO2gc9ka480SHhMj22/view">𝓫𝓾𝓲𝓵𝓭𝓲𝓷𝓰 𝓷𝓮𝔀 𝓽𝓱𝓲𝓷𝓰𝓼</a>.<a href="https://ens.vision/0x/0x31686a4da3b7b04159d30c3ecf2821304f810f53"> 𝘌𝘕𝘚🌐</a>.</p>
 
 <p>𝙶𝚛𝚊𝚋 𝚖𝚢 <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/">𝓫𝓸𝓸𝓴</a> "🅻🅸🅵🅴 🅾🅵 🅰 🅻🅸🅽🅴" <a href="https://www.dailysybil.com/">𝒊f 𝒚o𝒗'𝒓𝒆 b𝒐𝒓ed</a>📓</p>
