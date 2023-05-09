@@ -32,7 +32,7 @@ export default function Home() {
       <main className={styles.main} ref={vantaRef}></main>
 <h1><p>hi, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a>.</p>
 <p>𝙰𝚗 𝚊𝚟𝚒𝚍 𝚛𝚎𝚊𝚍𝚎𝚛, 𝚍𝚎𝚌𝚎𝚗𝚝𝚛𝚊𝚕𝚒𝚣𝚊𝚝𝚒𝚘𝚗 𝚎𝚗𝚝𝚑𝚞𝚜𝚒𝚊𝚜𝚝 𝚊𝚗𝚍 𝚊 𝚋𝚞𝚒𝚕𝚍𝚎𝚛 𝚘𝚏 <a href="https://youtu.be/v2Hk9EZGvCQ">𝓷𝓮𝔀 𝓽𝓱𝓲𝓷𝓰𝓼</a>.<a href="https://ens.vision/0x/0x31686a4da3b7b04159d30c3ecf2821304f810f53"> 𝘌𝘕𝘚🌐</a>.</p>
-<p>𝙴𝚡𝚙𝚕𝚘𝚛𝚎 𝚖𝚢 <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/">𝓫𝓸𝓸𝓴</a> "🅻🅸🅵🅴 🅾🅵 🅰 🅻🅸🅽🅴" 𝚝𝚘 𝚎𝚖𝚋𝚊𝚛𝚔 𝚘𝚗 𝚊 𝚙𝚘𝚎𝚝𝚒𝚌 𝚊𝚍𝚟𝚎𝚗𝚝𝚞𝚛𝚎 𝚒𝚏 𝚢𝚘𝚞𝚛 𝚖𝚒𝚗𝚍 𝚌𝚛𝚊𝚟𝚎𝚜 𝚊 𝚛𝚎𝚓𝚞𝚟𝚎𝚗𝚊𝚝𝚒𝚗𝚐 𝚜𝚘𝚕𝚊𝚌𝚎 👨🏿‍💻</p>
+<p>𝙴𝚡𝚙𝚕𝚘𝚛𝚎 𝚖𝚢 <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/">𝓫𝓸𝓸𝓴</a> "🅻🅸🅵🅴 🅾🅵 🅰 🅻🅸🅽🅴" 𝚝𝚘 𝚎𝚖𝚋𝚊𝚛𝚔 𝚘𝚗 𝚊 𝚙𝚘𝚎𝚝𝚒𝚌 𝚊𝚍𝚟𝚎𝚗𝚝𝚞𝚛𝚎 👨🏿‍💻</p>
 <p><a href="https://oncyber.io/stanfordgsb">𝓿𝓮𝓷𝓽𝓾𝓻𝓮 𝓱𝓮𝓻𝓮</a> 𝚝𝚘 𝚟𝚒𝚎𝚠 𝚍𝚒𝚐𝚒𝚝𝚊𝚕 𝚊𝚜𝚜𝚎𝚝𝚜 𝚍𝚒𝚜𝚙𝚕𝚊𝚢𝚎𝚍 𝚒𝚗 𝚒𝚖𝚖𝚎𝚛𝚜𝚒𝚟𝚎 𝚟𝚒𝚛𝚝𝚞𝚊𝚕 𝚜𝚙𝚊𝚌𝚎𝚜🖼️,</p> <p>𝙳𝚒𝚜𝚌𝚘𝚟𝚎𝚛 𝚖𝚢 <a href="https://chriswoodyard.bandcamp.com/">𝓶𝓾𝓼𝓲𝓬</a> 𝚙𝚛𝚘𝚓𝚎𝚌𝚝 𝚘𝚗 𝚋𝚊𝚗𝚍𝚌𝚊𝚖𝚙🎸(𝚊𝚗𝚍 𝚘𝚝𝚑𝚎𝚛 𝚙𝚞𝚋𝚕𝚒𝚜𝚑𝚒𝚗𝚐𝚜📚),</p> <p>𝙴𝚗𝚐𝚊𝚐𝚎 𝚠𝚒𝚝𝚑 𝚊 𝚏𝚞𝚗 <a href="https://investng.eth.limo/">𝓰𝓲𝓯</a> 𝚜𝚎𝚊𝚛𝚌𝚑 🎆, & 𝚊𝚗 𝚘𝚙𝚎𝚗 𝚜𝚘𝚞𝚛𝚌𝚎 <a href="https://stanforddaily.eth.limo/">𝔀𝓸𝓻𝓭𝓵𝓮</a> 𝚐𝚊𝚖𝚎 𝚌𝚛𝚎𝚊𝚝𝚎𝚍 𝚏𝚘𝚛 𝚎𝚟𝚎𝚛𝚢𝚘𝚗𝚎 𝚘𝚗 𝙸𝙿𝙵𝚂 🖋,</p>
 <p>𝚖𝚊𝚍𝚜𝚐𝚊𝚕𝚕𝚎𝚛𝚢(𝚍𝚘𝚝)𝚊𝚛𝚝 𝚝𝚘 𝚜𝚎𝚎 <a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/">𝓪𝓻𝓽𝔀𝓸𝓻𝓴</a> 🎨</p>,<p>& 𝚊 <a href="https://www.newyorker.com/humor/daily-shouts/dear-pepper-writing-vs-drawing-and-low-flying-zippers">𝓷𝓮𝔀 𝔂𝓸𝓻𝓴𝓮𝓻</a> 𝚕𝚎𝚝𝚝𝚎𝚛 𝚛𝚎𝚙𝚕𝚒𝚎𝚍 𝚋𝚢 𝙻𝚒𝚊𝚗𝚊 𝙵𝚒𝚗𝚌𝚔🗞️</p>
 <a href="https://mitpress.mit.edu/">3️⃣5️⃣4️⃣6️⃣</a> contact ➡️ ciao_chris@tutanota.com <a href="https://annas-archive.org/">|-0024.𝘦𝘵𝘩🐸11h29.𝘦𝘵𝘩|
