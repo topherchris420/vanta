@@ -28,7 +28,7 @@ export default function Home() {
       <Head>
         <title>Vers3Dynamics</title>
         <link rel="icon" href="favicon.ico" />
-          <script src="fartButton"></script>
+          <script src="fartButton.js"></script>
       </Head>
       <main className={styles.main} ref={vantaRef}></main>
 <h1><p>hi, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a>.<html> <head> <title>Fart Button</title> </head> <body> <button id="fartButton">💩</button> </body> </html> </p>
