@@ -28,9 +28,10 @@ export default function Home() {
       <Head>
         <title>Vers3Dynamics</title>
         <link rel="icon" href="favicon.ico" />
+          <script src="fartButton.js"></script>
       </Head>
       <main className={styles.main} ref={vantaRef}></main>
-<h1><p>hi, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a>.</p>
+<h1><p>hi, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓬𝓱𝓻𝓲𝓼</a><html> <head> <title>Fart Button</title> </head> <body> <button id="fartButton">Click Me to Fart</button> </body> </html> </p>
 <p>𝙰𝚗 𝚊𝚟𝚒𝚍 𝚛𝚎𝚊𝚍𝚎𝚛, 𝚍𝚎𝚌𝚎𝚗𝚝𝚛𝚊𝚕𝚒𝚣𝚊𝚝𝚒𝚘𝚗 𝚎𝚗𝚝𝚑𝚞𝚜𝚒𝚊𝚜𝚝 𝚊𝚗𝚍 𝚊 𝚋𝚞𝚒𝚕𝚍𝚎𝚛 𝚘𝚏 <a href="https://youtu.be/v2Hk9EZGvCQ">𝓪𝓲 𝓭𝓮𝓿𝓮𝓵𝓸𝓹𝓶𝓮𝓷𝓽</a>.<a href="https://xn--tq8haaa.eth.co/">🌐</a>.</p>
 <p>𝙴𝚡𝚙𝚕𝚘𝚛𝚎 𝚖𝚢 <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/">𝓫𝓸𝓸𝓴</a> "🅻🅸🅵🅴 🅾🅵 🅰 🅻🅸🅽🅴" 𝚝𝚘 𝚎𝚖𝚋𝚊𝚛𝚔 𝚘𝚗 𝚊 𝚙𝚘𝚎𝚝𝚒𝚌 𝚊𝚍𝚟𝚎𝚗𝚝𝚞𝚛𝚎 👨🏿‍💻</p>
 <p><a href="https://oncyber.io/stanfordgsb">𝓿𝓮𝓷𝓽𝓾𝓻𝓮 𝓱𝓮𝓻𝓮</a> 𝚝𝚘 𝚟𝚒𝚎𝚠 𝚍𝚒𝚐𝚒𝚝𝚊𝚕 𝚊𝚜𝚜𝚎𝚝𝚜 𝚍𝚒𝚜𝚙𝚕𝚊𝚢𝚎𝚍 𝚒𝚗 𝚒𝚖𝚖𝚎𝚛𝚜𝚒𝚟𝚎 𝚟𝚒𝚛𝚝𝚞𝚊𝚕 𝚜𝚙𝚊𝚌𝚎𝚜🖼️,</p> <p>𝙳𝚒𝚜𝚌𝚘𝚟𝚎𝚛 𝚖𝚢 <a href="https://chriswoodyard.bandcamp.com/">𝓶𝓾𝓼𝓲𝓬</a> 𝚙𝚛𝚘𝚓𝚎𝚌𝚝 𝚘𝚗 𝚋𝚊𝚗𝚍𝚌𝚊𝚖𝚙🎸(𝚊𝚗𝚍 𝚘𝚝𝚑𝚎𝚛 𝚙𝚞𝚋𝚕𝚒𝚜𝚑𝚒𝚗𝚐𝚜📚),</p> <p>𝙴𝚗𝚐𝚊𝚐𝚎 𝚠𝚒𝚝𝚑 𝚊 <a href="https://investng.eth.limo/">𝓰𝓲𝓯</a> 𝚜𝚎𝚊𝚛𝚌𝚑 🎆, & 𝚊𝚗 𝚘𝚙𝚎𝚗 𝚜𝚘𝚞𝚛𝚌𝚎 <a href="https://stanforddaily.eth.limo/">𝔀𝓸𝓻𝓭𝓵𝓮</a> 𝚐𝚊𝚖𝚎 𝚌𝚛𝚎𝚊𝚝𝚎𝚍 𝚏𝚘𝚛 𝚎𝚟𝚎𝚛𝚢𝚘𝚗𝚎 𝚘𝚗 𝙸𝙿𝙵𝚂 🖋,</p>
