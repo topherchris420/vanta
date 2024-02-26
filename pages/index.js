@@ -37,7 +37,7 @@ export default function Home() {
     </p>
 <p>𝚅𝚒𝚜𝚒𝚝 𝙼𝚊𝚍𝚜 𝙶𝚊𝚕𝚕𝚎𝚛𝚢 𝚝𝚘 
 <p>𝚅𝚒𝚜𝚒𝚝 𝙼𝚊𝚍𝚜 𝙶𝚊𝚕𝚕𝚎𝚛𝚢 𝚝𝚘 ᴏɴʟʏ<a href="https://drive.google.com/file/d/1PlaDEFBQTRIURd5vC1UPv7QvKUnNluop/view?usp=drivesdk">𝚜𝚎𝚎</a>ᴏɴʟʏ𝚜𝚎𝚎<a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/">𝓪𝓻𝓽𝔀𝓸𝓻𝓴</a> <a href="https://youtu.be/oCAlbtf94PI?si=HH5LF4HZ_nMdS48x">🎨</a></p>,<p>& 𝚛𝚎𝚊𝚍 𝚊 <a href="https://www.newyorker.com/humor/daily-shouts/dear-pepper-writing-vs-drawing-and-low-flying-zippers">𝓷𝓮𝔀 𝔂𝓸𝓻𝓴𝓮𝓻</a> 𝚕𝚎𝚝𝚝𝚎𝚛 𝚏𝚛𝚘𝚖 𝙻𝚒𝚊𝚗𝚊 𝙵𝚒𝚗𝚌𝚔🗞️</p>
-<a href="https://mitpress.mit.edu/">8⇂9˙⇂</a> 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ ciao_chris@tutanota.com <a href="https://annas-archive.org/">|Iɳ Lαƙ'ҽƈԋ Aʅα K'ιɳ 𓁟|
+<a href="https://mitpress.mit.edu/">8⇂9˙⇂</a> 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ ciao_chris@proton.me<a href="https://annas-archive.org/">|Iɳ Lαƙ'ҽƈԋ Aʅα K'ιɳ 𓁟|
 </a></h1><iframe src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY" width="340" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pixelart-rain-programming-jnWMCLBfJb7CK4D8iY"></a></p> <a href="https://givebutter.com/h0CJIU">ᵈᵒⁿᵃᵗᵉ ᵃ ᶜᵒᶠᶠᵉᵉ</a> we1comᗱ to woodyard.e7h</div>
   );
 }
