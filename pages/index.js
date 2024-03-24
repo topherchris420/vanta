@@ -1,30 +1,3 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import { useEffect, useRef, useState } from "react";
-import NET from "vanta/dist/vanta.net.min";
-import * as THREE from "three";
-
-export default function Home() {
-  const [vantaEffect, setVantaEffect] = useState(0);
-  const vantaRef = useRef(null);
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        NET({
-          el: vantaRef.current,
-          THREE,
-          color: 0x387C44,
-          backgroundColor: 0x1e1c1c,
-          maxDistance: 34.0,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destory();
-    };
-  }, [vantaEffect]);
-  return (
-    <div className={styles.container}>
       <iframe src='https://my.spline.design/cubic-c34856f90ed8030a9834352a217d994f/' frameborder='0' width='100%' height='100%'></iframe><Head>
         <title>Vers3Dynamics</title>
         <link rel="icon" href="favicon.ico" />
