@@ -1,4 +1,31 @@
-      <iframe src='https://my.spline.design/cubic-c34856f90ed8030a9834352a217d994f/' frameborder='0' width='100%' height='100%'></iframe><Head>
+   import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { useEffect, useRef, useState } from "react";
+import NET from "vanta/dist/vanta.net.min";
+import * as THREE from "three";
+
+export default function Home() {
+  const [vantaEffect, setVantaEffect] = useState(0);
+  const vantaRef = useRef(null);
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+        NET({
+          el: vantaRef.current,
+          THREE,
+          color: 0x387C44,
+          backgroundColor: 0x1e1c1c,
+          maxDistance: 34.0,
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destory();
+    };
+  }, [vantaEffect]);
+  return (
+    <div className={styles.container}>
+     <Head>
         <title>Vers3Dynamics</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
@@ -12,4 +39,4 @@
 <a href="https://mitpress.mit.edu/">8⇂9˙⇂</a> 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚 <a href="https://givebutter.com/h0CJIU">|Iɳ Lαƙ'ҽƈԋ Aʅα K'ιɳ 𓁟| <iframe src='https://my.spline.design/cubic-c34856f90ed8030a9834352a217d994f/' frameborder='0' width='100%' height='100%'></iframe>
 </a></h1><iframe src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY" width="340" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pixelart-rain-programming-jnWMCLBfJb7CK4D8iY"></a></p>𒉿𒈠 𒉣𒈨𒂄𒂒𒉺𒇸𒊑𒉯𒊑 𒈾𒊑𒄗 𒁳𒂒𒅆𒂦𒆠𒅕𒊑𒉦𒊑 𒆠𒁾𒉿𒂄𒂙𒉣𒂍𒉡 𒈮𒁍𒂵𒈬𒂵𒂵𒉮𒈬𒁉𒊑𒂍𒃴𒂑𒈠𒃶𒂊𒁺𒅀𒃶𒊮𒁉𒋡.| Vers3Dynamics@webgoat.com</div>
   );
-}
+} 
