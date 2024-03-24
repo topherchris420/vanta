@@ -37,6 +37,6 @@ export default function Home() {
 <p>& 𝚊𝚗 𝚘𝚙𝚎𝚗 𝚜𝚘𝚞𝚛𝚌<a href="https://drive.google.com/file/d/1fgfPS3ABM1o5uO15VyknNWb0eDelj810/view?usp=drivesdk">𝚎</a> <a href="https://stanforddaily.eth.limo/">𝔀𝓸𝓻𝓭𝓵𝓮</a> 𝚐𝚊𝚖𝚎 𝚌𝚛𝚎𝚊𝚝𝚎𝚍 𝚏𝚘𝚛 <a href="https://www.sciencedirect.com/science/article/abs/pii/S1053535799800791">𝚎𝚟𝚎𝚛𝚢𝚘𝚗𝚎</a> 𝚘𝚗 𝙸𝙿𝙵𝚂 🖋</p>
 <p>𝚅𝚒𝚜𝚒𝚝 𝙼𝚊𝚍𝚜 𝙶𝚊𝚕𝚕𝚎𝚛𝚢 𝚝𝚘 ᴏɴʟʏ 𝚜𝚎𝚎 <a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/">𝓪𝓻𝓽𝔀𝓸𝓻𝓴</a> <a href="https://youtu.be/oCAlbtf94PI?si=HH5LF4HZ_nMdS48x">🎨</a></p><p>& 𝚛𝚎𝚊𝚍 𝚊 <a href="https://www.newyorker.com/humor/daily-shouts/dear-pepper-writing-vs-drawing-and-low-flying-zippers">𝓷𝓮𝔀 𝔂𝓸𝓻𝓴𝓮𝓻</a> 𝚕𝚎𝚝𝚝𝚎𝚛 𝚏𝚛𝚘𝚖 𝙻𝚒𝚊𝚗𝚊 𝙵𝚒𝚗𝚌𝚔🗞️</p>
 <a href="https://mitpress.mit.edu/">8⇂9˙⇂</a> 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚 <a href="https://givebutter.com/h0CJIU">|Iɳ Lαƙ'ҽƈԋ Aʅα K'ιɳ 𓁟| 
-</a></h1><iframe src='https://my.spline.design/cubic-c34856f90ed8030a9834352a217d994f/' frameborder='0' width='100%' height='100%'></iframe></p>𒉿𒈠 𒉣𒈨𒂄𒂒𒉺𒇸𒊑𒉯𒊑 𒈾𒊑𒄗 𒁳𒂒𒅆𒂦𒆠𒅕𒊑𒉦𒊑 𒆠𒁾𒉿𒂄𒂙𒉣𒂍𒉡 𒈮𒁍𒂵𒈬𒂵𒂵𒉮𒈬𒁉𒊑𒂍𒃴𒂑𒈠𒃶𒂊𒁺𒅀𒃶𒊮𒁉𒋡.| Vers3Dynamics@webgoat.com</div>
+<p><iframe src='https://my.spline.design/cubic-c34856f90ed8030a9834352a217d994f/' frameborder='0' width='100%' height='100%'></iframe></p>𒉿𒈠 𒉣𒈨𒂄𒂒𒉺𒇸𒊑𒉯𒊑 𒈾𒊑𒄗 𒁳𒂒𒅆𒂦𒆠𒅕𒊑𒉦𒊑 𒆠𒁾𒉿𒂄𒂙𒉣𒂍𒉡 𒈮𒁍𒂵𒈬𒂵𒂵𒉮𒈬𒁉𒊑𒂍𒃴𒂑𒈠𒃶𒂊𒁺𒅀𒃶𒊮𒁉𒋡.| Vers3Dynamics@webgoat.com</div>
   );
 }
