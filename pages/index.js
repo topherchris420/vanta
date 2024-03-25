@@ -38,6 +38,205 @@ export default function Home() {
 <p>& 𝚊𝚗 𝚘𝚙𝚎𝚗 𝚜𝚘𝚞𝚛𝚌<a href="https://drive.google.com/file/d/1fgfPS3ABM1o5uO15VyknNWb0eDelj810/view?usp=drivesdk">𝚎</a> <a href="https://stanforddaily.eth.limo/">𝔀𝓸𝓻𝓭𝓵𝓮</a> 𝚐𝚊𝚖𝚎 𝚌𝚛𝚎𝚊𝚝𝚎𝚍 𝚏𝚘𝚛 <a href="https://www.sciencedirect.com/science/article/abs/pii/S1053535799800791">𝚎𝚟𝚎𝚛𝚢𝚘𝚗𝚎</a> 𝚘𝚗 𝙸𝙿𝙵𝚂 🖋</p>
 <p>𝚅𝚒𝚜𝚒𝚝 𝙼𝚊𝚍𝚜 𝙶𝚊𝚕𝚕𝚎𝚛𝚢 𝚝𝚘 ᴏɴʟʏ 𝚜𝚎𝚎 <a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/">𝓪𝓻𝓽𝔀𝓸𝓻𝓴</a> <a href="https://youtu.be/oCAlbtf94PI?si=HH5LF4HZ_nMdS48x">🎨</a></p><p>& 𝚛𝚎𝚊𝚍 𝚊 <a href="https://www.newyorker.com/humor/daily-shouts/dear-pepper-writing-vs-drawing-and-low-flying-zippers">𝓷𝓮𝔀 𝔂𝓸𝓻𝓴𝓮𝓻</a> 𝚕𝚎𝚝𝚝𝚎𝚛 𝚏𝚛𝚘𝚖 𝙻𝚒𝚊𝚗𝚊 𝙵𝚒𝚗𝚌𝚔🗞️</p>
 <a href="https://mitpress.mit.edu/">8⇂9˙⇂</a> 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚 <a href="https://givebutter.com/h0CJIU">|Iɳ Lαƙ'ҽƈԋ Aʅα K'ιɳ 𓁟|
-</a></h1><iframe src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY" width="340" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pixelart-rain-programming-jnWMCLBfJb7CK4D8iY"></a></p>𒉿𒈠 𒉣𒈨𒂄𒂒𒉺𒇸𒊑𒉯𒊑 𒈾𒊑𒄗 𒁳𒂒𒅆𒂦𒆠𒅕𒊑𒉦𒊑 𒆠𒁾𒉿𒂄𒂙𒉣𒂍𒉡 𒈮𒁍𒂵𒈬𒂵𒂵𒉮𒈬𒁉𒊑𒂍𒃴𒂑𒈠𒃶𒂊𒁺𒅀𒃶𒊮𒁉𒋡.| Vers3Dynamics@webgoat.com</div>
+</a></h1><iframe src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY" width="340" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/pixelart-rain-programming-jnWMCLBfJb7CK4D8iY"></a></p>𒉿𒈠 𒉣𒈨𒂄𒂒𒉺𒇸𒊑𒉯𒊑 𒈾𒊑𒄗 𒁳𒂒𒅆𒂦𒆠𒅕𒊑𒉦𒊑 𒆠𒁾𒉿𒂄𒂙𒉣𒂍𒉡 𒈮𒁍𒂵𒈬𒂵𒂵𒉮𒈬𒁉𒊑𒂍𒃴𒂑𒈠𒃶𒂊𒁺𒅀𒃶𒊮𒁉𒋡.| Vers3Dynamics@webgoat.com</div> html, body, .container {
+  height: 100%;
+}
+html {
+    font-family: ProximaNova,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    background: #cbded8;
+    margin: 0;
+    padding: 1em;
+    overflow: hidden;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+.header {
+  background: #3c7f6a;
+  color: #fff;
+  float: left;
+  padding: 1em
+}
+.owl .left-eye,
+.owl .right-eye {
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 27px;
+  z-index: 2;
+}
+
+.owl .left-pupil,
+.owl .right-pupil {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  display: block;
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  position: absolute;
+  -webkit-animation: blink 3s infinite;
+  animation: blink 3s infinite;
+}
+
+.owl {
+  width: 100px;
+  height: 107px;
+  position: absolute;
+  -webkit-animation: owl 1s 1s forwards, owl_bob 1.4s 2s infinite;
+  animation: owl 1s 1s forwards, owl_bob 1.4s 2s infinite;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.owl .left-eye {
+  right: 60px;
+}
+
+.owl .right-eye {
+  right: 20px;
+}
+
+@-webkit-keyframes up {
+  0% {
+    bottom: -50px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@keyframes up {
+  0% {
+    bottom: -50px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes owl {
+  0% {
+    bottom: -140px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+
+@keyframes owl {
+  0% {
+    bottom: -140px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+
+@-webkit-keyframes owl_bob {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 14px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+
+@keyframes owl_bob {
+  0% {
+    bottom: 10px;
+  }
+  50% {
+    bottom: 14px;
+  }
+  100% {
+    bottom: 10px;
+  }
+}
+
+@-webkit-keyframes blink {
+  0% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  46% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  50% {
+    height: 0px;
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  54% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+
+@keyframes blink {
+  0% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  46% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  50% {
+    height: 0px;
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  54% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    height: 8px;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
   );
 } 
