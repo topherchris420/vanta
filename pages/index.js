@@ -21,7 +21,7 @@ export default function Home() {
       );
     }
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      if (vantaEffect) vantaEffect.destory();
     };
   }, [vantaEffect]);
 
