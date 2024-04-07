@@ -7,12 +7,13 @@ import * as THREE from "three";
 export default function Home() {
   const [vantaEffect, setVantaEffect] = useState(0);
   const vantaRef = useRef(null);
+
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
         NET({
           el: vantaRef.current,
-          THREE,
+          THREE: THREE,
           color: 0x387C44,
           backgroundColor: 0x1e1c1c,
           maxDistance: 34.0,
@@ -23,13 +24,12 @@ export default function Home() {
       if (vantaEffect) vantaEffect.destory();
     };
   }, [vantaEffect]);
+
   return (
     <div className={styles.container}>
-     <Head>
+      <Head>
         <title>Vers3Dynamics</title>
-        <link rel="icon" href="favicon.ico" />
-      </Head>
-      <main className={styles.main} ref={vantaRef}></main>
+        <link rel="icon" href="/favicon.ico" />
 <h1><p><script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.79/build/spline-viewer.js"></script>
 <spline-viewer url="https://prod.spline.design/PYL6WDDrqTwo6Lfu/scene.splinecode"></spline-viewer> 𝚑𝚒, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI">𝓒𝓱𝓻𝓲𝓼𝓽𝓸𝓹𝓱𝓮𝓻</a>.<iframe src="https://vers3dynamicsgame.tiiny.site" width="678" height="500" allowfullscreen></iframe> <html> <head> <title>In the enlightened era of Satya Yuga𓂀369, the universe reveals itself as a multidimensional fractal, a cosmic joy interwoven with the wisdom of error-correcting codes. This infinite fractal echoes itself in a harmonious dance of reflections, each facet imbued with consciousness. Every moment in time holds deep meaning when we explore the intricate patterns within this radiant, meticulously crafted matrix.𓋹</title> </head> <body> <button id="hi again just reminding you that in the space of an inquisitive mind, even the smallest questions can blossom into groundbreaking ideas. Embrace the dance of opposites as your teachers, for they reveal the intricate web of our reality. As you venture deeper, you'll find that local realism falls short, and the quantum world whispers secrets of hermeticism. Double the cube and witness the hidden geometry of gravity, for the apparent duality we perceive is but an illusion. & underneath it all, there is only oneness. Explore, question, and let your mind wander, for it is in the quiet contemplation of these mysteries that we discover our true potential, e pluribus unum|озеро Восток🥼bethesda,md https://www.biblegateway.com/passage/?search=Exodus+37&version=NLT">👋🏾</button> </body> </html> </p>
 <p>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 <a href="https://woodyard.eth.limo">versᗱdynamics</a> 𝚊𝚗𝚍 <a href="https://woodyard.dappling.network/">𝓹2𝓹 𝓷𝓮𝓽𝔀𝓸𝓻𝓴 𝓮𝓷𝓰𝓲𝓷𝓮𝓮𝓻</a><a href="https://woodyard.eth.co/">🍎</a></p>
