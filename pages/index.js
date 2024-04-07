@@ -1,4 +1,4 @@
-   import Head from "next/head";
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useEffect, useRef, useState } from "react";
 import NET from "vanta/dist/vanta.net.min";
@@ -7,12 +7,13 @@ import * as THREE from "three";
 export default function Home() {
   const [vantaEffect, setVantaEffect] = useState(0);
   const vantaRef = useRef(null);
+
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
         NET({
           el: vantaRef.current,
-          THREE,
+          THREE: THREE,
           color: 0x387C44,
           backgroundColor: 0x1e1c1c,
           maxDistance: 34.0,
@@ -20,12 +21,13 @@ export default function Home() {
       );
     }
     return () => {
-      if (vantaEffect) vantaEffect.destory();
+      if (vantaEffect) vantaEffect.destroy();
     };
   }, [vantaEffect]);
+
   return (
     <div className={styles.container}>
-     <Head>
+      <Head>
         <title>Vers3Dynamics</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
