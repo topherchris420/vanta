@@ -1,18 +1,23 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-// Removed useState, useEffect, useRef, NET, THREE imports from here
 import dynamic from 'next/dynamic'; // Import dynamic
 
-// Dynamically import the VantaEffect component with SSR disabled
+// --- Dynamically import the VantaEffect component ---
+// This prevents Vanta/Three.js from being included in the server bundle
+// and ensures it only runs on the client-side.
 const VantaEffectNoSSR = dynamic(
-  () => import('../components/VantaEffect'), // Adjust path if needed
-  { ssr: false } // THIS IS CRUCIAL
+  () => import('../components/VantaEffect'), // Path to your new component
+  {
+    ssr: false // Disable server-side rendering for this component
+  }
 );
 
 export default function Home() {
-  // No Vanta state or refs needed here anymore
+  // No Vanta state or ref needed here anymore
 
   return (
+    // You might not need the outer styles.container div if Vanta handles the full background
+    // Or adjust its styling (e.g., make it position: relative if Vanta is position: absolute)
     <div className={styles.container}>
       <Head>
         <title>Vers3Dynamics | Christopher</title>
@@ -21,12 +26,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* Render the dynamically imported component */}
-      {/* Pass the original background class */}
+      {/* Render the dynamically imported Vanta background */}
+      {/* Pass the className you originally used for the background div */}
       <VantaEffectNoSSR className={styles.background} />
 
-      {/* Keep the original <main> element for content layout */}
-      {/* Note: Ensure your .main styles don't conflict with Vanta's absolute positioning */}
+      {/* Your main content area */}
+      {/* Ensure its z-index is higher than Vanta's (-1) or it has a background color */}
       <main className={styles.main}>
         <section className={styles.header}>
           <h1 className={styles.title}>
@@ -35,8 +40,7 @@ export default function Home() {
         </section>
 
         <section className={styles.biography}>
-           {/* ... rest of your biography content ... */}
-           <p className={styles.bio}>
+          <p className={styles.bio}>
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
             <a href="https://woodyard.streamlit.app/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
@@ -46,8 +50,7 @@ export default function Home() {
         </section>
 
         <section className={styles.projects}>
-           {/* ... rest of your project cards ... */}
-           <div className={styles.projectCard}>
+          <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Book</h2>
             <p className={styles.projectDesc}>
               <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/" className={styles.link}>𝓛𝓲𝓯𝓮 𝓸𝓯 𝓪 𝓛𝓲𝓷𝓮</a>
@@ -85,8 +88,7 @@ export default function Home() {
         </section>
 
         <section className={styles.interactiveContent}>
-           {/* ... rest of your interactive content ... */}
-           <div className={styles.splineContainer}>
+          <div className={styles.splineContainer}>
             <iframe
               src="https://prod.spline.design/PYL6WDDrqTwo6Lfu/scene.splinecode"
               className={styles.splineViewer}
@@ -109,8 +111,7 @@ export default function Home() {
         </section>
 
         <footer className={styles.footer}>
-           {/* ... rest of your footer content ... */}
-           <p className={styles.contact}>
+          <p className={styles.contact}>
             <span className={styles.specialText}>𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚</span>
           </p>
           <p className={styles.copyright}>
