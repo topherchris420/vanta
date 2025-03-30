@@ -1,29 +1,16 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useEffect, useRef, useState } from "react";
-import NET from "vanta/dist/vanta.net.min";
-import * as THREE from "three";
+// Removed useState, useEffect, useRef, NET, THREE imports from here
+import dynamic from 'next/dynamic'; // Import dynamic
+
+// Dynamically import the VantaEffect component with SSR disabled
+const VantaEffectNoSSR = dynamic(
+  () => import('../components/VantaEffect'), // Adjust path if needed
+  { ssr: false } // THIS IS CRUCIAL
+);
 
 export default function Home() {
-  const [vantaEffect, setVantaEffect] = useState(null);
-  const vantaRef = useRef(null);
-
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        NET({
-          el: vantaRef.current,
-          THREE,
-          color: 0x387C44,
-          backgroundColor: 0x1e1c1c,
-          maxDistance: 34.0,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy(); // Fixed typo: destory -> destroy
-    };
-  }, [vantaEffect]);
+  // No Vanta state or refs needed here anymore
 
   return (
     <div className={styles.container}>
@@ -34,8 +21,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className={styles.background} ref={vantaRef}></div>
+      {/* Render the dynamically imported component */}
+      {/* Pass the original background class */}
+      <VantaEffectNoSSR className={styles.background} />
 
+      {/* Keep the original <main> element for content layout */}
+      {/* Note: Ensure your .main styles don't conflict with Vanta's absolute positioning */}
       <main className={styles.main}>
         <section className={styles.header}>
           <h1 className={styles.title}>
@@ -44,7 +35,8 @@ export default function Home() {
         </section>
 
         <section className={styles.biography}>
-          <p className={styles.bio}>
+           {/* ... rest of your biography content ... */}
+           <p className={styles.bio}>
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
             <a href="https://woodyard.streamlit.app/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
@@ -54,10 +46,11 @@ export default function Home() {
         </section>
 
         <section className={styles.projects}>
-          <div className={styles.projectCard}>
+           {/* ... rest of your project cards ... */}
+           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Book</h2>
             <p className={styles.projectDesc}>
-              <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/" className={styles.link}>𝓛𝓲𝓯𝓮 𝓸𝓯 𝓪 𝓛𝓲𝓷𝓮</a> 
+              <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/" className={styles.link}>𝓛𝓲𝓯𝓮 𝓸𝓯 𝓪 𝓛𝓲𝓷𝓮</a>
               <span className={styles.specialText}> — A poetic adventure </span>
               <a href="https://drive.google.com/file/d/14aenR92-dfkjolJBhG3iTCI3Ka6-d6sT/view?usp=drivesdk" className={styles.link}>📐</a>
             </p>
@@ -66,7 +59,7 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Digital Art</h2>
             <p className={styles.projectDesc}>
-              <a href="https://oncyber.io/stanfordgsb" className={styles.link}>𝓥𝓲𝓮𝔀 𝓱𝓮𝓻𝓮</a> 
+              <a href="https://oncyber.io/stanfordgsb" className={styles.link}>𝓥𝓲𝓮𝔀 𝓱𝓮𝓻𝓮</a>
               <span className={styles.specialText}> for digital fragments in spatial computing </span>
               <a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/" className={styles.link}>🖼️</a>
             </p>
@@ -75,7 +68,7 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Music</h2>
             <p className={styles.projectDesc}>
-              <a href="https://chriswoodyard.bandcamp.com/" className={styles.link}>𝓐𝓾𝓭𝓲𝓽𝓸𝓻𝔂 𝓖𝓮𝓸𝓶𝓮𝓽𝓻𝔂</a> 
+              <a href="https://chriswoodyard.bandcamp.com/" className={styles.link}>𝓐𝓾𝓭𝓲𝓽𝓸𝓻𝔂 𝓖𝓮𝓸𝓶𝓮𝓽𝓻𝔂</a>
               <span className={styles.specialText}> — Experimental sound project </span>
               <a href="https://drive.google.com/file/d/1PlaDEFBQTRIURd5vC1UPv7QvKUnNluop/view?usp=drivesdk" className={styles.link}>🎹</a>
             </p>
@@ -84,7 +77,7 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Games</h2>
             <p className={styles.projectDesc}>
-              <a href="https://stanforddaily.eth.limo/" className={styles.link}>𝓦𝓸𝓻𝓭𝓵𝓮</a> 
+              <a href="https://stanforddaily.eth.limo/" className={styles.link}>𝓦𝓸𝓻𝓭𝓵𝓮</a>
               <span className={styles.specialText}> — Open source game on IPFS </span>
               <a href="https://www.sciencedirect.com/science/article/abs/pii/S1053535799800791" className={styles.link}>🖋</a>
             </p>
@@ -92,22 +85,23 @@ export default function Home() {
         </section>
 
         <section className={styles.interactiveContent}>
-          <div className={styles.splineContainer}>
-            <iframe 
-              src="https://prod.spline.design/PYL6WDDrqTwo6Lfu/scene.splinecode" 
+           {/* ... rest of your interactive content ... */}
+           <div className={styles.splineContainer}>
+            <iframe
+              src="https://prod.spline.design/PYL6WDDrqTwo6Lfu/scene.splinecode"
               className={styles.splineViewer}
-              title="3D Interactive Design" 
+              title="3D Interactive Design"
               frameBorder="0"
               loading="lazy"
             ></iframe>
           </div>
-          
+
           <div className={styles.gifContainer}>
-            <iframe 
-              src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY" 
+            <iframe
+              src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY"
               className={styles.giphyEmbed}
-              title="Pixel Art Animation" 
-              frameBorder="0" 
+              title="Pixel Art Animation"
+              frameBorder="0"
               allowFullScreen
               loading="lazy"
             ></iframe>
@@ -115,7 +109,8 @@ export default function Home() {
         </section>
 
         <footer className={styles.footer}>
-          <p className={styles.contact}>
+           {/* ... rest of your footer content ... */}
+           <p className={styles.contact}>
             <span className={styles.specialText}>𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚</span>
           </p>
           <p className={styles.copyright}>
@@ -125,4 +120,3 @@ export default function Home() {
       </main>
     </div>
   );
-}
