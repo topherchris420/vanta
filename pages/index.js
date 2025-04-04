@@ -35,7 +35,7 @@ export default function Home() {
       <main className={styles.main}>
         <section className={styles.header}>
           <h1 className={styles.title}>
-            <span className={styles.specialText}>𝚑𝚒, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://my90stv.com/#7XBcT41ImSI" className={styles.link}>𝓒𝓱𝓻𝓲𝓼𝓽𝓸𝓹𝓱𝓮𝓻</a>.</span>
+            <span className={styles.specialText}>𝚑𝚒, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://90s.myretrotvs.com/#7XBcT41ImSI" className={styles.link}>𝓒𝓱𝓻𝓲𝓼𝓽𝓸𝓹𝓱𝓮𝓻</a>.</span>
           </h1>
         </section>
 
