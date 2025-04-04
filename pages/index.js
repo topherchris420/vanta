@@ -168,7 +168,7 @@ export default function Home() {
               <audio 
                 className={styles.audioPlayer} 
                 controls 
-                src="/sample.mp3"
+                src="goTo (2).wav"
               >
                 Your browser does not support the audio element.
               </audio>
