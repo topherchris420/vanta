@@ -44,7 +44,7 @@ export default function Home() {
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
             <a href="https://woodyard.streamlit.app/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
-            <a href="https://woodyard.dappling.network/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
+            <a href="https://vers3dynamics.io/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
             <a href="https://mnemosynehealth.streamlit.app/" className={styles.link}>🍎</a>
           </p>
         </section>
