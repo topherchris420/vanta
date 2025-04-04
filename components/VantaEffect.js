@@ -12,17 +12,17 @@ const VantaEffect = ({ className }) => {
     if (!vantaEffect && vantaRef.current) {
       setVantaEffect(
         NET({
-          el: vantaRef.current,
-          THREE: THREE, // Pass THREE directly
-          color: 0x387c44,
-          backgroundColor: 0x1e1c1c,
-          maxDistance: 34.0,
-          // Add any other Vanta options here
-          points: 10.00,
-          spacing: 15.00
-        })
-      );
-    }
+  el: vantaRef.current,
+  THREE: THREE,
+  color: 0x387c44,
+  backgroundColor: 0x1e1c1c,
+  maxDistance: 34.0,
+  points: 10.00,
+  spacing: 15.00,
+  debug: false,
+  showDots: false,
+  verbosity: 0
+})
 
     // Cleanup function: Destroy Vanta effect when component unmounts
     return () => {
