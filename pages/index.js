@@ -137,17 +137,6 @@ export default function Home() {
               </p>
               <div className={styles.cardOverlay}></div>
             </div>
-
-            <div className={`${styles.projectCard} ${styles.cardHover}`}>
-              <div className={styles.projectIcon}>🎮</div>
-              <h2 className={styles.projectTitle}>Games</h2>
-              <p className={styles.projectDesc}>
-                <a href="https://stanforddaily.eth.limo/" className={`${styles.link} ${styles.linkReveal}`}>𝓦𝓸𝓻𝓭𝓵𝓮</a>
-                <span className={styles.specialText}> — Open source game on IPFS </span>
-                <a href="https://www.sciencedirect.com/science/article/abs/pii/S1053535799800791" className={styles.link}>🖋</a>
-              </p>
-              <div className={styles.cardOverlay}></div>
-            </div>
           </section>
         )}
 
@@ -157,16 +146,6 @@ export default function Home() {
               <button className={styles.interactiveButton}>Rotate</button>
               <button className={styles.interactiveButton}>Scale</button>
               <button className={styles.interactiveButton}>Reset</button>
-            </div>
-            
-            <div className={styles.splineContainer}>
-              <iframe
-                src="https://prod.spline.design/PYL6WDDrqTwo6Lfu/scene.splinecode"
-                className={`${styles.splineViewer} ${styles.enhancedFrame}`}
-                title="3D Interactive Design"
-                frameBorder="0"
-                loading="lazy"
-              ></iframe>
             </div>
 
             <div className={styles.gifContainer}>
