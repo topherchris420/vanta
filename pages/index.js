@@ -60,7 +60,7 @@ export default function Home() {
           </div>
 
           <div className={styles.projectCard}>
-            <h2 className={styles.projectTitle}>Digital Art</h2>
+            <h2 className={styles.projectTitle}>Art</h2>
             <p className={styles.projectDesc}>
               <a href="https://oncyber.io/stanfordgsb" className={styles.link}>𝓥𝓲𝓮𝔀 𝓱𝓮𝓻𝓮</a>
               <span className={styles.specialText}> for digital fragments in spatial computing </span>
