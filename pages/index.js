@@ -42,7 +42,7 @@ export default function Home() {
         <section className={styles.biography}>
           <p className={styles.bio}>
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
-            <a href="https://woodyard.streamlit.app/" className={styles.link}>versᗱdynamics</a>
+            <a href="https://vers3dynamics.io/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
             <a href="https://woodyard.dappling.network/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
             <a href="https://mnemosynehealth.streamlit.app/" className={styles.link}>🍎</a>
@@ -75,27 +75,6 @@ export default function Home() {
               <span className={styles.specialText}> — Experimental sound project </span>
               <a href="https://drive.google.com/file/d/1PlaDEFBQTRIURd5vC1UPv7QvKUnNluop/view?usp=drivesdk" className={styles.link}>🎹</a>
             </p>
-          </div>
-
-          <div className={styles.projectCard}>
-            <h2 className={styles.projectTitle}>Games</h2>
-            <p className={styles.projectDesc}>
-              <a href="https://stanforddaily.eth.limo/" className={styles.link}>𝓦𝓸𝓻𝓭𝓵𝓮</a>
-              <span className={styles.specialText}> — Open source game on IPFS </span>
-              <a href="https://www.sciencedirect.com/science/article/abs/pii/S1053535799800791" className={styles.link}>🖋</a>
-            </p>
-          </div>
-        </section>
-
-        <section className={styles.interactiveContent}>
-          <div className={styles.splineContainer}>
-            <iframe
-              src="https://prod.spline.design/PYL6WDDrqTwo6Lfu/scene.splinecode"
-              className={styles.splineViewer}
-              title="3D Interactive Design"
-              frameBorder="0"
-              loading="lazy"
-            ></iframe>
           </div>
 
           <div className={styles.gifContainer}>
