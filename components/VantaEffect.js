@@ -8,27 +8,41 @@ const VantaEffect = ({ className }) => {
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    // Ensure this code runs only on the client
-    if (!vantaEffect && vantaRef.current) {
-      setVantaEffect(
-        NET({
-  el: vantaRef.current,
-  THREE: THREE,
-  color: 0x387c44,
-  backgroundColor: 0x1e1c1c,
-  maxDistance: 34.0,
-  points: 10.00,
-  spacing: 15.00,
-  debug: false,
-  showDots: false,
-  verbosity: 0
-})
+    let currentVantaEffect = null; // Use a local variable for the effect instance
 
-    // Cleanup function: Destroy Vanta effect when component unmounts
+    // Ensure this code runs only on the client
+    if (!vantaEffect && vantaRef.current) { // Check state, but initialize based on ref
+      currentVantaEffect = NET({ // Initialize effect directly
+        el: vantaRef.current,
+        THREE: THREE,
+        color: 0x387c44,
+        backgroundColor: 0x1e1c1c,
+        maxDistance: 34.0,
+        points: 10.00,
+        spacing: 15.00,
+        debug: false,
+        showDots: false,
+        verbosity: 0
+      });
+      setVantaEffect(currentVantaEffect); // Set the state AFTER initialization
+    }
+
+    // Cleanup function: Use the local variable 'currentVantaEffect'
+    // Or better yet, use the state variable 'vantaEffect' which should be set by now
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
+      // Check the state variable when cleaning up
+      if (vantaEffect) {
+        vantaEffect.destroy();
+        setVantaEffect(null); // Optionally reset state on cleanup
+      }
+      // Or if relying solely on the local variable approach (less common with state):
+      // if (currentVantaEffect) {
+      //   currentVantaEffect.destroy();
+      // }
     };
-  }, [vantaEffect]); // Dependency array ensures this runs only when vantaEffect changes
+  // Dependency array: Only run when vantaRef.current is available,
+  // and clean up when vantaEffect changes (or component unmounts)
+  }, [vantaRef.current, vantaEffect]); // Adjust dependencies if needed
 
   // Render the div that Vanta will attach to
   // Apply the className passed as a prop
