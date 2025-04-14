@@ -1,201 +1,297 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
-import dynamic from 'next/dynamic';
-import { useState, useEffect } from 'react';
-
-// Dynamically import the VantaEffect component
-const VantaEffectNoSSR = dynamic(
-  () => import('../components/VantaEffect'),
-  { ssr: false }
-);
-
-// Dynamically import a new AudioPlayer component
-const AudioPlayerNoSSR = dynamic(
-  () => import('../components/AudioPlayer'),
-  { ssr: false }
-);
+import { useState, useEffect, useRef } from 'react';
+import Head from 'next/head';
+import BIRDS from 'vanta/dist/vanta.birds.min';
+import * as THREE from 'three';
+import styles from '../styles/Home.module.css';
+import AudioPlayer from '../components/AudioPlayer';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('intro');
+  const [vantaEffect, setVantaEffect] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [musicPlaying, setMusicPlaying] = useState(false);
+  const [showControls, setShowControls] = useState(false);
+  const [bgEffect, setBgEffect] = useState('birds');
   
-  // Simple animation on load
+  const vantaRef = useRef(null);
+  const sections = ['intro', 'projects', 'gallery', 'contact'];
+  
+  // Initialize Vanta.js background effect
   useEffect(() => {
-    setIsLoaded(true);
+    if (!vantaEffect && vantaRef.current) {
+      setVantaEffect(
+        BIRDS({
+          el: vantaRef.current,
+          THREE: THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          backgroundColor: 0x0a192f,
+          color1: 0x5338ff,
+          color2: 0x3b28cc,
+          colorMode: "variance",
+          birdSize: 1.50,
+          wingSpan: 40.00,
+          speedLimit: 5.00,
+          separation: 80.00,
+          alignment: 20.00,
+          cohesion: 20.00
+        })
+      );
+    }
+    
+    // Cleanup
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
+  
+  // Handle scroll to set active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      
+      // Determine which section is currently in view
+      const currentSection = sections.find((section, index) => {
+        const element = document.getElementById(section);
+        if (!element) return false;
+        
+        const rect = element.getBoundingClientRect();
+        const offset = window.innerHeight * 0.3;
+        
+        return rect.top - offset <= 0 && rect.bottom - offset > 0;
+      }) || 'intro';
+      
+      setActiveSection(currentSection);
+      
+      // Show background controls when scrolled past intro
+      if (scrollPosition > window.innerHeight * 0.5) {
+        setShowControls(true);
+      } else {
+        setShowControls(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // Set initial active section and show loaded state
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 500);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-
-  // Function to handle section navigation
-  const navigateToSection = (section) => {
-    setActiveSection(section);
-    // Smooth scroll to section
-    document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+  
+  // Smooth scroll to section
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+  
+  // Change background effect
+  const changeBackground = (effect) => {
+    if (vantaEffect) {
+      vantaEffect.destroy();
+      setVantaEffect(null);
+    }
+    
+    setBgEffect(effect);
+    
+    // Re-initialize with new effect
+    setTimeout(() => {
+      if (effect === 'birds') {
+        setVantaEffect(
+          BIRDS({
+            el: vantaRef.current,
+            THREE: THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            backgroundColor: 0x0a192f,
+            color1: 0x5338ff,
+            color2: 0x3b28cc,
+            colorMode: "variance",
+            birdSize: 1.50,
+            wingSpan: 40.00,
+            speedLimit: 5.00,
+            separation: 80.00,
+            alignment: 20.00,
+            cohesion: 20.00
+          })
+        );
+      } else if (effect === 'waves') {
+        // You would need to import WAVES from 'vanta/dist/vanta.waves.min'
+        // at the top of your file to use this effect
+        /* 
+        setVantaEffect(
+          WAVES({
+            el: vantaRef.current,
+            THREE: THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x5338ff,
+            shininess: 35.00,
+            waveHeight: 15.00,
+            waveSpeed: 0.75,
+            zoom: 0.90
+          })
+        );
+        */
+      } else if (effect === 'net') {
+        // You would need to import NET from 'vanta/dist/vanta.net.min'
+        // at the top of your file to use this effect
+        /*
+        setVantaEffect(
+          NET({
+            el: vantaRef.current,
+            THREE: THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x5338ff,
+            backgroundColor: 0x0a192f,
+            points: 10.00,
+            maxDistance: 20.00,
+            spacing: 15.00
+          })
+        );
+        */
+      }
+    }, 100);
   };
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Vers3Dynamics | Christopher</title>
+        <title>Creative Portfolio</title>
+        <meta name="description" content="An interactive creative portfolio showcasing my work" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content="Exploring the intersection of art, technology, and philosophy with Christopher, founder of Vers3Dynamics" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
 
-      {/* Interactive background with controls */}
-      <VantaEffectNoSSR className={styles.background} />
+      {/* Background */}
+      <div ref={vantaRef} className={styles.background}></div>
       
       {/* Background controls */}
-      <div className={`${styles.backgroundControls} ${isLoaded ? styles.fadeIn : ''}`}>
-        <button onClick={() => document.dispatchEvent(new CustomEvent('changeVantaEffect'))}>
-          Change Effect
-        </button>
+      <div className={`${styles.backgroundControls} ${showControls ? styles.fadeIn : ''}`}>
+        <button onClick={() => changeBackground('birds')}>Birds</button>
+        <button onClick={() => changeBackground('waves')}>Waves</button>
+        <button onClick={() => changeBackground('net')}>Net</button>
       </div>
-
-      {/* Audio player for background music */}
-      <AudioPlayerNoSSR 
-        isPlaying={musicPlaying} 
-        togglePlay={() => setMusicPlaying(!musicPlaying)} 
-      />
-
+      
+      {/* Navigation */}
+      <nav className={styles.navigation}>
+        <ul>
+          {sections.map((section) => (
+            <li key={section} className={activeSection === section ? styles.active : ''}>
+              <button onClick={() => scrollToSection(section)}>
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      
       {/* Main content */}
       <main className={`${styles.main} ${isLoaded ? styles.fadeIn : ''}`}>
-        {/* Navigation */}
-        <nav className={styles.navigation}>
-          <ul>
-            <li className={activeSection === 'intro' ? styles.active : ''}>
-              <button onClick={() => navigateToSection('intro')}>Intro</button>
-            </li>
-            <li className={activeSection === 'projects' ? styles.active : ''}>
-              <button onClick={() => navigateToSection('projects')}>Projects</button>
-            </li>
-            <li className={activeSection === 'gallery' ? styles.active : ''}>
-              <button onClick={() => navigateToSection('gallery')}>Gallery</button>
-            </li>
-            <li className={activeSection === 'contact' ? styles.active : ''}>
-              <button onClick={() => navigateToSection('contact')}>Contact</button>
-            </li>
-          </ul>
-        </nav>
-
         {/* Intro Section */}
         <section id="intro" className={`${styles.header} ${activeSection === 'intro' ? styles.activeSection : ''}`}>
           <div className={styles.introContent}>
-            <h1 className={styles.title}>
-              <span className={styles.specialText}>𝚑𝚒, 𝚖𝚢 𝚗𝚊𝚖𝚎 𝚒𝚜 <a href="https://90s.myretrotvs.com/#7XBcT41ImSI" className={styles.link} target="_blank" rel="noopener noreferrer">𝓒𝓱𝓻𝓲𝓼𝓽𝓸𝓹𝓱𝓮𝓻</a>.</span>
-            </h1>
-            
+            <h1 className={styles.title}>Creative Expression Through Digital Medium</h1>
             <div className={styles.biography}>
               <p className={styles.bio}>
-                <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
-                <a href="https://vers3dynamics.io/" className={styles.link} target="_blank" rel="noopener noreferrer">versᗱdynamics</a>
-                <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
-                <a href="https://woodyard.dappling.network/" className={styles.link} target="_blank" rel="noopener noreferrer">𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
+                Hi, I'm an interdisciplinary artist and creative technologist exploring the intersection of code, design, and interactive media. My work examines how digital experiences can evoke emotional responses and create meaningful connections.
               </p>
             </div>
-            
             <div className={styles.scrollPrompt}>
-              <span>Scroll to explore</span>
+              <p>Scroll to explore</p>
               <div className={styles.scrollArrow}>↓</div>
             </div>
           </div>
         </section>
-
+        
         {/* Projects Section */}
         <section id="projects" className={`${styles.projects} ${activeSection === 'projects' ? styles.activeSection : ''}`}>
-          <h2 className={styles.sectionTitle}>Projects</h2>
-          
+          <h2 className={styles.sectionTitle}>Featured Projects</h2>
           <div className={styles.projectGrid}>
             <div className={`${styles.projectCard} ${styles.hoverEffect}`}>
               <div className={styles.projectContent}>
-                <h3 className={styles.projectTitle}>Book</h3>
+                <h3 className={styles.projectTitle}>Sonic Landscapes</h3>
                 <p className={styles.projectDesc}>
-                  <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/" className={styles.link} target="_blank" rel="noopener noreferrer">𝓛𝓲𝓯𝓮 𝓸𝓯 𝓪 𝓛𝓲𝓷𝓮</a>
-                  <span className={styles.specialText}> — A poetic adventure </span>
+                  An interactive audio-visual installation that transforms environmental data into immersive soundscapes, creating a unique sensory experience.
                 </p>
                 <div className={styles.projectActions}>
-                  <a href="https://drive.google.com/file/d/14aenR92-dfkjolJBhG3iTCI3Ka6-d6sT/view?usp=drivesdk" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    📐 Preview
-                  </a>
-                  <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    Purchase
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={`${styles.projectCard} ${styles.hoverEffect}`}>
-              <div className={styles.projectContent}>
-                <h3 className={styles.projectTitle}>Art</h3>
-                <p className={styles.projectDesc}>
-                  <span className={styles.specialText}>Digital fragments in spatial computing</span>
-                </p>
-                <div className={styles.projectActions}>
-                  <a href="https://oncyber.io/stanfordgsb" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    3D Gallery
-                  </a>
-                  <a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    🖼️ Collection
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className={`${styles.projectCard} ${styles.hoverEffect}`}>
-              <div className={styles.projectContent}>
-                <h3 className={styles.projectTitle}>Music</h3>
-                <p className={styles.projectDesc}>
-                  <a href="https://chriswoodyard.bandcamp.com/" className={styles.link} target="_blank" rel="noopener noreferrer">𝓐𝓾𝓭𝓲𝓽𝓸𝓻𝔂 𝓖𝓮𝓸𝓶𝓮𝓽𝓻𝔂</a>
-                  <span className={styles.specialText}> — Experimental sound project</span>
-                </p>
-                <div className={styles.projectActions}>
-                  <a href="https://drive.google.com/file/d/1PlaDEFBQTRIURd5vC1UPv7QvKUnNluop/view?usp=drivesdk" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    🎹 Listen
-                  </a>
-                  <a href="https://chriswoodyard.bandcamp.com/" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    Bandcamp
-                  </a>
+                  <a href="#" className={styles.actionButton}>View Project</a>
+                  <a href="#" className={styles.actionButton}>Listen</a>
                 </div>
               </div>
             </div>
             
             <div className={`${styles.projectCard} ${styles.hoverEffect}`}>
               <div className={styles.projectContent}>
-                <h3 className={styles.projectTitle}>Health Tech</h3>
+                <h3 className={styles.projectTitle}>Digital Memories</h3>
                 <p className={styles.projectDesc}>
-                  <span className={styles.specialText}>Mnemosyne Health - Innovation in digital well-being</span>
+                  A web-based experience that explores how our digital footprints create fragmented narratives of our lives, blending reality and virtual existence.
                 </p>
                 <div className={styles.projectActions}>
-                  <a href="https://mnemosynehealth.streamlit.app/" className={`${styles.link} ${styles.actionButton}`} target="_blank" rel="noopener noreferrer">
-                    🍎 Visit
-                  </a>
+                  <a href="#" className={styles.actionButton}>Experience</a>
+                </div>
+              </div>
+            </div>
+            
+            <div className={`${styles.projectCard} ${styles.hoverEffect}`}>
+              <div className={styles.projectContent}>
+                <h3 className={styles.projectTitle}>Algorithmic Poetry</h3>
+                <p className={styles.projectDesc}>
+                  A generative text project that uses machine learning to create evolving poems that respond to user input and emotional cues.
+                </p>
+                <div className={styles.projectActions}>
+                  <a href="#" className={styles.actionButton}>Generate Poem</a>
+                  <a href="#" className={styles.actionButton}>Learn More</a>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
+        
         {/* Gallery Section */}
         <section id="gallery" className={`${styles.gallery} ${activeSection === 'gallery' ? styles.activeSection : ''}`}>
-          <h2 className={styles.sectionTitle}>Creative Space</h2>
-          
+          <h2 className={styles.sectionTitle}>Visual Experiments</h2>
           <div className={styles.galleryContent}>
             <div className={styles.gifContainer}>
-              <iframe
-                src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY"
-                className={styles.giphyEmbed}
-                title="Pixel Art Animation"
-                frameBorder="0"
-                allowFullScreen
-                loading="lazy"
-              ></iframe>
+              <iframe src="https://giphy.com/embed/l0HlEMf3CdWiETeGk" className={styles.giphyEmbed} frameBorder="0" allowFullScreen></iframe>
             </div>
             
             <div className={styles.quoteContainer}>
-              <blockquote className={styles.quote}>
-                "At the intersection of mathematics and poetics, there exists a framework for exploring the unknown."
-                <cite>— From "Life of a Line"</cite>
-              </blockquote>
+              <p className={styles.quote}>
+                "The role of the artist is to make the revolution irresistible."
+                <cite>— Toni Cade Bambara</cite>
+              </p>
             </div>
             
             <div className={styles.interactiveElement}>
@@ -204,48 +300,47 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        
         {/* Contact Section */}
         <section id="contact" className={`${styles.contact} ${activeSection === 'contact' ? styles.activeSection : ''}`}>
-          <h2 className={styles.sectionTitle}>Connect</h2>
-          
+          <h2 className={styles.sectionTitle}>Let's Connect</h2>
           <div className={styles.contactContent}>
-            <div className={styles.contactForm}>
-              <p className={styles.contactIntro}>
-                <span className={styles.specialText}>Let's collaborate on something extraordinary.</span>
-              </p>
-              
-              <form className={styles.form}>
-                <div className={styles.formGroup}>
-                  <input type="text" placeholder="Your Name" className={styles.formInput} />
-                </div>
-                <div className={styles.formGroup}>
-                  <input type="email" placeholder="Your Email" className={styles.formInput} />
-                </div>
-                <div className={styles.formGroup}>
-                  <textarea placeholder="Your Message" className={styles.formTextarea}></textarea>
-                </div>
-                <button type="submit" className={styles.formButton}>Send Message</button>
-              </form>
-              
-              <p className={styles.contactEmail}>
-                <span className={styles.specialText}>Or email directly: 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚</span>
-              </p>
-            </div>
+            <p className={styles.contactIntro}>
+              I'm always open to collaboration and new opportunities. Feel free to reach out if you'd like to discuss a project or just say hello.
+            </p>
+            <form className={styles.form}>
+              <div className={styles.formGroup}>
+                <input type="text" placeholder="Your Name" className={styles.formInput} />
+              </div>
+              <div className={styles.formGroup}>
+                <input type="email" placeholder="Your Email" className={styles.formInput} />
+              </div>
+              <div className={styles.formGroup}>
+                <textarea placeholder="Your Message" className={styles.formTextarea}></textarea>
+              </div>
+              <button type="submit" className={styles.formButton}>Send Message</button>
+            </form>
+            <p className={styles.contactEmail}>
+              Or email me directly: <span className={styles.specialText}>hello@creativeperson.com</span>
+            </p>
           </div>
         </section>
-
+        
+        {/* Footer */}
         <footer className={styles.footer}>
           <div className={styles.footerContent}>
-            <p className={styles.copyright}>
-              <span className={styles.specialText}>© {new Date().getFullYear()} Vers3Dynamics</span>
-            </p>
+            <p className={styles.copyright}>© 2025 Creative Portfolio. All rights reserved.</p>
             <div className={styles.socialLinks}>
-              <a href="https://twitter.com/" className={styles.socialIcon} target="_blank" rel="noopener noreferrer">𝕏</a>
-              <a href="https://linkedin.com/" className={styles.socialIcon} target="_blank" rel="noopener noreferrer">in</a>
-              <a href="https://github.com/" className={styles.socialIcon} target="_blank" rel="noopener noreferrer">𝔾</a>
+              <a href="#" className={styles.socialIcon}>Twitter</a>
+              <a href="#" className={styles.socialIcon}>Instagram</a>
+              <a href="#" className={styles.socialIcon}>GitHub</a>
             </div>
           </div>
         </footer>
       </main>
+      
+      {/* Audio Player */}
+      <AudioPlayer />
     </div>
+  );
+}
