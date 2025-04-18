@@ -21,7 +21,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Vers3Dynamics | Christopher</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/Capsule_simple_compose_01jrwrmvb6ev8a3h3ve4bpa3av_1_1.jpg" />
         <meta name="description" content="Personal website of Christopher, founder of Vers3Dynamics" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
