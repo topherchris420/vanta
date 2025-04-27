@@ -47,7 +47,7 @@ export default function Home() {
         </section>
 
         <section className={styles.featureArtwork}>
-          <h2 className={styles.sectionTitle}></h2>
+          <h2 className={styles.sectionTitle}>Team Member Spotlight</h2>
           <div className={styles.artworkContainer}>
             <Image
               src="/vers3dynamics-art.jpg"
