@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import dynamic from 'next/dynamic'; // Import dynamic
+import dynamic from 'next/dynamic';
+import Image from 'next/image'; // Added Image import
 
 // --- Dynamically import the VantaEffect component ---
 // This prevents Vanta/Three.js from being included in the server bundle
@@ -16,8 +17,6 @@ export default function Home() {
   // No Vanta state or ref needed here anymore
 
   return (
-    // You might not need the outer styles.container div if Vanta handles the full background
-    // Or adjust its styling (e.g., make it position: relative if Vanta is position: absolute)
     <div className={styles.container}>
       <Head>
         <title>Vers3Dynamics | Christopher</title>
@@ -27,11 +26,9 @@ export default function Home() {
       </Head>
 
       {/* Render the dynamically imported Vanta background */}
-      {/* Pass the className you originally used for the background div */}
       <VantaEffectNoSSR className={styles.background} />
 
       {/* Your main content area */}
-      {/* Ensure its z-index is higher than Vanta's (-1) or it has a background color */}
       <main className={styles.main}>
         <section className={styles.header}>
           <h1 className={styles.title}>
@@ -47,6 +44,24 @@ export default function Home() {
             <a href="https://woodyard.dappling.network/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
             <a href="https://mnemosynehealth.streamlit.app/" className={styles.link}>🍎</a>
           </p>
+        </section>
+
+        {/* New Featured Artwork Section */}
+        <section className={styles.featureArtwork}>
+          <h2 className={styles.sectionTitle}>Featured Artwork</h2>
+          <div className={styles.artworkContainer}>
+            <Image
+              src="/vers3dynamics-art.jpg"
+              alt="Vers3Dynamics digital art sculpture"
+              width={800}
+              height={1000}
+              priority
+              className={styles.artworkImage}
+            />
+            <p className={styles.artworkCaption}>
+              <span className={styles.specialText}>Vers3Dynamics — Digital Fragmentation</span>
+            </p>
+          </div>
         </section>
 
         <section className={styles.projects}>
@@ -100,4 +115,4 @@ export default function Home() {
       </main>
     </div>
   );
-}        
+}
