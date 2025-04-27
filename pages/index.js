@@ -46,7 +46,6 @@ export default function Home() {
           </p>
         </section>
 
-        {/* New Featured Artwork Section */}
         <section className={styles.featureArtwork}>
           <h2 className={styles.sectionTitle}>Welcome</h2>
           <div className={styles.artworkContainer}>
