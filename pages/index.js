@@ -48,7 +48,7 @@ export default function Home() {
 
         {/* New Featured Artwork Section */}
         <section className={styles.featureArtwork}>
-          <h2 className={styles.sectionTitle}></h2>
+          <h2 className={styles.sectionTitle}>Welcome</h2>
           <div className={styles.artworkContainer}>
             <Image
               src="/vers3dynamics-art.jpg"
@@ -59,7 +59,7 @@ export default function Home() {
               className={styles.artworkImage}
             />
             <p className={styles.artworkCaption}>
-              <span className={styles.specialText}></span>
+              <span className={styles.specialText}>Cover</span>
             </p>
           </div>
         </section>
