@@ -48,18 +48,18 @@ export default function Home() {
 
         {/* New Featured Artwork Section */}
         <section className={styles.featureArtwork}>
-          <h2 className={styles.sectionTitle}>Featured Artwork</h2>
+          <h2 className={styles.sectionTitle}></h2>
           <div className={styles.artworkContainer}>
             <Image
               src="/vers3dynamics-art.jpg"
-              alt="Vers3Dynamics digital art sculpture"
+              alt="Magazine Cover"
               width={800}
               height={1000}
               priority
               className={styles.artworkImage}
             />
             <p className={styles.artworkCaption}>
-              <span className={styles.specialText}>Vers3Dynamics — Digital Fragmentation</span>
+              <span className={styles.specialText}></span>
             </p>
           </div>
         </section>
