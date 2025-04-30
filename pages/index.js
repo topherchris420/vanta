@@ -46,23 +46,6 @@ export default function Home() {
           </p>
         </section>
 
-        <section className={styles.featureArtwork}>
-          <h2 className={styles.sectionTitle}>Team Member Spotlight</h2>
-          <div className={styles.artworkContainer}>
-            <Image
-              src="/vers3dynamics-art.jpg"
-              alt="Magazine Cover"
-              width={800}
-              height={1000}
-              priority
-              className={styles.artworkImage}
-            />
-            <p className={styles.artworkCaption}>
-              <span className={styles.specialText}></span>
-            </p>
-          </div>
-        </section>
-
         <section className={styles.projects}>
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Book</h2>
