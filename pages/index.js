@@ -42,7 +42,7 @@ export default function Home() {
             <a href="https://vers3dynamics.io/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
             <a href="https://woodyard.dappling.network/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
-            <a href="https://mnemosynehealth.streamlit.app/" className={styles.link}>🍎</a>
+            <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c" className={styles.link}>🍎</a>
           </p>
         </section>
 
