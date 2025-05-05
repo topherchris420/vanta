@@ -20,7 +20,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Vers3Dynamics | Christopher</title>
-        <link rel="icon" href="startup_1.jpg" />
+        <link rel="icon" href="logo.png" />
         <meta name="description" content="Personal website of Christopher, founder of Vers3Dynamics" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -39,7 +39,7 @@ export default function Home() {
         <section className={styles.biography}>
           <p className={styles.bio}>
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
-            <a href="https://mnemosynehealth.streamlit.app/" className={styles.link}>versᗱdynamics</a>
+            <a href="https://vers3dynamics.com/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
             <a href="https://woodyard.streamlit.app/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
             <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c" className={styles.link}>🍎</a>
