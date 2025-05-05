@@ -39,20 +39,29 @@ export default function Home() {
         <section className={styles.biography}>
           <p className={styles.bio}>
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
-            <a href="https://vers3dynamics.com/" className={styles.link}>versᗱdynamics</a>
+            <a href="https://mnemosynehealth.streamlit.app/" className={styles.link}>versᗱdynamics</a>
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
-            <a href="https://woodyard.dappling.network/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
+            <a href="https://woodyard.streamlit.app/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
             <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c" className={styles.link}>🍎</a>
           </p>
         </section>
 
         <section className={styles.projects}>
           <div className={styles.projectCard}>
-            <h2 className={styles.projectTitle}>Book</h2>
+            <h2 className={styles.projectTitle}>Books</h2>
             <p className={styles.projectDesc}>
-              <a href="https://bookstore.dorrancepublishing.com/life-of-a-line/" className={styles.link}>𝓛𝓲𝓯𝓮 𝓸𝓯 𝓪 𝓛𝓲𝓷𝓮</a>
-              <span className={styles.specialText}> — A poetic adventure </span>
+              <a href="https://www.amazon.com/stores/Christopher-Woodyard/author/B084ZSG4V9?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true" className={styles.link}>𝓐𝓶𝓪𝔃𝓸𝓷</a>
+              <span className={styles.specialText}> — Coloring, poetry and health </span>
               <a href="https://drive.google.com/file/d/14aenR92-dfkjolJBhG3iTCI3Ka6-d6sT/view?usp=drivesdk" className={styles.link}>📐</a>
+            </p>
+          </div>
+
+        <div className={styles.projectCard}>
+            <h2 className={styles.projectTitle}>Apps</h2>
+            <p className={styles.projectDesc}>
+              <a href="https://huggingface.co/ciaochris" className={styles.link}>𝓐𝓘/𝓜𝓛 𝓟𝓻𝓸𝓳𝓮𝓬𝓽𝓼</a>
+              <span className={styles.specialText}> — Sound-Driven AI Wellness tools </span>
+              <a href="https://drive.google.com/file/d/1JSp67crqXcUJ0bCqrpgb-2PUne-TtaVQ/view?usp=drive_link" className={styles.link}>🎹</a>
             </p>
           </div>
 
@@ -62,6 +71,15 @@ export default function Home() {
               <a href="https://oncyber.io/stanfordgsb" className={styles.link}>𝓥𝓲𝓮𝔀 𝓱𝓮𝓻𝓮</a>
               <span className={styles.specialText}> for digital fragments in spatial computing </span>
               <a href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/" className={styles.link}>🖼️</a>
+            </p>
+          </div>
+
+        <div className={styles.projectCard}>
+            <h2 className={styles.projectTitle}>Frequency</h2>
+            <p className={styles.projectDesc}>
+              <a href="https://woodyard.dappling.network" className={styles.link}>𝓽𝓱𝓲𝓼 𝓲𝓼 𝓪</a>
+              <span className={styles.specialText}>Consciousness Engine for Patterned Meaning</span>
+              <a href="https://colab.research.google.com/drive/1rdR0r-m8CSoYTurllo6QXTw0MOueSmvZ" className={styles.link}>👨🏾‍💻</a>
             </p>
           </div>
 
