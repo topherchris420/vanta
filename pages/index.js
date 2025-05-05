@@ -107,7 +107,7 @@ export default function Home() {
 
         <footer className={styles.footer}>
           <p className={styles.contact}>
-            <span className={styles.specialText}>𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ 𝙘𝙞𝙖𝙤_𝙘𝙝𝙧𝙞𝙨@𝙥𝙧𝙤𝙩𝙤𝙣.𝙢𝙚</span>
+            <span className={styles.specialText}>𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ christopher@versdynamics.com</span>
           </p>
           <p className={styles.copyright}>
             <span className={styles.specialText}>© {new Date().getFullYear()} Vers3Dynamics</span>
