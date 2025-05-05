@@ -61,7 +61,7 @@ export default function Home() {
             <p className={styles.projectDesc}>
               <a href="https://huggingface.co/ciaochris" className={styles.link}>𝓐𝓘/𝓜𝓛 𝓟𝓻𝓸𝓳𝓮𝓬𝓽𝓼</a>
               <span className={styles.specialText}> — Sound-Driven AI Wellness tools </span>
-              <a href="https://drive.google.com/file/d/1JSp67crqXcUJ0bCqrpgb-2PUne-TtaVQ/view?usp=drive_link" className={styles.link}>🎹</a>
+              <a href="https://drive.google.com/file/d/1JSp67crqXcUJ0bCqrpgb-2PUne-TtaVQ/view?usp=drive_link" className={styles.link}>🦾</a>
             </p>
           </div>
 
