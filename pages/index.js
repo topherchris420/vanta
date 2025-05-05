@@ -78,7 +78,7 @@ export default function Home() {
             <h2 className={styles.projectTitle}>Frequency</h2>
             <p className={styles.projectDesc}>
               <a href="https://woodyard.dappling.network" className={styles.link}>𝓽𝓱𝓲𝓼 𝓲𝓼 𝓪</a>
-              <span className={styles.specialText}>Consciousness Engine for Patterned Meaning</span>
+              <span className={styles.specialText}> Consciousness Engine for Patterned Meaning</span>
               <a href="https://colab.research.google.com/drive/1rdR0r-m8CSoYTurllo6QXTw0MOueSmvZ" className={styles.link}>👨🏾‍💻</a>
             </p>
           </div>
