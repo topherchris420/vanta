@@ -92,8 +92,9 @@ export default function Home() {
             </p>
           </div>
 
-
-          <div className={styles.gifContainer}>
+          <iframe src="https://vers3dynamics.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+         
+        <div className={styles.gifContainer}>
             <iframe
               src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY"
               className={styles.giphyEmbed}
