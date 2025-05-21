@@ -50,7 +50,7 @@ export default function Home() {
           <div className={styles.featureImageContainer}>
             <Image
               src="/surreal-sun.jpg"
-              alt="Vers3Dynamics surreal art - figure with sun head holding triangle logo"
+              alt="Vers3Dynamics_logo"
               width={600}
               height={800}
               className={styles.featureImage}
@@ -58,7 +58,7 @@ export default function Home() {
             />
             <div className={styles.imageOverlay}>
               <p className={styles.imageCaption}>
-                <span className={styles.specialText}>𝚃𝚑𝚎 𝙲𝚘𝚜𝚖𝚒𝚌 𝙼𝚎𝚜𝚜𝚎𝚗𝚐𝚎𝚛</span>
+                <span className={styles.specialText}>Welcome</span>
               </p>
             </div>
           </div>
