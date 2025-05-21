@@ -49,7 +49,7 @@ export default function Home() {
         <section className={styles.featureImageSection}>
           <div className={styles.featureImageContainer}>
             <Image
-              src="/surreal-sun.jpg"
+              src="surreal-sun.jpg"
               alt="Vers3Dynamics_logo"
               width={600}
               height={800}
