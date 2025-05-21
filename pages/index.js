@@ -36,35 +36,33 @@ export default function Home() {
           </h1>
         </section>
 
-       <section className={styles.biography}>
-  <p className={styles.bio}>
-    <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
-    <a href="https://vers3dynamics.com/" className={styles.link}>versᗱdynamics</a>
-    <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
-    <a href="https://fractalrooting.vercel.app/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
-    <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c" className={styles.link}>🍎</a>
-  </p>
-</section>
+        <section className={styles.biography}>
+          <p className={styles.bio}>
+            <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
+            <a href="https://vers3dynamics.com/" className={styles.link}>versᗱdynamics</a>
+            <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
+            <a href="https://fractalrooting.vercel.app/" className={styles.link}>𝓼𝓸𝓵𝓾𝓽𝓲𝓸𝓷𝓼 𝓪𝓻𝓬𝓱𝓲𝓽𝓮𝓬𝓽</a>
+            <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c" className={styles.link}>🍎</a>
+          </p>
+        </section>
 
-<section className={styles.featureImageSection}>
-  <div className={styles.featureImageContainer}>
-    <Image
-      src="/surreal-sun.jpg"
-      alt="Vers3Dynamics surreal art - figure with sun head holding triangle logo"
-      width={600}
-      height={800}
-      className={styles.featureImage}
-      priority
-    />
-    <div className={styles.imageOverlay}>
-      <p className={styles.imageCaption}>
-        <span className={styles.specialText}>𝚃𝚑𝚎 𝙲𝚘𝚜𝚖𝚒𝚌 𝙼𝚎𝚜𝚜𝚎𝚗𝚐𝚎𝚛</span>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section className={styles.projects}>
+        <section className={styles.featureImageSection}>
+          <div className={styles.featureImageContainer}>
+            <Image
+              src="/surreal-sun.jpg"
+              alt="Vers3Dynamics surreal art - figure with sun head holding triangle logo"
+              width={600}
+              height={800}
+              className={styles.featureImage}
+              priority
+            />
+            <div className={styles.imageOverlay}>
+              <p className={styles.imageCaption}>
+                <span className={styles.specialText}>𝚃𝚑𝚎 𝙲𝚘𝚜𝚖𝚒𝚌 𝙼𝚎𝚜𝚜𝚎𝚗𝚐𝚎𝚛</span>
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className={styles.projects}>
           <div className={styles.projectCard}>
