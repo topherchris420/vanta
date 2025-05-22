@@ -70,7 +70,7 @@ export default function Home() {
             <p className={styles.projectDesc}>
               <a href="https://www.amazon.com/stores/Christopher-Woodyard/author/B084ZSG4V9?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true" className={styles.link}>𝓐𝓶𝓪𝔃𝓸𝓷</a>
               <span className={styles.specialText}> — Coloring, poetry and health </span>
-              <a href="https://drive.google.com/file/d/14aenR92-dfkjolJBhG3iTCI3Ka6-d6sT/view?usp=drivesdk" className={styles.link}>📐</a>
+              <a href="https://stellar-resonance-engine.lovable.app/" className={styles.link}>📐</a>
             </p>
           </div>
 
