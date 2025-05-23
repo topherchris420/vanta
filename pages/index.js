@@ -97,7 +97,7 @@ export default function Home() {
             <p className={styles.projectDesc}>
               <a href="https://woodyard.dappling.network" className={styles.link}>𝓽𝓱𝓲𝓼 𝓲𝓼 𝓪</a>
               <span className={styles.specialText}> Consciousness Engine for Patterned Meaning</span>
-              <a href="https://colab.research.google.com/drive/1rdR0r-m8CSoYTurllo6QXTw0MOueSmvZ" className={styles.link}>👨🏾‍💻</a>
+              <a href="https://archive.org/details/ancientegyptianm00brie/mode/1up" className={styles.link}>👨🏾‍💻</a>
             </p>
           </div>
 
