@@ -39,7 +39,7 @@ export default function Home() {
         <section className={styles.biography}>
           <p className={styles.bio}>
             <span className={styles.specialText}>𝙰Ω 𝚊𝚟𝚒𝚍 𝚠𝚛𝚒𝚝𝚎𝚛, 𝚏𝚘𝚞𝚗𝚍𝚎𝚛 𝚘𝚏 </span>
-            <a href="https://vers3dynamics.com/" className={styles.link}>versᗱdynamics</a> 𝚝𝚑𝚎 𝚁𝚎𝚌𝚞𝚛𝚜𝚒𝚟𝚎 𝙰𝚛𝚌𝚑𝚒𝚝𝚎𝚌𝚝𝚞𝚛𝚎 𝚘𝚏 𝙸𝚗𝚝𝚎𝚕𝚕𝚒𝚐𝚎𝚗𝚝 𝙽𝚎𝚡𝚞𝚜 (𝚁.𝙰.𝙸.𝙽. 𝙻𝚊𝚋)
+            <a href="https://vers3dynamics.com/" className={styles.link}>versᗱdynamics</a>, 𝚝𝚑𝚎 𝚁𝚎𝚌𝚞𝚛𝚜𝚒𝚟𝚎 𝙰𝚛𝚌𝚑𝚒𝚝𝚎𝚌𝚝𝚞𝚛𝚎 𝚘𝚏 𝙸𝚗𝚝𝚎𝚕𝚕𝚒𝚐𝚎𝚗𝚝 𝙽𝚎𝚡𝚞𝚜 (𝚁.𝙰.𝙸.𝙽. 𝙻𝚊𝚋)
             <span className={styles.specialText}> 𝚊𝚗𝚍 </span>
             <a href="https://dna-music-eta.vercel.app/" className={styles.link}>resonance architect</a>
             <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c" className={styles.link}>🍎</a>
