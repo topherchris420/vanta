@@ -24,7 +24,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <section className={styles.header}>
-          <p className={styles.kicker}>Digital creator • Founder • Writer</p>
+          <p className={styles.kicker}>Wellness tech • Founder • Writer</p>
           <h1 className={styles.title}>
             hi, my name is{" "}
             <a href="https://90s.myretrotvs.com/#7XBcT41ImSI" className={styles.link}>
@@ -33,7 +33,7 @@ export default function Home() {
             .
           </h1>
           <p className={styles.subtitle}>
-            Building poetic technology, wellness tools, and immersive media through
+            Building poetic technology, wellness apps, and immersive sound through
             Vers3Dynamics.
           </p>
         </section>
