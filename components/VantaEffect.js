@@ -1,51 +1,115 @@
-import { useState, useEffect, useRef } from 'react';
-import NET from 'vanta/dist/vanta.net.min.js'; // Make sure path is correct
-import * as THREE from 'three';
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+const vertexShader = `
+  void main() {
+    gl_Position = vec4(position, 1.0);
+  }
+`;
+
+const fragmentShader = `
+  precision highp float;
+  uniform vec2 resolution;
+  uniform float time;
+
+  void main(void) {
+    vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
+    float t = time * 0.05;
+
+    float r = length(uv);
+    float rippleA = sin(24.0 * r - t * 6.0);
+    float rippleB = sin(36.0 * r - t * 7.5 + 0.8);
+    float rippleC = sin(48.0 * r - t * 9.0 + 1.6);
+
+    float rings = 0.42 + 0.22 * rippleA + 0.18 * rippleB + 0.14 * rippleC;
+    float glow = 0.065 / max(0.012, abs(fract((r - t * 0.12) * 8.0) - 0.5));
+    float vignette = smoothstep(1.25, 0.15, r);
+
+    vec3 deep = vec3(0.01, 0.03, 0.12);
+    vec3 cyan = vec3(0.08, 0.68, 0.95);
+    vec3 magenta = vec3(0.70, 0.28, 0.95);
+
+    vec3 gradient = mix(cyan, magenta, 0.5 + 0.5 * sin(t * 0.6 + r * 10.0));
+    vec3 color = mix(deep, gradient, rings * vignette + glow * 0.25);
+
+    gl_FragColor = vec4(color, 1.0);
+  }
+`;
 
 const VantaEffect = ({ className }) => {
-  const [vantaEffect, setVantaEffect] = useState(null);
-  const vantaRef = useRef(null);
+  const containerRef = useRef(null);
+  const sceneRef = useRef(null);
 
   useEffect(() => {
-    let currentVantaEffect = null; // Use a local variable for the effect instance
-
-    // Ensure this code runs only on the client
-    if (!vantaEffect && vantaRef.current) { // Check state, but initialize based on ref
-      currentVantaEffect = NET({ // Initialize effect directly
-        el: vantaRef.current,
-        THREE: THREE,
-        color: 0x387c44,
-        backgroundColor: 0x1e1c1c,
-        maxDistance: 34.0,
-        points: 10.00,
-        spacing: 15.00,
-        debug: false,
-        showDots: false,
-        verbosity: 0
-      });
-      setVantaEffect(currentVantaEffect); // Set the state AFTER initialization
+    if (!containerRef.current) {
+      return;
     }
 
-    // Cleanup function: Use the local variable 'currentVantaEffect'
-    // Or better yet, use the state variable 'vantaEffect' which should be set by now
-    return () => {
-      // Check the state variable when cleaning up
-      if (vantaEffect) {
-        vantaEffect.destroy();
-        setVantaEffect(null); // Optionally reset state on cleanup
-      }
-      // Or if relying solely on the local variable approach (less common with state):
-      // if (currentVantaEffect) {
-      //   currentVantaEffect.destroy();
-      // }
-    };
-  // Dependency array: Only run when vantaRef.current is available,
-  // and clean up when vantaEffect changes (or component unmounts)
-  }, [vantaRef.current, vantaEffect]); // Adjust dependencies if needed
+    const container = containerRef.current;
 
-  // Render the div that Vanta will attach to
-  // Apply the className passed as a prop
-  return <div ref={vantaRef} className={className} style={{ width: '100%', height: '100vh', position: 'absolute', top: 0, left: 0, zIndex: -1 }}></div>;
+    const camera = new THREE.Camera();
+    camera.position.z = 1;
+
+    const scene = new THREE.Scene();
+    const geometry = new THREE.PlaneGeometry(2, 2);
+
+    const uniforms = {
+      time: { value: 1.0 },
+      resolution: { value: new THREE.Vector2() },
+    };
+
+    const material = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader,
+      fragmentShader,
+    });
+
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 1);
+
+    container.appendChild(renderer.domElement);
+
+    const onWindowResize = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      renderer.setSize(width, height, false);
+      uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+    };
+
+    onWindowResize();
+    window.addEventListener("resize", onWindowResize);
+
+    let animationId = 0;
+
+    const animate = () => {
+      animationId = window.requestAnimationFrame(animate);
+      uniforms.time.value += 0.05;
+      renderer.render(scene, camera);
+    };
+
+    sceneRef.current = { renderer, geometry, material, animationId };
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", onWindowResize);
+      window.cancelAnimationFrame(animationId);
+
+      if (renderer.domElement && renderer.domElement.parentNode === container) {
+        container.removeChild(renderer.domElement);
+      }
+
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+      sceneRef.current = null;
+    };
+  }, []);
+
+  return <div ref={containerRef} className={className} />;
 };
 
 export default VantaEffect;
