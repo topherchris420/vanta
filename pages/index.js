@@ -1,21 +1,9 @@
 import Head from "next/head";
+import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import dynamic from 'next/dynamic';
-import Image from 'next/image'; // Added Image import
-
-// --- Dynamically import the VantaEffect component ---
-// This prevents Vanta/Three.js from being included in the server bundle
-// and ensures it only runs on the client-side.
-const VantaEffectNoSSR = dynamic(
-  () => import('../components/VantaEffect'), // Path to your new component
-  {
-    ssr: false // Disable server-side rendering for this component
-  }
-);
+import { SplineScene } from "@/components/ui/splite";
 
 export default function Home() {
-  // No Vanta state or ref needed here anymore
-
   return (
     <div className={styles.container}>
       <Head>
@@ -25,10 +13,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      {/* Render the dynamically imported Vanta background */}
-      <VantaEffectNoSSR className={styles.background} />
+      <SplineScene
+        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+        className={styles.background}
+      />
 
-      {/* Your main content area */}
       <main className={styles.main}>
         <section className={styles.header}>
           <h1 className={styles.title}>
@@ -74,7 +63,7 @@ export default function Home() {
             </p>
           </div>
 
-        <div className={styles.projectCard}>
+          <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Apps</h2>
             <p className={styles.projectDesc}>
               <a href="https://huggingface.co/ciaochris" className={styles.link}>𝓐𝓘/𝓜𝓛 𝓟𝓻𝓸𝓳𝓮𝓬𝓽𝓼</a>
@@ -92,7 +81,7 @@ export default function Home() {
             </p>
           </div>
 
-        <div className={styles.projectCard}>
+          <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Frequency</h2>
             <p className={styles.projectDesc}>
               <a href="https://woodyard.dappling.network" className={styles.link}>𝓽𝓱𝓲𝓼 𝓲𝓼 𝓪</a>
@@ -110,7 +99,7 @@ export default function Home() {
             </p>
           </div>
 
-        <div className={styles.gifContainer}>
+          <div className={styles.gifContainer}>
             <iframe
               src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY"
               className={styles.giphyEmbed}
@@ -121,7 +110,7 @@ export default function Home() {
             ></iframe>
           </div>
         </section>
-                
+
         <footer className={styles.footer}>
           <p className={styles.contact}>
             <span className={styles.specialText}>𝚌𝚘𝚗𝚝𝚊𝚌𝚝 ➡️ christopher@vers3dynamics.com</span>
