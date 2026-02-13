@@ -44,6 +44,7 @@ const fragmentShader = `
 
 const VantaEffect = ({ className }) => {
   const containerRef = useRef(null);
+  const sceneRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -51,6 +52,7 @@ const VantaEffect = ({ className }) => {
     }
 
     const container = containerRef.current;
+
     const camera = new THREE.Camera();
     camera.position.z = 1;
 
@@ -58,7 +60,7 @@ const VantaEffect = ({ className }) => {
     const geometry = new THREE.PlaneGeometry(2, 2);
 
     const uniforms = {
-      time: { value: 0.0 },
+      time: { value: 1.0 },
       resolution: { value: new THREE.Vector2() },
     };
 
@@ -68,10 +70,12 @@ const VantaEffect = ({ className }) => {
       fragmentShader,
     });
 
-    scene.add(new THREE.Mesh(geometry, material));
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 1);
 
     container.appendChild(renderer.domElement);
 
@@ -86,25 +90,28 @@ const VantaEffect = ({ className }) => {
     window.addEventListener("resize", onWindowResize);
 
     let animationId = 0;
+
     const animate = () => {
       animationId = window.requestAnimationFrame(animate);
       uniforms.time.value += 0.05;
       renderer.render(scene, camera);
     };
 
+    sceneRef.current = { renderer, geometry, material, animationId };
     animate();
 
     return () => {
       window.removeEventListener("resize", onWindowResize);
       window.cancelAnimationFrame(animationId);
 
-      if (renderer.domElement.parentNode === container) {
+      if (renderer.domElement && renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
       }
 
       geometry.dispose();
       material.dispose();
       renderer.dispose();
+      sceneRef.current = null;
     };
   }, []);
 

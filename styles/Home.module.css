@@ -10,7 +10,18 @@
   inset: 0;
   width: 100%;
   height: 100vh;
+  z-index: -2;
+}
+
+.container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.2), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(96, 165, 250, 0.14), transparent 35%),
+    linear-gradient(to bottom, rgba(2, 6, 23, 0.74), rgba(2, 6, 23, 0.92));
   z-index: -1;
+  pointer-events: none;
 }
 
 .container::before {
@@ -30,8 +41,6 @@
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  position: relative;
-  z-index: 1;
 }
 
 .header,
@@ -40,7 +49,7 @@
 .featureImageContainer,
 .footer,
 .gifContainer {
-  background: rgba(8, 15, 35, 0.42);
+  background: rgba(15, 23, 42, 0.55);
   border: 1px solid rgba(148, 163, 184, 0.25);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
