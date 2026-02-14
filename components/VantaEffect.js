@@ -1,6 +1,19 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
+// Simple debounce utility to limit the rate of execution
+const debounce = (func, wait) => {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+};
+
 const vertexShader = `
   void main() {
     gl_Position = vec4(position, 1.0);
@@ -80,8 +93,11 @@ const VantaEffect = ({ className }) => {
       uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
     };
 
+    // Debounce the resize event to improve performance
+    const debouncedResize = debounce(onWindowResize, 200);
+
     onWindowResize();
-    window.addEventListener("resize", onWindowResize);
+    window.addEventListener("resize", debouncedResize);
 
     let animationId = 0;
 
@@ -95,7 +111,7 @@ const VantaEffect = ({ className }) => {
     animate();
 
     return () => {
-      window.removeEventListener("resize", onWindowResize);
+      window.removeEventListener("resize", debouncedResize);
       window.cancelAnimationFrame(animationId);
 
       if (renderer.domElement && renderer.domElement.parentNode === container) {
