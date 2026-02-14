@@ -20,7 +20,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <VantaEffectNoSSR className={styles.background} />
+      <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
 
       <main className={styles.main}>
         <section className={styles.header}>
@@ -52,6 +52,8 @@ export default function Home() {
             <a
               href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c"
               className={styles.link}
+              aria-label="View Resume (PDF)"
+              title="View Resume (PDF)"
             >
               {" "}🍎
             </a>
@@ -85,7 +87,12 @@ export default function Home() {
                 Amazon
               </a>
               <span className={styles.specialText}> — Coloring, poetry, and health </span>
-              <a href="https://humantouch.fun/" className={styles.link}>
+              <a
+                href="https://humantouch.fun/"
+                className={styles.link}
+                aria-label="Visit Human Touch website"
+                title="Visit Human Touch website"
+              >
                 📐
               </a>
             </p>
@@ -101,6 +108,8 @@ export default function Home() {
               <a
                 href="https://drive.google.com/file/d/1JSp67crqXcUJ0bCqrpgb-2PUne-TtaVQ/view?usp=drive_link"
                 className={styles.link}
+                aria-label="View AI Wellness Tools documentation"
+                title="View AI Wellness Tools documentation"
               >
                 🦾
               </a>
@@ -119,6 +128,8 @@ export default function Home() {
               <a
                 href="https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/"
                 className={styles.link}
+                aria-label="View Art Gallery on Mads Gallery"
+                title="View Art Gallery on Mads Gallery"
               >
                 🖼️
               </a>
@@ -137,6 +148,8 @@ export default function Home() {
               <a
                 href="https://archive.org/details/ancient-egyptian-magic-bob-brier/page/299/mode/1up"
                 className={styles.link}
+                aria-label="Read Ancient Egyptian Magic on Archive.org"
+                title="Read Ancient Egyptian Magic on Archive.org"
               >
                 👨🏾‍💻
               </a>
@@ -153,6 +166,8 @@ export default function Home() {
               <a
                 href="https://drive.google.com/file/d/1PlaDEFBQTRIURd5vC1UPv7QvKUnNluop/view?usp=drivesdk"
                 className={styles.link}
+                aria-label="Listen to Experimental Sound Project"
+                title="Listen to Experimental Sound Project"
               >
                 🎹
               </a>
