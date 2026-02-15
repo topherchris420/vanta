@@ -14,7 +14,6 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "three": "^0.156.0",
-    "vanta": "^0.5.24"
+    "three": "^0.156.0"
   }
 }
