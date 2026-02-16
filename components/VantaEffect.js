@@ -1,5 +1,13 @@
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  Camera,
+  Scene,
+  PlaneGeometry,
+  Vector2,
+  ShaderMaterial,
+  Mesh,
+  WebGLRenderer,
+} from "three";
 
 // Simple debounce utility to limit the rate of execution
 const debounce = (func, wait) => {
@@ -21,7 +29,7 @@ const vertexShader = `
 `;
 
 const fragmentShader = `
-  precision highp float;
+  precision mediump float;
   uniform vec2 resolution;
   uniform float time;
 
@@ -60,27 +68,27 @@ const VantaEffect = ({ className }) => {
 
     const container = containerRef.current;
 
-    const camera = new THREE.Camera();
+    const camera = new Camera();
     camera.position.z = 1;
 
-    const scene = new THREE.Scene();
-    const geometry = new THREE.PlaneGeometry(2, 2);
+    const scene = new Scene();
+    const geometry = new PlaneGeometry(2, 2);
 
     const uniforms = {
       time: { value: 1.0 },
-      resolution: { value: new THREE.Vector2() },
+      resolution: { value: new Vector2() },
     };
 
-    const material = new THREE.ShaderMaterial({
+    const material = new ShaderMaterial({
       uniforms,
       vertexShader,
       fragmentShader,
     });
 
-    const mesh = new THREE.Mesh(geometry, material);
+    const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    const renderer = new WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 1);
 
