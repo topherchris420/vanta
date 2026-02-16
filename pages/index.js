@@ -27,7 +27,12 @@ export default function Home() {
           <p className={styles.kicker}>Wellness tech • Founder • Writer</p>
           <h1 className={styles.title}>
             hi, my name is{" "}
-            <a href="https://90s.myretrotvs.com/#7XBcT41ImSI" className={styles.link}>
+            <a
+              href="https://90s.myretrotvs.com/#7XBcT41ImSI"
+              className={styles.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Christopher
             </a>
             .
@@ -41,11 +46,21 @@ export default function Home() {
         <section className={styles.biography}>
           <p className={styles.bio}>
             An avid writer and founder of{" "}
-            <a href="https://vers3dynamics.com/" className={styles.link}>
+            <a
+              href="https://vers3dynamics.com/"
+              className={styles.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               versᗱdynamics
             </a>
             , the Recursive Architecture of Intelligent Nexus (R.A.I.N. Lab), and{" "}
-            <a href="https://dna-music-eta.vercel.app/" className={styles.link}>
+            <a
+              href="https://dna-music-eta.vercel.app/"
+              className={styles.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               resonance architect
             </a>
             .
@@ -54,6 +69,8 @@ export default function Home() {
               className={styles.link}
               aria-label="View Resume (PDF)"
               title="View Resume (PDF)"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {" "}🍎
             </a>
@@ -83,6 +100,8 @@ export default function Home() {
               <a
                 href="https://www.amazon.com/stores/Christopher-Woodyard/author/B084ZSG4V9?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true"
                 className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Amazon
               </a>
@@ -92,6 +111,8 @@ export default function Home() {
                 className={styles.link}
                 aria-label="Visit Human Touch website"
                 title="Visit Human Touch website"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 📐
               </a>
@@ -101,7 +122,12 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Apps</h2>
             <p className={styles.projectDesc}>
-              <a href="https://huggingface.co/ciaochris" className={styles.link}>
+              <a
+                href="https://huggingface.co/ciaochris"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 AI/ML Projects
               </a>
               <span className={styles.specialText}> — Sound-driven AI wellness tools </span>
@@ -110,6 +136,8 @@ export default function Home() {
                 className={styles.link}
                 aria-label="View AI Wellness Tools documentation"
                 title="View AI Wellness Tools documentation"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 🦾
               </a>
@@ -119,7 +147,13 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Art</h2>
             <p className={styles.projectDesc}>
-              <a href="https://oncyber.io/stanfordgsb" className={styles.link}>
+              <a
+                href="https://oncyber.io/stanfordgsb"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View digital fragments in spatial computing"
+              >
                 View here
               </a>
               <span className={styles.specialText}>
@@ -130,6 +164,8 @@ export default function Home() {
                 className={styles.link}
                 aria-label="View Art Gallery on Mads Gallery"
                 title="View Art Gallery on Mads Gallery"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 🖼️
               </a>
@@ -139,7 +175,13 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Frequency</h2>
             <p className={styles.projectDesc}>
-              <a href="https://woodyard.dappling.network" className={styles.link}>
+              <a
+                href="https://woodyard.dappling.network"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Launch consciousness engine"
+              >
                 this is a
               </a>
               <span className={styles.specialText}>
@@ -150,6 +192,8 @@ export default function Home() {
                 className={styles.link}
                 aria-label="Read Ancient Egyptian Magic on Archive.org"
                 title="Read Ancient Egyptian Magic on Archive.org"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 👨🏾‍💻
               </a>
@@ -159,7 +203,12 @@ export default function Home() {
           <div className={styles.projectCard}>
             <h2 className={styles.projectTitle}>Music</h2>
             <p className={styles.projectDesc}>
-              <a href="https://chriswoodyard.bandcamp.com/" className={styles.link}>
+              <a
+                href="https://chriswoodyard.bandcamp.com/"
+                className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Auditory Geometry
               </a>
               <span className={styles.specialText}> — Experimental sound project </span>
@@ -168,6 +217,8 @@ export default function Home() {
                 className={styles.link}
                 aria-label="Listen to Experimental Sound Project"
                 title="Listen to Experimental Sound Project"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 🎹
               </a>
@@ -187,7 +238,12 @@ export default function Home() {
         </section>
 
         <footer className={styles.footer}>
-          <p className={styles.contact}>contact ➡️ christopher@vers3dynamics.com</p>
+          <p className={styles.contact}>
+            contact ➡️{" "}
+            <a href="mailto:christopher@vers3dynamics.com" className={styles.link}>
+              christopher@vers3dynamics.com
+            </a>
+          </p>
           <p className={styles.copyright}>© {new Date().getFullYear()} Vers3Dynamics</p>
         </footer>
       </main>
