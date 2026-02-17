@@ -94,7 +94,8 @@ const VantaEffect = ({ className }) => {
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: false });
+    // Disable antialiasing for performance as we render a full-screen quad
+    const renderer = new WebGLRenderer({ antialias: false, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 1);
 
