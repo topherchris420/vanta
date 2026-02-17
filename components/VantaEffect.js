@@ -27,23 +27,29 @@ const fragmentShader = `
 
   void main(void) {
     vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
-    float t = time * 0.05;
-
+    float t = time * 0.04;
     float r = length(uv);
-    float rippleA = sin(24.0 * r - t * 6.0);
-    float rippleB = sin(36.0 * r - t * 7.5 + 0.8);
-    float rippleC = sin(48.0 * r - t * 9.0 + 1.6);
 
-    float rings = 0.42 + 0.22 * rippleA + 0.18 * rippleB + 0.14 * rippleC;
-    float glow = 0.065 / max(0.012, abs(fract((r - t * 0.12) * 8.0) - 0.5));
-    float vignette = smoothstep(1.25, 0.15, r);
+    float wave1 = sin(34.0 * r - t * 8.0);
+    float wave2 = sin(52.0 * r - t * 10.0 + 1.4);
+    float wave3 = sin(72.0 * r - t * 12.0 + 2.2);
 
-    vec3 deep = vec3(0.01, 0.03, 0.12);
-    vec3 cyan = vec3(0.08, 0.68, 0.95);
-    vec3 magenta = vec3(0.70, 0.28, 0.95);
+    float rings = 0.55 + 0.28 * wave1 + 0.22 * wave2 + 0.15 * wave3;
 
-    vec3 gradient = mix(cyan, magenta, 0.5 + 0.5 * sin(t * 0.6 + r * 10.0));
-    vec3 color = mix(deep, gradient, rings * vignette + glow * 0.25);
+    float pulse = 0.5 + 0.5 * sin(t * 2.6 - r * 30.0);
+    float halo = 0.15 / max(0.025, abs(fract((r - t * 0.22) * 14.0) - 0.5));
+    float fade = smoothstep(1.4, 0.0, r);
+
+    vec3 deepBlue = vec3(0.02, 0.05, 0.16);
+    vec3 cyan = vec3(0.12, 0.86, 1.00);
+    vec3 violet = vec3(0.70, 0.38, 1.00);
+    vec3 pink = vec3(1.00, 0.42, 0.78);
+
+    vec3 sweep = mix(cyan, violet, 0.5 + 0.5 * sin(t * 0.9 + r * 12.0));
+    vec3 sweep2 = mix(sweep, pink, 0.5 + 0.5 * cos(t * 0.7 - r * 9.0));
+
+    float intensity = clamp(rings * 0.72 + pulse * 0.35 + halo * 0.45, 0.0, 1.2);
+    vec3 color = mix(deepBlue, sweep2, intensity) * fade + sweep2 * 0.06;
 
     gl_FragColor = vec4(color, 1.0);
   }
