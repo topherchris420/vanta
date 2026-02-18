@@ -233,3 +233,18 @@
     border-radius: 14px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .link,
+  .featureImage,
+  .projectCard {
+    transition: none;
+  }
+
+  .link:hover,
+  .link:focus-visible,
+  .featureImageContainer:hover .featureImage,
+  .projectCard:hover {
+    transform: none;
+  }
+}
