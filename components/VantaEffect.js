@@ -106,6 +106,8 @@ const VantaEffect = ({ className }) => {
       const height = container.clientHeight;
       renderer.setSize(width, height, false);
       uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+      // Force render on resize to avoid black/stale screen if animation is paused
+      renderer.render(scene, camera);
     };
 
     // Debounce the resize event to improve performance
@@ -130,8 +132,8 @@ const VantaEffect = ({ className }) => {
       animationId = window.requestAnimationFrame(animate);
       if (!isReduced) {
         uniforms.time.value += 0.05;
+        renderer.render(scene, camera);
       }
-      renderer.render(scene, camera);
     };
 
     sceneRef.current = { renderer, geometry, material, animationId };
