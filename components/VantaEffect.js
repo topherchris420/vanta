@@ -114,11 +114,23 @@ const VantaEffect = ({ className }) => {
     onWindowResize();
     window.addEventListener("resize", debouncedResize);
 
+    // Reduced motion support
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let isReduced = mediaQuery.matches;
+
+    const handleMotionChange = (e) => {
+      isReduced = e.matches;
+    };
+
+    mediaQuery.addEventListener("change", handleMotionChange);
+
     let animationId = 0;
 
     const animate = () => {
       animationId = window.requestAnimationFrame(animate);
-      uniforms.time.value += 0.05;
+      if (!isReduced) {
+        uniforms.time.value += 0.05;
+      }
       renderer.render(scene, camera);
     };
 
@@ -127,6 +139,7 @@ const VantaEffect = ({ className }) => {
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
+      mediaQuery.removeEventListener("change", handleMotionChange);
       window.cancelAnimationFrame(animationId);
 
       if (renderer.domElement && renderer.domElement.parentNode === container) {
