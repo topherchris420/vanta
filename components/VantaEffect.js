@@ -101,19 +101,6 @@ const VantaEffect = ({ className }) => {
 
     container.appendChild(renderer.domElement);
 
-    const onWindowResize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width, height, false);
-      uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
-    };
-
-    // Debounce the resize event to improve performance
-    const debouncedResize = debounce(onWindowResize, 200);
-
-    onWindowResize();
-    window.addEventListener("resize", debouncedResize);
-
     // Reduced motion support
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let isReduced = mediaQuery.matches;
@@ -124,14 +111,31 @@ const VantaEffect = ({ className }) => {
 
     mediaQuery.addEventListener("change", handleMotionChange);
 
+    const onWindowResize = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      renderer.setSize(width, height, false);
+      uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+      // Ensure we render at least once when resizing, even if animation is paused
+      if (isReduced) {
+        renderer.render(scene, camera);
+      }
+    };
+
+    // Debounce the resize event to improve performance
+    const debouncedResize = debounce(onWindowResize, 200);
+
+    onWindowResize();
+    window.addEventListener("resize", debouncedResize);
+
     let animationId = 0;
 
     const animate = () => {
       animationId = window.requestAnimationFrame(animate);
       if (!isReduced) {
         uniforms.time.value += 0.05;
+        renderer.render(scene, camera);
       }
-      renderer.render(scene, camera);
     };
 
     sceneRef.current = { renderer, geometry, material, animationId };
