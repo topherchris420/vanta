@@ -150,6 +150,7 @@ export default function Home() {
               <a
                 href="https://oncyber.io/stanfordgsb"
                 className={styles.link}
+                aria-label="View digital fragments in spatial computing on OnCyber"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -177,6 +178,7 @@ export default function Home() {
               <a
                 href="https://woodyard.dappling.network"
                 className={styles.link}
+                aria-label="this is a consciousness engine for patterned meaning"
                 target="_blank"
                 rel="noopener noreferrer"
               >

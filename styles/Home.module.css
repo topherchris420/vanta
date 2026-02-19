@@ -233,3 +233,8 @@
     border-radius: 14px;
   }
 }
+
+.container ::selection {
+  background: #86efac;
+  color: #0f172a;
+}

@@ -101,11 +101,24 @@ const VantaEffect = ({ className }) => {
 
     container.appendChild(renderer.domElement);
 
+    // Reduced motion support
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let isReduced = mediaQuery.matches;
+
+    const renderFrame = () => {
+      renderer.render(scene, camera);
+    };
+
     const onWindowResize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
       renderer.setSize(width, height, false);
       uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+
+      // If motion is reduced, we need to manually trigger a render on resize
+      if (isReduced) {
+        renderFrame();
+      }
     };
 
     // Debounce the resize event to improve performance
@@ -114,28 +127,40 @@ const VantaEffect = ({ className }) => {
     onWindowResize();
     window.addEventListener("resize", debouncedResize);
 
-    // Reduced motion support
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let isReduced = mediaQuery.matches;
+    let animationId = 0;
+
+    const animate = () => {
+      if (!isReduced) {
+        uniforms.time.value += 0.05;
+        renderFrame();
+        animationId = window.requestAnimationFrame(animate);
+      }
+    };
 
     const handleMotionChange = (e) => {
+      const wasReduced = isReduced;
       isReduced = e.matches;
+
+      if (isReduced) {
+        window.cancelAnimationFrame(animationId);
+        // Ensure one frame is rendered with current state
+        renderFrame();
+      } else if (wasReduced) {
+        // Resume animation if we just switched from reduced to normal
+        animate();
+      }
     };
 
     mediaQuery.addEventListener("change", handleMotionChange);
 
-    let animationId = 0;
-
-    const animate = () => {
-      animationId = window.requestAnimationFrame(animate);
-      if (!isReduced) {
-        uniforms.time.value += 0.05;
-      }
-      renderer.render(scene, camera);
-    };
-
     sceneRef.current = { renderer, geometry, material, animationId };
-    animate();
+
+    // Initial animation start logic
+    if (!isReduced) {
+      animate();
+    } else {
+      renderFrame();
+    }
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
