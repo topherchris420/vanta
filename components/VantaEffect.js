@@ -63,7 +63,7 @@ const fragmentShader = `
   }
 `;
 
-const VantaEffect = ({ className }) => {
+const VantaEffect = ({ className, ...props }) => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
 
@@ -157,7 +157,7 @@ const VantaEffect = ({ className }) => {
     };
   }, []);
 
-  return <div ref={containerRef} className={className} />;
+  return <div ref={containerRef} className={className} {...props} />;
 };
 
 export default VantaEffect;
