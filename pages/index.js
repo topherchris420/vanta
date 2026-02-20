@@ -85,6 +85,7 @@ export default function Home() {
               width={600}
               height={800}
               className={styles.featureImage}
+              sizes="(max-width: 680px) calc(100vw - 2.5rem), 640px"
               priority
             />
             <div className={styles.imageOverlay}>
