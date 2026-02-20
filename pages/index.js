@@ -49,6 +49,7 @@ export default function Home() {
             <a
               href="https://vers3dynamics.com/"
               className={styles.link}
+              aria-label="Vers3Dynamics"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -100,6 +101,7 @@ export default function Home() {
               <a
                 href="https://www.amazon.com/stores/Christopher-Woodyard/author/B084ZSG4V9?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true"
                 className={styles.link}
+                aria-label="View Christopher's Books on Amazon"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -150,6 +152,7 @@ export default function Home() {
               <a
                 href="https://oncyber.io/stanfordgsb"
                 className={styles.link}
+                aria-label="View Stanford GSB Gallery"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -177,6 +180,7 @@ export default function Home() {
               <a
                 href="https://woodyard.dappling.network"
                 className={styles.link}
+                aria-label="View Consciousness Engine Project"
                 target="_blank"
                 rel="noopener noreferrer"
               >
