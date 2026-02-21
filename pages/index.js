@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import ScrollToTop from "../components/ScrollToTop";
 
 const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
   ssr: false,
@@ -249,6 +250,8 @@ export default function Home() {
           <p className={styles.copyright}>© {new Date().getFullYear()} Vers3Dynamics</p>
         </footer>
       </main>
+
+      <ScrollToTop />
     </div>
   );
 }
