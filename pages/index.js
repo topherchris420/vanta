@@ -79,12 +79,14 @@ export default function Home() {
 
         <section className={styles.featureImageSection}>
           <div className={styles.featureImageContainer}>
+            {/* Added sizes attribute to optimize LCP by serving appropriately sized images */}
             <Image
               src="/surreal-sun.png"
               alt="Vers3Dynamics artwork"
               width={600}
               height={800}
               className={styles.featureImage}
+              sizes="(max-width: 768px) 100vw, 640px"
               priority
             />
             <div className={styles.imageOverlay}>
