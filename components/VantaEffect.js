@@ -105,8 +105,29 @@ const VantaEffect = ({ className }) => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     let isReduced = mediaQuery.matches;
 
+    let animationId = 0;
+
+    const startAnimation = () => {
+      const animate = () => {
+        uniforms.time.value += 0.05;
+        renderer.render(scene, camera);
+        animationId = window.requestAnimationFrame(animate);
+      };
+      animationId = window.requestAnimationFrame(animate);
+    };
+
+    const stopAnimation = () => {
+      window.cancelAnimationFrame(animationId);
+      animationId = 0;
+    };
+
     const handleMotionChange = (e) => {
       isReduced = e.matches;
+      if (isReduced) {
+        stopAnimation();
+      } else {
+        startAnimation();
+      }
     };
 
     mediaQuery.addEventListener("change", handleMotionChange);
@@ -116,10 +137,7 @@ const VantaEffect = ({ className }) => {
       const height = container.clientHeight;
       renderer.setSize(width, height, false);
       uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
-      // Ensure we render at least once when resizing, even if animation is paused
-      if (isReduced) {
-        renderer.render(scene, camera);
-      }
+      renderer.render(scene, camera);
     };
 
     // Debounce the resize event to improve performance
@@ -128,23 +146,15 @@ const VantaEffect = ({ className }) => {
     onWindowResize();
     window.addEventListener("resize", debouncedResize);
 
-    let animationId = 0;
-
-    const animate = () => {
-      animationId = window.requestAnimationFrame(animate);
-      if (!isReduced) {
-        uniforms.time.value += 0.05;
-        renderer.render(scene, camera);
-      }
-    };
-
     sceneRef.current = { renderer, geometry, material, animationId };
-    animate();
+    if (!isReduced) {
+      startAnimation();
+    }
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
       mediaQuery.removeEventListener("change", handleMotionChange);
-      window.cancelAnimationFrame(animationId);
+      stopAnimation();
 
       if (renderer.domElement && renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
