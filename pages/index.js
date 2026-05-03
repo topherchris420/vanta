@@ -57,7 +57,7 @@ const projectSections = [
     primaryHref: "https://chriswoodyard.bandcamp.com/",
     secondaryLabel: "Play Featured Track",
     secondaryHref:
-      "https://drive.google.com/file/d/1PlaDEFBQTRIURd5vC1UPv7QvKUnNluop/view?usp=drivesdk",
+      "https://chriswoodyard.bandcamp.com/track/creators-innovators",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function Home() {
           </p>
           <div className={styles.heroActions}>
             <a
-              href="https://huggingface.co/ciaochris"
+              href="https://arpa-h.vercel.app/"
               className={`${styles.ctaButton} ${styles.primaryCta}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -109,7 +109,7 @@ export default function Home() {
               versᗱdynamics
             </a>
             , the Recursive Architecture of Intelligent Nexus (R.A.I.N. Lab), and{" "}
-            <a href="https://dna-music-eta.vercel.app/" className={styles.link} target="_blank" rel="noopener noreferrer">
+            <a href="https://rainlabteam.vercel.app/" className={styles.link} target="_blank" rel="noopener noreferrer">
               Resonance Architect
             </a>
             .
