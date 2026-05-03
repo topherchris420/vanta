@@ -81,7 +81,7 @@ export default function Home() {
           <p className={styles.kicker}>Wellness tech • Founder • Writer</p>
           <h1 className={styles.title}>Hi, I&apos;m Christopher.</h1>
           <p className={styles.subtitle}>
-            I build sound-driven wellness tools, generative art, and experimental media through
+            I build sound-driven wellness apps, and experimental art through
             Vers3Dynamics.
           </p>
           <div className={styles.heroActions}>
@@ -91,7 +91,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Explore Flagship Work
+              Explore Work
             </a>
             <a
               href="mailto:christopher@vers3dynamics.com"
@@ -114,7 +114,7 @@ export default function Home() {
             </a>
             .
             <a
-              href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:f445e5e9-3437-4b3f-b264-aa4c8ab3d59c"
+              href="https://github.com/topherchris420"
               className={styles.link}
               aria-label="View resume (PDF)"
               title="View resume (PDF)"
