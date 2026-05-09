@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import ScrollToTop from "../components/ScrollToTop";
+import CustomCursor from "../components/CustomCursor";
 
 const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
   ssr: false,
@@ -88,6 +89,7 @@ export default function Home() {
         <meta name="twitter:image" content="/surreal-sun.png" />
       </Head>
 
+      <CustomCursor />
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
 
       <main className={styles.main}>
