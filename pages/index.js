@@ -28,7 +28,7 @@ const projectSections = [
     primaryHref: "https://huggingface.co/ciaochris",
     secondaryLabel: "Read Product Documentation",
     secondaryHref:
-      "https://drive.google.com/file/d/1JSp67crqXcUJ0bCqrpgb-2PUne-TtaVQ/view?usp=drive_link",
+      "https://github.com/topherchris420/james_library",
   },
   {
     title: "Art",
@@ -130,7 +130,7 @@ export default function Home() {
             </a>
             .
             <a
-              href="https://github.com/topherchris420"
+              href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976"
               className={styles.link}
               aria-label="View resume (PDF)"
               title="View resume (PDF)"
