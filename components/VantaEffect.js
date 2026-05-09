@@ -63,7 +63,7 @@ const fragmentShader = `
   }
 `;
 
-const VantaEffect = ({ className }) => {
+const VantaEffect = ({ className, ...props }) => {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
 
@@ -94,31 +94,76 @@ const VantaEffect = ({ className }) => {
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    // Disable antialiasing for performance as we render a full-screen quad
-    const renderer = new WebGLRenderer({ antialias: false, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    let renderer;
+
+    try {
+      // Disable antialiasing for performance as we render a full-screen quad
+      renderer = new WebGLRenderer({ antialias: false, alpha: false });
+    } catch (error) {
+      console.warn("Unable to initialize the animated WebGL background.", error);
+      geometry.dispose();
+      material.dispose();
+      return;
+    }
+
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setClearColor(0x000000, 1);
 
     container.appendChild(renderer.domElement);
 
     // Reduced motion support
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let isReduced = mediaQuery.matches;
+    const mediaQuery = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+    let isReduced = mediaQuery?.matches ?? false;
 
     const handleMotionChange = (e) => {
       isReduced = e.matches;
     };
 
-    mediaQuery.addEventListener("change", handleMotionChange);
+    if (mediaQuery?.addEventListener) {
+      mediaQuery.addEventListener("change", handleMotionChange);
+    } else if (mediaQuery?.addListener) {
+      mediaQuery.addListener(handleMotionChange);
+    }
+
+    let animationId = 0;
+    let hasRenderError = false;
+
+    const safeRender = () => {
+      if (hasRenderError) {
+        return;
+      }
+
+      try {
+        renderer.render(scene, camera);
+      } catch (error) {
+        hasRenderError = true;
+        console.warn("Unable to render the animated WebGL background.", error);
+
+        if (animationId) {
+          window.cancelAnimationFrame(animationId);
+        }
+      }
+    };
 
     const onWindowResize = () => {
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      renderer.setSize(width, height, false);
-      uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+      if (hasRenderError) {
+        return;
+      }
+
+      try {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        renderer.setSize(width, height, false);
+        uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+      } catch (error) {
+        hasRenderError = true;
+        console.warn("Unable to resize the animated WebGL background.", error);
+        return;
+      }
+
       // Ensure we render at least once when resizing, even if animation is paused
       if (isReduced) {
-        renderer.render(scene, camera);
+        safeRender();
       }
     };
 
@@ -128,13 +173,15 @@ const VantaEffect = ({ className }) => {
     onWindowResize();
     window.addEventListener("resize", debouncedResize);
 
-    let animationId = 0;
-
     const animate = () => {
+      if (hasRenderError) {
+        return;
+      }
+
       animationId = window.requestAnimationFrame(animate);
       if (!isReduced) {
         uniforms.time.value += 0.05;
-        renderer.render(scene, camera);
+        safeRender();
       }
     };
 
@@ -143,7 +190,13 @@ const VantaEffect = ({ className }) => {
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
-      mediaQuery.removeEventListener("change", handleMotionChange);
+
+      if (mediaQuery?.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleMotionChange);
+      } else if (mediaQuery?.removeListener) {
+        mediaQuery.removeListener(handleMotionChange);
+      }
+
       window.cancelAnimationFrame(animationId);
 
       if (renderer.domElement && renderer.domElement.parentNode === container) {
@@ -157,7 +210,7 @@ const VantaEffect = ({ className }) => {
     };
   }, []);
 
-  return <div ref={containerRef} className={className} />;
+  return <div ref={containerRef} className={className} {...props} />;
 };
 
 export default VantaEffect;
