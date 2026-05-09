@@ -11,11 +11,11 @@ const CustomCursor = () => {
     };
 
     const handleHover = (e) => {
-      if (e.target.closest('a, button, .ctaButton')) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
+      const target = e.target;
+      const isInteractiveElement =
+        target instanceof Element && target.closest('a, button, .ctaButton');
+
+      setIsHovering(Boolean(isInteractiveElement));
     };
 
     window.addEventListener('mousemove', handleMouseMove);
