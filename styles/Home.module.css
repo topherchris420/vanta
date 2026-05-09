@@ -252,3 +252,35 @@
 }
 
 .visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.cursorDot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #86efac;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.cursorFollower {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #86efac;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease-out, height 0.3s ease-out, transform 0.1s ease-out, background-color 0.3s ease;
+  background-color: rgba(134, 239, 172, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+.cursorActive {
+  transform: translate(-50%, -50%) scale(1.5) !important;
+  background-color: rgba(134, 239, 172, 0.4);
+}
+
