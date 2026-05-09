@@ -72,6 +72,20 @@ export default function Home() {
           content="Personal website of Christopher, founder of Vers3Dynamics"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* OpenGraph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mitpress.vercel.app/" />
+        <meta property="og:title" content="Vers3Dynamics | Christopher" />
+        <meta property="og:description" content="Personal website of Christopher, founder of Vers3Dynamics. Exploring sound-driven wellness apps and experimental art." />
+        <meta property="og:image" content="/surreal-sun.png" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://mitpress.vercel.app/" />
+        <meta name="twitter:title" content="Vers3Dynamics | Christopher" />
+        <meta name="twitter:description" content="Personal website of Christopher, founder of Vers3Dynamics. Exploring sound-driven wellness apps and experimental art." />
+        <meta name="twitter:image" content="/surreal-sun.png" />
       </Head>
 
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
@@ -128,7 +142,15 @@ export default function Home() {
 
         <section className={styles.featureImageSection}>
           <div className={styles.featureImageContainer}>
-            <Image src="/surreal-sun.png" alt="Vers3Dynamics artwork" width={600} height={800} className={styles.featureImage} priority />
+            <Image
+              src="/surreal-sun.png"
+              alt="Vers3Dynamics artwork"
+              width={600}
+              height={800}
+              className={styles.featureImage}
+              priority
+              loading="eager"
+            />
             <div className={styles.imageOverlay}>
               <p className={styles.imageCaption}>Welcome</p>
             </div>
