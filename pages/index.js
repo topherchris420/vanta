@@ -14,9 +14,9 @@ const projectSections = [
     title: "Books",
     description:
       "Coloring books, poetry, and health-focused writing for reflection and daily rituals.",
-    primaryLabel: "Browse Amazon Author Page",
+    primaryLabel: "Browse poetry book",
     primaryHref:
-      "https://www.amazon.com/stores/Christopher-Woodyard/author/B084ZSG4V9?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true",
+      "https://a.co/d/078d1kaa",
     secondaryLabel: "Visit Human Touch",
     secondaryHref: "https://humantouch.fun/",
   },
