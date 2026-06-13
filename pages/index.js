@@ -30,10 +30,10 @@ const projectSections = [
     title: "Books",
     description:
       "Coloring books, poetry, and health-focused writing for reflection and daily rituals.",
-    primaryLabel: "Browse poetry book",
+    primaryLabel: "Read poetry book",
     primaryHref: "https://a.co/d/078d1kaa",
-    secondaryLabel: "Visit Human Touch",
-    secondaryHref: "https://humantouch.fun/",
+    secondaryLabel: "Intro to Quantum",
+    secondaryHref: "https://woodyard.streamlit.app/",
     accent: "251, 191, 36",
   },
   {
@@ -42,8 +42,8 @@ const projectSections = [
     description:
       "Sound-driven AI wellness tools and prototypes focused on mindful interaction.",
     primaryLabel: "Explore AI/ML Projects",
-    primaryHref: "https://huggingface.co/ciaochris",
-    secondaryLabel: "Read Product Documentation",
+    primaryHref: "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
+    secondaryLabel: "James Library",
     secondaryHref: "https://github.com/topherchris420/james_library",
     accent: "103, 232, 249",
   },
@@ -221,7 +221,7 @@ export default function Home() {
               <div className={styles.aboutImageInner}>
                 <Image
                   src="/surreal-sun.png"
-                  alt="Vers3Dynamics artwork"
+                  alt="Vers3Dynamics 🖐🏾"
                   width={600}
                   height={800}
                   className={styles.featureImage}
@@ -288,10 +288,10 @@ export default function Home() {
             <iframe
               src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY"
               className={styles.giphyEmbed}
-              title="Pixel Art Animation"
+              title="Knicks in 5"
               frameBorder="0"
               allowFullScreen
-              loading="lazy"
+              loading="chill"
             ></iframe>
           </Reveal>
         </section>
@@ -328,8 +328,7 @@ export default function Home() {
               ))}
             </nav>
             <p className={styles.copyright}>
-              © {new Date().getFullYear()} Vers3Dynamics · Crafted with Next.js
-              &amp; Three.js
+              © {new Date().getFullYear()} Vers3Dynamics · Crafted by Christopher Woodyard; the R.A.I.N Lab
             </p>
           </div>
         </Reveal>
