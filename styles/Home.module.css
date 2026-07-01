@@ -158,14 +158,132 @@
 /* ------------------------------------------------------------------ hero */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   min-height: 78vh;
   min-height: 84svh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   text-align: center;
   padding-top: 1rem;
+}
+
+.hero > :not(.heroStage) {
+  position: relative;
+  z-index: 2;
+}
+
+.heroStage {
+  position: absolute;
+  top: clamp(1.6rem, 7vh, 4.6rem);
+  left: 50%;
+  z-index: 1;
+  width: min(1100px, 112vw);
+  height: clamp(430px, 72svh, 700px);
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+.displayPedestal {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  outline: none;
+  filter: saturate(0.98) brightness(1);
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+.heroStage.displayPedestal {
+  position: absolute;
+  width: min(1100px, 112vw);
+  height: clamp(430px, 72svh, 700px);
+}
+
+.displayPedestal::before {
+  content: "";
+  position: absolute;
+  inset: 18% 5% 3%;
+  z-index: -1;
+  background: radial-gradient(ellipse at 50% 68%, rgba(103, 232, 249, 0.22), transparent 58%),
+    radial-gradient(ellipse at 50% 82%, rgba(134, 239, 172, 0.16), transparent 52%);
+  filter: blur(18px);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.displayPedestal:hover,
+.displayPedestal:focus-visible {
+  filter: saturate(1.16) brightness(1.14);
+}
+
+.displayPedestal:focus-visible {
+  border-radius: 24px;
+  outline: 1px solid rgba(103, 232, 249, 0.55);
+  outline-offset: -18px;
+}
+
+.displayPedestalCanvas,
+.displayPedestalCanvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.displayPedestalCanvas {
+  position: absolute;
+  inset: 0;
+}
+
+.displayPedestalHud {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(2.2rem, 7%, 4rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  transform: translateX(-50%);
+  padding: 0.34rem 0.72rem;
+  border: 1px solid rgba(148, 163, 184, 0.26);
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.46);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 22px rgba(103, 232, 249, 0.12);
+}
+
+.displayPedestalModel {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--soft);
+  white-space: nowrap;
+}
+
+.displayPedestalSwatches {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+}
+
+.displayPedestalSwatch {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--swatch);
+  opacity: 0.42;
+  box-shadow: 0 0 0 rgba(103, 232, 249, 0);
+  transition: opacity 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.displayPedestalSwatchActive {
+  opacity: 1;
+  transform: scale(1.24);
+  box-shadow: 0 0 12px var(--swatch);
 }
 
 .heroIn {
@@ -961,7 +1079,27 @@
   }
 
   .hero {
-    min-height: 72svh;
+    min-height: 76svh;
+  }
+
+  .heroStage {
+    top: 5.2rem;
+    width: 132vw;
+    height: 62svh;
+    opacity: 0.7;
+  }
+
+  .heroStage.displayPedestal {
+    width: 132vw;
+    height: 62svh;
+  }
+
+  .displayPedestalHud {
+    bottom: 0.9rem;
+  }
+
+  .displayPedestalModel {
+    display: none;
   }
 
   .projectGrid {

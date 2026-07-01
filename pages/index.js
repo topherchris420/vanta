@@ -14,6 +14,11 @@ const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
   ssr: false,
 });
 
+const DisplayPedestalNoSSR = dynamic(
+  () => import("../components/DisplayPedestal"),
+  { ssr: false }
+);
+
 const marqueeItems = [
   "Sound-driven wellness",
   "Experimental art",
@@ -129,6 +134,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <section className={styles.hero} aria-label="Introduction">
+          <DisplayPedestalNoSSR className={styles.heroStage} />
           <p className={`${styles.statusPill} ${styles.heroIn}`} style={{ "--stagger": 0 }}>
             <span className={styles.statusDot} aria-hidden="true" />
             Open to collaborations
