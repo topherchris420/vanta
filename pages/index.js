@@ -73,7 +73,7 @@ const projectSections = [
     primaryHref: "https://woodyard.dappling.network",
     secondaryLabel: "Read Inspiration Source",
     secondaryHref:
-      "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:943e15fd-7ba1-48cd-a2b8-e85aeb88e92a?x_api_client_id=chrome_extension_viewer&x_api_client_location=share",
+      "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7",
     accent: "249, 168, 212",
   },
   {
