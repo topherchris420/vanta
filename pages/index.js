@@ -73,7 +73,7 @@ const projectSections = [
     primaryHref: "https://woodyard.dappling.network",
     secondaryLabel: "Read Inspiration Source",
     secondaryHref:
-      "https://archive.org/details/ancient-egyptian-magic-bob-brier/page/299/mode/1up",
+      "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:943e15fd-7ba1-48cd-a2b8-e85aeb88e92a?x_api_client_id=chrome_extension_viewer&x_api_client_location=share",
     accent: "249, 168, 212",
   },
   {
@@ -91,10 +91,10 @@ const projectSections = [
 ];
 
 const elsewhereLinks = [
-  { label: "Bandcamp", href: "https://chriswoodyard.bandcamp.com/" },
-  { label: "Hugging Face", href: "https://huggingface.co/ciaochris" },
+  { label: "Music", href: "https://chriswoodyard.bandcamp.com/" },
+  { label: "Open Source", href: "https://huggingface.co/ciaochris" },
   {
-    label: "SSRN",
+    label: "Papers",
     href: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
   },
   { label: "Latest build", href: "https://arpa-h.vercel.app/" },
