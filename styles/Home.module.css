@@ -1,6 +1,7 @@
 .container {
   min-height: 100vh;
   position: relative;
+  isolation: isolate;
   overflow-x: hidden;
   color: var(--ink);
 }
@@ -11,6 +12,20 @@
   width: 100%;
   height: 100vh;
   z-index: -2;
+}
+
+.posterBackground {
+  position: fixed;
+  inset: 0;
+  background-image: url("/pic05.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(1) brightness(0.85);
+  mix-blend-mode: screen;
+  opacity: 0.1;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .container::before {
