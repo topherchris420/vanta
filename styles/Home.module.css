@@ -41,9 +41,33 @@
   pointer-events: none;
 }
 
+/* ------------------------------------------------------------- skip link */
+
+.skipLink {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-250%);
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--mint);
+  color: #052e16;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
+}
+
 /* ---------------------------------------------------------------- layout */
 
 .main {
+  outline: none;
   padding: clamp(5rem, 9vh, 6.5rem) 1.25rem 3rem;
   max-width: 1120px;
   margin: 0 auto;
@@ -152,6 +176,14 @@
 
 .navLink:hover::after,
 .navLink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navLinkActive {
+  color: var(--ink);
+}
+
+.navLinkActive::after {
   transform: scaleX(1);
 }
 
