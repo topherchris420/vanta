@@ -167,6 +167,7 @@ export default function Home() {
       <ScrollProgress />
       <Navbar />
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
+      <div className={styles.posterBackground} aria-hidden="true" />
 
       <main id="main-content" tabIndex={-1} className={styles.main}>
         <section className={styles.hero} aria-label="Introduction">
