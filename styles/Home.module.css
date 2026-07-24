@@ -1,6 +1,7 @@
 .container {
   min-height: 100vh;
   position: relative;
+  isolation: isolate;
   overflow-x: hidden;
   color: var(--ink);
 }
@@ -11,6 +12,20 @@
   width: 100%;
   height: 100vh;
   z-index: -2;
+}
+
+.posterBackground {
+  position: fixed;
+  inset: 0;
+  background-image: url("/pic05.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: invert(1) brightness(0.85);
+  mix-blend-mode: screen;
+  opacity: 0.1;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .container::before {
@@ -41,9 +56,33 @@
   pointer-events: none;
 }
 
+/* ------------------------------------------------------------- skip link */
+
+.skipLink {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  transform: translateY(-250%);
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  background: var(--mint);
+  color: #052e16;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
+}
+
 /* ---------------------------------------------------------------- layout */
 
 .main {
+  outline: none;
   padding: clamp(5rem, 9vh, 6.5rem) 1.25rem 3rem;
   max-width: 1120px;
   margin: 0 auto;
@@ -84,6 +123,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 0.85rem clamp(1.1rem, 4vw, 2.2rem);
   border-bottom: 1px solid transparent;
@@ -108,10 +148,7 @@
 }
 
 .brandMark {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--mint);
 }
 
 .navLinks {
@@ -152,6 +189,14 @@
 
 .navLink:hover::after,
 .navLink:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.navLinkActive {
+  color: var(--ink);
+}
+
+.navLinkActive::after {
   transform: scaleX(1);
 }
 
@@ -299,6 +344,37 @@
   box-shadow: 0 0 12px var(--swatch);
 }
 
+/* Higher specificity than `.hero > :not(.heroStage)` so this floats at a
+   fixed corner instead of joining the centered flex flow. */
+.hero > button.resonanceToggle {
+  position: absolute;
+  top: clamp(2rem, 8vh, 5rem);
+  right: clamp(1rem, 4vw, 2.2rem);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--soft);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero > button.resonanceToggle:hover,
+.hero > button.resonanceToggle:focus-visible {
+  color: var(--mint);
+  border-color: var(--line-bright);
+  background: rgba(134, 239, 172, 0.1);
+  transform: scale(1.06);
+}
+
 .heroIn {
   opacity: 0;
   animation: riseIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
@@ -382,30 +458,7 @@
 }
 
 .titleGradient {
-  background: linear-gradient(110deg, var(--mint), var(--cyan) 32%, var(--violet) 68%, var(--pink));
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientShift 8s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* When a hero line is also gradient text, run the entrance and the gradient
-   sweep together — a lone `animation` shorthand would cancel the other. */
-.heroIn.titleGradient {
-  animation: riseIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
-    gradientShift 8s ease-in-out infinite;
-  animation-delay: calc(var(--stagger, 0) * 110ms), 0s;
+  color: var(--mint);
 }
 
 .subtitle {
@@ -633,8 +686,7 @@
     transition: none;
   }
 
-  .heroIn,
-  .heroIn.titleGradient {
+  .heroIn {
     opacity: 1;
     animation: none;
   }
@@ -669,7 +721,9 @@
 .sectionTitle {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  /* Floor kept clear of .projectTitle's so an h2 can't shrink to the same
+     size as an h3 at narrow widths. */
+  font-size: clamp(1.85rem, 3.6vw, 2.6rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -685,13 +739,15 @@
   border-radius: 24px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: clamp(1.6rem, 4vw, 2.8rem);
+  /* Generous room around the group; the grid gap below is deliberately
+     tighter so the border reads as a container, not a stand-in for spacing. */
+  padding: clamp(1.8rem, 4.5vw, 3.2rem);
 }
 
 .aboutGrid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(1.6rem, 4vw, 2.8rem);
+  gap: clamp(1.4rem, 3.5vw, 2.4rem);
   align-items: center;
 }
 
@@ -708,6 +764,9 @@
   color: #e2e8f0;
   margin: 0;
   letter-spacing: 0.01em;
+  /* Every other body-copy block on the site has a deliberate measure; this
+     one previously had none, sized only by incidental grid-column width. */
+  max-width: 60ch;
 }
 
 .bioSecondary {
@@ -715,6 +774,7 @@
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.7;
+  max-width: 60ch;
 }
 
 .link {
@@ -782,6 +842,7 @@
   text-align: center;
   margin: 0;
   font-family: var(--font-display);
+  font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-size: 0.75rem;
@@ -797,7 +858,9 @@
 .projectGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.1rem;
+  /* Fluid like every other spacing value on the page; this was the one flat
+     value left over among clamp()-based rhythm everywhere else. */
+  gap: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .projectCell {
@@ -817,8 +880,10 @@
   align-items: flex-start;
   padding: clamp(1.3rem, 3vw, 1.8rem);
   border-radius: 20px;
-  background: var(--card);
-  border: 1px solid var(--line);
+  /* Each card's own accent color reads at rest, not only on hover, so the
+     five project colors carry "five mediums, one signal" across the grid. */
+  background: linear-gradient(165deg, rgba(var(--accent), 0.12), var(--card) 60%);
+  border: 1px solid rgba(var(--accent), 0.24);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
@@ -845,26 +910,37 @@
 
 .projectCard:hover {
   transform: translateY(-6px);
-  border-color: rgba(var(--accent), 0.5);
+  border-color: rgba(var(--accent), 0.6);
   box-shadow: 0 20px 44px rgba(2, 6, 23, 0.55);
-  background: var(--card-strong);
+  background: linear-gradient(165deg, rgba(var(--accent), 0.2), var(--card-strong) 55%);
 }
 
 .projectGhost {
   position: absolute;
   top: 0.4rem;
   right: 0.9rem;
+  z-index: 0;
   font-family: var(--font-display);
   font-size: clamp(3.4rem, 6vw, 4.8rem);
   font-weight: 700;
   line-height: 1;
-  color: rgba(var(--accent), 0.1);
+  color: rgba(var(--accent), 0.16);
   pointer-events: none;
   transition: color 0.35s ease;
 }
 
 .projectCard:hover .projectGhost {
-  color: rgba(var(--accent), 0.22);
+  color: rgba(var(--accent), 0.32);
+}
+
+/* Explicit stacking so real content stays above the decorative ghost
+   numeral even if a longer title/description ever grows into its corner. */
+.projectChip,
+.projectTitle,
+.projectIntro,
+.projectLinks {
+  position: relative;
+  z-index: 1;
 }
 
 .projectChip {
@@ -883,13 +959,28 @@
 .projectTitle {
   margin: 1rem 0 0.45rem;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  /* Fluid like every other heading role, instead of the lone fixed size. */
+  font-size: clamp(1.35rem, 2.6vw, 1.6rem);
   letter-spacing: -0.01em;
   font-weight: 700;
 }
 
 .projectCell:first-child .projectTitle {
   font-size: clamp(1.7rem, 3.4vw, 2.1rem);
+}
+
+/* Books opens the five-medium sequence, so it carries the section's display
+   type at full strength rather than reading as merely "a wider card." */
+.projectCell:first-child .projectGhost {
+  font-size: clamp(5rem, 9vw, 8rem);
+}
+
+.projectCell:first-child .projectCard {
+  background: linear-gradient(165deg, rgba(var(--accent), 0.16), var(--card) 55%);
+}
+
+.projectCell:first-child .projectCard:hover {
+  background: linear-gradient(165deg, rgba(var(--accent), 0.26), var(--card-strong) 50%);
 }
 
 .projectIntro {
@@ -953,7 +1044,7 @@
   width: 100%;
   min-height: 280px;
   overflow: hidden;
-  margin-top: 1.1rem;
+  margin-top: clamp(1rem, 2.5vw, 1.5rem);
   border-radius: 20px;
   border: 1px solid var(--line);
   background: var(--card);
@@ -971,6 +1062,7 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   font-family: var(--font-display);
+  font-weight: 600;
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1125,6 +1217,11 @@
 
   .displayPedestalModel {
     display: none;
+  }
+
+  .hero > button.resonanceToggle {
+    top: 1rem;
+    right: 1rem;
   }
 
   .projectGrid {

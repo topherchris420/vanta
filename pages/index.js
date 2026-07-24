@@ -73,7 +73,7 @@ const projectSections = [
     primaryHref: "https://woodyard.dappling.network",
     secondaryLabel: "Read Inspiration Source",
     secondaryHref:
-      "https://archive.org/details/ancient-egyptian-magic-bob-brier/page/299/mode/1up",
+      "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7",
     accent: "249, 168, 212",
   },
   {
@@ -91,14 +91,36 @@ const projectSections = [
 ];
 
 const elsewhereLinks = [
-  { label: "Bandcamp", href: "https://chriswoodyard.bandcamp.com/" },
-  { label: "Hugging Face", href: "https://huggingface.co/ciaochris" },
+  { label: "Music", href: "https://chriswoodyard.bandcamp.com/" },
+  { label: "Open Source", href: "https://huggingface.co/ciaochris" },
   {
-    label: "SSRN",
+    label: "Papers",
     href: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
   },
   { label: "Latest build", href: "https://arpa-h.vercel.app/" },
 ];
+
+const siteUrl = "https://mitpress.vercel.app";
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Christopher Woodyard",
+  url: `${siteUrl}/`,
+  email: "mailto:christopher@vers3dynamics.com",
+  jobTitle: "Founder",
+  worksFor: {
+    "@type": "Organization",
+    name: "Vers3Dynamics",
+    url: "https://vers3dynamics.com/",
+  },
+  sameAs: [
+    "https://chriswoodyard.bandcamp.com/",
+    "https://huggingface.co/ciaochris",
+    "https://github.com/topherchris420",
+    "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+  ],
+};
 
 export default function Home() {
   return (
@@ -111,28 +133,43 @@ export default function Home() {
           content="Personal website of Christopher, founder of Vers3Dynamics"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Christopher Woodyard" />
+        <link rel="canonical" href={`${siteUrl}/`} />
 
         {/* OpenGraph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mitpress.vercel.app/" />
+        <meta property="og:site_name" content="Vers3Dynamics" />
+        <meta property="og:url" content={`${siteUrl}/`} />
         <meta property="og:title" content="Vers3Dynamics | Christopher" />
         <meta property="og:description" content="Personal website of Christopher, founder of Vers3Dynamics. Exploring sound-driven wellness apps and experimental art." />
-        <meta property="og:image" content="/surreal-sun.png" />
+        <meta property="og:image" content={`${siteUrl}/surreal-sun.png`} />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="800" />
+        <meta property="og:image:alt" content="Surreal sun artwork by Vers3Dynamics" />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://mitpress.vercel.app/" />
+        <meta name="twitter:url" content={`${siteUrl}/`} />
         <meta name="twitter:title" content="Vers3Dynamics | Christopher" />
         <meta name="twitter:description" content="Personal website of Christopher, founder of Vers3Dynamics. Exploring sound-driven wellness apps and experimental art." />
-        <meta name="twitter:image" content="/surreal-sun.png" />
+        <meta name="twitter:image" content={`${siteUrl}/surreal-sun.png`} />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </Head>
 
+      <a href="#main-content" className={styles.skipLink}>
+        Skip to content
+      </a>
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
+      <div className={styles.posterBackground} aria-hidden="true" />
 
-      <main className={styles.main}>
+      <main id="main-content" tabIndex={-1} className={styles.main}>
         <section className={styles.hero} aria-label="Introduction">
           <DisplayPedestalNoSSR className={styles.heroStage} />
           <p className={`${styles.statusPill} ${styles.heroIn}`} style={{ "--stagger": 0 }}>
@@ -227,12 +264,11 @@ export default function Home() {
               <div className={styles.aboutImageInner}>
                 <Image
                   src="/surreal-sun.png"
-                  alt="Vers3Dynamics 🖐🏾"
+                  alt="Surreal sun artwork by Vers3Dynamics"
                   width={600}
                   height={800}
                   className={styles.featureImage}
                   sizes="(max-width: 860px) 100vw, 440px"
-                  priority
                 />
                 <div className={styles.imageOverlay}>
                   <p className={styles.imageCaption}>Welcome</p>
@@ -258,6 +294,16 @@ export default function Home() {
                 <SpotlightCard
                   className={styles.projectCard}
                   style={{ "--accent": project.accent }}
+                  onMouseEnter={() => {
+                    // Send this medium's own color into the persistent
+                    // background shader, reusing the resonance ripple built
+                    // for the hero pedestal's model swap.
+                    window.dispatchEvent(
+                      new CustomEvent("vanta:resonance", {
+                        detail: { color: `rgb(${project.accent})` },
+                      })
+                    );
+                  }}
                 >
                   <span className={styles.projectGhost} aria-hidden="true">
                     {project.number}
@@ -297,7 +343,7 @@ export default function Home() {
               title="Knicks in 5"
               frameBorder="0"
               allowFullScreen
-              loading="chill"
+              loading="lazy"
             ></iframe>
           </Reveal>
         </section>

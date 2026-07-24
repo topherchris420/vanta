@@ -17,14 +17,19 @@ const CustomCursor = () => {
 
   useEffect(() => {
     if (!enabled) {
-      return;
+      return undefined;
     }
 
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) {
-      return;
+      return undefined;
     }
+
+    // The native cursor is only hidden globally (see globals.css) once this
+    // class confirms the custom cursor actually mounted, so a JS error or
+    // slow hydration never leaves fine-pointer users without any cursor.
+    document.documentElement.classList.add("has-custom-cursor");
 
     let targetX = window.innerWidth / 2;
     let targetY = window.innerHeight / 2;
@@ -78,6 +83,7 @@ const CustomCursor = () => {
     frame = window.requestAnimationFrame(render);
 
     return () => {
+      document.documentElement.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseover", onMouseOver);
       window.removeEventListener("mousedown", onMouseDown);
