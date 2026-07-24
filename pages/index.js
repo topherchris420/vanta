@@ -264,7 +264,7 @@ export default function Home() {
               <div className={styles.aboutImageInner}>
                 <Image
                   src="/surreal-sun.png"
-                  alt="Vers3Dynamics 🖐🏾"
+                  alt="Surreal sun artwork by Vers3Dynamics"
                   width={600}
                   height={800}
                   className={styles.featureImage}

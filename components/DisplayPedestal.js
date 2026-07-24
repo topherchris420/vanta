@@ -307,6 +307,21 @@ const DisplayPedestal = ({ className = "" }) => {
       cubeEdges.material,
     ];
 
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let isReducedMotion = motionQuery.matches;
+    let frame = 0;
+    let elapsed = 0;
+    let glow = 1;
+
+    const applyGlow = (value) => {
+      glowMaterials.forEach((material) => {
+        material.opacity = Math.min((material.userData.baseOpacity ?? material.opacity) * value, 1);
+        if ("emissiveIntensity" in material) {
+          material.emissiveIntensity = 0.62 * value;
+        }
+      });
+    };
+
     let userModelGroup = null;
     const setUserModel = (model) => {
       if (userModelGroup) {
@@ -315,16 +330,23 @@ const DisplayPedestal = ({ className = "" }) => {
       }
       userModelGroup = makeUserModel(model);
       sceneRoot.add(userModelGroup);
+      // The continuous loop is off under reduced motion, so a swap needs its own render.
+      if (isReducedMotion) {
+        renderer.render(scene, camera);
+      }
+    };
+
+    const setHover = (value) => {
+      hoverRef.current = value;
+      if (isReducedMotion) {
+        glow = value ? 1.45 : 1;
+        applyGlow(glow);
+        renderer.render(scene, camera);
+      }
     };
 
     setUserModel(displayPedestalModels[modelIndexRef.current]);
-    sceneApiRef.current = { setUserModel };
-
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let isReducedMotion = motionQuery.matches;
-    let frame = 0;
-    let elapsed = 0;
-    let glow = 1;
+    sceneApiRef.current = { setUserModel, setHover };
 
     const resize = () => {
       const width = Math.max(host.clientWidth, 1);
@@ -341,38 +363,30 @@ const DisplayPedestal = ({ className = "" }) => {
 
     const render = () => {
       frame = window.requestAnimationFrame(render);
-      const delta = isReducedMotion ? 0 : 0.016;
-      elapsed += delta;
+      elapsed += 0.016;
 
       const targetGlow = hoverRef.current ? 1.45 : 1;
       glow += (targetGlow - glow) * 0.08;
-      glowMaterials.forEach((material) => {
-        material.opacity = Math.min((material.userData.baseOpacity ?? material.opacity) * glow, 1);
-        if ("emissiveIntensity" in material) {
-          material.emissiveIntensity = 0.62 * glow;
-        }
-      });
+      applyGlow(glow);
 
-      if (!isReducedMotion) {
-        pedestalGroup.rotation.y = Math.sin(elapsed * 0.2) * 0.08;
-        frameGroup.position.y = 1.2 + Math.sin(elapsed * 1.15) * 0.045;
-        frameGroup.rotation.y += 0.0024;
-        hologramCube.rotation.x += 0.006;
-        hologramCube.rotation.y += 0.009;
-        haloA.rotation.z -= 0.004;
-        haloB.rotation.z += 0.005;
+      pedestalGroup.rotation.y = Math.sin(elapsed * 0.2) * 0.08;
+      frameGroup.position.y = 1.2 + Math.sin(elapsed * 1.15) * 0.045;
+      frameGroup.rotation.y += 0.0024;
+      hologramCube.rotation.x += 0.006;
+      hologramCube.rotation.y += 0.009;
+      haloA.rotation.z -= 0.004;
+      haloB.rotation.z += 0.005;
 
-        if (userModelGroup) {
-          userModelGroup.rotation.y -= 0.003;
-          userModelGroup.position.y = 1.35 + Math.sin(elapsed * 0.9) * 0.04;
-        }
-
-        const orbit = elapsed * 0.18;
-        camera.position.x = Math.sin(orbit) * 3.15;
-        camera.position.z = 4.15 + Math.cos(orbit) * 0.68;
-        camera.position.y = 2.15 + Math.sin(orbit * 0.7) * 0.18;
-        camera.lookAt(0, 0.7, 0);
+      if (userModelGroup) {
+        userModelGroup.rotation.y -= 0.003;
+        userModelGroup.position.y = 1.35 + Math.sin(elapsed * 0.9) * 0.04;
       }
+
+      const orbit = elapsed * 0.18;
+      camera.position.x = Math.sin(orbit) * 3.15;
+      camera.position.z = 4.15 + Math.cos(orbit) * 0.68;
+      camera.position.y = 2.15 + Math.sin(orbit * 0.7) * 0.18;
+      camera.lookAt(0, 0.7, 0);
 
       renderer.render(scene, camera);
     };
@@ -381,13 +395,32 @@ const DisplayPedestal = ({ className = "" }) => {
       material.userData.baseOpacity = material.opacity;
     });
 
+    // Reduced motion: fully stop the render loop rather than merely skipping
+    // the ambient rotation/orbit, since this scene's per-frame cost (multiple
+    // lights, a procedural texture) is meaningfully higher than a background
+    // shader. Hover/model-swap feedback still renders on demand via setHover
+    // and setUserModel above, so state changes stay visible without ambient motion.
     const onMotionChange = (event) => {
       isReducedMotion = event.matches;
-      renderer.render(scene, camera);
+      if (isReducedMotion) {
+        window.cancelAnimationFrame(frame);
+        frame = 0;
+        glow = 1;
+        applyGlow(glow);
+        renderer.render(scene, camera);
+      } else if (!frame) {
+        render();
+      }
     };
 
     motionQuery.addEventListener("change", onMotionChange);
-    render();
+
+    if (isReducedMotion) {
+      applyGlow(glow);
+      renderer.render(scene, camera);
+    } else {
+      render();
+    }
 
     return () => {
       window.cancelAnimationFrame(frame);
@@ -419,10 +452,10 @@ const DisplayPedestal = ({ className = "" }) => {
       onClick={swapModel}
       onKeyDown={handleKeyDown}
       onPointerEnter={() => {
-        hoverRef.current = true;
+        sceneApiRef.current?.setHover(true);
       }}
       onPointerLeave={() => {
-        hoverRef.current = false;
+        sceneApiRef.current?.setHover(false);
       }}
     >
       <div ref={hostRef} className={styles.displayPedestalCanvas} aria-hidden="true" />

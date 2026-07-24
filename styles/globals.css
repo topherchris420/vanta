@@ -12,11 +12,7 @@
   --line: rgba(148, 163, 184, 0.22);
   --line-bright: rgba(134, 239, 172, 0.45);
   --gradient: linear-gradient(110deg, var(--mint), var(--cyan) 45%, var(--violet));
-  --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, sans-serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  /* --font-display / --font-body come from next/font in pages/_app.js */
 }
 
 html {
@@ -49,12 +45,14 @@ body {
   border-radius: 4px;
 }
 
-/* Hide the native cursor only where the custom cursor is rendered */
+/* Hide the native cursor only once CustomCursor confirms it mounted
+   (see components/CustomCursor.js) so a JS failure never leaves fine-pointer
+   users with no cursor at all. */
 @media (hover: hover) and (pointer: fine) {
-  html,
-  body,
-  a,
-  button {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button {
     cursor: none;
   }
 }

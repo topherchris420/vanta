@@ -147,10 +147,7 @@
 }
 
 .brandMark {
-  background: var(--gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--mint);
 }
 
 .navLinks {
@@ -409,30 +406,7 @@
 }
 
 .titleGradient {
-  background: linear-gradient(110deg, var(--mint), var(--cyan) 32%, var(--violet) 68%, var(--pink));
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradientShift 8s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* When a hero line is also gradient text, run the entrance and the gradient
-   sweep together — a lone `animation` shorthand would cancel the other. */
-.heroIn.titleGradient {
-  animation: riseIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards,
-    gradientShift 8s ease-in-out infinite;
-  animation-delay: calc(var(--stagger, 0) * 110ms), 0s;
+  color: var(--mint);
 }
 
 .subtitle {
@@ -462,7 +436,7 @@
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease,
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease,
     background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
@@ -655,8 +629,7 @@
     transition: none;
   }
 
-  .heroIn,
-  .heroIn.titleGradient {
+  .heroIn {
     opacity: 1;
     animation: none;
   }
@@ -843,7 +816,7 @@
   border: 1px solid var(--line);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.35s ease,
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease,
     box-shadow 0.35s ease, background-color 0.35s ease;
 }
 
