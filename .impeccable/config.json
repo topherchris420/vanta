@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "styles/Home.module.css"
+        ],
+        "createdAt": "2026-07-24T12:52:58.909Z",
+        "reason": "User confirmed cursorDot/cursorRing width/height transitions are a false positive: fixed-position, pointer-events:none custom cursor elements isolated from document flow, no real reflow cost"
+      }
+    ]
+  }
+}
