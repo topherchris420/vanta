@@ -40,6 +40,7 @@ const projectSections = [
     secondaryLabel: "Intro to Quantum",
     secondaryHref: "https://woodyard.streamlit.app/",
     accent: "251, 191, 36",
+    frequency: 261.63, // C4 - warm, grounding
   },
   {
     number: "02",
@@ -51,6 +52,7 @@ const projectSections = [
     secondaryLabel: "James Library",
     secondaryHref: "https://github.com/topherchris420/james_library",
     accent: "103, 232, 249",
+    frequency: 329.63, // E4 - bright, uplifting
   },
   {
     number: "03",
@@ -63,6 +65,7 @@ const projectSections = [
     secondaryHref:
       "https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/",
     accent: "192, 132, 252",
+    frequency: 392.00, // G4 - creative, harmonic
   },
   {
     number: "04",
@@ -75,6 +78,7 @@ const projectSections = [
     secondaryHref:
       "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7",
     accent: "249, 168, 212",
+    frequency: 523.25, // C5 - high, expansive
   },
   {
     number: "05",
@@ -87,8 +91,55 @@ const projectSections = [
     secondaryHref:
       "https://chriswoodyard.bandcamp.com/track/creators-innovators",
     accent: "134, 239, 172",
+    frequency: 196.00, // G3 - deep, resonant
   },
 ];
+
+// Web Audio synthesizer for hover sounds
+let audioContext = null;
+let activeOscillator = null;
+let gainNode = null;
+
+const initAudio = () => {
+  if (!audioContext) {
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  return audioContext;
+};
+
+const stopFrequency = () => {
+  if (activeOscillator && gainNode) {
+    const ctx = initAudio();
+    // Soft release
+    gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.2);
+    const osc = activeOscillator;
+    activeOscillator = null;
+    setTimeout(() => osc.stop(), 250);
+  }
+};
+
+const playFrequency = (freq) => {
+  const ctx = initAudio();
+  if (ctx.state === 'suspended') ctx.resume();
+
+  // Stop previous sound
+  stopFrequency();
+
+  // Create oscillator
+  activeOscillator = ctx.createOscillator();
+  gainNode = ctx.createGain();
+
+  activeOscillator.type = 'sine';
+  activeOscillator.frequency.setValueAtTime(freq, ctx.currentTime);
+
+  // Soft attack
+  gainNode.gain.setValueAtTime(0, ctx.currentTime);
+  gainNode.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.1);
+
+  activeOscillator.connect(gainNode);
+  gainNode.connect(ctx.destination);
+  activeOscillator.start();
+};
 
 const elsewhereLinks = [
   { label: "Music", href: "https://chriswoodyard.bandcamp.com/" },
@@ -303,7 +354,12 @@ export default function Home() {
                         detail: { color: `rgb(${project.accent})` },
                       })
                     );
+                    // Play this project's frequency
+                    if (project.frequency) {
+                      playFrequency(project.frequency);
+                    }
                   }}
+                  onMouseLeave={stopFrequency}
                 >
                   <span className={styles.projectGhost} aria-hidden="true">
                     {project.number}
