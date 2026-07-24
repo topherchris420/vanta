@@ -812,12 +812,14 @@
   align-items: flex-start;
   padding: clamp(1.3rem, 3vw, 1.8rem);
   border-radius: 20px;
-  background: var(--card);
-  border: 1px solid var(--line);
+  /* Each card's own accent color reads at rest, not only on hover, so the
+     five project colors carry "five mediums, one signal" across the grid. */
+  background: linear-gradient(165deg, rgba(var(--accent), 0.12), var(--card) 60%);
+  border: 1px solid rgba(var(--accent), 0.24);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease,
-    box-shadow 0.35s ease, background-color 0.35s ease;
+    box-shadow 0.35s ease, background 0.35s ease;
 }
 
 .projectCard::before {
@@ -840,9 +842,9 @@
 
 .projectCard:hover {
   transform: translateY(-6px);
-  border-color: rgba(var(--accent), 0.5);
+  border-color: rgba(var(--accent), 0.6);
   box-shadow: 0 20px 44px rgba(2, 6, 23, 0.55);
-  background: var(--card-strong);
+  background: linear-gradient(165deg, rgba(var(--accent), 0.2), var(--card-strong) 55%);
 }
 
 .projectGhost {
@@ -853,13 +855,13 @@
   font-size: clamp(3.4rem, 6vw, 4.8rem);
   font-weight: 700;
   line-height: 1;
-  color: rgba(var(--accent), 0.1);
+  color: rgba(var(--accent), 0.16);
   pointer-events: none;
   transition: color 0.35s ease;
 }
 
 .projectCard:hover .projectGhost {
-  color: rgba(var(--accent), 0.22);
+  color: rgba(var(--accent), 0.32);
 }
 
 .projectChip {
@@ -885,6 +887,20 @@
 
 .projectCell:first-child .projectTitle {
   font-size: clamp(1.7rem, 3.4vw, 2.1rem);
+}
+
+/* Books opens the five-medium sequence, so it carries the section's display
+   type at full strength rather than reading as merely "a wider card." */
+.projectCell:first-child .projectGhost {
+  font-size: clamp(5rem, 9vw, 8rem);
+}
+
+.projectCell:first-child .projectCard {
+  background: linear-gradient(165deg, rgba(var(--accent), 0.16), var(--card) 55%);
+}
+
+.projectCell:first-child .projectCard:hover {
+  background: linear-gradient(165deg, rgba(var(--accent), 0.26), var(--card-strong) 50%);
 }
 
 .projectIntro {
