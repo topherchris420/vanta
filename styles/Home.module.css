@@ -330,6 +330,37 @@
   box-shadow: 0 0 12px var(--swatch);
 }
 
+/* Higher specificity than `.hero > :not(.heroStage)` so this floats at a
+   fixed corner instead of joining the centered flex flow. */
+.hero > button.resonanceToggle {
+  position: absolute;
+  top: clamp(2rem, 8vh, 5rem);
+  right: clamp(1rem, 4vw, 2.2rem);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--soft);
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hero > button.resonanceToggle:hover,
+.hero > button.resonanceToggle:focus-visible {
+  color: var(--mint);
+  border-color: var(--line-bright);
+  background: rgba(134, 239, 172, 0.1);
+  transform: scale(1.06);
+}
+
 .heroIn {
   opacity: 0;
   animation: riseIn 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
@@ -1136,6 +1167,11 @@
 
   .displayPedestalModel {
     display: none;
+  }
+
+  .hero > button.resonanceToggle {
+    top: 1rem;
+    right: 1rem;
   }
 
   .projectGrid {

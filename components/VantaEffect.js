@@ -4,6 +4,7 @@ import {
   Scene,
   PlaneGeometry,
   Vector2,
+  Color,
   ShaderMaterial,
   Mesh,
   WebGLRenderer,
@@ -32,6 +33,8 @@ const fragmentShader = `
   precision mediump float;
   uniform vec2 resolution;
   uniform float time;
+  uniform float resonance;
+  uniform vec3 resonanceColor;
 
   void main(void) {
     vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
@@ -59,7 +62,13 @@ const fragmentShader = `
     float intensity = clamp(rings * 0.72 + pulse * 0.35 + halo * 0.45, 0.0, 1.2);
     vec3 color = mix(deepBlue, sweep2, intensity) * fade + sweep2 * 0.06;
 
-    gl_FragColor = vec4(color, 1.0);
+    // A brief, decaying response to the pedestal's resonance tone: an outward
+    // ring timed to the sound's own envelope, tinted with the swapped
+    // model's color, not a new ambient effect.
+    float resonanceRing = smoothstep(0.09, 0.0, abs(r - (1.0 - resonance) * 1.1));
+    color += resonanceColor * resonanceRing * resonance * 0.6;
+
+    gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
   }
 `;
 
@@ -83,6 +92,8 @@ const VantaEffect = ({ className, ...props }) => {
     const uniforms = {
       time: { value: 1.0 },
       resolution: { value: new Vector2() },
+      resonance: { value: 0 },
+      resonanceColor: { value: new Color(0xffffff) },
     };
 
     const material = new ShaderMaterial({
@@ -173,14 +184,42 @@ const VantaEffect = ({ className, ...props }) => {
     onWindowResize();
     window.addEventListener("resize", debouncedResize);
 
+    // Triggered by DisplayPedestal on each model swap: a brief, decaying
+    // visual echo of that swap's resonance tone, tinted with the model's
+    // own color. Fires under reduced motion too (a short response to the
+    // user's own action, not ambient motion) but decays in under a second.
+    const handleResonance = (event) => {
+      uniforms.resonance.value = 1;
+      const color = event?.detail?.color;
+      if (color) {
+        uniforms.resonanceColor.value.set(color);
+      }
+      if (isReduced) {
+        safeRender();
+      }
+    };
+
+    window.addEventListener("vanta:resonance", handleResonance);
+
     const animate = () => {
       if (hasRenderError) {
         return;
       }
 
       animationId = window.requestAnimationFrame(animate);
+
+      const hasResonance = uniforms.resonance.value > 0.001;
+      if (hasResonance) {
+        uniforms.resonance.value *= 0.9;
+        if (uniforms.resonance.value <= 0.001) {
+          uniforms.resonance.value = 0;
+        }
+      }
+
       if (!isReduced) {
         uniforms.time.value += 0.05;
+        safeRender();
+      } else if (hasResonance) {
         safeRender();
       }
     };
@@ -190,6 +229,7 @@ const VantaEffect = ({ className, ...props }) => {
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
+      window.removeEventListener("vanta:resonance", handleResonance);
 
       if (mediaQuery?.removeEventListener) {
         mediaQuery.removeEventListener("change", handleMotionChange);
