@@ -294,6 +294,16 @@ export default function Home() {
                 <SpotlightCard
                   className={styles.projectCard}
                   style={{ "--accent": project.accent }}
+                  onMouseEnter={() => {
+                    // Send this medium's own color into the persistent
+                    // background shader, reusing the resonance ripple built
+                    // for the hero pedestal's model swap.
+                    window.dispatchEvent(
+                      new CustomEvent("vanta:resonance", {
+                        detail: { color: `rgb(${project.accent})` },
+                      })
+                    );
+                  }}
                 >
                   <span className={styles.projectGhost} aria-hidden="true">
                     {project.number}
