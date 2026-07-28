@@ -10,8 +10,11 @@ export default function NotFound() {
         <title>Off Signal | Vers3Dynamics</title>
         <meta name="robots" content="noindex" />
       </Head>
+      <a href="#main-content" className={homeStyles.skipLink}>
+        Skip to content
+      </a>
       <Navbar />
-      <main className={styles.notFound}>
+      <main id="main-content" tabIndex={-1} className={styles.notFound}>
         <p className={styles.kicker}>Off signal</p>
         <h1 className={styles.title}>404</h1>
         <p className={styles.text}>

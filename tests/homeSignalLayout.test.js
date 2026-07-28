@@ -96,6 +96,8 @@ test(
       .forEach((copy) => assert.ok(html.includes(copy), `missing rendered copy: ${copy}`));
 
     assert.ok(html.includes('aria-label="Signal channels"'));
+    assert.match(html, /<section[^>]*id="top"[^>]*aria-labelledby="signal-title"/);
+    assert.doesNotMatch(html, /<div[^>]*id="top"/);
     assert.equal((html.match(/data-signal-channel="/g) ?? []).length, 5);
     ["books", "apps", "art", "frequency", "music"].forEach((id) =>
       assert.ok(html.includes(`data-signal-channel="${id}"`))
@@ -140,6 +142,8 @@ test(
     const notFoundMain = notFoundHtml.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
 
     assert.equal(notFoundResponse.status, 404);
+    assert.ok(notFoundHtml.includes('href="#main-content"'));
+    assert.match(notFoundMain, /<main[^>]*id="main-content"/);
     assert.ok(notFoundMain.includes(">404<"));
     assert.ok(notFoundMain.includes("Back to the signal"));
     assert.equal((notFoundMain.match(/<a\b/g) ?? []).length, 1);

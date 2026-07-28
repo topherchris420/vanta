@@ -211,7 +211,7 @@ export default function Home() {
   }, [effectiveChannelId, playFrequency, stopFrequency]);
 
   return (
-    <div className={styles.container} id="top">
+    <div className={styles.container}>
       <Head>
         <title>Vers3Dynamics | Christopher</title>
         <link rel="icon" href="/Logo.jpg" />
@@ -251,7 +251,11 @@ export default function Home() {
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
 
       <main id="main-content" tabIndex={-1} className={styles.main}>
-        <section className={styles.signalHero} aria-labelledby="signal-title">
+        <section
+          id="top"
+          className={styles.signalHero}
+          aria-labelledby="signal-title"
+        >
           <div className={styles.heroCopy}>
             <p className={styles.instrumentLabel}>
               Christopher Woodyard / signal architect
