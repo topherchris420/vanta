@@ -1,15 +1,15 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import Image from "next/image";
-import ScrollToTop from "../components/ScrollToTop";
+import Head from "next/head";
 import CustomCursor from "../components/CustomCursor";
+import FrequencyRail from "../components/FrequencyRail";
 import Navbar from "../components/Navbar";
-import ScrollProgress from "../components/ScrollProgress";
+import ProjectChannel from "../components/ProjectChannel";
 import Reveal from "../components/Reveal";
-import Marquee from "../components/Marquee";
-import SpotlightCard from "../components/SpotlightCard";
+import ScrollToTop from "../components/ScrollToTop";
+import useSignalAudio from "../hooks/useSignalAudio";
 import signalExperience from "../lib/signalExperience";
+import styles from "../styles/Home.module.css";
 
 const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
   ssr: false,
@@ -19,16 +19,6 @@ const DisplayPedestalNoSSR = dynamic(
   () => import("../components/DisplayPedestal"),
   { ssr: false }
 );
-
-const marqueeItems = [
-  "Sound-driven wellness",
-  "Experimental art",
-  "AI / ML prototypes",
-  "Poetry & writing",
-  "Spatial computing",
-  "Auditory geometry",
-  "Consciousness engines",
-];
 
 const projectSections = [
   {
@@ -44,8 +34,7 @@ const projectSections = [
     primaryHref: "https://a.co/d/078d1kaa",
     secondaryLabel: "Intro to Quantum",
     secondaryHref: "https://woodyard.streamlit.app/",
-    accent: "251, 191, 36",
-    frequency: 261.63, // C4 - warm, grounding
+    frequency: 261.63,
   },
   {
     id: "apps",
@@ -57,11 +46,11 @@ const projectSections = [
     description:
       "Sound-driven AI wellness tools and prototypes focused on mindful interaction.",
     primaryLabel: "Explore AI/ML Projects",
-    primaryHref: "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
+    primaryHref:
+      "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
     secondaryLabel: "James Library",
     secondaryHref: "https://github.com/topherchris420/james_library",
-    accent: "103, 232, 249",
-    frequency: 329.63, // E4 - bright, uplifting
+    frequency: 329.63,
   },
   {
     id: "art",
@@ -77,8 +66,7 @@ const projectSections = [
     secondaryLabel: "See MADS Gallery Feature",
     secondaryHref:
       "https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/",
-    accent: "192, 132, 252",
-    frequency: 392.00, // G4 - creative, harmonic
+    frequency: 392,
   },
   {
     id: "frequency",
@@ -94,8 +82,7 @@ const projectSections = [
     secondaryLabel: "Read Inspiration Source",
     secondaryHref:
       "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7",
-    accent: "249, 168, 212",
-    frequency: 523.25, // C5 - high, expansive
+    frequency: 523.25,
   },
   {
     id: "music",
@@ -111,72 +98,33 @@ const projectSections = [
     secondaryLabel: "Play Featured Track",
     secondaryHref:
       "https://chriswoodyard.bandcamp.com/track/creators-innovators",
-    accent: "134, 239, 172",
-    frequency: 196.00, // G3 - deep, resonant
+    frequency: 196,
   },
 ];
 
-const { validateChannels } = signalExperience;
+const {
+  createResonanceDetail,
+  resolvePreviewChannel,
+  selectActiveChannel,
+  validateChannels,
+} = signalExperience;
 
 validateChannels(projectSections);
-
-// Web Audio synthesizer for hover sounds
-let audioContext = null;
-let activeOscillator = null;
-let gainNode = null;
-
-const initAudio = () => {
-  if (!audioContext) {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  return audioContext;
-};
-
-const stopFrequency = () => {
-  if (activeOscillator && gainNode) {
-    const ctx = initAudio();
-    // Soft release
-    gainNode.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.2);
-    const osc = activeOscillator;
-    activeOscillator = null;
-    setTimeout(() => osc.stop(), 250);
-  }
-};
-
-const playFrequency = (freq) => {
-  const ctx = initAudio();
-  if (ctx.state === 'suspended') ctx.resume();
-
-  // Stop previous sound
-  stopFrequency();
-
-  // Create oscillator
-  activeOscillator = ctx.createOscillator();
-  gainNode = ctx.createGain();
-
-  activeOscillator.type = 'sine';
-  activeOscillator.frequency.setValueAtTime(freq, ctx.currentTime);
-
-  // Soft attack
-  gainNode.gain.setValueAtTime(0, ctx.currentTime);
-  gainNode.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.1);
-
-  activeOscillator.connect(gainNode);
-  gainNode.connect(ctx.destination);
-  activeOscillator.start();
-};
 
 const elsewhereLinks = [
   { label: "Music", href: "https://chriswoodyard.bandcamp.com/" },
   { label: "Open Source", href: "https://huggingface.co/ciaochris" },
   {
     label: "Papers",
-    href: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    href:
+      "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
   },
   { label: "Latest build", href: "https://arpa-h.vercel.app/" },
 ];
 
 const siteUrl = "https://mitpress.vercel.app";
+const siteDescription =
+  "Christopher Woodyard builds sound-driven wellness, consciousness engines, immersive art, writing, and music through Vers3Dynamics.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -199,35 +147,94 @@ const personJsonLd = {
 };
 
 export default function Home() {
+  const [scrollChannelId, setScrollChannelId] = useState("hero");
+  const [previewChannelId, setPreviewChannelId] = useState(null);
+  const effectiveChannelId = resolvePreviewChannel({
+    scrollChannel: scrollChannelId,
+    previewChannel: previewChannelId,
+  });
+  const {
+    soundEnabled,
+    soundAvailable,
+    enableSound,
+    toggleSound,
+    playFrequency,
+    stopFrequency,
+  } = useSignalAudio();
+
+  useEffect(() => {
+    const nodes = Array.from(
+      document.querySelectorAll("[data-signal-channel]")
+    );
+    if (!nodes.length || !("IntersectionObserver" in window)) {
+      return undefined;
+    }
+
+    const visible = new Map();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          visible.set(entry.target.dataset.signalChannel, {
+            id: entry.target.dataset.signalChannel,
+            isIntersecting: entry.isIntersecting,
+            intersectionRatio: entry.intersectionRatio,
+            top: entry.boundingClientRect.top,
+          });
+        });
+        setScrollChannelId((previous) =>
+          selectActiveChannel(Array.from(visible.values()), previous)
+        );
+      },
+      {
+        rootMargin: "-34% 0px -44% 0px",
+        threshold: [0.2, 0.35, 0.5, 0.65],
+      }
+    );
+
+    nodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const channel = projectSections.find(
+      ({ id }) => id === effectiveChannelId
+    );
+    if (!channel) return undefined;
+
+    window.dispatchEvent(
+      new CustomEvent("vanta:resonance", {
+        detail: createResonanceDetail(channel),
+      })
+    );
+    playFrequency(channel.frequency);
+    return stopFrequency;
+  }, [effectiveChannelId, playFrequency, stopFrequency]);
+
   return (
     <div className={styles.container} id="top">
       <Head>
         <title>Vers3Dynamics | Christopher</title>
         <link rel="icon" href="/Logo.jpg" />
-        <meta
-          name="description"
-          content="Personal website of Christopher, founder of Vers3Dynamics"
-        />
+        <meta name="description" content={siteDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Christopher Woodyard" />
         <link rel="canonical" href={`${siteUrl}/`} />
 
-        {/* OpenGraph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Vers3Dynamics" />
         <meta property="og:url" content={`${siteUrl}/`} />
         <meta property="og:title" content="Vers3Dynamics | Christopher" />
-        <meta property="og:description" content="Personal website of Christopher, founder of Vers3Dynamics. Exploring sound-driven wellness apps and experimental art." />
+        <meta property="og:description" content={siteDescription} />
         <meta property="og:image" content={`${siteUrl}/surreal-sun.png`} />
-        <meta property="og:image:width" content="600" />
-        <meta property="og:image:height" content="800" />
-        <meta property="og:image:alt" content="Surreal sun artwork by Vers3Dynamics" />
+        <meta
+          property="og:image:alt"
+          content="Surreal sun artwork by Vers3Dynamics"
+        />
 
-        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={`${siteUrl}/`} />
         <meta name="twitter:title" content="Vers3Dynamics | Christopher" />
-        <meta name="twitter:description" content="Personal website of Christopher, founder of Vers3Dynamics. Exploring sound-driven wellness apps and experimental art." />
+        <meta name="twitter:description" content={siteDescription} />
         <meta name="twitter:image" content={`${siteUrl}/surreal-sun.png`} />
 
         <script
@@ -240,13 +247,64 @@ export default function Home() {
         Skip to content
       </a>
       <CustomCursor />
-      <ScrollProgress />
       <Navbar />
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
-      <div className={styles.posterBackground} aria-hidden="true" />
 
       <main id="main-content" tabIndex={-1} className={styles.main}>
-        <section className={styles.hero} aria-label="Introduction">
+        <section className={styles.signalHero} aria-labelledby="signal-title">
+          <div className={styles.heroCopy}>
+            <p className={styles.instrumentLabel}>
+              Christopher Woodyard / signal architect
+            </p>
+            <h1 id="signal-title" className={styles.signalTitle}>
+              Five mediums.<span>One signal.</span>
+            </h1>
+            <p className={styles.signalSummary}>
+              Sound-driven wellness, consciousness engines, immersive art,
+              writing, and music built as one connected practice.
+            </p>
+            <div className={styles.heroActions}>
+              <button
+                type="button"
+                className={styles.signalPrimary}
+                onClick={async () => {
+                  await enableSound();
+                  document.querySelector("#work")?.scrollIntoView();
+                }}
+              >
+                Enter the instrument
+              </button>
+              <a href="#work" className={styles.signalTextLink}>
+                Explore without sound
+              </a>
+            </div>
+            <nav
+              className={styles.identityLinks}
+              aria-label="Christopher's work"
+            >
+              <a
+                href="https://vers3dynamics.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Vers3Dynamics
+              </a>
+              <a
+                href="https://rainlabteam.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                R.A.I.N. Lab
+              </a>
+              <a
+                href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Papers
+              </a>
+            </nav>
+          </div>
           <DisplayPedestalNoSSR
             className={styles.heroStage}
             onResonance={(detail) =>
@@ -255,222 +313,76 @@ export default function Home() {
               )
             }
           />
-          <p className={`${styles.statusPill} ${styles.heroIn}`} style={{ "--stagger": 0 }}>
-            <span className={styles.statusDot} aria-hidden="true" />
-            Open to collaborations
-          </p>
-          <p className={`${styles.kicker} ${styles.heroIn}`} style={{ "--stagger": 1 }}>
-            Wellness tech • Founder • Writer
-          </p>
-          <h1 className={styles.title}>
-            <span className={`${styles.titleLine} ${styles.heroIn}`} style={{ "--stagger": 2 }}>
-              Hi, I&apos;m Christopher.
-            </span>
-            <span
-              className={`${styles.titleLine} ${styles.titleGradient} ${styles.heroIn}`}
-              style={{ "--stagger": 3 }}
-            >
-              I build experiences you can feel.
-            </span>
-          </h1>
-          <p className={`${styles.subtitle} ${styles.heroIn}`} style={{ "--stagger": 4 }}>
-            Sound-driven wellness apps, consciousness engines, and experimental
-            art — made at Vers3Dynamics.
-          </p>
-          <div className={`${styles.heroActions} ${styles.heroIn}`} style={{ "--stagger": 5 }}>
-            <a href="#work" className={`${styles.ctaButton} ${styles.primaryCta}`}>
-              Explore the work
-              <span
-                className={`${styles.ctaArrow} ${styles.ctaArrowDown}`}
-                aria-hidden="true"
-              >
-                ↓
-              </span>
-            </a>
-            <a
-              href="mailto:christopher@vers3dynamics.com"
-              className={`${styles.ctaButton} ${styles.secondaryCta}`}
-            >
-              Work with me
-              <span className={styles.ctaArrow} aria-hidden="true">↗</span>
-            </a>
-          </div>
-          <a
-            href="#about"
-            className={`${styles.scrollCue} ${styles.heroIn}`}
-            style={{ "--stagger": 7 }}
-            aria-label="Scroll to the about section"
-          >
-            <span className={styles.scrollCueLine} aria-hidden="true" />
-            Scroll
-          </a>
         </section>
 
-        <Marquee items={marqueeItems} />
+        <FrequencyRail
+          channels={projectSections}
+          activeId={effectiveChannelId}
+          onPreview={setPreviewChannelId}
+          onPreviewEnd={() => setPreviewChannelId(null)}
+        />
+        <button
+          type="button"
+          className={styles.soundControl}
+          onClick={toggleSound}
+          aria-pressed={soundEnabled}
+          disabled={!soundAvailable}
+        >
+          {soundAvailable
+            ? soundEnabled
+              ? "Sound on"
+              : "Sound off"
+            : "Sound unavailable"}
+        </button>
 
-        <Reveal as="section" id="about" className={styles.about} aria-label="About">
-          <div className={styles.sectionHeader}>
-            <p className={styles.sectionKicker}>01 · About</p>
-            <h2 className={styles.sectionTitle}>
-              A studio of one, tuned to many frequencies.
-            </h2>
-          </div>
-          <div className={styles.aboutGrid}>
-            <div className={styles.aboutText}>
-              <p className={styles.bio}>
-                Founder of{" "}
-                <a href="https://vers3dynamics.com/" className={styles.link} target="_blank" rel="noopener noreferrer">
-                  versᗱdynamics
-                </a>
-                , the Recursive Architecture of Intelligent Nexus (R.A.I.N.
-                Lab), and{" "}
-                <a href="https://rainlabteam.vercel.app/" className={styles.link} target="_blank" rel="noopener noreferrer">
-                  Resonance Architect
-                </a>
-                .
-              </p>
-              <p className={styles.bioSecondary}>
-                I build sound-driven wellness apps and experimental art —
-                projects that sit where software, sound, and ritual overlap.
-              </p>
+        <section
+          id="work"
+          className={styles.signalChannels}
+          aria-label="Selected work"
+        >
+          {projectSections.map((project, index) => (
+            <ProjectChannel
+              key={project.id}
+              project={project}
+              index={index}
+              active={effectiveChannelId === project.id}
+              onPreview={setPreviewChannelId}
+              onPreviewEnd={() => setPreviewChannelId(null)}
+            />
+          ))}
+        </section>
+
+        <Reveal
+          as="footer"
+          id="contact"
+          className={styles.signalFooter}
+          aria-label="Contact"
+        >
+          <p className={styles.instrumentLabel}>
+            Channel open / collaboration
+          </p>
+          <h2>Make something that resonates.</h2>
+          <a
+            href="mailto:christopher@vers3dynamics.com"
+            className={styles.signalPrimary}
+          >
+            christopher@vers3dynamics.com
+          </a>
+          <nav className={styles.footerLinks} aria-label="Elsewhere">
+            {elsewhereLinks.map((link) => (
               <a
-                href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976"
-                className={`${styles.ctaButton} ${styles.secondaryCta}`}
+                key={link.label}
+                href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                View resume
-                <span className={styles.ctaArrow} aria-hidden="true">↗</span>
+                {link.label}
               </a>
-            </div>
-            <div className={styles.aboutImageFrame}>
-              <div className={styles.aboutImageInner}>
-                <Image
-                  src="/surreal-sun.png"
-                  alt="Surreal sun artwork by Vers3Dynamics"
-                  width={600}
-                  height={800}
-                  className={styles.featureImage}
-                  sizes="(max-width: 860px) 100vw, 440px"
-                />
-                <div className={styles.imageOverlay}>
-                  <p className={styles.imageCaption}>Welcome</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <section id="work" className={styles.projects} aria-label="Selected work">
-          <Reveal className={styles.sectionHeader}>
-            <p className={styles.sectionKicker}>02 · Selected work</p>
-            <h2 className={styles.sectionTitle}>Five mediums, one signal.</h2>
-          </Reveal>
-
-          <div className={styles.projectGrid}>
-            {projectSections.map((project, index) => (
-              <Reveal
-                key={project.title}
-                delay={(index % 2) * 110}
-                className={styles.projectCell}
-              >
-                <SpotlightCard
-                  className={styles.projectCard}
-                  style={{ "--accent": project.accent }}
-                  onMouseEnter={() => {
-                    // Send this medium's own color into the persistent
-                    // background shader, reusing the resonance ripple built
-                    // for the hero pedestal's model swap.
-                    window.dispatchEvent(
-                      new CustomEvent("vanta:resonance", {
-                        detail: { color: `rgb(${project.accent})` },
-                      })
-                    );
-                    // Play this project's frequency
-                    if (project.frequency) {
-                      playFrequency(project.frequency);
-                    }
-                  }}
-                  onMouseLeave={stopFrequency}
-                >
-                  <span className={styles.projectGhost} aria-hidden="true">
-                    {project.number}
-                  </span>
-                  <span className={styles.projectChip}>{project.number}</span>
-                  <h3 className={styles.projectTitle}>{project.title}</h3>
-                  <p className={styles.projectIntro}>{project.description}</p>
-                  <div className={styles.projectLinks}>
-                    <a
-                      href={project.primaryHref}
-                      className={styles.projectLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {project.primaryLabel}
-                      <span className={styles.linkArrow} aria-hidden="true">↗</span>
-                    </a>
-                    <a
-                      href={project.secondaryHref}
-                      className={styles.projectLinkSecondary}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {project.secondaryLabel}
-                    </a>
-                  </div>
-                </SpotlightCard>
-              </Reveal>
             ))}
-          </div>
-
-          <Reveal className={styles.gifContainer}>
-            <span className={styles.gifLabel}>Off the grid · Pixel playground</span>
-            <iframe
-              src="https://giphy.com/embed/jnWMCLBfJb7CK4D8iY"
-              className={styles.giphyEmbed}
-              title="Knicks in 5"
-              frameBorder="0"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-          </Reveal>
-        </section>
-
-        <Reveal as="footer" id="contact" className={styles.footer} aria-label="Contact">
-          <p className={styles.sectionKicker}>03 · Contact</p>
-          <h2 className={styles.footerTitle}>
-            Let&apos;s make something{" "}
-            <span className={styles.titleGradient}>resonant</span>.
-          </h2>
-          <p className={styles.footerText}>
-            Collaborations, commissions, or curious questions — my inbox is
-            open.
+          </nav>
+          <p>
+            {"\u00a9"} {new Date().getFullYear()} Vers3Dynamics / R.A.I.N. Lab
           </p>
-          <a
-            href="mailto:christopher@vers3dynamics.com"
-            className={`${styles.ctaButton} ${styles.primaryCta} ${styles.footerCta}`}
-          >
-            christopher@vers3dynamics.com
-            <span className={styles.ctaArrow} aria-hidden="true">↗</span>
-          </a>
-          <div className={styles.footerMeta}>
-            <nav className={styles.footerLinks} aria-label="Elsewhere">
-              {elsewhereLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className={styles.footerLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-            <p className={styles.copyright}>
-              © {new Date().getFullYear()} Vers3Dynamics · Crafted by Christopher Woodyard; the R.A.I.N Lab
-            </p>
-          </div>
         </Reveal>
       </main>
 

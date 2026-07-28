@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 const navLinks = [
-  { label: "About", href: "#about" },
+  { label: "Signal", href: "#top" },
   { label: "Work", href: "#work" },
   { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
+  const { pathname } = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [activeHref, setActiveHref] = useState("");
+  const destination = (hash) => (pathname === "/" ? hash : "/" + hash);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -21,7 +24,7 @@ const Navbar = () => {
   // Highlight the nav link whose section currently crosses the middle band
   // of the viewport; no link is highlighted while the hero is in view.
   useEffect(() => {
-    if (!("IntersectionObserver" in window)) {
+    if (pathname !== "/" || !("IntersectionObserver" in window)) {
       return;
     }
 
@@ -47,18 +50,22 @@ const Navbar = () => {
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <header className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
-      <a href="#top" className={styles.brand} aria-label="Back to top">
+      <a
+        href={destination("#top")}
+        className={styles.brand}
+        aria-label="Back to top"
+      >
         Vers<span className={styles.brandMark}>3</span>Dynamics
       </a>
       <nav className={styles.navLinks} aria-label="Primary">
         {navLinks.map((link) => (
           <a
             key={link.href}
-            href={link.href}
+            href={destination(link.href)}
             className={`${styles.navLink} ${
               activeHref === link.href ? styles.navLinkActive : ""
             }`.trim()}
