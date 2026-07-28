@@ -4,61 +4,98 @@
 
 ## Platform
 
-web
+Web, built with the Next.js Pages Router.
 
 ## Users
 
-Primary: press and curators discovering and vetting Christopher Woodyard's art, writing, and music for coverage or exhibition. Secondary (evidenced by the site's own CTAs but not confirmed as primary): collaborators and clients considering commissions or partnership work.
+Primary: press, curators, and collaborators evaluating Christopher Woodyard's art, writing, software, and music. Secondary: clients considering commissions or partnership work.
 
 ## Product Purpose
 
-A single-page personal portfolio for Christopher Woodyard, founder of Vers3Dynamics / R.A.I.N. Lab, that aggregates his output across five mediums — books, sound-driven wellness apps, immersive/spatial art, music, and consciousness-engine writing — into one coherent identity. Success is a press/curator visitor grasping the range and depth of the work within a short skim and finding a real, citable source (book link, gallery feature, track, paper) for whichever medium they came for.
+Vanta is Christopher Woodyard's five-channel Resonant Instrument. It presents Books, Apps, Art, Frequency, and Music as one connected practice, then links every claim to a real external artifact.
 
-## Positioning
+## Experience Contract
 
-The differentiator is the range itself, held coherently under one identity: one person working across five mediums (books, apps, art, music, frequency/consciousness writing), not a specialist portfolio in any single discipline. A neighboring site could showcase any one of these mediums; it could not truthfully claim the same coherent multi-medium range under one name.
+The page runs in this sequence:
 
-## Operating Context
+1. A hero identifies Christopher and offers two explicit paths: Enter the instrument or Explore without sound.
+2. A six-stop rail links the hero plus five project channels.
+3. Books, Apps, Art, Frequency, and Music render as semantic sections with two evidence links each.
+4. One active-channel id conducts rail state, channel emphasis, visual resonance, and optional sound.
+5. Pointer and keyboard previews temporarily override the scroll-selected channel, then restore it on exit.
+6. A single collaboration footer preserves contact and elsewhere destinations.
 
-- Single-page scroll: hero → about → five project mediums (Books, Apps, Art, Frequency, Music) → contact footer.
-- Every project medium links out to third-party evidence: Amazon (poetry book), a Streamlit app, a Hugging Face Space, GitHub repos, Oncyber and MADS gallery pages, a dappling.network experience, Bandcamp, and an SSRN author page.
-- An automated agent ("Jules," via Google) has previously opened PRs against this repo for accessibility and image-loading performance; three are currently open and stale (`CONFLICTING` against `main`) because a subsequent redesign/SEO pass superseded the lines they touched.
-- Canonical `siteUrl` in code (`https://mitpress.vercel.app`) is confirmed intentional — not a bug, leave as-is.
+The canonical content source is `projectSections` in `pages/index.js`. Channel ids, labels, descriptions, frequencies, visuals, and evidence URLs must not be duplicated into a second content model.
 
-## Capabilities and Constraints
+## Sound Contract
 
-- Next.js (Pages Router) + `three.js` / `vanta.js` for a WebGL background effect (`components/VantaEffect.js`), dynamically imported with `ssr: false`.
-- Content is not CMS-driven — all copy and links live in data arrays inside `pages/index.js` (`projectSections`, `marqueeItems`, `elsewhereLinks`).
-- Prior automated review (`.Jules/bolt.md`, `.Jules/palette.md`) recorded two durable constraints future work must keep honoring:
-  - WebGL animation loops must check `prefers-reduced-motion` AND skip the `renderer.render()` call when reduced motion is active — pausing time state alone is insufficient.
-  - Don't double-load Three.js via a CDN script tag when it's already a bundled dependency.
-- Node 22.x engine; package manager is pnpm (`pnpm-lock.yaml`).
+- Every reload begins silent.
+- No `AudioContext` is created until the visitor selects Enter the instrument or the sound control.
+- Disabled sound never blocks navigation, project evidence, WebGL visuals, or channel previews.
+- The sound control reflects Sound off, Sound on, or Sound unavailable.
+- Frequency changes use a short release so project transitions do not leave oscillators running.
 
-## Brand Commitments
+## Runtime Contract
 
-- Name: "Vers3Dynamics" (stylized in body copy as "versᗱdynamics"). Also: "R.A.I.N. Lab" (Recursive Architecture of Intelligent Nexus), "Resonance Architect," and "Auditory Geometry" (music alias).
-- Contact: christopher@vers3dynamics.com.
-- Canonical domain: `https://mitpress.vercel.app` (confirmed intentional, see Operating Context).
+- Desktop with WebGL, a visible document, and normal motion uses continuous rendering.
+- Mobile and reduced-motion modes render static WebGL frames on demand.
+- Hidden documents pause background, pedestal, and cursor work.
+- The pedestal pauses outside its viewport and resumes when it returns.
+- Device pixel ratio is capped at 2 on desktop and 1.5 on mobile.
+- WebGL construction or render failure switches the affected surface to a composed CSS fallback.
+- The custom cursor runs only for visible fine-pointer documents without reduced motion.
+- Visual resonance remains available even when sound is disabled or unavailable.
 
-## Evidence on Hand
+## Visual System
 
-- Poetry/coloring book (Amazon link), "Intro to Quantum" Streamlit app.
-- `vers3dynamics-cymatics` Hugging Face Space, `james_library` GitHub repo.
-- Oncyber gallery, MADS Gallery artist feature (named credit: Christopher Woodyard).
-- "Frequency" consciousness-engine experience (dappling.network) with a linked inspiration source.
-- Bandcamp discography under Auditory Geometry.
-- SSRN author page (papers).
-- No testimonials, press quotes, or third-party endorsements currently exist on the site — future work must not fabricate any.
+The interface is a dark, sharp-edged signal instrument, not a card-grid portfolio.
 
-## Product Principles
+- Ink: `#060b09`
+- Surface: `#0b1210`
+- Paper: `#edf9f4`
+- Muted: `#a5b6ae`
+- Signal mint: `#8cf0c6`
+- Calibration amber: `#e4b65c`
+- Display type: Syne
+- Body type: Space Grotesk
+- Numeric and signal metadata: the system monospace stack
 
-1. Coherence over category — every change should reinforce "one person, five mediums," not fragment the site into disconnected verticals.
-2. Evidence-first credibility — every claim links out to a real, checkable artifact; never assert without a destination a press/curator visitor can click through to.
-3. Press/curator legibility — a stranger skimming for ~30 seconds should walk away able to describe what Christopher does and name a source.
-4. WebGL as atmosphere, not obstacle — the Vanta background sets mood but must never compromise reduced-motion behavior, performance, or accessibility.
-5. Single source of truth in code — content lives in `pages/index.js` data arrays; avoid hidden or duplicated copy elsewhere.
+The same mint/amber language applies to CSS artifacts, the Vanta shader, pedestal lighting, and pedestal models. Motion communicates active state or user feedback and must collapse under `prefers-reduced-motion`.
 
-## Accessibility & Inclusion
+## Evidence Set
 
-- `prefers-reduced-motion` must be honored in the WebGL animation loop, including skipping the render call, not just pausing time updates (see Capabilities and Constraints).
-- Link purpose clarity (`aria-label` on ambiguous link text) and `lang="en"` on `<html>` are established requirements from a prior automated accessibility review (open PR #17 covers this but is stale/unmerged — treat its intent as a requirement, not its unmerged diff as done).
+These project destinations are product data and must remain preserved:
+
+- Books: https://a.co/d/078d1kaa
+- Books: https://woodyard.streamlit.app/
+- Apps: https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics
+- Apps: https://github.com/topherchris420/james_library
+- Art: https://oncyber.io/stanfordgsb
+- Art: https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/
+- Frequency: https://woodyard.dappling.network
+- Frequency: https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7
+- Music: https://chriswoodyard.bandcamp.com/
+- Music: https://chriswoodyard.bandcamp.com/track/creators-innovators
+
+The canonical URL remains `https://mitpress.vercel.app/`. Contact remains `christopher@vers3dynamics.com`.
+
+No testimonials, press quotes, endorsements, or performance claims are currently evidenced. Do not fabricate them.
+
+## Accessibility
+
+- Preserve the skip link, visible focus treatment, semantic headings, project section labels, and `lang="en"`.
+- All mouse previews must also work with keyboard focus.
+- Reduced motion stops continuous animation rather than merely freezing its clock.
+- The mobile page must not create horizontal document overflow.
+- The 404 page provides one clear recovery destination to `/`.
+
+## Maintenance
+
+Run before shipping:
+
+```bash
+npm test
+npm run build
+```
+
+The test suite includes production policy tests and rendered HTTP integration tests. It must not infer behavior from source-code grep assertions.
