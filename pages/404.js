@@ -12,26 +12,15 @@ export default function NotFound() {
       </Head>
       <Navbar />
       <main className={styles.notFound}>
-        <span className={styles.ghostCode} aria-hidden="true">
-          404
-        </span>
         <p className={styles.kicker}>Off signal</p>
-        <h1 className={styles.title}>Lost the signal.</h1>
+        <h1 className={styles.title}>404</h1>
         <p className={styles.text}>
-          The page you&apos;re looking for drifted off frequency. Everything
-          else is still resonating.
+          The requested page is outside this frequency. Return to the active
+          signal.
         </p>
-        <div className={styles.actions}>
-          <a href="/" className={`${styles.ctaButton} ${styles.primaryCta}`}>
-            Back to the signal
-          </a>
-          <a
-            href="/#work"
-            className={`${styles.ctaButton} ${styles.secondaryCta}`}
-          >
-            See the work
-          </a>
-        </div>
+        <a href="/" className={styles.recoveryLink}>
+          Back to the signal
+        </a>
       </main>
     </div>
   );

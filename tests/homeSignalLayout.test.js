@@ -132,5 +132,18 @@ test(
     assert.ok(html.includes('aria-pressed="false"'));
     assert.ok(html.includes("Sound off"));
     assert.ok(!html.includes("Sound on"));
+
+    const notFoundResponse = await fetch(
+      `http://${HOST}:${port}/missing-signal-test-route`
+    );
+    const notFoundHtml = await notFoundResponse.text();
+    const notFoundMain = notFoundHtml.match(/<main[\s\S]*?<\/main>/)?.[0] ?? "";
+
+    assert.equal(notFoundResponse.status, 404);
+    assert.ok(notFoundMain.includes(">404<"));
+    assert.ok(notFoundMain.includes("Back to the signal"));
+    assert.equal((notFoundMain.match(/<a\b/g) ?? []).length, 1);
+    assert.ok(notFoundMain.includes('href="/"'));
+    assert.ok(!notFoundMain.includes('href="/#work"'));
   }
 );

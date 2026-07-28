@@ -34,7 +34,7 @@ const makeConcreteTexture = () => {
   canvas.height = 256;
   const context = canvas.getContext("2d");
 
-  context.fillStyle = "#10131a";
+  context.fillStyle = "#0b1210";
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   for (let i = 0; i < 1400; i += 1) {
@@ -188,14 +188,14 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const sceneRoot = new Group();
     scene.add(sceneRoot);
 
-    scene.add(new AmbientLight(0x9fb7ff, 0.85));
-    const cyanLight = new PointLight(0x67e8f9, 4.2, 8);
+    scene.add(new AmbientLight(0xedf9f4, 0.85));
+    const cyanLight = new PointLight(0x8cf0c6, 4.2, 8);
     cyanLight.position.set(-1.9, 2.1, 1.7);
     scene.add(cyanLight);
-    const mintLight = new PointLight(0x86efac, 3.5, 7);
+    const mintLight = new PointLight(0xe4b65c, 3.5, 7);
     mintLight.position.set(1.9, 1.8, 2.1);
     scene.add(mintLight);
-    const violetLight = new PointLight(0xc084fc, 2.8, 8);
+    const violetLight = new PointLight(0xa5b6ae, 2.8, 8);
     violetLight.position.set(0, 2.7, -1.8);
     scene.add(violetLight);
 
@@ -203,7 +203,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const floor = new Mesh(
       new PlaneGeometry(10, 10),
       new MeshStandardMaterial({
-        color: 0x171a20,
+        color: 0x0b1210,
         metalness: 0.38,
         roughness: 0.24,
         map: floorTexture,
@@ -216,7 +216,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const reflection = new Mesh(
       new PlaneGeometry(3.2, 1.45),
       new MeshBasicMaterial({
-        color: 0x67e8f9,
+        color: 0x8cf0c6,
         transparent: true,
         opacity: 0.1,
         depthWrite: false,
@@ -234,7 +234,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const base = new Mesh(
       baseGeometry,
       new MeshStandardMaterial({
-        color: 0x030407,
+        color: 0x060b09,
         metalness: 0.28,
         roughness: 0.78,
       })
@@ -242,14 +242,14 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     base.rotation.y = Math.PI / 6;
     pedestalGroup.add(base);
 
-    const baseEdges = makeEdgeMesh(baseGeometry, 0x67e8f9, 0.55);
+    const baseEdges = makeEdgeMesh(baseGeometry, 0x8cf0c6, 0.55);
     baseEdges.rotation.copy(base.rotation);
     pedestalGroup.add(baseEdges);
 
     const neonRing = new Mesh(
       new TorusGeometry(1.54, 0.012, 10, 6),
       new MeshBasicMaterial({
-        color: 0x86efac,
+        color: 0xe4b65c,
         transparent: true,
         opacity: 0.72,
       })
@@ -267,7 +267,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const glassShell = new Mesh(
       glassGeometry,
       new MeshStandardMaterial({
-        color: 0x9feaff,
+        color: 0xedf9f4,
         metalness: 0.08,
         roughness: 0.03,
         transparent: true,
@@ -276,13 +276,13 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     );
     frameGroup.add(glassShell);
 
-    const glassEdges = makeEdgeMesh(glassGeometry, 0x67e8f9, 0.9);
+    const glassEdges = makeEdgeMesh(glassGeometry, 0x8cf0c6, 0.9);
     frameGroup.add(glassEdges);
 
     const haloA = new Mesh(
       new TorusGeometry(1.18, 0.01, 10, 96),
       new MeshBasicMaterial({
-        color: 0x67e8f9,
+        color: 0x8cf0c6,
         transparent: true,
         opacity: 0.52,
       })
@@ -293,7 +293,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const haloB = new Mesh(
       new TorusGeometry(0.86, 0.008, 10, 96),
       new MeshBasicMaterial({
-        color: 0xc084fc,
+        color: 0xe4b65c,
         transparent: true,
         opacity: 0.4,
       })
@@ -306,8 +306,8 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     const hologramCube = new Mesh(
       cubeGeometry,
       new MeshStandardMaterial({
-        color: 0x67e8f9,
-        emissive: 0x67e8f9,
+        color: 0x8cf0c6,
+        emissive: 0x8cf0c6,
         emissiveIntensity: 0.62,
         metalness: 0.05,
         roughness: 0.18,
@@ -318,7 +318,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     hologramCube.rotation.set(0.64, 0.5, 0.1);
     frameGroup.add(hologramCube);
 
-    const cubeEdges = makeEdgeMesh(cubeGeometry, 0x86efac, 0.88);
+    const cubeEdges = makeEdgeMesh(cubeGeometry, 0xe4b65c, 0.88);
     hologramCube.add(cubeEdges);
 
     const glowMaterials = [
