@@ -247,7 +247,14 @@ export default function Home() {
 
       <main id="main-content" tabIndex={-1} className={styles.main}>
         <section className={styles.hero} aria-label="Introduction">
-          <DisplayPedestalNoSSR className={styles.heroStage} />
+          <DisplayPedestalNoSSR
+            className={styles.heroStage}
+            onResonance={(detail) =>
+              window.dispatchEvent(
+                new CustomEvent("vanta:resonance", { detail })
+              )
+            }
+          />
           <p className={`${styles.statusPill} ${styles.heroIn}`} style={{ "--stagger": 0 }}>
             <span className={styles.statusDot} aria-hidden="true" />
             Open to collaborations
