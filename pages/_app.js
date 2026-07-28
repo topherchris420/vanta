@@ -17,7 +17,10 @@ const body = Space_Grotesk({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className={`${display.variable} ${body.variable}`}>
+    <div
+      className={`${display.variable} ${body.variable}`}
+      style={{ fontFamily: "var(--font-body)" }}
+    >
       <Component {...pageProps} />
     </div>
   );
