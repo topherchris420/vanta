@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import signalExperience from "../lib/signalExperience";
 import styles from "../styles/Home.module.css";
+
+const { resolveCursorEnabled } = signalExperience;
 
 // Custom cursor: a dot that tracks the pointer and a ring that trails it.
 // Positions are driven by rAF + refs so mouse movement never re-renders React.
@@ -10,9 +13,27 @@ const CustomCursor = () => {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    if (window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches) {
-      setEnabled(true);
-    }
+    const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncEnabled = () =>
+      setEnabled(
+        resolveCursorEnabled({
+          finePointer: pointerQuery.matches,
+          reducedMotion: motionQuery.matches,
+          visible: !document.hidden,
+        })
+      );
+
+    syncEnabled();
+    pointerQuery.addEventListener("change", syncEnabled);
+    motionQuery.addEventListener("change", syncEnabled);
+    document.addEventListener("visibilitychange", syncEnabled);
+
+    return () => {
+      pointerQuery.removeEventListener("change", syncEnabled);
+      motionQuery.removeEventListener("change", syncEnabled);
+      document.removeEventListener("visibilitychange", syncEnabled);
+    };
   }, []);
 
   useEffect(() => {

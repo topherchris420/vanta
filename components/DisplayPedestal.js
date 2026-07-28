@@ -24,6 +24,9 @@ import {
 } from "three";
 import styles from "../styles/Home.module.css";
 import displayPedestalModels from "../lib/displayPedestalModels.json";
+import signalExperience from "../lib/signalExperience";
+
+const { resolvePedestalMode, resolveWebGLPixelRatio } = signalExperience;
 
 const makeConcreteTexture = () => {
   const canvas = document.createElement("canvas");
@@ -50,93 +53,6 @@ const makeConcreteTexture = () => {
   texture.repeat.set(3, 3);
   return texture;
 };
-
-// A pentatonic-ish set (C4/E4/G4/A4) so any swap order still sounds
-// consonant, one note per model, matching displayPedestalModels' order.
-const RESONANCE_NOTES = [261.63, 329.63, 392.0, 440.0];
-const AUDIO_PREF_KEY = "vanta-resonance-enabled";
-
-let sharedAudioContext = null;
-
-const getAudioContext = () => {
-  if (typeof window === "undefined") {
-    return null;
-  }
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) {
-    return null;
-  }
-  if (!sharedAudioContext) {
-    sharedAudioContext = new AudioContextClass();
-  }
-  if (sharedAudioContext.state === "suspended") {
-    sharedAudioContext.resume();
-  }
-  return sharedAudioContext;
-};
-
-// A struck, resonant tone (quick attack, ~1s decay) plus a short feedback
-// delay standing in for reverb, so the swap has real presence without
-// loading an impulse-response asset.
-const playResonanceTone = (frequency) => {
-  const ctx = getAudioContext();
-  if (!ctx) {
-    return;
-  }
-
-  const now = ctx.currentTime;
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  const delay = ctx.createDelay();
-  const feedback = ctx.createGain();
-
-  osc.type = "sine";
-  osc.frequency.value = frequency;
-
-  gain.gain.setValueAtTime(0, now);
-  gain.gain.linearRampToValueAtTime(0.12, now + 0.012);
-  gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.1);
-
-  delay.delayTime.value = 0.14;
-  feedback.gain.value = 0.32;
-  delay.connect(feedback);
-  feedback.connect(delay);
-
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  gain.connect(delay);
-  delay.connect(ctx.destination);
-
-  osc.start(now);
-  osc.stop(now + 1.2);
-};
-
-const SpeakerOnIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
-    <path
-      d="M4 9v6h4l5 4V5L8 9H4Z"
-      fill="currentColor"
-    />
-    <path
-      d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-const SpeakerOffIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true">
-    <path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor" />
-    <path
-      d="M16 9l5 6M21 9l-5 6"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-  </svg>
-);
 
 const disposeObject = (object) => {
   const geometries = new Set();
@@ -212,54 +128,27 @@ const makeUserModel = (model) => {
   return group;
 };
 
-const DisplayPedestal = ({ className = "" }) => {
+const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
   const hostRef = useRef(null);
   const sceneApiRef = useRef(null);
   const modelIndexRef = useRef(0);
   const hoverRef = useRef(false);
-  const audioEnabledRef = useRef(true);
   const [modelIndex, setModelIndex] = useState(0);
-  const [audioEnabled, setAudioEnabled] = useState(true);
   const activeModel = displayPedestalModels[modelIndex];
 
-  useEffect(() => {
-    try {
-      if (window.localStorage.getItem(AUDIO_PREF_KEY) === "0") {
-        audioEnabledRef.current = false;
-        setAudioEnabled(false);
-      }
-    } catch {
-      // localStorage may be unavailable (private mode); default stays on.
-    }
-  }, []);
-
   const swapModel = useCallback(() => {
-    setModelIndex((currentIndex) => {
-      const nextIndex = (currentIndex + 1) % displayPedestalModels.length;
-      if (audioEnabledRef.current) {
-        const nextModel = displayPedestalModels[nextIndex];
-        playResonanceTone(RESONANCE_NOTES[nextIndex % RESONANCE_NOTES.length]);
-        window.dispatchEvent(
-          new CustomEvent("vanta:resonance", { detail: { color: nextModel.primary } })
-        );
-      }
-      return nextIndex;
+    const nextIndex =
+      (modelIndexRef.current + 1) % displayPedestalModels.length;
+    const nextModel = displayPedestalModels[nextIndex];
+    modelIndexRef.current = nextIndex;
+    setModelIndex(nextIndex);
+    onResonance({
+      channelId: "hero-model-" + nextIndex,
+      color: nextModel.primary,
+      frequency: [261.63, 329.63, 392, 440][nextIndex],
+      intensity: 1,
     });
-  }, []);
-
-  const toggleAudio = useCallback((event) => {
-    event.stopPropagation();
-    setAudioEnabled((current) => {
-      const next = !current;
-      audioEnabledRef.current = next;
-      try {
-        window.localStorage.setItem(AUDIO_PREF_KEY, next ? "1" : "0");
-      } catch {
-        // localStorage may be unavailable; preference just won't persist.
-      }
-      return next;
-    });
-  }, []);
+  }, [onResonance]);
 
   useEffect(() => {
     modelIndexRef.current = modelIndex;
@@ -276,13 +165,24 @@ const DisplayPedestal = ({ className = "" }) => {
     const camera = new PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(3.1, 2.25, 4.25);
 
-    const renderer = new WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const mobileQuery = window.matchMedia("(max-width: 720px)");
+    let renderer;
+    try {
+      renderer = new WebGLRenderer({
+        antialias: true,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+    } catch (error) {
+      host.dataset.webgl = "fallback";
+      console.warn("Unable to initialize the display pedestal.", error);
+      return undefined;
+    }
+    renderer.setPixelRatio(
+      resolveWebGLPixelRatio(window.devicePixelRatio, mobileQuery.matches)
+    );
     renderer.outputColorSpace = SRGBColorSpace;
+    host.dataset.webgl = "active";
     host.appendChild(renderer.domElement);
 
     const sceneRoot = new Group();
@@ -432,10 +332,12 @@ const DisplayPedestal = ({ className = "" }) => {
     ];
 
     const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let isReducedMotion = motionQuery.matches;
     let frame = 0;
     let elapsed = 0;
     let glow = 1;
+    let isInView = !("IntersectionObserver" in window);
+    let visible = !document.hidden;
+    let webglAvailable = true;
 
     const applyGlow = (value) => {
       glowMaterials.forEach((material) => {
@@ -446,6 +348,31 @@ const DisplayPedestal = ({ className = "" }) => {
       });
     };
 
+    const renderMode = () =>
+      resolvePedestalMode({
+        webglAvailable,
+        reducedMotion: motionQuery.matches,
+        inViewport: isInView,
+        visible,
+      });
+
+    const stopLoop = () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    const safeRender = () => {
+      if (!webglAvailable) return;
+      try {
+        renderer.render(scene, camera);
+      } catch (error) {
+        webglAvailable = false;
+        host.dataset.webgl = "fallback";
+        stopLoop();
+        console.warn("Unable to render the display pedestal.", error);
+      }
+    };
+
     let userModelGroup = null;
     const setUserModel = (model) => {
       if (userModelGroup) {
@@ -454,18 +381,15 @@ const DisplayPedestal = ({ className = "" }) => {
       }
       userModelGroup = makeUserModel(model);
       sceneRoot.add(userModelGroup);
-      // The continuous loop is off under reduced motion, so a swap needs its own render.
-      if (isReducedMotion) {
-        renderer.render(scene, camera);
-      }
+      if (renderMode() === "static") safeRender();
     };
 
     const setHover = (value) => {
       hoverRef.current = value;
-      if (isReducedMotion) {
+      if (renderMode() === "static") {
         glow = value ? 1.45 : 1;
         applyGlow(glow);
-        renderer.render(scene, camera);
+        safeRender();
       }
     };
 
@@ -478,15 +402,18 @@ const DisplayPedestal = ({ className = "" }) => {
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height, false);
-      renderer.render(scene, camera);
+      safeRender();
     };
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(host);
     resize();
 
-    const render = () => {
-      frame = window.requestAnimationFrame(render);
+    const frameLoop = () => {
+      if (renderMode() !== "continuous") {
+        stopLoop();
+        return;
+      }
       elapsed += 0.016;
 
       const targetGlow = hoverRef.current ? 1.45 : 1;
@@ -512,43 +439,72 @@ const DisplayPedestal = ({ className = "" }) => {
       camera.position.y = 2.15 + Math.sin(orbit * 0.7) * 0.18;
       camera.lookAt(0, 0.7, 0);
 
-      renderer.render(scene, camera);
+      safeRender();
+      if (renderMode() === "continuous") {
+        frame = window.requestAnimationFrame(frameLoop);
+      }
     };
 
     glowMaterials.forEach((material) => {
       material.userData.baseOpacity = material.opacity;
     });
 
-    // Reduced motion: fully stop the render loop rather than merely skipping
-    // the ambient rotation/orbit, since this scene's per-frame cost (multiple
-    // lights, a procedural texture) is meaningfully higher than a background
-    // shader. Hover/model-swap feedback still renders on demand via setHover
-    // and setUserModel above, so state changes stay visible without ambient motion.
-    const onMotionChange = (event) => {
-      isReducedMotion = event.matches;
-      if (isReducedMotion) {
-        window.cancelAnimationFrame(frame);
-        frame = 0;
-        glow = 1;
-        applyGlow(glow);
-        renderer.render(scene, camera);
-      } else if (!frame) {
-        render();
+    const syncLoop = () => {
+      const mode = renderMode();
+      if (mode === "continuous" && !frame) {
+        frame = window.requestAnimationFrame(frameLoop);
+      } else if (mode !== "continuous") {
+        stopLoop();
+        if (mode === "static") {
+          safeRender();
+        }
       }
     };
 
-    motionQuery.addEventListener("change", onMotionChange);
+    const onMotionChange = () => {
+      if (motionQuery.matches) {
+        glow = 1;
+        applyGlow(glow);
+      }
+      syncLoop();
+    };
 
-    if (isReducedMotion) {
-      applyGlow(glow);
-      renderer.render(scene, camera);
-    } else {
-      render();
-    }
+    const onVisibilityChange = () => {
+      visible = !document.hidden;
+      syncLoop();
+    };
+
+    const onMobileChange = () => {
+      renderer.setPixelRatio(
+        resolveWebGLPixelRatio(window.devicePixelRatio, mobileQuery.matches)
+      );
+      resize();
+      syncLoop();
+    };
+
+    const visibilityObserver =
+      "IntersectionObserver" in window
+        ? new IntersectionObserver(
+            ([entry]) => {
+              isInView = entry?.isIntersecting ?? true;
+              syncLoop();
+            },
+            { threshold: 0.05 }
+          )
+        : null;
+
+    motionQuery.addEventListener("change", onMotionChange);
+    mobileQuery.addEventListener("change", onMobileChange);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    visibilityObserver?.observe(host);
+    syncLoop();
 
     return () => {
-      window.cancelAnimationFrame(frame);
+      stopLoop();
       motionQuery.removeEventListener("change", onMotionChange);
+      mobileQuery.removeEventListener("change", onMobileChange);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      visibilityObserver?.disconnect();
       resizeObserver.disconnect();
       sceneApiRef.current = null;
       if (renderer.domElement.parentNode === host) {
@@ -568,47 +524,36 @@ const DisplayPedestal = ({ className = "" }) => {
   };
 
   return (
-    <>
-      <div
-        className={`${styles.displayPedestal} ${className}`.trim()}
-        role="button"
-        tabIndex={0}
-        aria-label={`Swap background user model. Current model: ${activeModel.label}`}
-        onClick={swapModel}
-        onKeyDown={handleKeyDown}
-        onPointerEnter={() => {
-          sceneApiRef.current?.setHover(true);
-        }}
-        onPointerLeave={() => {
-          sceneApiRef.current?.setHover(false);
-        }}
-      >
-        <div ref={hostRef} className={styles.displayPedestalCanvas} aria-hidden="true" />
-        <div className={styles.displayPedestalHud} aria-hidden="true">
-          <span className={styles.displayPedestalModel}>{activeModel.label}</span>
-          <span className={styles.displayPedestalSwatches}>
-            {displayPedestalModels.map((model, index) => (
-              <span
-                key={model.label}
-                className={`${styles.displayPedestalSwatch} ${
-                  index === modelIndex ? styles.displayPedestalSwatchActive : ""
-                }`}
-                style={{ "--swatch": model.primary }}
-              />
-            ))}
-          </span>
-        </div>
+    <div
+      className={`${styles.displayPedestal} ${className}`.trim()}
+      role="button"
+      tabIndex={0}
+      aria-label={`Swap background user model. Current model: ${activeModel.label}`}
+      onClick={swapModel}
+      onKeyDown={handleKeyDown}
+      onPointerEnter={() => {
+        sceneApiRef.current?.setHover(true);
+      }}
+      onPointerLeave={() => {
+        sceneApiRef.current?.setHover(false);
+      }}
+    >
+      <div ref={hostRef} className={styles.displayPedestalCanvas} aria-hidden="true" />
+      <div className={styles.displayPedestalHud} aria-hidden="true">
+        <span className={styles.displayPedestalModel}>{activeModel.label}</span>
+        <span className={styles.displayPedestalSwatches}>
+          {displayPedestalModels.map((model, index) => (
+            <span
+              key={model.label}
+              className={`${styles.displayPedestalSwatch} ${
+                index === modelIndex ? styles.displayPedestalSwatchActive : ""
+              }`}
+              style={{ "--swatch": model.primary }}
+            />
+          ))}
+        </span>
       </div>
-      <button
-        type="button"
-        className={styles.resonanceToggle}
-        onClick={toggleAudio}
-        aria-pressed={audioEnabled}
-        aria-label={audioEnabled ? "Mute swap sound" : "Unmute swap sound"}
-      >
-        {audioEnabled ? <SpeakerOnIcon /> : <SpeakerOffIcon />}
-      </button>
-    </>
+    </div>
   );
 };
 

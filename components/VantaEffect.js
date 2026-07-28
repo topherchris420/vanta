@@ -9,18 +9,18 @@ import {
   Mesh,
   WebGLRenderer,
 } from "three";
+import signalExperience from "../lib/signalExperience";
 
-// Simple debounce utility to limit the rate of execution
+const { resolveRenderMode, resolveWebGLPixelRatio } = signalExperience;
+
 const debounce = (func, wait) => {
   let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
+  const executedFunction = (...args) => {
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = setTimeout(() => func(...args), wait);
   };
+  executedFunction.cancel = () => clearTimeout(timeout);
+  return executedFunction;
 };
 
 const vertexShader = `
@@ -51,22 +51,15 @@ const fragmentShader = `
     float halo = 0.15 / max(0.025, abs(fract((r - t * 0.22) * 14.0) - 0.5));
     float fade = smoothstep(1.4, 0.0, r);
 
-    vec3 deepBlue = vec3(0.02, 0.05, 0.16);
-    vec3 cyan = vec3(0.12, 0.86, 1.00);
-    vec3 violet = vec3(0.70, 0.38, 1.00);
-    vec3 pink = vec3(1.00, 0.42, 0.78);
+    vec3 signalBlack = vec3(0.0235, 0.0431, 0.0353);
+    vec3 signalMint = vec3(0.5490, 0.9412, 0.7765);
+    vec3 calibrationGold = vec3(0.8941, 0.7216, 0.3647);
+    vec3 signalColor = mix(signalMint, calibrationGold, 0.16 + pulse * 0.12);
+    float intensity = clamp(rings * 0.52 + pulse * 0.22 + halo * 0.24, 0.0, 1.0);
+    vec3 color = mix(signalBlack, signalColor, intensity * fade);
 
-    vec3 sweep = mix(cyan, violet, 0.5 + 0.5 * sin(t * 0.9 + r * 12.0));
-    vec3 sweep2 = mix(sweep, pink, 0.5 + 0.5 * cos(t * 0.7 - r * 9.0));
-
-    float intensity = clamp(rings * 0.72 + pulse * 0.35 + halo * 0.45, 0.0, 1.2);
-    vec3 color = mix(deepBlue, sweep2, intensity) * fade + sweep2 * 0.06;
-
-    // A brief, decaying response to the pedestal's resonance tone: an outward
-    // ring timed to the sound's own envelope, tinted with the swapped
-    // model's color, not a new ambient effect.
     float resonanceRing = smoothstep(0.09, 0.0, abs(r - (1.0 - resonance) * 1.1));
-    color += resonanceColor * resonanceRing * resonance * 0.6;
+    color += resonanceColor * resonanceRing * resonance * 0.46;
 
     gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
   }
@@ -74,7 +67,6 @@ const fragmentShader = `
 
 const VantaEffect = ({ className, ...props }) => {
   const containerRef = useRef(null);
-  const sceneRef = useRef(null);
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -93,7 +85,7 @@ const VantaEffect = ({ className, ...props }) => {
       time: { value: 1.0 },
       resolution: { value: new Vector2() },
       resonance: { value: 0 },
-      resonanceColor: { value: new Color(0xffffff) },
+      resonanceColor: { value: new Color("#8cf0c6") },
     };
 
     const material = new ShaderMaterial({
@@ -105,39 +97,43 @@ const VantaEffect = ({ className, ...props }) => {
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    let renderer;
-
-    try {
-      // Disable antialiasing for performance as we render a full-screen quad
-      renderer = new WebGLRenderer({ antialias: false, alpha: false });
-    } catch (error) {
-      console.warn("Unable to initialize the animated WebGL background.", error);
-      geometry.dispose();
-      material.dispose();
-      return;
-    }
-
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor(0x000000, 1);
-
-    container.appendChild(renderer.domElement);
-
-    // Reduced motion support
-    const mediaQuery = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-    let isReduced = mediaQuery?.matches ?? false;
-
-    const handleMotionChange = (e) => {
-      isReduced = e.matches;
-    };
-
-    if (mediaQuery?.addEventListener) {
-      mediaQuery.addEventListener("change", handleMotionChange);
-    } else if (mediaQuery?.addListener) {
-      mediaQuery.addListener(handleMotionChange);
-    }
-
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobileQuery = window.matchMedia("(max-width: 720px)");
     let animationId = 0;
     let hasRenderError = false;
+    let visible = !document.hidden;
+    let renderer;
+
+    const renderMode = () =>
+      resolveRenderMode({
+        webglAvailable: !hasRenderError,
+        reducedMotion: mediaQuery.matches,
+        isMobile: mobileQuery.matches,
+        visible,
+      });
+
+    const stopLoop = () => {
+      if (animationId) window.cancelAnimationFrame(animationId);
+      animationId = 0;
+    };
+
+    try {
+      renderer = new WebGLRenderer({ antialias: false, alpha: false });
+    } catch (error) {
+      hasRenderError = true;
+      container.dataset.webgl = "fallback";
+      geometry.dispose();
+      material.dispose();
+      console.warn("Unable to initialize the animated WebGL background.", error);
+      return undefined;
+    }
+
+    renderer.setPixelRatio(
+      resolveWebGLPixelRatio(window.devicePixelRatio, mobileQuery.matches)
+    );
+    renderer.setClearColor(0x060b09, 1);
+    container.dataset.webgl = "active";
+    container.appendChild(renderer.domElement);
 
     const safeRender = () => {
       if (hasRenderError) {
@@ -148,11 +144,9 @@ const VantaEffect = ({ className, ...props }) => {
         renderer.render(scene, camera);
       } catch (error) {
         hasRenderError = true;
+        container.dataset.webgl = "fallback";
+        stopLoop();
         console.warn("Unable to render the animated WebGL background.", error);
-
-        if (animationId) {
-          window.cancelAnimationFrame(animationId);
-        }
       }
     };
 
@@ -162,91 +156,102 @@ const VantaEffect = ({ className, ...props }) => {
       }
 
       try {
-        const width = container.clientWidth;
-        const height = container.clientHeight;
+        const width = Math.max(container.clientWidth, 1);
+        const height = Math.max(container.clientHeight, 1);
         renderer.setSize(width, height, false);
         uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
       } catch (error) {
         hasRenderError = true;
+        container.dataset.webgl = "fallback";
+        stopLoop();
         console.warn("Unable to resize the animated WebGL background.", error);
         return;
       }
 
-      // Ensure we render at least once when resizing, even if animation is paused
-      if (isReduced) {
-        safeRender();
-      }
+      safeRender();
     };
 
-    // Debounce the resize event to improve performance
     const debouncedResize = debounce(onWindowResize, 200);
 
-    onWindowResize();
-    window.addEventListener("resize", debouncedResize);
-
-    // Triggered by DisplayPedestal on each model swap: a brief, decaying
-    // visual echo of that swap's resonance tone, tinted with the model's
-    // own color. Fires under reduced motion too (a short response to the
-    // user's own action, not ambient motion) but decays in under a second.
-    const handleResonance = (event) => {
-      uniforms.resonance.value = 1;
-      const color = event?.detail?.color;
-      if (color) {
-        uniforms.resonanceColor.value.set(color);
-      }
-      if (isReduced) {
-        safeRender();
-      }
-    };
-
-    window.addEventListener("vanta:resonance", handleResonance);
-
-    const animate = () => {
-      if (hasRenderError) {
+    const frame = () => {
+      if (renderMode() !== "continuous") {
+        stopLoop();
         return;
       }
 
-      animationId = window.requestAnimationFrame(animate);
-
-      const hasResonance = uniforms.resonance.value > 0.001;
-      if (hasResonance) {
+      uniforms.time.value += 0.05;
+      if (uniforms.resonance.value > 0.001) {
         uniforms.resonance.value *= 0.9;
-        if (uniforms.resonance.value <= 0.001) {
-          uniforms.resonance.value = 0;
-        }
+      } else {
+        uniforms.resonance.value = 0;
       }
+      safeRender();
 
-      if (!isReduced) {
-        uniforms.time.value += 0.05;
-        safeRender();
-      } else if (hasResonance) {
-        safeRender();
+      if (renderMode() === "continuous") {
+        animationId = window.requestAnimationFrame(frame);
       }
     };
 
-    sceneRef.current = { renderer, geometry, material, animationId };
-    animate();
+    const syncLoop = () => {
+      const mode = renderMode();
+      if (mode === "continuous" && !animationId) {
+        animationId = window.requestAnimationFrame(frame);
+      } else if (mode !== "continuous") {
+        stopLoop();
+        if (mode === "static") safeRender();
+      }
+    };
+
+    const handleResonance = (event) => {
+      const intensity = event?.detail?.intensity;
+      uniforms.resonance.value = Number.isFinite(intensity)
+        ? Math.max(0, Math.min(intensity, 1))
+        : 1;
+      if (event?.detail?.color) {
+        uniforms.resonanceColor.value.set(event.detail.color);
+      }
+      if (renderMode() === "static") safeRender();
+    };
+
+    const onVisibilityChange = () => {
+      visible = !document.hidden;
+      syncLoop();
+    };
+
+    const onRuntimeChange = () => {
+      if (hasRenderError) return;
+      renderer.setPixelRatio(
+        resolveWebGLPixelRatio(window.devicePixelRatio, mobileQuery.matches)
+      );
+      onWindowResize();
+      syncLoop();
+    };
+
+    window.addEventListener("resize", debouncedResize);
+    window.addEventListener("vanta:resonance", handleResonance);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    mediaQuery.addEventListener("change", onRuntimeChange);
+    mobileQuery.addEventListener("change", onRuntimeChange);
+    onWindowResize();
+    syncLoop();
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
       window.removeEventListener("vanta:resonance", handleResonance);
-
-      if (mediaQuery?.removeEventListener) {
-        mediaQuery.removeEventListener("change", handleMotionChange);
-      } else if (mediaQuery?.removeListener) {
-        mediaQuery.removeListener(handleMotionChange);
-      }
-
-      window.cancelAnimationFrame(animationId);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+      mediaQuery.removeEventListener("change", onRuntimeChange);
+      mobileQuery.removeEventListener("change", onRuntimeChange);
+      debouncedResize.cancel();
+      stopLoop();
 
       if (renderer.domElement && renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
       }
 
+      scene.remove(mesh);
       geometry.dispose();
       material.dispose();
       renderer.dispose();
-      sceneRef.current = null;
     };
   }, []);
 
