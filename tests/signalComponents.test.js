@@ -142,3 +142,13 @@ test("project channel view returns semantic ids, ordering, active state, and evi
     },
   ]);
 });
+
+test("channel preview ends only when focus leaves the channel", () => {
+  const inside = {};
+  const outside = {};
+  const container = { contains: (target) => target === inside };
+
+  assert.equal(signal.didFocusLeaveChannel(container, inside), false);
+  assert.equal(signal.didFocusLeaveChannel(container, outside), true);
+  assert.equal(signal.didFocusLeaveChannel(container, null), true);
+});

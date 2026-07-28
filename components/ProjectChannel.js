@@ -2,7 +2,7 @@ import signalExperience from "../lib/signalExperience";
 import Reveal from "./Reveal";
 import styles from "../styles/Home.module.css";
 
-const { createProjectChannelView } = signalExperience;
+const { createProjectChannelView, didFocusLeaveChannel } = signalExperience;
 
 export default function ProjectChannel({
   project,
@@ -21,6 +21,11 @@ export default function ProjectChannel({
     .join(" ");
 
   const preview = () => onPreview(project.id);
+  const endPreviewAfterFocusExit = (event) => {
+    if (didFocusLeaveChannel(event.currentTarget, event.relatedTarget)) {
+      onPreviewEnd();
+    }
+  };
 
   return (
     <Reveal
@@ -33,7 +38,7 @@ export default function ProjectChannel({
       onMouseEnter={preview}
       onMouseLeave={onPreviewEnd}
       onFocusCapture={preview}
-      onBlurCapture={onPreviewEnd}
+      onBlurCapture={endPreviewAfterFocusExit}
     >
       <div className={styles.channelMeta}>
         <span>

@@ -9,6 +9,7 @@ import ScrollProgress from "../components/ScrollProgress";
 import Reveal from "../components/Reveal";
 import Marquee from "../components/Marquee";
 import SpotlightCard from "../components/SpotlightCard";
+import signalExperience from "../lib/signalExperience";
 
 const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
   ssr: false,
@@ -31,8 +32,12 @@ const marqueeItems = [
 
 const projectSections = [
   {
+    id: "books",
     number: "01",
     title: "Books",
+    note: "C4",
+    color: "#8cf0c6",
+    visual: "waveform",
     description:
       "Coloring books, poetry, and health-focused writing for reflection and daily rituals.",
     primaryLabel: "Read poetry book",
@@ -43,8 +48,12 @@ const projectSections = [
     frequency: 261.63, // C4 - warm, grounding
   },
   {
+    id: "apps",
     number: "02",
     title: "Apps",
+    note: "E4",
+    color: "#8cf0c6",
+    visual: "nodes",
     description:
       "Sound-driven AI wellness tools and prototypes focused on mindful interaction.",
     primaryLabel: "Explore AI/ML Projects",
@@ -55,8 +64,12 @@ const projectSections = [
     frequency: 329.63, // E4 - bright, uplifting
   },
   {
+    id: "art",
     number: "03",
     title: "Art",
+    note: "G4",
+    color: "#8cf0c6",
+    visual: "artwork",
     description:
       "Digital fragments and spatial-computing exhibitions that blend visual poetry with immersion.",
     primaryLabel: "View Oncyber Gallery",
@@ -68,8 +81,12 @@ const projectSections = [
     frequency: 392.00, // G4 - creative, harmonic
   },
   {
+    id: "frequency",
     number: "04",
     title: "Frequency",
+    note: "C5",
+    color: "#8cf0c6",
+    visual: "orbit",
     description:
       "A consciousness engine exploring patterned meaning, ritual, and symbolic systems.",
     primaryLabel: "Open Frequency Experience",
@@ -81,8 +98,12 @@ const projectSections = [
     frequency: 523.25, // C5 - high, expansive
   },
   {
+    id: "music",
     number: "05",
     title: "Music",
+    note: "G3",
+    color: "#8cf0c6",
+    visual: "spectrum",
     description:
       "Experimental sound compositions under Auditory Geometry with cinematic sonic textures.",
     primaryLabel: "Listen on Bandcamp",
@@ -94,6 +115,10 @@ const projectSections = [
     frequency: 196.00, // G3 - deep, resonant
   },
 ];
+
+const { validateChannels } = signalExperience;
+
+validateChannels(projectSections);
 
 // Web Audio synthesizer for hover sounds
 let audioContext = null;
