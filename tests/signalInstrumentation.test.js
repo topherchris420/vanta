@@ -151,6 +151,18 @@ test("rail items and channel views expose active state for the tuned stop", () =
     ]
   );
 
+  // Every stop tunes to itself, including the hero. Without this, arrowing or
+  // pressing Home onto stop 00 would move focus while leaving the console,
+  // aria-current, and any playing frequency on the scrolled-to project.
+  items.forEach((item) => assert.equal(item.previewId, item.id));
+
+  // Selecting the hero resolves to a real state rather than falling back to
+  // whatever the scroll position last chose.
+  assert.equal(
+    signal.resolvePreviewChannel({ scrollChannel: "music", previewChannel: "hero" }),
+    "hero"
+  );
+
   const project = {
     ...channels[0],
     primaryLabel: "Read poetry book",

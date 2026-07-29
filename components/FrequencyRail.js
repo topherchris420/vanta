@@ -42,9 +42,7 @@ export default function FrequencyRail({
       </p>
       <ol className={styles.frequencyRailList} onKeyDown={tune}>
         {items.map((item, index) => {
-          const handlePreview = item.previewId
-            ? () => onPreview(item.previewId)
-            : undefined;
+          const preview = () => onPreview(item.previewId);
 
           return (
             <li key={item.id} className={styles.frequencyRailItem}>
@@ -55,9 +53,9 @@ export default function FrequencyRail({
                 href={item.href}
                 className={styles.frequencyRailLink}
                 aria-current={item.current}
-                onMouseEnter={handlePreview}
+                onMouseEnter={preview}
                 onMouseLeave={onPreviewEnd}
-                onFocus={handlePreview}
+                onFocus={preview}
                 onBlur={onPreviewEnd}
               >
                 <span>{item.number}</span>

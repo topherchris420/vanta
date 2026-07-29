@@ -888,20 +888,22 @@
   transition: color 240ms ease;
 }
 
-/* A scan line sweeps only the channel that currently conducts the page. */
+/* A scan line sweeps only the channel that currently conducts the page. The
+   element spans the artifact and carries the line as a 2px background band, so
+   the sweep is a compositor-friendly transform rather than an animated offset. */
 .channelScan {
   position: absolute;
   z-index: 1;
-  top: 0;
-  right: 0;
-  left: 0;
-  height: 2px;
-  background: linear-gradient(
+  inset: 0;
+  background-image: linear-gradient(
     90deg,
     transparent,
     color-mix(in srgb, var(--signal) 78%, transparent),
     transparent
   );
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 0;
   opacity: 0;
   transition: opacity 260ms ease;
 }
@@ -922,15 +924,16 @@
 .projectChannelActive .channelScan {
   opacity: 1;
   animation: channelScan 3.6s linear infinite;
+  will-change: transform;
 }
 
 @keyframes channelScan {
   from {
-    top: -2%;
+    transform: translateY(0);
   }
 
   to {
-    top: 102%;
+    transform: translateY(100%);
   }
 }
 
