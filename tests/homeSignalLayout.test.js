@@ -134,6 +134,26 @@ test(
     assert.ok(html.includes('aria-pressed="false"'));
     assert.ok(html.includes("Sound off"));
     assert.ok(!html.includes("Sound on"));
+    assert.ok(html.includes('data-sound="off"'));
+    assert.ok(!html.includes('data-sound="on"'));
+
+    // The console boots untuned on the hero, and no channel claims the signal
+    // until the visitor scrolls or previews one.
+    assert.ok(html.includes('data-tuned="false"'));
+    assert.ok(!html.includes('data-tuned="true"'));
+    assert.ok(html.includes("Standby"));
+    assert.equal((html.match(/STANDBY/g) ?? []).length, 5);
+    assert.ok(!html.includes("SIGNAL ACTIVE"));
+    assert.ok(html.includes("Scroll to tune"));
+
+    // The rail is keyboard-tunable and says so to assistive technology.
+    assert.ok(html.includes('aria-describedby="frequency-rail-hint"'));
+    assert.ok(html.includes("Use the arrow keys to tune between channels."));
+
+    // Every unbreakable headline publishes the width budget its column must
+    // respect, so no display type is ever clipped.
+    assert.ok(html.includes("--title-em:10.44"));
+    assert.ok(html.includes("--title-em:11.6"));
 
     const notFoundResponse = await fetch(
       `http://${HOST}:${port}/missing-signal-test-route`

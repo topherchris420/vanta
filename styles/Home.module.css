@@ -43,6 +43,33 @@
   z-index: 2;
 }
 
+/* Scroll depth, drawn above the fixed nav so the page always reports how much
+   of the instrument is left. */
+.scrollProgress {
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--signal), var(--amber));
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .skipLink {
   position: fixed;
   z-index: 100;
@@ -83,7 +110,8 @@
 
 .navScrolled {
   border-color: var(--line);
-  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  /* Opaque enough that page content never reads through the nav links. */
+  background: color-mix(in srgb, var(--ink) 95%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
@@ -145,6 +173,7 @@
 }
 
 .signalHero {
+  position: relative;
   min-height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
@@ -161,6 +190,9 @@
   min-width: 0;
   width: 100%;
   display: grid;
+  /* An implicit auto track sizes to the widest unwrapped child, which pushes
+     the kicker and summary past the viewport at the 320px minimum width. */
+  grid-template-columns: minmax(0, 1fr);
   justify-items: start;
   gap: 1.5rem;
 }
@@ -185,7 +217,8 @@
 
 .signalTitle span {
   display: block;
-  color: transparent;
+  /* A faint fill keeps the outlined line readable without losing the stroke. */
+  color: color-mix(in srgb, var(--signal) 16%, transparent);
   -webkit-text-stroke: 1px var(--signal);
 }
 
@@ -208,6 +241,7 @@
 .signalPrimary {
   display: inline-flex;
   min-height: 3.25rem;
+  max-width: 100%;
   align-items: center;
   justify-content: center;
   padding: 0 1.35rem;
@@ -285,6 +319,43 @@
 .heroStage {
   width: 100%;
   min-height: clamp(25rem, 54vw, 43rem);
+}
+
+.scrollCue {
+  position: absolute;
+  bottom: 2.1rem;
+  left: clamp(1.25rem, 6vw, 7rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  color: var(--muted);
+  font: 600 0.6rem / 1 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.scrollCue::after {
+  content: "";
+  width: 3.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--signal), transparent);
+  transform-origin: left center;
+  animation: cueSweep 2.8s ease-in-out infinite;
+}
+
+@keyframes cueSweep {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scaleX(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 .displayPedestal {
@@ -370,12 +441,42 @@
   transform: scaleX(1.45);
 }
 
+/* One tuner module rather than six floating chips, so the rail keeps its own
+   dark surface even where it crosses the mint footer. */
 .frequencyRail {
   position: fixed;
   z-index: 12;
   top: 50%;
   right: clamp(0.75rem, 2vw, 2rem);
+  padding: 0.5rem 0.5rem 0.5rem 1.15rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 78%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transform: translateY(-50%);
+}
+
+/* Rail trace: an unfilled track plus a mint fill driven by --scroll-progress,
+   so the rail doubles as a position readout instead of only a link list. */
+.frequencyRail::before,
+.frequencyRail::after {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: 0.5rem;
+  width: 1px;
+  height: calc(100% - 1.1rem);
+  pointer-events: none;
+}
+
+.frequencyRail::before {
+  background: color-mix(in srgb, var(--paper) 20%, transparent);
+}
+
+.frequencyRail::after {
+  background: var(--signal);
+  transform: scaleY(var(--scroll-progress, 0));
+  transform-origin: top center;
 }
 
 .frequencyRailList {
@@ -400,13 +501,11 @@
   gap: 0.65rem;
   padding: 0.55rem 0.65rem;
   border: 1px solid transparent;
-  background: color-mix(in srgb, var(--ink) 82%, transparent);
+  background: transparent;
   color: var(--muted);
   font: 600 0.62rem / 1 var(--font-mono);
   letter-spacing: 0.08em;
   text-decoration: none;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   transition:
     color 160ms ease,
     border-color 160ms ease,
@@ -414,14 +513,14 @@
 }
 
 .frequencyRailLabel {
-  width: 0;
+  max-width: 0;
   overflow: hidden;
   opacity: 0;
   text-align: right;
   text-transform: uppercase;
   white-space: nowrap;
   transition:
-    width 180ms ease,
+    max-width 200ms ease,
     opacity 160ms ease;
 }
 
@@ -433,18 +532,79 @@
   transform: translateX(-0.2rem);
 }
 
+/* The tuned stop keeps its name visible so the rail is legible without hover. */
+.frequencyRailLink[aria-current="location"] {
+  border-color: color-mix(in srgb, var(--signal) 52%, transparent);
+  background: color-mix(in srgb, var(--signal) 9%, var(--ink));
+}
+
 .frequencyRailLink:hover .frequencyRailLabel,
-.frequencyRailLink:focus-visible .frequencyRailLabel {
-  width: 6.5rem;
+.frequencyRailLink:focus-visible .frequencyRailLabel,
+.frequencyRailLink[aria-current="location"] .frequencyRailLabel {
+  max-width: 6.5rem;
   opacity: 1;
 }
 
-.soundControl {
+/* Fixed console: live channel readout stacked over the single sound control. */
+.signalConsole {
   position: fixed;
   z-index: 14;
   right: clamp(0.75rem, 2vw, 2rem);
   bottom: 1rem;
+  display: grid;
+  justify-items: end;
+  gap: 0.4rem;
+  max-width: min(18rem, calc(100vw - 5.5rem));
+}
+
+.consoleReadout {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 100%;
+  padding: 0.45rem 0.7rem;
+  margin: 0;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  color: var(--muted);
+  font: 600 0.6rem / 1 var(--font-mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.signalConsole[data-tuned="true"] .consoleReadout {
+  border-color: color-mix(in srgb, var(--signal) 44%, transparent);
+  color: var(--paper);
+}
+
+.consoleChannel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.consoleNumber {
+  color: var(--signal);
+}
+
+.consoleFrequency {
+  margin-left: auto;
+  color: var(--amber);
+}
+
+.soundControl {
+  display: inline-flex;
   min-height: 2.5rem;
+  align-items: center;
+  gap: 0.55rem;
   padding: 0 0.85rem;
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--ink) 88%, transparent);
@@ -470,8 +630,47 @@
   cursor: not-allowed;
 }
 
+/* Three bars that idle flat and move only while sound is actually playing. */
+.soundGlyph {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 0.7rem;
+}
+
+.soundGlyph span {
+  width: 2px;
+  height: 26%;
+  background: currentColor;
+  transition: height 200ms ease;
+}
+
+.soundControl[data-sound="on"] .soundGlyph span {
+  animation: soundBars 940ms ease-in-out infinite;
+}
+
+.soundControl[data-sound="on"] .soundGlyph span:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.soundControl[data-sound="on"] .soundGlyph span:nth-child(3) {
+  animation-delay: 320ms;
+}
+
+@keyframes soundBars {
+  0%,
+  100% {
+    height: 26%;
+  }
+
+  50% {
+    height: 100%;
+  }
+}
+
 .signalChannels {
   border-top: 1px solid var(--line);
+  scroll-margin-top: 7rem;
 }
 
 .projectChannel {
@@ -482,31 +681,62 @@
   gap: clamp(1.5rem, 5vw, 6rem);
   padding: clamp(4rem, 9vw, 9rem) clamp(1.25rem, 8vw, 9rem);
   border-bottom: 1px solid var(--line);
-  background: color-mix(in srgb, var(--surface) 30%, transparent);
-  transition: opacity 240ms ease;
+  background-color: color-mix(in srgb, var(--surface) 30%, transparent);
+  background-image: none;
+  /* Clears the fixed nav plus the reveal transform the section lands with. */
+  scroll-margin-top: 7rem;
+  transition:
+    opacity 240ms ease,
+    background-color 320ms ease;
 }
 
 .projectChannel.reveal {
   opacity: 0;
 }
 
+/* Inactive channels stay fully legible; the active channel is signalled through
+   colour, lighting, and the artifact rather than by dimming body copy. */
 .projectChannel.revealVisible {
-  opacity: 0.58;
-}
-
-.projectChannel[data-active="true"].revealVisible,
-.projectChannelActive.revealVisible {
   opacity: 1;
 }
 
+.projectChannel[data-active="true"],
+.projectChannelActive {
+  background-color: color-mix(in srgb, var(--surface) 52%, transparent);
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--signal) 6%, transparent),
+    transparent 46%
+  );
+}
+
+/* Mirrored channels swap the track sizes and place each child explicitly.
+   Reordering alone would drop the artifact into the narrow metadata track. */
+.projectChannelReverse {
+  grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1fr) 5rem;
+}
+
 .projectChannelReverse .channelArtifact {
-  order: -1;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.projectChannelReverse .channelCopy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.projectChannelReverse .channelMeta {
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .channelMeta {
   align-self: stretch;
   display: flex;
-  flex-direction: column;
+  /* In vertical-rl the inline axis runs top-to-bottom, so a row lays the two
+     readings along the full height of the strip instead of side by side. */
+  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
   color: var(--muted);
@@ -514,23 +744,54 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   writing-mode: vertical-rl;
+  transition: color 280ms ease;
+}
+
+.projectChannel[data-active="true"] .channelMeta,
+.projectChannelActive .channelMeta {
+  color: var(--signal);
 }
 
 .channelCopy {
   min-width: 0;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: center;
   justify-items: start;
   gap: 1.5rem;
 }
 
 .channelCopy h2 {
+  --title-preferred: clamp(3.3rem, 6.5vw, 6.75rem);
+
   max-width: 100%;
   margin: 0;
-  color: var(--paper);
-  font: 800 clamp(3.3rem, 6.5vw, 6.75rem) / 0.85 var(--font-display);
+  color: color-mix(in srgb, var(--paper) 68%, transparent);
+  font: 800 var(--title-preferred) / 0.85 var(--font-display);
   letter-spacing: -0.065em;
   text-transform: uppercase;
+  transition: color 280ms ease;
+}
+
+/* Titles are single words, so they cannot wrap out of an overflow. Cap the size
+   at the width the column can actually hold; --title-em is the title's measured
+   width in ems, published per channel from the content model. */
+@supports (container-type: inline-size) {
+  .channelCopy {
+    container-type: inline-size;
+  }
+
+  .channelCopy h2 {
+    font-size: min(
+      var(--title-preferred),
+      calc(100cqi / var(--title-em, 6))
+    );
+  }
+}
+
+.projectChannel[data-active="true"] .channelCopy h2,
+.projectChannelActive .channelCopy h2 {
+  color: var(--paper);
 }
 
 .channelCopy p {
@@ -590,7 +851,9 @@
   overflow: hidden;
   border: 1px solid var(--line);
   background-color: color-mix(in srgb, var(--surface) 88%, var(--signal));
+  opacity: 0.62;
   transition:
+    opacity 300ms ease,
     border-color 220ms ease,
     transform 360ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -613,7 +876,7 @@
   transform: rotate(-12deg);
 }
 
-.channelArtifact > span {
+.channelStatus {
   position: absolute;
   z-index: 2;
   right: 1rem;
@@ -622,11 +885,53 @@
   color: var(--muted);
   font: 600 0.6rem / 1.4 var(--font-mono);
   letter-spacing: 0.08em;
+  transition: color 240ms ease;
 }
 
-.projectChannel[data-active="true"] .channelArtifact {
+/* A scan line sweeps only the channel that currently conducts the page. */
+.channelScan {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--signal) 78%, transparent),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.projectChannel[data-active="true"] .channelArtifact,
+.projectChannelActive .channelArtifact {
   border-color: color-mix(in srgb, var(--signal) 54%, transparent);
+  opacity: 1;
   transform: translateY(-0.45rem);
+}
+
+.projectChannel[data-active="true"] .channelStatus,
+.projectChannelActive .channelStatus {
+  color: var(--signal);
+}
+
+.projectChannel[data-active="true"] .channelScan,
+.projectChannelActive .channelScan {
+  opacity: 1;
+  animation: channelScan 3.6s linear infinite;
+}
+
+@keyframes channelScan {
+  from {
+    top: -2%;
+  }
+
+  to {
+    top: 102%;
+  }
 }
 
 .projectChannel[data-active="true"] .channelArtifact::before {
@@ -676,12 +981,14 @@
 .signalFooter {
   min-height: 72vh;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-content: center;
   justify-items: start;
   gap: 2rem;
   padding: clamp(5rem, 10vw, 10rem) clamp(1.25rem, 8vw, 9rem);
   background: var(--signal);
   color: var(--ink);
+  scroll-margin-top: 7rem;
 }
 
 .signalFooter .instrumentLabel {
@@ -689,11 +996,28 @@
 }
 
 .signalFooter h2 {
-  max-width: 11ch;
+  --title-preferred: clamp(3.5rem, 9vw, 9rem);
+
+  max-width: min(11ch, 100%);
   margin: 0;
-  font: 800 clamp(3.5rem, 9vw, 9rem) / 0.84 var(--font-display);
+  font: 800 var(--title-preferred) / 0.84 var(--font-display);
   letter-spacing: -0.07em;
   text-transform: uppercase;
+}
+
+/* "Resonates." cannot break, so cap the headline at the width the footer holds;
+   otherwise it and the email button below it are clipped on narrow screens. */
+@supports (container-type: inline-size) {
+  .signalFooter {
+    container-type: inline-size;
+  }
+
+  .signalFooter h2 {
+    font-size: min(
+      var(--title-preferred),
+      calc(100cqi / var(--title-em, 6))
+    );
+  }
 }
 
 .signalFooter .signalPrimary {
@@ -719,6 +1043,11 @@
   font: 600 0.7rem / 1.4 var(--font-mono);
   text-decoration-color: color-mix(in srgb, var(--ink) 40%, transparent);
   text-underline-offset: 0.35rem;
+}
+
+/* The global mint focus ring disappears against the mint footer. */
+.signalFooter a:focus-visible {
+  outline-color: var(--ink);
 }
 
 .signalFooter > p:last-child {
@@ -826,6 +1155,10 @@
     gap: 2rem;
     padding-inline: 4rem;
   }
+
+  .projectChannelReverse {
+    grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1fr) 3rem;
+  }
 }
 
 @media (max-width: 720px) {
@@ -859,6 +1192,11 @@
     padding: 7rem 1.25rem 4rem;
   }
 
+  /* The hero is no longer viewport-tall, so the cue has nothing to point at. */
+  .scrollCue {
+    display: none;
+  }
+
   .signalTitle {
     max-width: 100%;
     font-size: clamp(2.35rem, 10.5vw, 3.1rem);
@@ -877,12 +1215,34 @@
     z-index: 15;
     top: 4.25rem;
     right: auto;
+    padding: 0;
     overflow-x: auto;
+    border: 0;
     border-block: 1px solid var(--line);
-    background: color-mix(in srgb, var(--ink) 91%, transparent);
+    background: color-mix(in srgb, var(--ink) 93%, transparent);
     transform: none;
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* The trace turns horizontal with the rail. */
+  .frequencyRail::before,
+  .frequencyRail::after {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 1px;
+  }
+
+  .frequencyRail::before {
+    background: transparent;
+  }
+
+  .frequencyRail::after {
+    transform: scaleX(var(--scroll-progress, 0));
+    transform-origin: left center;
   }
 
   .frequencyRailList {
@@ -901,9 +1261,6 @@
     min-width: 3rem;
     justify-content: center;
     border: 0;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 
   .frequencyRailLink:hover,
@@ -912,8 +1269,21 @@
     transform: none;
   }
 
+  /* Names stay off the compact rail; the console readout carries them instead,
+     so tuning never reflows the six stops. */
   .frequencyRailLabel {
     display: none;
+  }
+
+  .frequencyRailLink[aria-current="location"] {
+    border-bottom: 2px solid var(--signal);
+    background: transparent;
+  }
+
+  .signalChannels,
+  .projectChannel,
+  .signalFooter {
+    scroll-margin-top: 9.5rem;
   }
 
   .projectChannel {
@@ -923,8 +1293,16 @@
     padding: 5rem 1.25rem;
   }
 
+  /* One stacked column: the mirrored placement has nothing left to mirror. */
+  .projectChannelReverse {
+    grid-template-columns: 1fr;
+  }
+
+  .projectChannelReverse .channelMeta,
+  .projectChannelReverse .channelCopy,
   .projectChannelReverse .channelArtifact {
-    order: initial;
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .channelMeta {
@@ -934,7 +1312,7 @@
   }
 
   .channelCopy h2 {
-    font-size: clamp(3.25rem, 18vw, 5.8rem);
+    --title-preferred: clamp(3.25rem, 18vw, 5.8rem);
   }
 
   .channelArtifact {
@@ -947,7 +1325,7 @@
   }
 
   .signalFooter h2 {
-    font-size: clamp(3.3rem, 17vw, 6rem);
+    --title-preferred: clamp(3.3rem, 17vw, 6rem);
   }
 }
 
@@ -973,6 +1351,42 @@
     right: 1rem;
     left: 1rem;
   }
+
+  .signalConsole {
+    max-width: calc(100vw - 5rem);
+  }
+
+  .consoleReadout {
+    font-size: 0.55rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Honour a stated preference for more contrast by dropping every decorative
+   dim and the outline-only heading treatment. */
+@media (prefers-contrast: more) {
+  .signalTitle span {
+    color: var(--signal);
+    -webkit-text-stroke: 0;
+  }
+
+  .channelCopy h2 {
+    color: var(--paper);
+  }
+
+  .channelArtifact {
+    opacity: 1;
+  }
+
+  .channelStatus,
+  .channelMeta,
+  .consoleReadout {
+    color: var(--paper);
+  }
+
+  .projectChannel {
+    border-bottom-color: color-mix(in srgb, var(--paper) 45%, transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -986,10 +1400,16 @@
   .frequencyRailLink,
   .frequencyRailLabel,
   .soundControl,
+  .soundGlyph span,
+  .consoleReadout,
   .projectChannel,
+  .channelMeta,
+  .channelCopy h2,
   .channelArtifact,
   .channelArtifact::before,
   .channelArtifact::after,
+  .channelStatus,
+  .channelScan,
   .channelLinks a,
   .channelLinks a::after,
   .reveal,
@@ -1001,5 +1421,16 @@
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  /* Stop the sweeping affordances outright rather than freezing them mid-run. */
+  .channelScan {
+    display: none;
+  }
+
+  .scrollCue::after {
+    animation: none;
+    opacity: 1;
+    transform: scaleX(1);
   }
 }

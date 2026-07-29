@@ -9,6 +9,9 @@
   --font-display: "Syne", sans-serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  /* Published each frame by ScrollProgress; every scroll-driven surface reads
+     this instead of measuring the document for itself. */
+  --scroll-progress: 0;
 }
 
 html {
