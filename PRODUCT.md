@@ -25,6 +25,13 @@ The page runs in this sequence:
 5. Pointer and keyboard previews temporarily override the scroll-selected channel, then restore it on exit.
 6. A single collaboration footer preserves contact and elsewhere destinations.
 
+The page reports its own state continuously:
+
+- A top meter and a rail trace both render document scroll depth from one published `--scroll-progress` value.
+- A fixed console reads out the conducting channel number, name, and frequency, and carries the single sound control. It reads `00 / Signal / Standby` until a channel takes the signal.
+- The tuned rail stop keeps its channel name visible; every other stop shows its number.
+- Each channel artifact reports `SIGNAL ACTIVE` or `STANDBY`, and only the conducting artifact runs a scan line.
+
 The canonical content source is `projectSections` in `pages/index.js`. Channel ids, labels, descriptions, frequencies, visuals, and evidence URLs must not be duplicated into a second content model.
 
 ## Sound Contract
@@ -62,6 +69,10 @@ The interface is a dark, sharp-edged signal instrument, not a card-grid portfoli
 
 The same mint/amber language applies to CSS artifacts, the Vanta shader, pedestal lighting, and pedestal models. Motion communicates active state or user feedback and must collapse under `prefers-reduced-motion`.
 
+Active state is carried by colour, lighting, and the artifact. Inactive channels are never dimmed below legible contrast.
+
+Display headlines are single unbreakable words, so each publishes its width budget as `--title-em` from the content model and is capped at the width its column can hold. No headline is ever clipped at any viewport.
+
 ## Evidence Set
 
 These project destinations are product data and must remain preserved:
@@ -85,8 +96,12 @@ No testimonials, press quotes, endorsements, or performance claims are currently
 
 - Preserve the skip link, visible focus treatment, semantic headings, project section labels, and `lang="en"`.
 - All mouse previews must also work with keyboard focus.
+- Arrow, Home, and End keys tune between rail stops; every other key stays with the browser.
+- The focus ring stays visible on the mint footer, where the default mint ring would disappear.
+- Section anchors clear the fixed nav and the mobile rail through `scroll-margin-top`.
 - Reduced motion stops continuous animation rather than merely freezing its clock.
-- The mobile page must not create horizontal document overflow.
+- `prefers-contrast: more` drops every decorative dim and the outline-only heading treatment.
+- The mobile page must not create horizontal document overflow, and no headline or control may be clipped by it.
 - The 404 page provides one clear recovery destination to `/`.
 
 ## Maintenance

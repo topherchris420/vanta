@@ -1,7 +1,8 @@
+import { useRef } from "react";
 import signalExperience from "../lib/signalExperience";
 import styles from "../styles/Home.module.css";
 
-const { createFrequencyRailItems } = signalExperience;
+const { createFrequencyRailItems, resolveRailKeyIndex } = signalExperience;
 
 export default function FrequencyRail({
   channels,
@@ -10,24 +11,51 @@ export default function FrequencyRail({
   onPreviewEnd,
 }) {
   const items = createFrequencyRailItems(channels, activeId);
+  const linkRefs = useRef([]);
+
+  // Arrow keys move focus along the rail like a tuner dial; focus already
+  // drives the preview, so tuning by keyboard previews exactly like hovering.
+  const tune = (event) => {
+    const index = linkRefs.current.indexOf(event.target);
+    const nextIndex = resolveRailKeyIndex({
+      key: event.key,
+      index,
+      count: items.length,
+    });
+
+    if (nextIndex === null) {
+      return;
+    }
+
+    event.preventDefault();
+    linkRefs.current[nextIndex]?.focus();
+  };
 
   return (
-    <nav className={styles.frequencyRail} aria-label="Signal channels">
-      <ol className={styles.frequencyRailList}>
-        {items.map((item) => {
-          const handlePreview = item.previewId
-            ? () => onPreview(item.previewId)
-            : undefined;
+    <nav
+      className={styles.frequencyRail}
+      aria-label="Signal channels"
+      aria-describedby="frequency-rail-hint"
+    >
+      <p id="frequency-rail-hint" className={styles.visuallyHidden}>
+        Use the arrow keys to tune between channels.
+      </p>
+      <ol className={styles.frequencyRailList} onKeyDown={tune}>
+        {items.map((item, index) => {
+          const preview = () => onPreview(item.previewId);
 
           return (
             <li key={item.id} className={styles.frequencyRailItem}>
               <a
+                ref={(node) => {
+                  linkRefs.current[index] = node;
+                }}
                 href={item.href}
                 className={styles.frequencyRailLink}
                 aria-current={item.current}
-                onMouseEnter={handlePreview}
+                onMouseEnter={preview}
                 onMouseLeave={onPreviewEnd}
-                onFocus={handlePreview}
+                onFocus={preview}
                 onBlur={onPreviewEnd}
               >
                 <span>{item.number}</span>

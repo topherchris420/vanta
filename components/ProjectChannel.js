@@ -35,6 +35,7 @@ export default function ProjectChannel({
       aria-labelledby={view.headingId}
       data-signal-channel={project.id}
       data-active={view.active ? "true" : "false"}
+      style={{ "--title-em": view.titleEm }}
       onMouseEnter={preview}
       onMouseLeave={onPreviewEnd}
       onFocusCapture={preview}
@@ -68,7 +69,10 @@ export default function ProjectChannel({
         data-artifact={project.visual}
         aria-hidden="true"
       >
-        <span>{view.frequencyLabel.toUpperCase()} / SIGNAL ACTIVE</span>
+        <span className={styles.channelScan} />
+        <span className={styles.channelStatus}>
+          {view.frequencyLabel.toUpperCase()} / {view.statusLabel}
+        </span>
       </div>
     </Reveal>
   );

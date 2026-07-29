@@ -6,7 +6,9 @@ import FrequencyRail from "../components/FrequencyRail";
 import Navbar from "../components/Navbar";
 import ProjectChannel from "../components/ProjectChannel";
 import Reveal from "../components/Reveal";
+import ScrollProgress from "../components/ScrollProgress";
 import ScrollToTop from "../components/ScrollToTop";
+import SignalConsole from "../components/SignalConsole";
 import useSignalAudio from "../hooks/useSignalAudio";
 import signalExperience from "../lib/signalExperience";
 import styles from "../styles/Home.module.css";
@@ -104,12 +106,15 @@ const projectSections = [
 
 const {
   createResonanceDetail,
+  measureHeadlineEm,
   resolvePreviewChannel,
   selectActiveChannel,
   validateChannels,
 } = signalExperience;
 
 validateChannels(projectSections);
+
+const collaborationHeadline = "Make something that resonates.";
 
 const elsewhereLinks = [
   { label: "Music", href: "https://chriswoodyard.bandcamp.com/" },
@@ -247,6 +252,7 @@ export default function Home() {
         Skip to content
       </a>
       <CustomCursor />
+      <ScrollProgress />
       <Navbar />
       <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
 
@@ -317,6 +323,9 @@ export default function Home() {
               )
             }
           />
+          <p className={styles.scrollCue} aria-hidden="true">
+            Scroll to tune
+          </p>
         </section>
 
         <FrequencyRail
@@ -325,19 +334,13 @@ export default function Home() {
           onPreview={setPreviewChannelId}
           onPreviewEnd={() => setPreviewChannelId(null)}
         />
-        <button
-          type="button"
-          className={styles.soundControl}
-          onClick={toggleSound}
-          aria-pressed={soundEnabled}
-          disabled={!soundAvailable}
-        >
-          {soundAvailable
-            ? soundEnabled
-              ? "Sound on"
-              : "Sound off"
-            : "Sound unavailable"}
-        </button>
+        <SignalConsole
+          channels={projectSections}
+          activeId={effectiveChannelId}
+          soundEnabled={soundEnabled}
+          soundAvailable={soundAvailable}
+          onToggleSound={toggleSound}
+        />
 
         <section
           id="work"
@@ -361,11 +364,12 @@ export default function Home() {
           id="contact"
           className={styles.signalFooter}
           aria-label="Contact"
+          style={{ "--title-em": measureHeadlineEm(collaborationHeadline) }}
         >
           <p className={styles.instrumentLabel}>
             Channel open / collaboration
           </p>
-          <h2>Make something that resonates.</h2>
+          <h2>{collaborationHeadline}</h2>
           <a
             href="mailto:christopher@vers3dynamics.com"
             className={styles.signalPrimary}
