@@ -82,6 +82,8 @@ The hero stage is the Event Horizon Archive: a black hole holding the practice's
 
 The background shader carries the same field, bent around a drifting mass, and must stay quiet enough to read body copy over.
 
+The stage has no edge of its own. Its fill is absolute black where the shadow has to read as absence, then dissolves into the page, and the scene dissolves with it so the canvas never exposes the rectangle the fill gave up. Only the instrument frame marks where the stage is.
+
 Selecting an index model is a write event: the horizon flares, the platter densifies, and a wave leaves the throat. The stage stays a single control — one click or Enter swaps the model and reports resonance.
 
 Active state is carried by colour, lighting, and the artifact. Inactive channels are never dimmed below legible contrast.
