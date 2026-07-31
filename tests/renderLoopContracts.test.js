@@ -6,6 +6,40 @@ test("shared runtime policies are exported for the render loop", () => {
   assert.equal(typeof signal.resolveWebGLPixelRatio, "function");
   assert.equal(typeof signal.resolvePedestalMode, "function");
   assert.equal(typeof signal.resolveCursorEnabled, "function");
+  assert.equal(typeof signal.resolveArchiveDetail, "function");
+});
+
+test("the archive spends geometry only where the runtime renders continuously", () => {
+  const detail = (overrides) =>
+    signal.resolveArchiveDetail({
+      isMobile: false,
+      reducedMotion: false,
+      ...overrides,
+    });
+
+  assert.equal(detail({}), signal.ARCHIVE_DETAIL.full);
+  assert.equal(detail({ isMobile: true }), signal.ARCHIVE_DETAIL.reduced);
+  assert.equal(detail({ reducedMotion: true }), signal.ARCHIVE_DETAIL.reduced);
+  assert.equal(
+    detail({ isMobile: true, reducedMotion: true }),
+    signal.ARCHIVE_DETAIL.reduced
+  );
+
+  // Both tiers must build the same composition, and the tier handed to
+  // single-frame visitors must never cost more than the animated one.
+  const keys = Object.keys(signal.ARCHIVE_DETAIL.full);
+  assert.deepEqual(keys, Object.keys(signal.ARCHIVE_DETAIL.reduced));
+  keys.forEach((key) => {
+    const full = signal.ARCHIVE_DETAIL.full[key];
+    const reduced = signal.ARCHIVE_DETAIL.reduced[key];
+    assert.ok(Number.isInteger(full) && full > 0, `${key} must be a positive count`);
+    assert.ok(Number.isInteger(reduced) && reduced > 0, `${key} must be a positive count`);
+    assert.ok(reduced < full, `${key} must be cheaper in the reduced tier`);
+  });
+
+  // The lattice is built from a ring-to-ring sweep, so a single ring cannot
+  // describe a funnel.
+  assert.ok(signal.ARCHIVE_DETAIL.reduced.latticeRings > 1);
 });
 
 test("render and pedestal policies cover runtime state transitions literally", () => {

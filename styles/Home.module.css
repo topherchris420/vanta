@@ -213,6 +213,10 @@
   letter-spacing: -0.075em;
   text-transform: uppercase;
   text-wrap: balance;
+  /* The display type deliberately crosses the archive stage. Its line boxes
+     reach further than its glyphs do, so without this the headline silently
+     swallows clicks on the stage behind it. Nothing here is interactive. */
+  pointer-events: none;
 }
 
 .signalTitle span {
@@ -358,16 +362,21 @@
   }
 }
 
+/* The archive is an opaque aperture, not a translucent card: the background
+   shader must not wash through the void the horizon is silhouetted against. */
 .displayPedestal {
   position: relative;
   min-height: 28rem;
   overflow: hidden;
   border: 1px solid var(--line);
   background:
-    linear-gradient(rgba(140, 240, 198, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(140, 240, 198, 0.045) 1px, transparent 1px),
-    color-mix(in srgb, var(--surface) 92%, transparent);
-  background-size: 2.5rem 2.5rem;
+    linear-gradient(rgba(140, 240, 198, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140, 240, 198, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 46%, #08100d 0%, #040806 62%, #020403 100%);
+  background-size:
+    2.5rem 2.5rem,
+    2.5rem 2.5rem,
+    100% 100%;
   color: var(--paper);
   cursor: pointer;
   transition:
@@ -398,10 +407,28 @@
   height: 100% !important;
 }
 
+/* Composed shadow, photon ring, and platter for visitors without WebGL. */
 .displayPedestalCanvas[data-webgl="fallback"] {
   background:
-    radial-gradient(circle at 50% 44%, rgba(140, 240, 198, 0.18), transparent 8rem),
-    repeating-radial-gradient(circle at 50% 50%, transparent 0 1.5rem, rgba(140, 240, 198, 0.1) 1.55rem 1.6rem);
+    radial-gradient(
+      circle at 50% 46%,
+      #010302 0 5.4rem,
+      rgba(237, 249, 244, 0.92) 5.5rem 5.62rem,
+      rgba(140, 240, 198, 0.22) 5.7rem 6.4rem,
+      transparent 8.6rem
+    ),
+    radial-gradient(
+      ellipse 20rem 2.6rem at 50% 46%,
+      transparent 0 5.6rem,
+      rgba(228, 182, 92, 0.3) 5.7rem 9rem,
+      rgba(140, 240, 198, 0.14) 9rem 15rem,
+      transparent 100%
+    ),
+    repeating-radial-gradient(
+      ellipse 20rem 2.6rem at 50% 46%,
+      transparent 0 0.52rem,
+      rgba(140, 240, 198, 0.12) 0.54rem 0.6rem
+    );
 }
 
 .displayPedestalHud {

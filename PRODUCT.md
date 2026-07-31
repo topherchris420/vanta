@@ -46,8 +46,10 @@ The canonical content source is `projectSections` in `pages/index.js`. Channel i
 
 - Desktop with WebGL, a visible document, and normal motion uses continuous rendering.
 - Mobile and reduced-motion modes render static WebGL frames on demand.
-- Hidden documents pause background, pedestal, and cursor work.
-- The pedestal pauses outside its viewport and resumes when it returns.
+- A static frame shows the composed picture the drift settles into, not the first frame of it.
+- The archive builds one of two detail tiers. Single-frame visitors get the same composition from strictly less geometry.
+- Hidden documents pause background, archive, and cursor work.
+- The archive pauses outside its viewport and resumes when it returns.
 - Device pixel ratio is capped at 2 on desktop and 1.5 on mobile.
 - WebGL construction or render failure switches the affected surface to a composed CSS fallback.
 - The custom cursor runs only for visible fine-pointer documents without reduced motion.
@@ -67,7 +69,20 @@ The interface is a dark, sharp-edged signal instrument, not a card-grid portfoli
 - Body type: Space Grotesk
 - Numeric and signal metadata: the system monospace stack
 
-The same mint/amber language applies to CSS artifacts, the Vanta shader, pedestal lighting, and pedestal models. Motion communicates active state or user feedback and must collapse under `prefers-reduced-motion`.
+The same mint/amber language applies to CSS artifacts, the Vanta shader, the hero archive, and its index models. Motion communicates active state or user feedback and must collapse under `prefers-reduced-motion`.
+
+The hero stage is the Event Horizon Archive: a black hole holding the practice's whole output on its surface. It renders in layers, and each layer states part of that idea rather than decorating it.
+
+- A spacetime lattice funnels into the throat as a polar wireframe.
+- An accretion platter carries concentric tracks cut into angular sectors, one bit per sector, spun at Keplerian rates so the tracks shear, and Doppler-beamed so the approaching limb burns brighter.
+- Filaments of infalling information wind inward and blueshift as they drop.
+- The horizon itself is near-black, encoded with equal-area cells that reveal themselves only at grazing angles.
+- A photon ring marks the shadow's edge, with the platter's lensed images arcing above and below it.
+- The visitor-swappable index model orbits in a containment shell, tethered to the horizon by a write beam.
+
+The background shader carries the same field, bent around a drifting mass, and must stay quiet enough to read body copy over.
+
+Selecting an index model is a write event: the horizon flares, the platter densifies, and a wave leaves the throat. The stage stays a single control — one click or Enter swaps the model and reports resonance.
 
 Active state is carried by colour, lighting, and the artifact. Inactive channels are never dimmed below legible contrast.
 
