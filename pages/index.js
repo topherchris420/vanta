@@ -34,8 +34,8 @@ const projectSections = [
       "Coloring books, poetry, and health-focused writing for reflection and daily rituals.",
     primaryLabel: "Read poetry book",
     primaryHref: "https://a.co/d/078d1kaa",
-    secondaryLabel: "Intro to Quantum",
-    secondaryHref: "https://woodyard.streamlit.app/",
+    secondaryLabel: "Lop Nur Twin game",
+    secondaryHref: "https://lop-nur-twin.vercel.app/",
     frequency: 261.63,
   },
   {
@@ -63,9 +63,9 @@ const projectSections = [
     visual: "artwork",
     description:
       "Digital fragments and spatial-computing exhibitions that blend visual poetry with immersion.",
-    primaryLabel: "View Oncyber Gallery",
+    primaryLabel: "View Blockchain Gallery",
     primaryHref: "https://oncyber.io/stanfordgsb",
-    secondaryLabel: "See MADS Gallery Feature",
+    secondaryLabel: "See Italian MADS Gallery Feature",
     secondaryHref:
       "https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/",
     frequency: 392,
@@ -124,7 +124,7 @@ const elsewhereLinks = [
     href:
       "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
   },
-  { label: "Latest build", href: "https://arpa-h.vercel.app/" },
+  { label: "Latest build", href: "https://geotwn.vercel.app/" },
 ];
 
 const siteUrl = "https://mitpress.vercel.app";
