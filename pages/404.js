@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <div className={homeStyles.container} id="top">
       <Head>
-        <title>Off Signal | Vers3Dynamics</title>
+        <title>Vers3Dynamics</title>
         <meta name="robots" content="noindex" />
       </Head>
       <a href="#main-content" className={homeStyles.skipLink}>
