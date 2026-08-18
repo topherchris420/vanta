@@ -94,7 +94,7 @@ const projectSections = [
     color: "#8cf0c6",
     visual: "spectrum",
     description:
-      "Experimental sound compositions under Auditory Geometry with cinematic sonic textures.",
+      "Experimental sound compositions from my project Indigo People with lo-fi sonic textures.",
     primaryLabel: "Listen on Bandcamp",
     primaryHref: "https://chriswoodyard.bandcamp.com/",
     secondaryLabel: "Play Featured Track",
