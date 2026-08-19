@@ -13,9 +13,9 @@
     "sync:research": "node scripts/syncResearch.js"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "next": "^14.2.24",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "three": "^0.156.0",
     "vanta": "^0.5.24"
   }
