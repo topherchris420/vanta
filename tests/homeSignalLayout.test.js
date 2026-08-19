@@ -92,7 +92,7 @@ test(
     const html = await response.text();
 
     assert.equal(response.status, 200);
-    ["Five mediums.", "One signal.", "Enter the instrument", "Explore without sound"]
+    ["Five notes.", "One chord.", "Enter the instrument", "Explore without sound"]
       .forEach((copy) => assert.ok(html.includes(copy), `missing rendered copy: ${copy}`));
 
     assert.ok(html.includes('aria-label="Signal channels"'));

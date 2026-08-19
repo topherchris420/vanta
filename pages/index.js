@@ -264,10 +264,10 @@ export default function Home() {
         >
           <div className={styles.heroCopy}>
             <p className={styles.instrumentLabel}>
-              Christopher Woodyard / signal architect
+              Christopher Woodyard / captain of my soul
             </p>
             <h1 id="signal-title" className={styles.signalTitle}>
-              Five mediums.<span>One signal.</span>
+              Five notes.<span>One chord.</span>
             </h1>
             <p className={styles.signalSummary}>
               Sound-driven wellness, consciousness engines, immersive art,
