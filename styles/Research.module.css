@@ -1,0 +1,848 @@
+/* ==========================================================================
+   Vers3Dynamics Research Explorer HUD & 3D Knowledge Graph Styling
+   ========================================================================== */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Header & HUD Top Bar */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem clamp(1.2rem, 3vw, 2.5rem);
+  background: color-mix(in srgb, var(--ink) 92%, transparent);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font: 700 0.82rem / 1 var(--font-mono);
+  color: var(--paper);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.brandMark {
+  color: var(--signal);
+}
+
+.headerDivider {
+  width: 1px;
+  height: 1.2rem;
+  background: var(--line);
+}
+
+.pageTitle {
+  font: 800 1rem / 1.1 var(--font-display);
+  color: var(--paper);
+  letter-spacing: 0.04em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pageBadge {
+  font: 700 0.58rem / 1 var(--font-mono);
+  color: var(--amber);
+  background: color-mix(in srgb, var(--amber) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--amber) 30%, transparent);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.portfolioReturnButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  color: var(--paper);
+  font: 600 0.72rem / 1 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.portfolioReturnButton:hover,
+.portfolioReturnButton:focus-visible {
+  border-color: var(--signal);
+  color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 12%, var(--surface));
+  box-shadow: 0 0 16px rgba(140, 240, 198, 0.2);
+}
+
+/* Main Layout: Split Search & 3D Knowledge Graph */
+.main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(360px, 460px) 1fr;
+  position: relative;
+  min-height: calc(100vh - 3.75rem);
+}
+
+/* Left Search & Discovery Panel */
+.searchPanel {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  z-index: 20;
+  max-height: calc(100vh - 3.75rem);
+  overflow-y: auto;
+}
+
+.searchHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 1.25rem 1.25rem 0.75rem;
+  background: color-mix(in srgb, var(--surface) 98%, transparent);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.searchBarWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 2.4rem 0.75rem 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--ink);
+  color: var(--paper);
+  font: 500 0.85rem / 1.4 var(--font-body);
+  letter-spacing: 0.02em;
+  transition: all 180ms ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--signal);
+  box-shadow: 0 0 18px rgba(140, 240, 198, 0.25);
+}
+
+.searchInput::placeholder {
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+.clearButton {
+  position: absolute;
+  right: 0.65rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+}
+
+.clearButton:hover {
+  color: var(--signal);
+}
+
+/* Autocomplete Suggestions Dropdown */
+.suggestionsDropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 30;
+  background: var(--surface);
+  border: 1px solid var(--signal);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(140, 240, 198, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border: none;
+  background: transparent;
+  color: var(--paper);
+  font: 500 0.78rem / 1.2 var(--font-mono);
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms ease;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 40%, transparent);
+}
+
+.suggestionItem:last-child {
+  border-bottom: none;
+}
+
+.suggestionItem:hover,
+.suggestionItem:focus-visible {
+  background: color-mix(in srgb, var(--signal) 15%, var(--ink));
+  color: var(--signal);
+  outline: none;
+}
+
+.suggestionType {
+  font-size: 0.62rem;
+  color: var(--amber);
+  text-transform: uppercase;
+}
+
+/* Filter Tag Pills */
+.filterPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+
+.filterPill {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font: 600 0.64rem / 1 var(--font-mono);
+  padding: 0.35rem 0.65rem;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.filterPill:hover {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.filterPillActive {
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 15%, transparent);
+  color: var(--signal);
+  box-shadow: 0 0 10px rgba(140, 240, 198, 0.2);
+}
+
+/* Search Status HUD Bar */
+.searchStatus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  font: 600 0.65rem / 1 var(--font-mono);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 60%, transparent);
+  border-bottom: 1px solid var(--line);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.resultCount {
+  color: var(--signal);
+}
+
+/* Results List */
+.resultsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.25rem;
+  flex: 1;
+}
+
+.resultCard {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  padding: 1.1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.resultCard:hover {
+  border-color: color-mix(in srgb, var(--signal) 70%, transparent);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 16px rgba(140, 240, 198, 0.12);
+}
+
+.resultCardActive {
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 8%, var(--surface));
+  box-shadow: 0 0 24px rgba(140, 240, 198, 0.25);
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.cardMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font: 500 0.62rem / 1.3 var(--font-mono);
+  color: var(--muted);
+}
+
+.cardDate {
+  color: var(--paper);
+}
+
+.cardSource {
+  color: var(--amber);
+}
+
+/* Provenance Badges */
+.provenanceBadge {
+  font: 700 0.55rem / 1 var(--font-mono);
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.provenanceVerified {
+  background: color-mix(in srgb, var(--signal) 15%, transparent);
+  color: var(--signal);
+  border: 1px solid color-mix(in srgb, var(--signal) 40%, transparent);
+}
+
+.provenanceLocal {
+  background: color-mix(in srgb, var(--amber) 15%, transparent);
+  color: var(--amber);
+  border: 1px solid color-mix(in srgb, var(--amber) 40%, transparent);
+}
+
+.provenanceInferred {
+  background: color-mix(in srgb, #9c88ff 15%, transparent);
+  color: #c4b5fd;
+  border: 1px solid color-mix(in srgb, #9c88ff 40%, transparent);
+}
+
+.cardTitle {
+  font: 700 0.92rem / 1.3 var(--font-display);
+  color: var(--paper);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.cardAbstract {
+  font: 400 0.74rem / 1.5 var(--font-body);
+  color: var(--muted);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.cardTag {
+  font: 500 0.6rem / 1 var(--font-mono);
+  color: color-mix(in srgb, var(--paper) 75%, transparent);
+  background: color-mix(in srgb, var(--line) 40%, transparent);
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--line) 40%, transparent);
+}
+
+.focusGraphButton {
+  border: none;
+  background: transparent;
+  color: var(--signal);
+  font: 600 0.65rem / 1 var(--font-mono);
+  letter-spacing: 0.04em;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: transform 140ms ease;
+}
+
+.focusGraphButton:hover {
+  transform: translateX(3px);
+}
+
+.sourceLink {
+  color: var(--muted);
+  font: 500 0.65rem / 1 var(--font-mono);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 140ms ease;
+}
+
+.sourceLink:hover {
+  color: var(--paper);
+}
+
+/* Empty Search State */
+.emptyState {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.emptyStateIcon {
+  font-size: 2rem;
+  color: var(--line);
+}
+
+/* 3D Knowledge Graph Canvas Container */
+.graphContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background: radial-gradient(circle at center, #0b1512 0%, #060b09 100%);
+  overflow: hidden;
+}
+
+.graphCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Graph HUD Overlays & Controls */
+.graphHudTop {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  pointer-events: none;
+}
+
+.graphHudCard {
+  background: rgba(6, 11, 9, 0.88);
+  border: 1px solid var(--line);
+  padding: 0.65rem 0.95rem;
+  border-radius: 2px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
+}
+
+.graphHudTitle {
+  font: 700 0.65rem / 1 var(--font-mono);
+  color: var(--signal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.graphHudStats {
+  font: 500 0.65rem / 1.4 var(--font-mono);
+  color: var(--muted);
+}
+
+.graphControls {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 15;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.controlButton {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line);
+  background: rgba(6, 11, 9, 0.85);
+  color: var(--paper);
+  font: 600 0.65rem / 1 var(--font-mono);
+  letter-spacing: 0.04em;
+  border-radius: 2px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 160ms ease;
+}
+
+.controlButton:hover,
+.controlButton:focus-visible {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.controlButtonActive {
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 20%, var(--ink));
+  color: var(--signal);
+}
+
+/* Graph Legend */
+.graphLegend {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 15;
+  background: rgba(6, 11, 9, 0.88);
+  border: 1px solid var(--line);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.legendTitle {
+  font: 700 0.6rem / 1 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.legendItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 500 0.62rem / 1 var(--font-mono);
+  color: var(--paper);
+}
+
+.legendDot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+}
+
+/* Hover Tooltip in 3D Canvas */
+.graphTooltip {
+  position: absolute;
+  z-index: 25;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  background: rgba(6, 11, 9, 0.95);
+  border: 1px solid var(--signal);
+  padding: 0.55rem 0.85rem;
+  border-radius: 2px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(140, 240, 198, 0.25);
+  max-width: 280px;
+  white-space: normal;
+}
+
+.tooltipType {
+  font: 700 0.55rem / 1 var(--font-mono);
+  color: var(--amber);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.tooltipLabel {
+  font: 700 0.78rem / 1.2 var(--font-display);
+  color: var(--paper);
+}
+
+/* Slide-out Inspector Panel */
+.detailsDrawer {
+  position: fixed;
+  top: 3.75rem;
+  right: 0;
+  bottom: 0;
+  width: min(520px, 92vw);
+  background: rgba(11, 18, 16, 0.96);
+  border-left: 1px solid var(--signal);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(140, 240, 198, 0.15);
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.detailsDrawerOpen {
+  transform: translateX(0);
+}
+
+.detailsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.detailsTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.closeButton {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--paper);
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.closeButton:hover {
+  border-color: var(--signal);
+  color: var(--signal);
+}
+
+.detailsBody {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.detailsNodeLabel {
+  font: 800 clamp(1.2rem, 3vw, 1.5rem) / 1.2 var(--font-display);
+  color: var(--paper);
+  margin: 0;
+}
+
+.detailsMetadataGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--ink) 80%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.metaLabel {
+  font: 600 0.58rem / 1 var(--font-mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.metaValue {
+  font: 600 0.74rem / 1.3 var(--font-mono);
+  color: var(--paper);
+}
+
+.detailsSectionTitle {
+  font: 700 0.7rem / 1 var(--font-mono);
+  color: var(--signal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+.detailsAbstractText {
+  font: 400 0.82rem / 1.6 var(--font-body);
+  color: var(--paper);
+  margin: 0;
+}
+
+.connectedList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.connectedNodeItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  background: color-mix(in srgb, var(--ink) 60%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 140ms ease;
+}
+
+.connectedNodeItem:hover {
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 10%, var(--ink));
+}
+
+.connectedLabel {
+  font: 600 0.72rem / 1.3 var(--font-mono);
+  color: var(--paper);
+}
+
+.relationshipTag {
+  font: 700 0.56rem / 1 var(--font-mono);
+  color: var(--amber);
+  background: color-mix(in srgb, var(--amber) 15%, transparent);
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.detailsFooter {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--line);
+  background: var(--ink);
+}
+
+.viewSourceButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--signal);
+  background: var(--signal);
+  color: var(--ink);
+  font: 700 0.76rem / 1 var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.viewSourceButton:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 0 20px rgba(140, 240, 198, 0.4);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .searchPanel {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    max-height: 460px;
+  }
+
+  .graphContainer {
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .headerRight {
+    justify-content: flex-end;
+  }
+
+  .detailsMetadataGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .graphLegend {
+    display: none;
+  }
+}

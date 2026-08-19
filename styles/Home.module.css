@@ -1478,3 +1478,112 @@
     transform: scaleX(1);
   }
 }
+
+/* Black Hole Event Horizon Gateway HUD & Portal */
+.accessiblePortalTrigger {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.2rem;
+  border: 1px solid var(--signal);
+  background: var(--ink);
+  color: var(--signal);
+  font: 700 0.72rem / 1 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(140, 240, 198, 0.35);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.accessiblePortalTrigger:focus,
+.accessiblePortalTrigger:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.accessiblePortalIcon {
+  color: var(--amber);
+}
+
+.eventHorizonTooltip {
+  position: fixed;
+  z-index: 55;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  padding: 0.6rem 0.95rem;
+  border: 1px solid var(--signal);
+  border-radius: 2px;
+  background: rgba(6, 11, 9, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 0 28px rgba(140, 240, 198, 0.28),
+    inset 0 0 16px rgba(140, 240, 198, 0.08);
+  text-align: center;
+  white-space: nowrap;
+  animation: hudPulse 2s ease-in-out infinite alternate;
+}
+
+.eventHorizonBadge {
+  margin-bottom: 0.25rem;
+  font: 700 0.55rem / 1 var(--font-mono);
+  color: var(--amber);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eventHorizonLabel {
+  font: 800 0.76rem / 1.2 var(--font-display);
+  color: var(--signal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.eventHorizonSub {
+  margin-top: 0.2rem;
+  font: 500 0.58rem / 1.2 var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.eventHorizonTransitionOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--ink);
+  opacity: 0;
+  pointer-events: auto;
+  animation: eventHorizonFade 0.9s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+@keyframes eventHorizonFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hudPulse {
+  0% {
+    border-color: rgba(140, 240, 198, 0.55);
+    box-shadow: 0 0 16px rgba(140, 240, 198, 0.2);
+  }
+  100% {
+    border-color: rgba(140, 240, 198, 1);
+    box-shadow: 0 0 32px rgba(140, 240, 198, 0.45);
+  }
+}
+

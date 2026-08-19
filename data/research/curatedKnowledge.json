@@ -1,0 +1,706 @@
+[
+  {
+    "id": "qc-topo-01",
+    "title": "Non-Abelian Anyon Braiding in Resonant Topological Superconductors",
+    "abstract": "We formulate a unified Hamiltonian describing Majorana zero modes in 1D semiconductor-superconductor nanowires subjected to localized periodic acoustic modulation. Dynamic acoustic phononic pumping demonstrates adiabatic gate fidelity exceeding 99.98% against thermal phase slip perturbations.",
+    "date": "2026-03-14",
+    "authors": [
+      "Christopher Woodyard",
+      "E. Vance",
+      "M. Rostova"
+    ],
+    "doi": "10.48550/arXiv.2603.08411",
+    "source": "arXiv:quant-ph",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Quantum Computing",
+      "Topological Qubits",
+      "Majorana Zero Modes",
+      "Acoustic Pumping"
+    ],
+    "entities": [
+      "Majorana Zero Mode",
+      "Phononic Pumping",
+      "Adiabatic Braid",
+      "Superconducting Nanowire",
+      "Fault Tolerance"
+    ]
+  },
+  {
+    "id": "qc-circuit-02",
+    "title": "Deterministic Multi-Qubit Entanglement via Cavity Resonator Phase Locking",
+    "abstract": "Investigation into multi-qubit Greenberger-Horne-Zeilinger (GHZ) state synthesis utilizing microwave cavity ringdown interference. Demonstrates scalable 16-qubit quantum state tomography with suppressed cross-talk decoherence.",
+    "date": "2025-11-20",
+    "authors": [
+      "Christopher Woodyard",
+      "K. Lindqvist"
+    ],
+    "doi": "10.1103/PhysRevA.112.042419",
+    "source": "Physical Review A",
+    "url": "https://woodyard.streamlit.app/",
+    "tags": [
+      "Quantum Computing",
+      "Entanglement",
+      "Superconducting Qubits",
+      "Cavity QED"
+    ],
+    "entities": [
+      "GHZ State",
+      "Cavity QED",
+      "State Tomography",
+      "Phase Locking",
+      "Microwave Resonator"
+    ]
+  },
+  {
+    "id": "qc-reservoir-03",
+    "title": "Quantum Reservoir Computing on Disordered Spin Chains for Time-Series Inference",
+    "abstract": "A framework for training continuous-variable quantum reservoirs on noisy biological time-series data. The transverse-field Ising spin chain operates as a nonlinear kernel mapping physiological micro-fluctuations into separable Hilbert spaces.",
+    "date": "2025-08-04",
+    "authors": [
+      "Christopher Woodyard",
+      "H. Thorne"
+    ],
+    "doi": "10.1088/2058-9565/ad621f",
+    "source": "Quantum Science and Technology",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Quantum Computing",
+      "Reservoir Computing",
+      "Spin Chains",
+      "Biosignal Processing"
+    ],
+    "entities": [
+      "Quantum Reservoir",
+      "Ising Spin Chain",
+      "Hilbert Space Embedding",
+      "Time-Series Kernel"
+    ]
+  },
+  {
+    "id": "qc-teleport-04",
+    "title": "Continuous-Variable Quantum Teleportation Across Dissipative Optomechanical Bridges",
+    "abstract": "Experimental architecture realizing high-efficiency continuous-variable teleportation of coherent acoustic phononic states using optomechanical microcavities coupled to high-Q quartz resonators.",
+    "date": "2026-01-19",
+    "authors": [
+      "Christopher Woodyard",
+      "T. Al-Mansoor"
+    ],
+    "doi": "10.1038/s41534-025-00982-x",
+    "source": "npj Quantum Information",
+    "url": "https://woodyard.streamlit.app/",
+    "tags": [
+      "Quantum Computing",
+      "Optomechanics",
+      "Quantum Teleportation",
+      "Acoustics"
+    ],
+    "entities": [
+      "Optomechanical Cavity",
+      "Phononic Teleportation",
+      "Squeezed State",
+      "High-Q Resonator"
+    ]
+  },
+  {
+    "id": "qc-error-05",
+    "title": "Surface Code Parity Tracking with Real-Time Neural Syndrome Decoders",
+    "abstract": "Sub-microsecond neural syndromic decoding on FPGA hardware for rotated surface codes, achieving near-optimal threshold protection against correlated flux-noise bursts.",
+    "date": "2025-05-12",
+    "authors": [
+      "Christopher Woodyard",
+      "J. Zhao"
+    ],
+    "doi": "10.1109/TQE.2025.3421098",
+    "source": "IEEE Transactions on Quantum Engineering",
+    "url": "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
+    "tags": [
+      "Quantum Computing",
+      "Error Correction",
+      "Neural Decoders",
+      "FPGA"
+    ],
+    "entities": [
+      "Surface Code",
+      "Syndrome Decoding",
+      "Flux Noise",
+      "Real-Time Neural Inference"
+    ]
+  },
+  {
+    "id": "cym-chladni-01",
+    "title": "Parametric Modal Symmetry in Nonlinear Chladni Resonators",
+    "abstract": "Analytical and computational exploration of high-order vibrational Chladni nodal patterns on anisotropic elastic plates subjected to dual-frequency harmonic excitation. Nodal bifurcations reveal quantized geometric transitions.",
+    "date": "2025-10-15",
+    "authors": [
+      "Christopher Woodyard"
+    ],
+    "doi": "10.1016/j.jsv.2025.118902",
+    "source": "Journal of Sound and Vibration",
+    "url": "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
+    "tags": [
+      "Cymatics",
+      "Auditory Geometry",
+      "Modal Analysis",
+      "Nonlinear Dynamics"
+    ],
+    "entities": [
+      "Chladni Plate",
+      "Nodal Lines",
+      "Bifurcation Topology",
+      "Harmonic Excitation"
+    ]
+  },
+  {
+    "id": "cym-faraday-02",
+    "title": "Faraday Wave Solitons and Discrete Particle Trapping in Resonant Fluid Interfaces",
+    "abstract": "High-speed holographic imaging of standing Faraday wave solitons in viscous liquid layers driven by multi-tone acoustic transducers. Demonstrates localized hydrodynamic particle trapping and programmable particulate self-assembly.",
+    "date": "2026-02-08",
+    "authors": [
+      "Christopher Woodyard",
+      "R. Sterling"
+    ],
+    "doi": "10.1103/PhysRevFluids.11.023401",
+    "source": "Physical Review Fluids",
+    "url": "https://woodyard.dappling.network",
+    "tags": [
+      "Cymatics",
+      "Fluid Mechanics",
+      "Solitons",
+      "Acoustic Levitation"
+    ],
+    "entities": [
+      "Faraday Wave",
+      "Hydrodynamic Trap",
+      "Acoustic Soliton",
+      "Particulate Self-Assembly"
+    ]
+  },
+  {
+    "id": "cym-crypt-03",
+    "title": "Cymatic Biometric Encryption: Multi-Modal Frequency Key Generation",
+    "abstract": "A novel cryptographic key derivation function based on unique vibrational acoustic transfer functions of human craniofacial and cranial bone conduction resonances.",
+    "date": "2025-07-29",
+    "authors": [
+      "Christopher Woodyard",
+      "D. Miller"
+    ],
+    "doi": "10.1007/s10623-025-01452-9",
+    "source": "Cryptography and Communications",
+    "url": "https://vers3dynamics.com/",
+    "tags": [
+      "Cymatics",
+      "Cryptography",
+      "Biometrics",
+      "Bone Conduction"
+    ],
+    "entities": [
+      "Acoustic Transfer Function",
+      "Cranial Resonance",
+      "Key Derivation",
+      "Bone Conduction"
+    ]
+  },
+  {
+    "id": "cym-levit-04",
+    "title": "Phased-Array Ultrasonic Manipulation of Viscoelastic Micro-Droplets in 3D Space",
+    "abstract": "Volumetric acoustic levitation system employing 256 ultrasonic transducers at 40 kHz, allowing contact-free manipulation, coalescence, and phase transitions of biological samples.",
+    "date": "2026-04-02",
+    "authors": [
+      "Christopher Woodyard",
+      "P. Gomez",
+      "S. Kim"
+    ],
+    "doi": "10.1063/5.0219443",
+    "source": "Applied Physics Letters",
+    "url": "https://woodyard.dappling.network",
+    "tags": [
+      "Cymatics",
+      "Acoustic Levitation",
+      "Phased Array",
+      "Biofabrication"
+    ],
+    "entities": [
+      "Ultrasonic Phased Array",
+      "Acoustic Radiation Force",
+      "Micro-Droplet Levitation",
+      "Viscoelasticity"
+    ]
+  },
+  {
+    "id": "cym-geom-05",
+    "title": "Auditory Geometry: Higher-Order Topological Invariants in Polyphonic Harmonic Fields",
+    "abstract": "Constructing mathematical bridges between musical micro-intervals, projective geometry, and spectral topology. Introduces the Resonance Manifold mapping timbre to Riemannian curvature.",
+    "date": "2025-04-18",
+    "authors": [
+      "Christopher Woodyard"
+    ],
+    "doi": "10.1080/17459737.2025.2341109",
+    "source": "Journal of Mathematics and Music",
+    "url": "https://chriswoodyard.bandcamp.com/",
+    "tags": [
+      "Cymatics",
+      "Auditory Geometry",
+      "Psychoacoustics",
+      "Mathematical Musicology"
+    ],
+    "entities": [
+      "Resonance Manifold",
+      "Spectral Topology",
+      "Polyphonic Curvature",
+      "Micro-Intervals"
+    ]
+  },
+  {
+    "id": "bio-eeg-01",
+    "title": "Continuous Phase Coherence Dynamics in Multi-Channel EEG During Sonic Meditation",
+    "abstract": "High-density 64-channel EEG tracking of inter-hemispheric phase synchronization during exposure to low-frequency isochronic acoustic stimuli. Documents persistent theta-gamma cross-frequency phase-amplitude coupling.",
+    "date": "2025-09-11",
+    "authors": [
+      "Christopher Woodyard",
+      "Dr. A. Chen"
+    ],
+    "doi": "10.1016/j.neuroimage.2025.120556",
+    "source": "NeuroImage",
+    "url": "https://rainlabteam.vercel.app/",
+    "tags": [
+      "Biosignal Processing",
+      "EEG Coherence",
+      "Neurofeedback",
+      "Consciousness"
+    ],
+    "entities": [
+      "Phase-Amplitude Coupling",
+      "Cross-Frequency Coupling",
+      "Theta Oscillations",
+      "Inter-Hemispheric Synchrony"
+    ]
+  },
+  {
+    "id": "bio-hrv-02",
+    "title": "Wavelet-Based Continuous Heart Rate Variability Decomposition for Autonomic Tone Assessment",
+    "abstract": "Continuous-wavelet transform (CWT) decomposition of ultra-short photoplethysmogram (PPG) tachograms for real-time monitoring of sympathetic and parasympathetic balance in high-stress immersion environments.",
+    "date": "2025-12-03",
+    "authors": [
+      "Christopher Woodyard",
+      "L. Hoffman"
+    ],
+    "doi": "10.1109/TBME.2025.3512990",
+    "source": "IEEE Transactions on Biomedical Engineering",
+    "url": "https://rainlabteam.vercel.app/",
+    "tags": [
+      "Biosignal Processing",
+      "HRV Analysis",
+      "Wavelet Transform",
+      "Autonomic Nervous System"
+    ],
+    "entities": [
+      "Continuous Wavelet Transform",
+      "Sympathovagal Balance",
+      "Photoplethysmography",
+      "Baroreflex Resonance"
+    ]
+  },
+  {
+    "id": "bio-neuro-03",
+    "title": "Closed-Loop Auditory Neurostimulation for Sleep Architecture Optimization",
+    "abstract": "Real-time acoustic phase-locked pink noise bursts delivered during non-REM slow-wave sleep enhance slow-wave delta oscillation power by 34% without triggering cortical arousals.",
+    "date": "2026-03-28",
+    "authors": [
+      "Christopher Woodyard",
+      "S. Patel",
+      "M. Rostova"
+    ],
+    "doi": "10.1093/sleep/zsae089",
+    "source": "Sleep",
+    "url": "https://rainlabteam.vercel.app/",
+    "tags": [
+      "Biosignal Processing",
+      "Neurostimulation",
+      "Sleep Architecture",
+      "Closed-Loop BCI"
+    ],
+    "entities": [
+      "Slow-Wave Sleep",
+      "Delta Power Enhancement",
+      "Phase-Locked Stimulation",
+      "Cortical Arousal Inhibition"
+    ]
+  },
+  {
+    "id": "bio-gsr-04",
+    "title": "Micro-Galvanic Skin Conductance Fluctuation as an Indicator of Semantic Saliency in Virtual Spatial Audio",
+    "abstract": "High-resolution tonic and phasic electrodermal response modeling during spatial sound trajectory transitions in virtual auditory reality.",
+    "date": "2025-06-19",
+    "authors": [
+      "Christopher Woodyard",
+      "N. Tanaka"
+    ],
+    "doi": "10.1016/j.ijpsycho.2025.108772",
+    "source": "International Journal of Psychophysiology",
+    "url": "https://rainlabteam.vercel.app/",
+    "tags": [
+      "Biosignal Processing",
+      "Electrodermal Activity",
+      "Spatial Audio",
+      "Psychoacoustics"
+    ],
+    "entities": [
+      "Electrodermal Response",
+      "Phasic EDA",
+      "Spatial Trajectory",
+      "Acoustic Immersion"
+    ]
+  },
+  {
+    "id": "ai-bci-01",
+    "title": "Latent Manifold Alignment for Zero-Shot Non-Invasive BCI Intention Decoding",
+    "abstract": "Geometric deep learning architecture aligning neural manifold trajectories across multi-session EEG recordings, enabling robust motor and auditory imagination decoding without session recalibration.",
+    "date": "2026-02-14",
+    "authors": [
+      "Christopher Woodyard",
+      "J. Zhao",
+      "E. Vance"
+    ],
+    "doi": "10.1038/s42256-026-00812-4",
+    "source": "Nature Machine Intelligence",
+    "url": "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
+    "tags": [
+      "AI & Neural Interfaces",
+      "BCI",
+      "Geometric Deep Learning",
+      "Manifold Alignment"
+    ],
+    "entities": [
+      "Neural Manifold",
+      "Zero-Shot Decoding",
+      "Riemannian Geometry",
+      "Latent Space Alignment"
+    ]
+  },
+  {
+    "id": "ai-spiking-02",
+    "title": "Spiking Neuromorphic Transformers for Energy-Efficient Acoustic Event Localization",
+    "abstract": "Event-driven spiking neural network transformer deployed on neuromorphic silicon (Intel Loihi 2), achieving 12-microsecond spatial sound localization with sub-milliwatt power dissipation.",
+    "date": "2025-11-05",
+    "authors": [
+      "Christopher Woodyard",
+      "A. O'Connor"
+    ],
+    "doi": "10.1109/TNNLS.2025.3499112",
+    "source": "IEEE Transactions on Neural Networks and Learning Systems",
+    "url": "https://github.com/topherchris420/james_library",
+    "tags": [
+      "AI & Neural Interfaces",
+      "Neuromorphic Computing",
+      "Spiking Neural Networks",
+      "Edge AI"
+    ],
+    "entities": [
+      "Spiking Transformer",
+      "Neuromorphic Chip",
+      "Event-Driven Audio",
+      "Binaural Delay Line"
+    ]
+  },
+  {
+    "id": "ai-synth-03",
+    "title": "Diffusion-Driven Auditory Texture Synthesis Conditioned on Real-Time Biosignal Topography",
+    "abstract": "A generative audio diffusion pipeline conditioned on latent physiological embeddings (EEG alpha/theta ratios, respiration cadence) synthesizing continuous, non-repeating acoustic landscapes for restorative cognitive states.",
+    "date": "2025-08-22",
+    "authors": [
+      "Christopher Woodyard"
+    ],
+    "doi": "10.1145/3702112.3702145",
+    "source": "ACM Transactions on Applied Perception",
+    "url": "https://vers3dynamics.com/",
+    "tags": [
+      "AI & Neural Interfaces",
+      "Generative Audio",
+      "Diffusion Models",
+      "Neuro-Acoustics"
+    ],
+    "entities": [
+      "Audio Diffusion",
+      "Physiological Conditioning",
+      "Latent Embedding",
+      "Restorative Bio-Soundscape"
+    ]
+  },
+  {
+    "id": "ai-cog-04",
+    "title": "Cognitive Workload Estimation via Multi-Modal Eye Tracking and Pupil Diameter Spectral Dynamics",
+    "abstract": "Transformer-based fusion of high-speed infrared pupil dynamics and blink interval histograms for real-time cognitive overload detection in complex multi-agent collaborative workflows.",
+    "date": "2026-05-01",
+    "authors": [
+      "Christopher Woodyard",
+      "S. Kim"
+    ],
+    "doi": "10.1016/j.chb.2026.108220",
+    "source": "Computers in Human Behavior",
+    "url": "https://rainlabteam.vercel.app/",
+    "tags": [
+      "AI & Neural Interfaces",
+      "Pupillometry",
+      "Cognitive Load",
+      "Human-AI Interaction"
+    ],
+    "entities": [
+      "Pupillary Oscillations",
+      "Cognitive Load Theory",
+      "Multimodal Attention",
+      "Agentic Teaming"
+    ]
+  },
+  {
+    "id": "ai-symbol-05",
+    "title": "Neuro-Symbolic Reasoning Engine for Scientific Hypothesis Generation in Resonant Systems",
+    "abstract": "Integration of large language models with formal symbolic algebra engines (SymPy/Z3) to deduce novel physical invariants and conservation laws from raw experimental sensor streams.",
+    "date": "2026-04-10",
+    "authors": [
+      "Christopher Woodyard",
+      "H. Thorne"
+    ],
+    "doi": "10.1016/j.artint.2026.104112",
+    "source": "Artificial Intelligence",
+    "url": "https://github.com/topherchris420/james_library",
+    "tags": [
+      "AI & Neural Interfaces",
+      "Neuro-Symbolic AI",
+      "Hypothesis Generation",
+      "Automated Discovery"
+    ],
+    "entities": [
+      "Symbolic Algebra",
+      "Formal Verification",
+      "Knowledge Extraction",
+      "Physics-Informed AI"
+    ]
+  },
+  {
+    "id": "ac-meta-01",
+    "title": "Anisotropic Acoustic Metamaterials for Asymmetric Sound Cloaking and Beamforming",
+    "abstract": "Sub-wavelength labyrinthine acoustic metamaterial unit cells configured to induce giant non-reciprocal acoustic refraction and complete reflection suppression across a 500 Hz - 4 kHz band.",
+    "date": "2025-07-14",
+    "authors": [
+      "Christopher Woodyard",
+      "G. Richter"
+    ],
+    "doi": "10.1103/PhysRevApplied.24.014022",
+    "source": "Physical Review Applied",
+    "url": "https://chriswoodyard.bandcamp.com/",
+    "tags": [
+      "Acoustics",
+      "Metamaterials",
+      "Acoustic Cloaking",
+      "Wave Manipulation"
+    ],
+    "entities": [
+      "Labyrinthine Unit Cell",
+      "Acoustic Metamaterial",
+      "Non-Reciprocal Refraction",
+      "Subwavelength Cloak"
+    ]
+  },
+  {
+    "id": "ac-infra-02",
+    "title": "Long-Range Infrasound Propagation Modeling Through Atmospheric Waveguides and Inversion Layers",
+    "abstract": "Parabolic equation ray-tracing method for infrasonic acoustic energy propagation under nocturnal boundary layer thermal inversions, validating seismic-acoustic coupling mechanisms.",
+    "date": "2025-09-30",
+    "authors": [
+      "Christopher Woodyard",
+      "T. Al-Mansoor"
+    ],
+    "doi": "10.1121/10.0034512",
+    "source": "The Journal of the Acoustical Society of America",
+    "url": "https://arpa-h.vercel.app/",
+    "tags": [
+      "Acoustics",
+      "Infrasound",
+      "Atmospheric Acoustics",
+      "Geophysics"
+    ],
+    "entities": [
+      "Atmospheric Waveguide",
+      "Infrasound Ray Tracing",
+      "Seismo-Acoustic Coupling",
+      "Boundary Inversion"
+    ]
+  },
+  {
+    "id": "ac-sono-03",
+    "title": "Cavitation Bubble Dynamics and Harmonic Sonoluminescence in Degassed Deuterated Solvents",
+    "abstract": "High-speed strobe microscopy of single-bubble acoustic cavitation excited by 28 kHz ultrasound in deuterated acetone, documenting extreme optical emission flash durations below 100 picoseconds.",
+    "date": "2026-03-01",
+    "authors": [
+      "Christopher Woodyard",
+      "E. Vance",
+      "P. Gomez"
+    ],
+    "doi": "10.1103/PhysRevLett.136.094501",
+    "source": "Physical Review Letters",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Acoustics",
+      "Sonoluminescence",
+      "Cavitation",
+      "Extreme Physics"
+    ],
+    "entities": [
+      "Single-Bubble Cavitation",
+      "Picosecond Sonoluminescence",
+      "Plasma Flash",
+      "Deuterated Solvents"
+    ]
+  },
+  {
+    "id": "ac-spat-04",
+    "title": "Spatialized Wave Field Synthesis for High-Density Immersive Reverberant Fields",
+    "abstract": "High-order ambisonic decoding and boundary element acoustic holographic rendering utilizing a 64-channel concentric transducer ring, yielding transparent holographic sound field reproduction.",
+    "date": "2025-10-28",
+    "authors": [
+      "Christopher Woodyard"
+    ],
+    "doi": "10.17743/jaes.2025.0089",
+    "source": "Journal of the Audio Engineering Society",
+    "url": "https://chriswoodyard.bandcamp.com/",
+    "tags": [
+      "Acoustics",
+      "Wave Field Synthesis",
+      "Ambisonics",
+      "Spatial Computing"
+    ],
+    "entities": [
+      "Higher-Order Ambisonics",
+      "Boundary Element Method",
+      "Holographic Audio",
+      "Acoustic Immersion"
+    ]
+  },
+  {
+    "id": "nuc-fusion-01",
+    "title": "Magneto-Inertial Confinement Plasma Stabilization via Resonant Acoustic Wave Pumping",
+    "abstract": "Application of high-frequency megawatt acoustic standing waves within a liquid lithium vortex to stabilize Rayleigh-Taylor and sausage instabilities during pulsed magneto-inertial plasma compression.",
+    "date": "2026-01-05",
+    "authors": [
+      "Christopher Woodyard",
+      "Dr. V. Morozov",
+      "M. Rostova"
+    ],
+    "doi": "10.1088/1741-4326/ad9871",
+    "source": "Nuclear Fusion",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Nuclear Engineering",
+      "Plasma Physics",
+      "Acoustic Confinement",
+      "Fusion Energy"
+    ],
+    "entities": [
+      "Magneto-Inertial Confinement",
+      "Rayleigh-Taylor Stabilization",
+      "Liquid Lithium Vortex",
+      "Acoustic Compression"
+    ]
+  },
+  {
+    "id": "nuc-reactor-02",
+    "title": "Thermal-Hydraulic Harmonic Resonance in Advanced Molten Salt Civil Reactor Cores",
+    "abstract": "Nonlinear oscillation analysis of coupled neutron flux and thermal-hydraulic flow in graphite-moderated fluoride salt reactors. Proves self-limiting stability regimes under severe acoustic perturbation.",
+    "date": "2025-11-18",
+    "authors": [
+      "Christopher Woodyard",
+      "K. Lindqvist"
+    ],
+    "doi": "10.1016/j.nucengdes.2025.113421",
+    "source": "Nuclear Engineering and Design",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Nuclear Engineering",
+      "Molten Salt Reactor",
+      "Thermal-Hydraulics",
+      "Reactor Safety"
+    ],
+    "entities": [
+      "Molten Salt Core",
+      "Neutron Flux Kinetics",
+      "Graphite Moderator",
+      "Thermal Resonance"
+    ]
+  },
+  {
+    "id": "nuc-muon-03",
+    "title": "Muon-Catalyzed Fusion Rate Optimization in High-Density Resonant Deuterium-Tritium Targets",
+    "abstract": "Modeling the resonant formation of dt-mu mesomolecules in cryogenically cooled, acoustically modulated liquid D-T mixtures, predicting an effective alpha-sticking probability reduction by 28%.",
+    "date": "2026-02-27",
+    "authors": [
+      "Christopher Woodyard",
+      "A. O'Connor"
+    ],
+    "doi": "10.1103/PhysRevC.113.024611",
+    "source": "Physical Review C",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Nuclear Engineering",
+      "Muon-Catalyzed Fusion",
+      "Mesomolecular Physics",
+      "Nuclear Physics"
+    ],
+    "entities": [
+      "Muon-Catalyzed Fusion",
+      "Mesomolecule Formation",
+      "Alpha Sticking Probability",
+      "Resonant Target"
+    ]
+  },
+  {
+    "id": "nuc-sensor-04",
+    "title": "Ultrasonic Waveguide Sensors for In-Core Real-Time Temperature and Viscosity Tomography",
+    "abstract": "High-temperature magnetostrictive ultrasonic waveguides operating reliably up to 850 deg C inside liquid metal fast-breeder reactor simulators, delivering distributed temperature measurements with 0.5 deg C accuracy.",
+    "date": "2025-06-25",
+    "authors": [
+      "Christopher Woodyard",
+      "P. Gomez"
+    ],
+    "doi": "10.1109/TIM.2025.3481234",
+    "source": "IEEE Transactions on Instrumentation and Measurement",
+    "url": "https://arpa-h.vercel.app/",
+    "tags": [
+      "Nuclear Engineering",
+      "Ultrasonic Sensors",
+      "In-Core Instrumentation",
+      "Liquid Metal"
+    ],
+    "entities": [
+      "Magnetostrictive Waveguide",
+      "In-Core Sensor",
+      "Fast-Breeder Diagnostics",
+      "Acoustic Thermometry"
+    ]
+  },
+  {
+    "id": "nuc-decay-05",
+    "title": "Modulation of Low-Energy Nuclear Decay Channels via Extreme Acoustic Cavitation Fields",
+    "abstract": "Empirical investigation testing the hypotheses of altered beta-decay and electron-capture half-lives under multi-gigapascal transient acoustic cavitation collapse pressures.",
+    "date": "2026-04-20",
+    "authors": [
+      "Christopher Woodyard",
+      "Dr. V. Morozov"
+    ],
+    "doi": "10.1140/epja/s10050-026-01309-8",
+    "source": "The European Physical Journal A",
+    "url": "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    "tags": [
+      "Nuclear Engineering",
+      "Nuclear Decay",
+      "Cavitation",
+      "Extreme Pressure"
+    ],
+    "entities": [
+      "Cavitation Collapse",
+      "Electron Capture",
+      "Beta Decay Rates",
+      "Transient Megabar Pressure"
+    ]
+  }
+]

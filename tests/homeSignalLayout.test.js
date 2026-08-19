@@ -105,7 +105,7 @@ test(
 
     [
       "https://a.co/d/078d1kaa",
-      "https://woodyard.streamlit.app/",
+      "https://lop-nur-twin.vercel.app/",
       "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
       "https://github.com/topherchris420/james_library",
       "https://oncyber.io/stanfordgsb",
@@ -118,7 +118,7 @@ test(
       "mailto:christopher@vers3dynamics.com",
       "https://huggingface.co/ciaochris",
       "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
-      "https://arpa-h.vercel.app/",
+      "https://geotwn.vercel.app/",
     ].forEach((url) => assert.ok(html.includes(url), `missing rendered URL: ${url}`));
 
     [
@@ -169,5 +169,17 @@ test(
     assert.equal((notFoundMain.match(/<a\b/g) ?? []).length, 1);
     assert.ok(notFoundMain.includes('href="/"'));
     assert.ok(!notFoundMain.includes('href="/#work"'));
+
+    const researchResponse = await fetch(
+      `http://${HOST}:${port}/research`
+    );
+    const researchHtml = await researchResponse.text();
+    assert.equal(researchResponse.status, 200);
+    assert.ok(researchHtml.includes("Research Explorer"));
+    assert.ok(researchHtml.includes("Live Index"));
+    assert.ok(researchHtml.includes("Portfolio"));
+    assert.ok(researchHtml.includes("Source Verified"));
+    assert.ok(researchHtml.includes("Quantum Computing"));
   }
 );
+

@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { useRouter } from "next/router";
 import {
-  Camera,
+  PerspectiveCamera,
   Scene,
   PlaneGeometry,
   Vector2,
@@ -8,8 +9,10 @@ import {
   ShaderMaterial,
   Mesh,
   WebGLRenderer,
+  Raycaster,
 } from "three";
 import signalExperience from "../lib/signalExperience";
+import styles from "../styles/Home.module.css";
 
 const { resolveRenderMode, resolveWebGLPixelRatio } = signalExperience;
 
@@ -24,8 +27,10 @@ const debounce = (func, wait) => {
 };
 
 const vertexShader = `
+  varying vec2 vUv;
   void main() {
-    gl_Position = vec4(position, 1.0);
+    vUv = uv;
+    gl_Position = vec4(position.xy, 0.0, 1.0);
   }
 `;
 
@@ -39,6 +44,9 @@ const fragmentShader = `
   uniform float time;
   uniform float resonance;
   uniform vec3 resonanceColor;
+  uniform float hover;
+  uniform float warp;
+  varying vec2 vUv;
 
   float hash21(vec2 p) {
     return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
@@ -46,7 +54,14 @@ const fragmentShader = `
 
   void main(void) {
     vec2 uv = (gl_FragCoord.xy * 2.0 - resolution.xy) / min(resolution.x, resolution.y);
-    float t = time * 0.04;
+
+    // Gravitational lensing warp into singularity
+    float warpFactor = clamp(warp, 0.0, 1.0);
+    float warpScale = 1.0 - warpFactor * 0.88;
+    uv = uv / max(0.001, warpScale);
+
+    // Accretion disk rotation acceleration on hover
+    float t = time * (0.04 + hover * 0.035);
 
     // A drifting mass. Sample coordinates are pulled toward it, so the rings
     // stretch and shear as it passes instead of staying perfect circles.
@@ -84,8 +99,14 @@ const fragmentShader = `
     vec3 signalMint = vec3(0.5490, 0.9412, 0.7765);
     vec3 calibrationGold = vec3(0.8941, 0.7216, 0.3647);
     vec3 signalColor = mix(signalMint, calibrationGold, 0.16 + pulse * 0.12);
-    float intensity = clamp(rings * 0.52 + pulse * 0.22 + halo * 0.24, 0.0, 1.0);
-    vec3 color = mix(signalBlack, signalColor, intensity * fade);
+    
+    // 15-25% bloom & intensity boost on hover
+    float intensityBoost = 1.0 + hover * 0.22;
+    float intensity = clamp(rings * 0.52 + pulse * 0.22 + halo * 0.24, 0.0, 1.0) * intensityBoost;
+    
+    // Accretion disk core glow
+    float coreGlow = smoothstep(0.45, 0.05, r) * hover * 0.3;
+    vec3 color = mix(signalBlack, signalColor, intensity * fade) + signalMint * coreGlow;
 
     color += signalMint * rule * 0.03 * fade;
     color += mix(signalMint, vec3(1.0), 0.6) * written * rule * 0.16 * fade;
@@ -94,12 +115,41 @@ const fragmentShader = `
     float resonanceRing = smoothstep(0.09, 0.0, abs(r - (1.0 - resonance) * 1.1));
     color += resonanceColor * resonanceRing * resonance * 0.46;
 
+    // Singularity blackout during transition
+    if (warpFactor > 0.0) {
+      color = mix(color, signalBlack, clamp(warpFactor * 1.25, 0.0, 1.0));
+    }
+
     gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
   }
 `;
 
 const VantaEffect = ({ className, ...props }) => {
+  const router = useRouter();
   const containerRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hudPos, setHudPos] = useState({ x: 0, y: 0 });
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const transitionRef = useRef(false);
+
+  const triggerPortalTransition = useCallback(() => {
+    if (transitionRef.current) return;
+    transitionRef.current = true;
+    setIsTransitioning(true);
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const duration = mediaQuery.matches ? 200 : 900;
+
+    window.dispatchEvent(
+      new CustomEvent("vanta:portal-warp", {
+        detail: { active: true, duration },
+      })
+    );
+
+    setTimeout(() => {
+      router.push("/research");
+    }, duration);
+  }, [router]);
 
   useEffect(() => {
     if (!containerRef.current) {
@@ -108,8 +158,8 @@ const VantaEffect = ({ className, ...props }) => {
 
     const container = containerRef.current;
 
-    const camera = new Camera();
-    camera.position.z = 1;
+    const camera = new PerspectiveCamera(45, 1, 0.1, 100);
+    camera.position.z = 1.8;
 
     const scene = new Scene();
     const geometry = new PlaneGeometry(2, 2);
@@ -119,16 +169,26 @@ const VantaEffect = ({ className, ...props }) => {
       resolution: { value: new Vector2() },
       resonance: { value: 0 },
       resonanceColor: { value: new Color("#8cf0c6") },
+      hover: { value: 0.0 },
+      warp: { value: 0.0 },
     };
 
     const material = new ShaderMaterial({
       uniforms,
       vertexShader,
       fragmentShader,
+      depthWrite: false,
     });
 
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
+
+    const raycaster = new Raycaster();
+    const pointer = new Vector2();
+    let currentHover = 0.0;
+    let targetHover = 0.0;
+    let currentWarp = 0.0;
+    let targetWarp = 0.0;
 
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     const mobileQuery = window.matchMedia("(max-width: 720px)");
@@ -192,7 +252,12 @@ const VantaEffect = ({ className, ...props }) => {
         const width = Math.max(container.clientWidth, 1);
         const height = Math.max(container.clientHeight, 1);
         renderer.setSize(width, height, false);
-        uniforms.resolution.value.set(renderer.domElement.width, renderer.domElement.height);
+        uniforms.resolution.value.set(
+          renderer.domElement.width,
+          renderer.domElement.height
+        );
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
       } catch (error) {
         hasRenderError = true;
         container.dataset.webgl = "fallback";
@@ -206,30 +271,94 @@ const VantaEffect = ({ className, ...props }) => {
 
     const debouncedResize = debounce(onWindowResize, 200);
 
+    const checkPointerIntersection = (clientX, clientY) => {
+      if (transitionRef.current) return false;
+      const rect = container.getBoundingClientRect();
+      pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+
+      // Distance from center normalized to viewport aspect
+      const aspect = rect.width / rect.height;
+      const normX = pointer.x * (aspect >= 1 ? aspect : 1);
+      const normY = pointer.y * (aspect < 1 ? 1 / aspect : 1);
+      const dist = Math.sqrt(normX * normX + normY * normY);
+
+      // Event horizon / accretion disk hit zone (center radius ~0.5)
+      return dist < 0.58;
+    };
+
+    const onPointerMove = (event) => {
+      if (transitionRef.current) return;
+      const hit = checkPointerIntersection(event.clientX, event.clientY);
+      targetHover = hit ? 1.0 : 0.0;
+      setIsHovered(hit);
+      if (hit) {
+        setHudPos({ x: event.clientX, y: event.clientY });
+        container.style.cursor = "pointer";
+      } else {
+        container.style.cursor = "default";
+      }
+    };
+
+    const onPointerLeave = () => {
+      if (transitionRef.current) return;
+      targetHover = 0.0;
+      setIsHovered(false);
+      container.style.cursor = "default";
+    };
+
+    const onPointerDown = (event) => {
+      if (transitionRef.current) return;
+      if (checkPointerIntersection(event.clientX, event.clientY)) {
+        triggerPortalTransition();
+      }
+    };
+
+    const handlePortalWarp = (event) => {
+      if (event?.detail?.active) {
+        targetWarp = 1.0;
+        targetHover = 1.0;
+      }
+    };
+
     const frame = () => {
-      if (renderMode() !== "continuous") {
+      if (renderMode() !== "continuous" && !transitionRef.current) {
         stopLoop();
         return;
       }
 
       uniforms.time.value += 0.05;
+
+      // Smooth hover interpolation
+      currentHover += (targetHover - currentHover) * 0.12;
+      uniforms.hover.value = currentHover;
+
+      // Smooth warp interpolation
+      if (targetWarp > 0) {
+        currentWarp += (1.0 - currentWarp) * 0.08;
+        uniforms.warp.value = currentWarp;
+        // Cinematic camera zoom into singularity
+        camera.position.z = Math.max(0.1, 1.8 - currentWarp * 1.5);
+      }
+
       if (uniforms.resonance.value > 0.001) {
         uniforms.resonance.value *= 0.9;
       } else {
         uniforms.resonance.value = 0;
       }
+
       safeRender();
 
-      if (renderMode() === "continuous") {
+      if (renderMode() === "continuous" || transitionRef.current) {
         animationId = window.requestAnimationFrame(frame);
       }
     };
 
     const syncLoop = () => {
       const mode = renderMode();
-      if (mode === "continuous" && !animationId) {
+      if ((mode === "continuous" || transitionRef.current) && !animationId) {
         animationId = window.requestAnimationFrame(frame);
-      } else if (mode !== "continuous") {
+      } else if (mode !== "continuous" && !transitionRef.current) {
         stopLoop();
         if (mode === "static") safeRender();
       }
@@ -261,7 +390,11 @@ const VantaEffect = ({ className, ...props }) => {
     };
 
     window.addEventListener("resize", debouncedResize);
+    window.addEventListener("pointermove", onPointerMove);
+    window.addEventListener("pointerleave", onPointerLeave);
+    window.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("vanta:resonance", handleResonance);
+    window.addEventListener("vanta:portal-warp", handlePortalWarp);
     document.addEventListener("visibilitychange", onVisibilityChange);
     mediaQuery.addEventListener("change", onRuntimeChange);
     mobileQuery.addEventListener("change", onRuntimeChange);
@@ -270,7 +403,11 @@ const VantaEffect = ({ className, ...props }) => {
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerleave", onPointerLeave);
+      window.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("vanta:resonance", handleResonance);
+      window.removeEventListener("vanta:portal-warp", handlePortalWarp);
       document.removeEventListener("visibilitychange", onVisibilityChange);
       mediaQuery.removeEventListener("change", onRuntimeChange);
       mobileQuery.removeEventListener("change", onRuntimeChange);
@@ -286,9 +423,45 @@ const VantaEffect = ({ className, ...props }) => {
       material.dispose();
       renderer.dispose();
     };
-  }, []);
+  }, [triggerPortalTransition]);
 
-  return <div ref={containerRef} className={className} {...props} />;
+  return (
+    <>
+      <div ref={containerRef} className={className} {...props} />
+
+      {/* Accessible Keyboard Portal Gateway */}
+      <button
+        type="button"
+        className={styles.accessiblePortalTrigger}
+        onClick={triggerPortalTransition}
+        aria-label="Open Vanta Research Explorer"
+      >
+        <span className={styles.accessiblePortalIcon}>✦</span>
+        <span>Cross Event Horizon &rarr; Research Explorer</span>
+      </button>
+
+      {/* Interactive Black Hole Hover HUD Tooltip */}
+      {isHovered && !isTransitioning && (
+        <div
+          className={styles.eventHorizonTooltip}
+          style={{
+            left: hudPos.x,
+            top: hudPos.y - 48,
+          }}
+          aria-hidden="true"
+        >
+          <div className={styles.eventHorizonBadge}>SINGULARITY PORTAL</div>
+          <div className={styles.eventHorizonLabel}>CROSS THE EVENT HORIZON</div>
+          <div className={styles.eventHorizonSub}>Click to Enter Research Explorer</div>
+        </div>
+      )}
+
+      {/* Cinematic Warp Blackout Overlay */}
+      {isTransitioning && (
+        <div className={styles.eventHorizonTransitionOverlay} aria-hidden="true" />
+      )}
+    </>
+  );
 };
 
 export default VantaEffect;

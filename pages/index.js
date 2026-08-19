@@ -254,7 +254,7 @@ export default function Home() {
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <VantaEffectNoSSR className={styles.background} aria-hidden="true" />
+      <VantaEffectNoSSR className={styles.background} />
 
       <main id="main-content" tabIndex={-1} className={styles.main}>
         <section
