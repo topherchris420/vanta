@@ -3,6 +3,15 @@ const test = require('node:test');
 const { validateDocument, validateGraphNode, validateGraphEdge, normalizeKnowledgeData } = require('../lib/research/types');
 const rawCuratedKnowledge = require('../data/research/curatedKnowledge.json');
 
+function isValidUrl(value) {
+  try {
+    new URL(value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 test('curated knowledge dataset contains at least 25 structured records across all 6 core domains', () => {
   const { documents, graph } = normalizeKnowledgeData(rawCuratedKnowledge);
   assert.ok(Array.isArray(documents), 'Documents must be an array');
@@ -34,7 +43,7 @@ test('curated knowledge dataset contains at least 25 structured records across a
     assert.ok(doc.authors.length >= 1, 'Authors required');
     assert.ok(doc.tags.length >= 1, 'Tags required');
     assert.ok(doc.entities.length >= 1, 'Entities required');
-    assert.ok(URL.canParse(doc.url), `Invalid URL for ${doc.id}: ${doc.url}`);
+    assert.ok(isValidUrl(doc.url), `Invalid URL for ${doc.id}: ${doc.url}`);
 
     // Track domains
     doc.tags.forEach((tag) => {

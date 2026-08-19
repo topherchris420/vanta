@@ -76,6 +76,14 @@ test("channel validation rejects incomplete or duplicate data", () => {
     () => signal.validateChannels([...channels.slice(0, 4), channels[0]]),
     /unique/
   );
+  assert.throws(
+    () =>
+      signal.validateChannels([
+        ...channels.slice(0, 4),
+        { ...channels[4], primaryHref: "not a valid url" },
+      ]),
+    /valid evidence URLs/
+  );
 });
 
 test("resonance detail exposes the stable event contract", () => {
