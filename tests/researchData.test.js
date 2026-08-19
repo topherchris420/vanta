@@ -12,7 +12,7 @@ function isValidUrl(value) {
   }
 }
 
-test('curated knowledge dataset contains at least 25 structured records across all 6 core domains', () => {
+test('curated knowledge dataset contains at least 25 structured records across all 7 core domains', () => {
   const { documents, graph } = normalizeKnowledgeData(rawCuratedKnowledge);
   assert.ok(Array.isArray(documents), 'Documents must be an array');
   assert.ok(documents.length >= 25, `Expected at least 25 records, found ${documents.length}`);
