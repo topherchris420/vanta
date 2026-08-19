@@ -43,6 +43,7 @@ test('curated knowledge covers all required scientific disciplines with valid UR
     'AI & Neural Interfaces',
     'Acoustics',
     'Nuclear Engineering',
+    'Archival Intelligence & Institutional Oversight',
   ];
 
   disciplines.forEach((disc) => {

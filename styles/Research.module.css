@@ -428,6 +428,33 @@
   border: 1px solid color-mix(in srgb, #9c88ff 40%, transparent);
 }
 
+.provenanceDeclassified {
+  background: color-mix(in srgb, #e06c75 18%, transparent);
+  color: #ff7675;
+  border: 1px solid color-mix(in srgb, #e06c75 45%, transparent);
+}
+
+.cardAgencyBadge {
+  font: 700 0.55rem / 1 var(--font-mono);
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, #74b9ff 18%, transparent);
+  color: #74b9ff;
+  border: 1px solid color-mix(in srgb, #74b9ff 40%, transparent);
+}
+
+.cardEraBadge {
+  font: 600 0.55rem / 1 var(--font-mono);
+  padding: 0.2rem 0.45rem;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  background: color-mix(in srgb, #a29bfe 18%, transparent);
+  color: #dfe6e9;
+  border: 1px solid color-mix(in srgb, #a29bfe 35%, transparent);
+}
+
 .cardTitle {
   font: 700 0.92rem / 1.3 var(--font-display);
   color: var(--paper);

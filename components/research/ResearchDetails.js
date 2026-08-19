@@ -81,13 +81,25 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
               <span className={styles.metaLabel}>Source / Venue</span>
               <span className={styles.metaValue}>{doc.source}</span>
             </div>
+            {doc.agency && (
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>Responsible Agency</span>
+                <span className={styles.metaValue}>{doc.agency}</span>
+              </div>
+            )}
+            {doc.era && (
+              <div className={styles.metaItem}>
+                <span className={styles.metaLabel}>Administrative Era</span>
+                <span className={styles.metaValue}>{doc.era}</span>
+              </div>
+            )}
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>Authors</span>
+              <span className={styles.metaLabel}>Authors / Investigators</span>
               <span className={styles.metaValue}>{doc.authors.join(", ")}</span>
             </div>
             {doc.doi && (
               <div className={styles.metaItem}>
-                <span className={styles.metaLabel}>DOI</span>
+                <span className={styles.metaLabel}>DOI / Catalog</span>
                 <span className={styles.metaValue}>{doc.doi}</span>
               </div>
             )}

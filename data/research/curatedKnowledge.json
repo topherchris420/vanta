@@ -1059,6 +1059,257 @@
         "Qubit",
         "Quantum Teleportation"
       ]
+    },
+    {
+      "id": "arch-church-01",
+      "title": "Church Committee Final Report: Foreign and Military Intelligence and Covert Action Oversight (Book I)",
+      "abstract": "Comprehensive congressional oversight findings detailing covert operations, internal agency directives, and unauthorized intercept logs from 1947 through 1975. Analyzes executive accountability, destruction of records, and the legislative shift leading to permanent intelligence committees.",
+      "date": "1976-04-26",
+      "authors": [
+        "Frank Church",
+        "John Tower",
+        "Senate Select Committee on Intelligence"
+      ],
+      "doi": "10.7440/senate.intelligence.1976.94-755",
+      "source": "Declassified Congressional Archives / U.S. Senate Select Committee",
+      "url": "https://www.senate.gov/about/powers-procedures/investigations/church-committee.htm",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "Congressional Inquiries",
+        "Intelligence Oversight Act",
+        "Senate Select Committee"
+      ],
+      "entities": [
+        "Senate Select Committee",
+        "Covert Action Directives",
+        "Destruction of Records",
+        "Intelligence Oversight Act",
+        "CIA Oversight",
+        "Executive Accountability"
+      ],
+      "era": "Church Committee Era (1975–1980)",
+      "agency": "U.S. Senate Select Committee",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-achre-02",
+      "title": "Final Report of the Advisory Committee on Human Radiation Experiments: Declassified Multi-Decade AEC & DoD Logs",
+      "abstract": "Multi-decade investigation correlating internal Atomic Energy Commission (AEC), Manhattan Project, and Department of Defense memorandums from 1944 to 1974. Evaluates medical ethics, classified biomedical protocols, isotope tracing experiments, and executive institutional oversight reforms.",
+      "date": "1995-10-01",
+      "authors": [
+        "Ruth Faden",
+        "Advisory Committee on Human Radiation Experiments",
+        "Department of Energy"
+      ],
+      "doi": "10.2172/120993",
+      "source": "Declassified Government Records / Advisory Committee on Human Radiation Experiments",
+      "url": "https://ehss.energy.gov/ohre/roadmap/achre/report.html",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "Atomic Energy Commission",
+        "Biomedical Ethics",
+        "Human Radiation Experiments",
+        "Department of Energy"
+      ],
+      "entities": [
+        "Atomic Energy Commission",
+        "Biomedical Protocol Memos",
+        "Human Radiation Experiments",
+        "Department of Energy",
+        "DoD Research Logs",
+        "Institutional Review Boards"
+      ],
+      "era": "Cold War Era (1947–1975)",
+      "agency": "Atomic Energy Commission",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-shamrock-03",
+      "title": "Project Shamrock & Minaret Declassified Cable Intercept Directives and FISA Statutory Shift",
+      "abstract": "Analysis of 1945–1975 internal National Security Agency (NSA) telecommunications intercept memorandums, watchlist management, and subsequent congressional hearings that mandated the Foreign Intelligence Surveillance Act (FISA) of 1978 judicial warrant regime.",
+      "date": "1978-10-25",
+      "authors": [
+        "L. Patrick Gray",
+        "Otis Pike",
+        "House Permanent Select Committee on Intelligence"
+      ],
+      "doi": "10.1080/08850607808434812",
+      "source": "Declassified National Security Archive / U.S. Congress",
+      "url": "https://nsarchive.gwu.edu/briefing-book/intelligence/2021-08-16/project-shamrock-nsa-cable-intercepts",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "National Security Agency",
+        "Project Shamrock",
+        "FISA Act 1978",
+        "Telecommunications Oversight"
+      ],
+      "entities": [
+        "National Security Agency",
+        "Project Shamrock",
+        "FISA Statutory Shift",
+        "Watchlist Logs",
+        "Foreign Intelligence Surveillance Court",
+        "Congressional Hearing"
+      ],
+      "era": "Church Committee Era (1975–1980)",
+      "agency": "National Security Agency",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-mkultra-04",
+      "title": "CIA Inspector General Survey and Declassified Subproject Memorandums on Behavioral Modification (1953–1973)",
+      "abstract": "Declassified internal financial vouchers, subproject authorizations, and Inspector General audit records for MKUltra behavioral modification research. Examines the operational separation between scientific contractors and agency oversight that prompted the 1977 Joint Senate Hearings.",
+      "date": "1977-08-03",
+      "authors": [
+        "Edward Kennedy",
+        "Daniel Inouye",
+        "Joint Committee on Human Resources and Intelligence"
+      ],
+      "doi": "10.1037/e524942006-001",
+      "source": "Declassified CIA FOIA Archive / U.S. Senate Joint Hearings",
+      "url": "https://www.intelligence.senate.gov/hearings/project-mkultra-cia-program-research-behavioral-modification",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "CIA Inspector General",
+        "MKUltra Subprojects",
+        "Behavioral Modification",
+        "Congressional Hearing"
+      ],
+      "entities": [
+        "Central Intelligence Agency",
+        "Inspector General Audit",
+        "MKUltra Subproject Memos",
+        "Joint Congressional Inquiry",
+        "Institutional Oversight Act",
+        "Contractor Disconnect"
+      ],
+      "era": "Cold War Era (1947–1975)",
+      "agency": "Central Intelligence Agency",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-pentagon-05",
+      "title": "Declassified OSD Vietnam Task Force History & Inter-Agency Policy Memorandums (Pentagon Papers)",
+      "abstract": "Correlates Office of the Secretary of Defense (OSD) internal working papers, National Security Action Memorandums (NSAM), and State Department diplomatic cables from 1945 to 1967. Documents divergent internal threat modeling vs public policy declarations across four administrations.",
+      "date": "1971-06-13",
+      "authors": [
+        "Leslie H. Gelb",
+        "Morton Halperin",
+        "Office of the Secretary of Defense"
+      ],
+      "doi": "10.1017/CBO9780511818241",
+      "source": "National Archives and Records Administration (NARA) Declassified Edition",
+      "url": "https://www.archives.gov/research/pentagon-papers",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "Office of Secretary of Defense",
+        "Pentagon Papers",
+        "National Security Action Memos",
+        "Policy Drift"
+      ],
+      "entities": [
+        "Department of Defense",
+        "National Security Council",
+        "National Security Action Memos",
+        "Inter-Agency Policy Shift",
+        "NARA Declassified Record"
+      ],
+      "era": "Cold War Era (1947–1975)",
+      "agency": "Department of Defense",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-tia-06",
+      "title": "DARPA Total Information Awareness (TIA) Program Directives and Congressional Defunding Oversight",
+      "abstract": "Review of DARPA Information Awareness Office (IAO) project directives, algorithmic surveillance architecture proposals, and congressional oversight debates from 2002–2003 leading to the Wyden Amendment defunding directive and transfer of component algorithms.",
+      "date": "2003-09-25",
+      "authors": [
+        "Ron Wyden",
+        "Defense Advanced Research Projects Agency",
+        "Congressional Research Service"
+      ],
+      "doi": "10.7551/mitpress/9780262013895.003.0004",
+      "source": "Declassified CRS Reports / DARPA Information Awareness Office Archives",
+      "url": "https://fas.org/irp/crs/RL31786.pdf",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "DARPA IAO",
+        "Total Information Awareness",
+        "Legislative Defunding",
+        "Algorithmic Oversight"
+      ],
+      "entities": [
+        "Defense Advanced Research Projects Agency",
+        "Total Information Awareness",
+        "Wyden Amendment Defunding",
+        "Algorithmic Surveillance Directive",
+        "Congressional Research Service"
+      ],
+      "era": "Modern Oversight (2001–Present)",
+      "agency": "Defense Advanced Research Projects Agency",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-bluebook-07",
+      "title": "Scientific Study of Unidentified Flying Objects (Condon Committee) & Declassified Air Force Technical Logs",
+      "abstract": "Assessment of U.S. Air Force Project Blue Book case logs, radar tracking records, and the University of Colorado Scientific Advisory Committee review (1966–1969) leading to the termination of USAF aerial phenomena investigations.",
+      "date": "1969-01-09",
+      "authors": [
+        "Edward U. Condon",
+        "Robert J. Low",
+        "Air Force Office of Scientific Research"
+      ],
+      "doi": "10.17226/19445",
+      "source": "National Academy of Sciences / USAF Declassified Historical Branch",
+      "url": "https://www.archives.gov/research/military/air-force/ufos",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "Project Blue Book",
+        "U.S. Air Force",
+        "Condon Committee",
+        "Scientific Assessment Logs"
+      ],
+      "entities": [
+        "U.S. Air Force",
+        "Project Blue Book Logs",
+        "Condon Scientific Committee",
+        "Radar Tracking Records",
+        "Termination Directive"
+      ],
+      "era": "Cold War Era (1947–1975)",
+      "agency": "U.S. Air Force",
+      "classificationLevel": "Declassified Record"
+    },
+    {
+      "id": "arch-foia-reform-08",
+      "title": "Post-Cold War Declassification Directives and Electronic FOIA Amendments Policy Mapping",
+      "abstract": "Examines the impact of Executive Order 12958 (1995) and the Electronic Freedom of Information Act Amendments of 1996 on institutional declassification workflows, automatic 25-year sunsetting, and inter-agency review board resolutions across 1991–2005.",
+      "date": "1996-10-02",
+      "authors": [
+        "Patrick Leahy",
+        "Information Security Oversight Office",
+        "National Archives"
+      ],
+      "doi": "10.1080/10584609.1997.9963140",
+      "source": "Information Security Oversight Office (ISOO) Annual Archives",
+      "url": "https://www.archives.gov/isoo/policy-documents/eo-12958",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "Executive Order 12958",
+        "Electronic FOIA",
+        "Declassification Directives",
+        "Information Security Oversight Office"
+      ],
+      "entities": [
+        "Information Security Oversight Office",
+        "Executive Order 12958",
+        "Electronic FOIA Amendments",
+        "Automatic Declassification Sunset",
+        "Inter-Agency Security Classification Appeals Panel"
+      ],
+      "era": "Post-Cold War (1981–2000)",
+      "agency": "Information Security Oversight Office",
+      "classificationLevel": "Declassified Record"
     }
   ],
   "graph": {
@@ -1596,9 +1847,9 @@
             "Harmonic Excitation"
           ]
         },
-        "x": 132.89,
-        "y": -325.45,
-        "z": -240.83
+        "x": 195.23,
+        "y": -305.48,
+        "z": -251.33
       },
       {
         "id": "concept-chladni-plate",
@@ -1607,9 +1858,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 132.89,
-        "y": -235.45,
-        "z": -180.83
+        "x": 195.23,
+        "y": -215.48,
+        "z": -191.33
       },
       {
         "id": "concept-nodal-lines",
@@ -1618,9 +1869,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 232.64,
-        "y": -318.38,
-        "z": -308.83
+        "x": 294.98,
+        "y": -298.41,
+        "z": -319.33
       },
       {
         "id": "concept-bifurcation-topology",
@@ -1629,9 +1880,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 148.41,
-        "y": -434.35,
-        "z": -164.83
+        "x": 210.75,
+        "y": -414.38,
+        "z": -175.33
       },
       {
         "id": "concept-harmonic-excitation",
@@ -1640,9 +1891,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 15.59,
-        "y": -350.75,
-        "z": -324.83
+        "x": 77.93,
+        "y": -330.78,
+        "z": -335.33
       },
       {
         "id": "cym-faraday-02",
@@ -1676,9 +1927,9 @@
             "Particulate Self-Assembly"
           ]
         },
-        "x": 82.78,
-        "y": -307.2,
-        "z": -210
+        "x": 145.12,
+        "y": -287.22,
+        "z": -220.5
       },
       {
         "id": "author-r-sterling",
@@ -1687,9 +1938,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 155.52,
-        "y": -340.49,
-        "z": -160
+        "x": 217.86,
+        "y": -320.51,
+        "z": -170.5
       },
       {
         "id": "concept-faraday-wave",
@@ -1698,9 +1949,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 82.78,
-        "y": -217.2,
-        "z": -150
+        "x": 145.12,
+        "y": -197.22,
+        "z": -160.5
       },
       {
         "id": "concept-hydrodynamic-trap",
@@ -1709,9 +1960,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 182.53,
-        "y": -300.13,
-        "z": -278
+        "x": 244.87,
+        "y": -280.15,
+        "z": -288.5
       },
       {
         "id": "concept-acoustic-soliton",
@@ -1720,9 +1971,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 98.3,
-        "y": -416.1,
-        "z": -134
+        "x": 160.64,
+        "y": -396.12,
+        "z": -144.5
       },
       {
         "id": "concept-particulate-self-assembly",
@@ -1731,9 +1982,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": -34.52,
-        "y": -332.5,
-        "z": -294
+        "x": 27.82,
+        "y": -312.52,
+        "z": -304.5
       },
       {
         "id": "cym-crypt-03",
@@ -1767,9 +2018,9 @@
             "Bone Conduction"
           ]
         },
-        "x": 81.77,
-        "y": -341.17,
-        "z": -182.83
+        "x": 144.12,
+        "y": -321.19,
+        "z": -193.33
       },
       {
         "id": "author-d-miller",
@@ -1778,9 +2029,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 154.51,
-        "y": -374.46,
-        "z": -132.83
+        "x": 216.86,
+        "y": -354.48,
+        "z": -143.33
       },
       {
         "id": "concept-acoustic-transfer-function",
@@ -1789,9 +2040,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 81.77,
-        "y": -251.17,
-        "z": -122.83
+        "x": 144.12,
+        "y": -231.19,
+        "z": -133.33
       },
       {
         "id": "concept-cranial-resonance",
@@ -1800,9 +2051,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 181.52,
-        "y": -334.1,
-        "z": -250.83
+        "x": 243.87,
+        "y": -314.12,
+        "z": -261.33
       },
       {
         "id": "concept-key-derivation",
@@ -1811,9 +2062,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 97.29,
-        "y": -450.07,
-        "z": -106.83
+        "x": 159.64,
+        "y": -430.09,
+        "z": -117.33
       },
       {
         "id": "concept-bone-conduction",
@@ -1822,9 +2073,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": -35.53,
-        "y": -366.47,
-        "z": -266.83
+        "x": 26.82,
+        "y": -346.49,
+        "z": -277.33
       },
       {
         "id": "cym-levit-04",
@@ -1859,9 +2110,9 @@
             "Viscoelasticity"
           ]
         },
-        "x": 69.92,
-        "y": -370.62,
-        "z": -146
+        "x": 132.27,
+        "y": -350.64,
+        "z": -156.5
       },
       {
         "id": "author-p-gomez",
@@ -1870,9 +2121,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 142.66,
-        "y": -403.91,
-        "z": -96
+        "x": 205.01,
+        "y": -383.93,
+        "z": -106.5
       },
       {
         "id": "author-s-kim",
@@ -1881,9 +2132,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 81.21,
-        "y": -449.82,
-        "z": -96
+        "x": 143.56,
+        "y": -429.84,
+        "z": -106.5
       },
       {
         "id": "technology-ultrasonic-phased-array",
@@ -1892,9 +2143,9 @@
         "val": 14,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 69.92,
-        "y": -280.62,
-        "z": -86
+        "x": 132.27,
+        "y": -260.64,
+        "z": -96.5
       },
       {
         "id": "concept-acoustic-radiation-force",
@@ -1903,9 +2154,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 169.67,
-        "y": -363.55,
-        "z": -214
+        "x": 232.02,
+        "y": -343.57,
+        "z": -224.5
       },
       {
         "id": "concept-micro-droplet-levitation",
@@ -1914,9 +2165,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 85.44,
-        "y": -479.52,
-        "z": -70
+        "x": 147.79,
+        "y": -459.54,
+        "z": -80.5
       },
       {
         "id": "concept-viscoelasticity",
@@ -1925,9 +2176,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": -47.38,
-        "y": -395.92,
-        "z": -230
+        "x": 14.97,
+        "y": -375.94,
+        "z": -240.5
       },
       {
         "id": "cym-geom-05",
@@ -1960,9 +2211,9 @@
             "Micro-Intervals"
           ]
         },
-        "x": 29.24,
-        "y": -323,
-        "z": -139.5
+        "x": 91.58,
+        "y": -303.02,
+        "z": -150
       },
       {
         "id": "concept-resonance-manifold",
@@ -1971,9 +2222,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 29.24,
-        "y": -233,
-        "z": -79.5
+        "x": 91.58,
+        "y": -213.02,
+        "z": -90
       },
       {
         "id": "concept-spectral-topology",
@@ -1982,9 +2233,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 128.99,
-        "y": -315.93,
-        "z": -207.5
+        "x": 191.33,
+        "y": -295.95,
+        "z": -218
       },
       {
         "id": "concept-polyphonic-curvature",
@@ -1993,9 +2244,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 44.76,
-        "y": -431.9,
-        "z": -63.5
+        "x": 107.1,
+        "y": -411.92,
+        "z": -74
       },
       {
         "id": "concept-micro-intervals",
@@ -2004,9 +2255,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": -88.06,
-        "y": -348.3,
-        "z": -223.5
+        "x": -25.72,
+        "y": -328.32,
+        "z": -234
       },
       {
         "id": "bio-eeg-01",
@@ -2040,9 +2291,9 @@
             "Inter-Hemispheric Synchrony"
           ]
         },
-        "x": -247.85,
-        "y": -113.33,
-        "z": -12.67
+        "x": -192.39,
+        "y": -269.63,
+        "z": -33.67
       },
       {
         "id": "author-dr-a-chen",
@@ -2051,9 +2302,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -175.11,
-        "y": -146.62,
-        "z": 37.33
+        "x": -119.65,
+        "y": -302.92,
+        "z": 16.33
       },
       {
         "id": "concept-phase-amplitude-coupling",
@@ -2062,9 +2313,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -247.85,
-        "y": -23.33,
-        "z": 47.33
+        "x": -192.39,
+        "y": -179.63,
+        "z": 26.33
       },
       {
         "id": "concept-cross-frequency-coupling",
@@ -2073,9 +2324,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -148.1,
-        "y": -106.26,
-        "z": -80.67
+        "x": -92.64,
+        "y": -262.56,
+        "z": -101.67
       },
       {
         "id": "concept-theta-oscillations",
@@ -2084,9 +2335,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -232.33,
-        "y": -222.23,
-        "z": 63.33
+        "x": -176.87,
+        "y": -378.53,
+        "z": 42.33
       },
       {
         "id": "concept-inter-hemispheric-synchrony",
@@ -2095,9 +2346,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -365.15,
-        "y": -138.63,
-        "z": -96.67
+        "x": -309.69,
+        "y": -294.93,
+        "z": -117.67
       },
       {
         "id": "bio-hrv-02",
@@ -2131,9 +2382,9 @@
             "Baroreflex Resonance"
           ]
         },
-        "x": -265.87,
-        "y": -97.83,
-        "z": 39.83
+        "x": -210.4,
+        "y": -254.13,
+        "z": 18.83
       },
       {
         "id": "author-l-hoffman",
@@ -2142,9 +2393,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -193.13,
-        "y": -131.12,
-        "z": 89.83
+        "x": -137.66,
+        "y": -287.42,
+        "z": 68.83
       },
       {
         "id": "concept-continuous-wavelet-transform",
@@ -2153,9 +2404,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -265.87,
-        "y": -7.83,
-        "z": 99.83
+        "x": -210.4,
+        "y": -164.13,
+        "z": 78.83
       },
       {
         "id": "concept-sympathovagal-balance",
@@ -2164,9 +2415,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -166.12,
-        "y": -90.76,
-        "z": -28.17
+        "x": -110.65,
+        "y": -247.06,
+        "z": -49.17
       },
       {
         "id": "concept-photoplethysmography",
@@ -2175,9 +2426,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -250.35,
-        "y": -206.73,
-        "z": 115.83
+        "x": -194.88,
+        "y": -363.03,
+        "z": 94.83
       },
       {
         "id": "concept-baroreflex-resonance",
@@ -2186,9 +2437,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -383.17,
-        "y": -123.13,
-        "z": -44.17
+        "x": -327.7,
+        "y": -279.43,
+        "z": -65.17
       },
       {
         "id": "bio-neuro-03",
@@ -2223,9 +2474,9 @@
             "Cortical Arousal Inhibition"
           ]
         },
-        "x": -265.35,
-        "y": 12.17,
-        "z": -274
+        "x": -209.89,
+        "y": -144.13,
+        "z": -295
       },
       {
         "id": "author-s-patel",
@@ -2234,9 +2485,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -192.61,
-        "y": -21.12,
-        "z": -224
+        "x": -137.15,
+        "y": -177.42,
+        "z": -245
       },
       {
         "id": "concept-slow-wave-sleep",
@@ -2245,9 +2496,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -265.35,
-        "y": 102.17,
-        "z": -214
+        "x": -209.89,
+        "y": -54.13,
+        "z": -235
       },
       {
         "id": "concept-delta-power-enhancement",
@@ -2256,9 +2507,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -165.6,
-        "y": 19.24,
-        "z": -342
+        "x": -110.14,
+        "y": -137.06,
+        "z": -363
       },
       {
         "id": "concept-phase-locked-stimulation",
@@ -2267,9 +2518,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -249.83,
-        "y": -96.73,
-        "z": -198
+        "x": -194.37,
+        "y": -253.03,
+        "z": -219
       },
       {
         "id": "concept-cortical-arousal-inhibition",
@@ -2278,9 +2529,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -382.65,
-        "y": -13.13,
-        "z": -358
+        "x": -327.19,
+        "y": -169.43,
+        "z": -379
       },
       {
         "id": "bio-gsr-04",
@@ -2314,9 +2565,9 @@
             "Acoustic Immersion"
           ]
         },
-        "x": -168.51,
-        "y": -1.79,
-        "z": -273.5
+        "x": -113.05,
+        "y": -158.09,
+        "z": -294.5
       },
       {
         "id": "author-n-tanaka",
@@ -2325,9 +2576,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -95.77,
-        "y": -35.08,
-        "z": -223.5
+        "x": -40.31,
+        "y": -191.38,
+        "z": -244.5
       },
       {
         "id": "concept-electrodermal-response",
@@ -2336,9 +2587,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -168.51,
-        "y": 88.21,
-        "z": -213.5
+        "x": -113.05,
+        "y": -68.09,
+        "z": -234.5
       },
       {
         "id": "concept-phasic-eda",
@@ -2347,9 +2598,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -68.76,
-        "y": 5.28,
-        "z": -341.5
+        "x": -13.3,
+        "y": -151.02,
+        "z": -362.5
       },
       {
         "id": "concept-spatial-trajectory",
@@ -2358,9 +2609,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -152.99,
-        "y": -110.69,
-        "z": -197.5
+        "x": -97.53,
+        "y": -266.99,
+        "z": -218.5
       },
       {
         "id": "concept-acoustic-immersion",
@@ -2369,9 +2620,9 @@
         "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -285.81,
-        "y": -27.09,
-        "z": -357.5
+        "x": -230.35,
+        "y": -183.39,
+        "z": -378.5
       },
       {
         "id": "ai-bci-01",
@@ -2406,9 +2657,9 @@
             "Latent Space Alignment"
           ]
         },
-        "x": 110.08,
-        "y": 263.76,
-        "z": -126
+        "x": -133.36,
+        "y": 149.83,
+        "z": -157.5
       },
       {
         "id": "concept-neural-manifold",
@@ -2417,9 +2668,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 110.08,
-        "y": 353.76,
-        "z": -66
+        "x": -133.36,
+        "y": 239.83,
+        "z": -97.5
       },
       {
         "id": "concept-zero-shot-decoding",
@@ -2428,9 +2679,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 209.83,
-        "y": 270.83,
-        "z": -194
+        "x": -33.61,
+        "y": 156.9,
+        "z": -225.5
       },
       {
         "id": "concept-riemannian-geometry",
@@ -2439,9 +2690,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 125.6,
-        "y": 154.86,
-        "z": -50
+        "x": -117.84,
+        "y": 40.93,
+        "z": -81.5
       },
       {
         "id": "concept-latent-space-alignment",
@@ -2450,9 +2701,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -7.22,
-        "y": 238.46,
-        "z": -210
+        "x": -250.66,
+        "y": 124.53,
+        "z": -241.5
       },
       {
         "id": "ai-spiking-02",
@@ -2486,9 +2737,9 @@
             "Binaural Delay Line"
           ]
         },
-        "x": 142.02,
-        "y": 234.38,
-        "z": -119.5
+        "x": -101.41,
+        "y": 120.45,
+        "z": -151
       },
       {
         "id": "author-a-o-connor",
@@ -2497,9 +2748,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 214.76,
-        "y": 201.09,
-        "z": -69.5
+        "x": -28.67,
+        "y": 87.16,
+        "z": -101
       },
       {
         "id": "technology-spiking-transformer",
@@ -2508,9 +2759,9 @@
         "val": 14,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 142.02,
-        "y": 324.38,
-        "z": -59.5
+        "x": -101.41,
+        "y": 210.45,
+        "z": -91
       },
       {
         "id": "technology-neuromorphic-chip",
@@ -2519,9 +2770,9 @@
         "val": 14,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 241.77,
-        "y": 241.45,
-        "z": -187.5
+        "x": -1.66,
+        "y": 127.52,
+        "z": -219
       },
       {
         "id": "concept-event-driven-audio",
@@ -2530,9 +2781,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 157.54,
-        "y": 125.48,
-        "z": -43.5
+        "x": -85.89,
+        "y": 11.55,
+        "z": -75
       },
       {
         "id": "concept-binaural-delay-line",
@@ -2541,9 +2792,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 24.72,
-        "y": 209.08,
-        "z": -203.5
+        "x": -218.71,
+        "y": 95.15,
+        "z": -235
       },
       {
         "id": "ai-synth-03",
@@ -2576,9 +2827,9 @@
             "Restorative Bio-Soundscape"
           ]
         },
-        "x": 165.77,
-        "y": 196.26,
-        "z": -103.33
+        "x": -77.67,
+        "y": 82.33,
+        "z": -134.83
       },
       {
         "id": "concept-audio-diffusion",
@@ -2587,9 +2838,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 165.77,
-        "y": 286.26,
-        "z": -43.33
+        "x": -77.67,
+        "y": 172.33,
+        "z": -74.83
       },
       {
         "id": "concept-physiological-conditioning",
@@ -2598,9 +2849,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 265.52,
-        "y": 203.33,
-        "z": -171.33
+        "x": 22.08,
+        "y": 89.4,
+        "z": -202.83
       },
       {
         "id": "concept-latent-embedding",
@@ -2609,9 +2860,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 181.29,
-        "y": 87.36,
-        "z": -27.33
+        "x": -62.15,
+        "y": -26.57,
+        "z": -58.83
       },
       {
         "id": "concept-restorative-bio-soundscape",
@@ -2620,9 +2871,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 48.47,
-        "y": 170.96,
-        "z": -187.33
+        "x": -194.97,
+        "y": 57.03,
+        "z": -218.83
       },
       {
         "id": "ai-cog-04",
@@ -2656,9 +2907,9 @@
             "Agentic Teaming"
           ]
         },
-        "x": 118.92,
-        "y": 204.21,
-        "z": -64.17
+        "x": -124.52,
+        "y": 90.28,
+        "z": -95.67
       },
       {
         "id": "concept-pupillary-oscillations",
@@ -2667,9 +2918,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 118.92,
-        "y": 294.21,
-        "z": -4.17
+        "x": -124.52,
+        "y": 180.28,
+        "z": -35.67
       },
       {
         "id": "concept-cognitive-load-theory",
@@ -2678,9 +2929,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 218.67,
-        "y": 211.28,
-        "z": -132.17
+        "x": -24.77,
+        "y": 97.35,
+        "z": -163.67
       },
       {
         "id": "concept-multimodal-attention",
@@ -2689,9 +2940,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 134.44,
-        "y": 95.31,
-        "z": 11.83
+        "x": -109,
+        "y": -18.62,
+        "z": -19.67
       },
       {
         "id": "concept-agentic-teaming",
@@ -2700,9 +2951,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 1.62,
-        "y": 178.91,
-        "z": -148.17
+        "x": -241.82,
+        "y": 64.98,
+        "z": -179.67
       },
       {
         "id": "ai-symbol-05",
@@ -2736,9 +2987,9 @@
             "Physics-Informed AI"
           ]
         },
-        "x": 125.76,
-        "y": 167.6,
-        "z": -42
+        "x": -117.67,
+        "y": 53.67,
+        "z": -73.5
       },
       {
         "id": "concept-symbolic-algebra",
@@ -2747,9 +2998,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 125.76,
-        "y": 257.6,
-        "z": 18
+        "x": -117.67,
+        "y": 143.67,
+        "z": -13.5
       },
       {
         "id": "concept-formal-verification",
@@ -2758,20 +3009,20 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 225.51,
-        "y": 174.67,
-        "z": -110
+        "x": -17.92,
+        "y": 60.74,
+        "z": -141.5
       },
       {
-        "id": "concept-knowledge-extraction",
+        "id": "policyshift-knowledge-extraction",
         "label": "Knowledge Extraction",
-        "type": "Concept",
+        "type": "PolicyShift",
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 141.28,
-        "y": 58.7,
-        "z": 34
+        "x": -102.15,
+        "y": -55.23,
+        "z": 2.5
       },
       {
         "id": "concept-physics-informed-ai",
@@ -2780,9 +3031,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": 8.46,
-        "y": 142.3,
-        "z": -126
+        "x": -234.97,
+        "y": 28.37,
+        "z": -157.5
       },
       {
         "id": "ac-meta-01",
@@ -2816,9 +3067,9 @@
             "Subwavelength Cloak"
           ]
         },
-        "x": 391.11,
-        "y": -185.37,
-        "z": 73.83
+        "x": 206.93,
+        "y": 115.65,
+        "z": 31.83
       },
       {
         "id": "author-g-richter",
@@ -2827,9 +3078,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 463.85,
-        "y": -218.66,
-        "z": 123.83
+        "x": 279.67,
+        "y": 82.36,
+        "z": 81.83
       },
       {
         "id": "concept-labyrinthine-unit-cell",
@@ -2838,9 +3089,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 391.11,
-        "y": -95.37,
-        "z": 133.83
+        "x": 206.93,
+        "y": 205.65,
+        "z": 91.83
       },
       {
         "id": "technology-acoustic-metamaterial",
@@ -2849,20 +3100,20 @@
         "val": 14,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 490.86,
-        "y": -178.3,
-        "z": 5.83
+        "x": 306.68,
+        "y": 122.72,
+        "z": -36.17
       },
       {
-        "id": "concept-non-reciprocal-refraction",
+        "id": "policyshift-non-reciprocal-refraction",
         "label": "Non-Reciprocal Refraction",
-        "type": "Concept",
+        "type": "PolicyShift",
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 406.63,
-        "y": -294.27,
-        "z": 149.83
+        "x": 222.45,
+        "y": 6.75,
+        "z": 107.83
       },
       {
         "id": "concept-subwavelength-cloak",
@@ -2871,9 +3122,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 273.81,
-        "y": -210.67,
-        "z": -10.17
+        "x": 89.63,
+        "y": 90.35,
+        "z": -52.17
       },
       {
         "id": "ac-infra-02",
@@ -2907,9 +3158,9 @@
             "Boundary Inversion"
           ]
         },
-        "x": 344.19,
-        "y": -146.89,
-        "z": 88.67
+        "x": 160,
+        "y": 154.14,
+        "z": 46.67
       },
       {
         "id": "technology-atmospheric-waveguide",
@@ -2918,9 +3169,9 @@
         "val": 14,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 344.19,
-        "y": -56.89,
-        "z": 148.67
+        "x": 160,
+        "y": 244.14,
+        "z": 106.67
       },
       {
         "id": "concept-infrasound-ray-tracing",
@@ -2929,9 +3180,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 443.94,
-        "y": -139.82,
-        "z": 20.67
+        "x": 259.75,
+        "y": 161.21,
+        "z": -21.33
       },
       {
         "id": "concept-seismo-acoustic-coupling",
@@ -2940,9 +3191,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 359.71,
-        "y": -255.79,
-        "z": 164.67
+        "x": 175.52,
+        "y": 45.24,
+        "z": 122.67
       },
       {
         "id": "concept-boundary-inversion",
@@ -2951,9 +3202,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 226.89,
-        "y": -172.19,
-        "z": 4.67
+        "x": 42.7,
+        "y": 128.84,
+        "z": -37.33
       },
       {
         "id": "ac-sono-03",
@@ -2988,9 +3239,9 @@
             "Deuterated Solvents"
           ]
         },
-        "x": 330.46,
-        "y": -167.22,
-        "z": 126.5
+        "x": 146.28,
+        "y": 133.8,
+        "z": 84.5
       },
       {
         "id": "concept-single-bubble-cavitation",
@@ -2999,9 +3250,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 330.46,
-        "y": -77.22,
-        "z": 186.5
+        "x": 146.28,
+        "y": 223.8,
+        "z": 144.5
       },
       {
         "id": "concept-picosecond-sonoluminescence",
@@ -3010,9 +3261,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 430.21,
-        "y": -160.15,
-        "z": 58.5
+        "x": 246.03,
+        "y": 140.87,
+        "z": 16.5
       },
       {
         "id": "concept-plasma-flash",
@@ -3021,9 +3272,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 345.98,
-        "y": -276.12,
-        "z": 202.5
+        "x": 161.8,
+        "y": 24.9,
+        "z": 160.5
       },
       {
         "id": "concept-deuterated-solvents",
@@ -3032,9 +3283,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 213.16,
-        "y": -192.52,
-        "z": 42.5
+        "x": 28.98,
+        "y": 108.5,
+        "z": 0.5
       },
       {
         "id": "ac-spat-04",
@@ -3067,9 +3318,9 @@
             "Acoustic Immersion"
           ]
         },
-        "x": 310.14,
-        "y": -172.8,
-        "z": 174
+        "x": 125.96,
+        "y": 128.22,
+        "z": 132
       },
       {
         "id": "concept-higher-order-ambisonics",
@@ -3078,9 +3329,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 310.14,
-        "y": -82.8,
-        "z": 234
+        "x": 125.96,
+        "y": 218.22,
+        "z": 192
       },
       {
         "id": "concept-boundary-element-method",
@@ -3089,9 +3340,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 409.89,
-        "y": -165.73,
-        "z": 106
+        "x": 225.71,
+        "y": 135.29,
+        "z": 64
       },
       {
         "id": "concept-holographic-audio",
@@ -3100,9 +3351,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": 325.66,
-        "y": -281.7,
-        "z": 250
+        "x": 141.48,
+        "y": 19.32,
+        "z": 208
       },
       {
         "id": "nuc-fusion-01",
@@ -3137,9 +3388,9 @@
             "Acoustic Compression"
           ]
         },
-        "x": -30.75,
-        "y": -345.15,
-        "z": 248.5
+        "x": 283.66,
+        "y": -100.16,
+        "z": 196
       },
       {
         "id": "author-dr-v-morozov",
@@ -3148,9 +3399,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 41.99,
-        "y": -378.44,
-        "z": 298.5
+        "x": 356.4,
+        "y": -133.45,
+        "z": 246
       },
       {
         "id": "concept-magneto-inertial-confinement",
@@ -3159,9 +3410,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -30.75,
-        "y": -255.15,
-        "z": 308.5
+        "x": 283.66,
+        "y": -10.16,
+        "z": 256
       },
       {
         "id": "concept-rayleigh-taylor-stabilization",
@@ -3170,9 +3421,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 69,
-        "y": -338.08,
-        "z": 180.5
+        "x": 383.41,
+        "y": -93.09,
+        "z": 128
       },
       {
         "id": "concept-liquid-lithium-vortex",
@@ -3181,9 +3432,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -15.23,
-        "y": -454.05,
-        "z": 324.5
+        "x": 299.18,
+        "y": -209.06,
+        "z": 272
       },
       {
         "id": "concept-acoustic-compression",
@@ -3192,9 +3443,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -148.05,
-        "y": -370.45,
-        "z": 164.5
+        "x": 166.36,
+        "y": -125.46,
+        "z": 112
       },
       {
         "id": "nuc-reactor-02",
@@ -3228,9 +3479,9 @@
             "Thermal Resonance"
           ]
         },
-        "x": -30.37,
-        "y": -263.89,
-        "z": -50
+        "x": 284.04,
+        "y": -18.9,
+        "z": -102.5
       },
       {
         "id": "concept-molten-salt-core",
@@ -3239,9 +3490,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -30.37,
-        "y": -173.89,
-        "z": 10
+        "x": 284.04,
+        "y": 71.1,
+        "z": -42.5
       },
       {
         "id": "concept-neutron-flux-kinetics",
@@ -3250,9 +3501,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 69.38,
-        "y": -256.82,
-        "z": -118
+        "x": 383.79,
+        "y": -11.83,
+        "z": -170.5
       },
       {
         "id": "concept-graphite-moderator",
@@ -3261,9 +3512,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -14.85,
-        "y": -372.79,
-        "z": 26
+        "x": 299.56,
+        "y": -127.8,
+        "z": -26.5
       },
       {
         "id": "concept-thermal-resonance",
@@ -3272,9 +3523,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -147.67,
-        "y": -289.19,
-        "z": -134
+        "x": 166.74,
+        "y": -44.2,
+        "z": -186.5
       },
       {
         "id": "nuc-muon-03",
@@ -3308,9 +3559,9 @@
             "Resonant Target"
           ]
         },
-        "x": 38.02,
-        "y": -273.75,
-        "z": 21.83
+        "x": 352.42,
+        "y": -28.77,
+        "z": -30.67
       },
       {
         "id": "concept-muon-catalyzed-fusion",
@@ -3319,9 +3570,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 38.02,
-        "y": -183.75,
-        "z": 81.83
+        "x": 352.42,
+        "y": 61.23,
+        "z": 29.33
       },
       {
         "id": "concept-mesomolecule-formation",
@@ -3330,9 +3581,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 137.77,
-        "y": -266.68,
-        "z": -46.17
+        "x": 452.17,
+        "y": -21.7,
+        "z": -98.67
       },
       {
         "id": "concept-alpha-sticking-probability",
@@ -3341,9 +3592,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 53.54,
-        "y": -382.65,
-        "z": 97.83
+        "x": 367.94,
+        "y": -137.67,
+        "z": 45.33
       },
       {
         "id": "concept-resonant-target",
@@ -3352,9 +3603,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -79.28,
-        "y": -299.05,
-        "z": -62.17
+        "x": 235.12,
+        "y": -54.07,
+        "z": -114.67
       },
       {
         "id": "nuc-sensor-04",
@@ -3388,9 +3639,9 @@
             "Acoustic Thermometry"
           ]
         },
-        "x": 79.74,
-        "y": -296.32,
-        "z": 23.33
+        "x": 394.14,
+        "y": -51.34,
+        "z": -29.17
       },
       {
         "id": "technology-magnetostrictive-waveguide",
@@ -3399,9 +3650,9 @@
         "val": 14,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 79.74,
-        "y": -206.32,
-        "z": 83.33
+        "x": 394.14,
+        "y": 38.66,
+        "z": 30.83
       },
       {
         "id": "technology-in-core-sensor",
@@ -3410,9 +3661,9 @@
         "val": 14,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 179.49,
-        "y": -289.25,
-        "z": -44.67
+        "x": 493.89,
+        "y": -44.27,
+        "z": -97.17
       },
       {
         "id": "concept-fast-breeder-diagnostics",
@@ -3421,9 +3672,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 95.26,
-        "y": -405.22,
-        "z": 99.33
+        "x": 409.66,
+        "y": -160.24,
+        "z": 46.83
       },
       {
         "id": "concept-acoustic-thermometry",
@@ -3432,9 +3683,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -37.56,
-        "y": -321.62,
-        "z": -60.67
+        "x": 276.84,
+        "y": -76.64,
+        "z": -113.17
       },
       {
         "id": "nuc-decay-05",
@@ -3468,9 +3719,9 @@
             "Transient Megabar Pressure"
           ]
         },
-        "x": 113.71,
-        "y": -329.91,
-        "z": 34.5
+        "x": 428.11,
+        "y": -84.92,
+        "z": -18
       },
       {
         "id": "concept-cavitation-collapse",
@@ -3479,9 +3730,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 113.71,
-        "y": -239.91,
-        "z": 94.5
+        "x": 428.11,
+        "y": 5.08,
+        "z": 42
       },
       {
         "id": "concept-electron-capture",
@@ -3490,9 +3741,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 213.46,
-        "y": -322.84,
-        "z": -33.5
+        "x": 527.86,
+        "y": -77.85,
+        "z": -86
       },
       {
         "id": "concept-beta-decay-rates",
@@ -3501,9 +3752,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 129.23,
-        "y": -438.81,
-        "z": 110.5
+        "x": 443.63,
+        "y": -193.82,
+        "z": 58
       },
       {
         "id": "concept-transient-megabar-pressure",
@@ -3512,9 +3763,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -3.59,
-        "y": -355.21,
-        "z": -49.5
+        "x": 310.81,
+        "y": -110.22,
+        "z": -102
       },
       {
         "id": "arxiv:2608.17470v1",
@@ -3546,9 +3797,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -99.24,
-        "y": -39.26,
-        "z": 166
+        "x": 163.72,
+        "y": -315.11,
+        "z": 103
       },
       {
         "id": "author-taichi-fujiwara",
@@ -3557,9 +3808,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -31.92,
-        "y": 3.96,
-        "z": 216
+        "x": 231.04,
+        "y": -271.89,
+        "z": 153
       },
       {
         "id": "author-yuhei-sekiguchi",
@@ -3568,9 +3819,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -26.5,
-        "y": -72.55,
-        "z": 216
+        "x": 236.46,
+        "y": -348.4,
+        "z": 153
       },
       {
         "id": "author-raustin-reyes",
@@ -3579,9 +3830,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -87.95,
-        "y": -118.46,
-        "z": 216
+        "x": 175.01,
+        "y": -394.31,
+        "z": 153
       },
       {
         "id": "author-toshiharu-makino",
@@ -3590,9 +3841,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -159.78,
-        "y": -91.55,
-        "z": 216
+        "x": 103.18,
+        "y": -367.4,
+        "z": 153
       },
       {
         "id": "author-hiromitsu-kato",
@@ -3601,9 +3852,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -175.95,
-        "y": -16.57,
-        "z": 216
+        "x": 87.01,
+        "y": -292.42,
+        "z": 153
       },
       {
         "id": "author-hideo-kosaka",
@@ -3612,9 +3863,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -121.59,
-        "y": 37.55,
-        "z": 216
+        "x": 141.37,
+        "y": -238.3,
+        "z": 153
       },
       {
         "id": "concept-quantum-teleportation",
@@ -3623,9 +3874,9 @@
         "val": 28,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": -99.24,
-        "y": 50.74,
-        "z": 226
+        "x": 163.72,
+        "y": -225.11,
+        "z": 163
       },
       {
         "id": "arxiv:2608.13772v1",
@@ -3662,9 +3913,9 @@
             "Bringing"
           ]
         },
-        "x": -84.06,
-        "y": -76.01,
-        "z": 183.17
+        "x": 178.89,
+        "y": -351.86,
+        "z": 120.17
       },
       {
         "id": "author-yihan-wang",
@@ -3673,9 +3924,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -16.74,
-        "y": -32.79,
-        "z": 233.17
+        "x": 246.21,
+        "y": -308.64,
+        "z": 170.17
       },
       {
         "id": "author-ruilin-you",
@@ -3684,9 +3935,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -11.32,
-        "y": -109.3,
-        "z": 233.17
+        "x": 251.63,
+        "y": -385.15,
+        "z": 170.17
       },
       {
         "id": "author-jiabin-chen",
@@ -3695,9 +3946,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -72.77,
-        "y": -155.21,
-        "z": 233.17
+        "x": 190.18,
+        "y": -431.06,
+        "z": 170.17
       },
       {
         "id": "author-bofan-song",
@@ -3706,9 +3957,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -144.6,
-        "y": -128.3,
-        "z": 233.17
+        "x": 118.35,
+        "y": -404.15,
+        "z": 170.17
       },
       {
         "id": "author-zien-feng",
@@ -3717,9 +3968,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -160.77,
-        "y": -53.32,
-        "z": 233.17
+        "x": 102.18,
+        "y": -329.17,
+        "z": 170.17
       },
       {
         "id": "author-paula-patricia-villarreal",
@@ -3728,9 +3979,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -106.41,
-        "y": 0.8,
-        "z": 233.17
+        "x": 156.54,
+        "y": -275.05,
+        "z": 170.17
       },
       {
         "id": "author-gracie-vargas",
@@ -3739,9 +3990,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -31.5,
-        "y": -15.7,
-        "z": 233.17
+        "x": 231.45,
+        "y": -291.55,
+        "z": 170.17
       },
       {
         "id": "author-rongguang-liang",
@@ -3750,9 +4001,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -4.91,
-        "y": -87.65,
-        "z": 233.17
+        "x": 258.04,
+        "y": -363.5,
+        "z": 170.17
       },
       {
         "id": "concept-fully",
@@ -3761,9 +4012,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": -84.06,
-        "y": 13.99,
-        "z": 243.17
+        "x": 178.89,
+        "y": -261.86,
+        "z": 180.17
       },
       {
         "id": "concept-optical",
@@ -3772,9 +4023,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 15.69,
-        "y": -68.94,
-        "z": 115.17
+        "x": 278.64,
+        "y": -344.79,
+        "z": 52.17
       },
       {
         "id": "concept-bringing",
@@ -3783,9 +4034,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": -68.54,
-        "y": -184.91,
-        "z": 259.17
+        "x": 194.41,
+        "y": -460.76,
+        "z": 196.17
       },
       {
         "id": "arxiv:2608.11718v1",
@@ -3820,9 +4071,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -79.76,
-        "y": -115.71,
-        "z": 210
+        "x": 183.19,
+        "y": -391.56,
+        "z": 147
       },
       {
         "id": "author-zicong-wen",
@@ -3831,9 +4082,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -12.44,
-        "y": -72.49,
-        "z": 260
+        "x": 250.51,
+        "y": -348.34,
+        "z": 197
       },
       {
         "id": "author-kai-wang",
@@ -3842,9 +4093,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -7.02,
-        "y": -149,
-        "z": 260
+        "x": 255.93,
+        "y": -424.85,
+        "z": 197
       },
       {
         "id": "author-bochi-wu",
@@ -3853,9 +4104,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -68.47,
-        "y": -194.91,
-        "z": 260
+        "x": 194.48,
+        "y": -470.76,
+        "z": 197
       },
       {
         "id": "author-leizhen-chen",
@@ -3864,9 +4115,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -140.3,
-        "y": -168,
-        "z": 260
+        "x": 122.65,
+        "y": -443.85,
+        "z": 197
       },
       {
         "id": "author-yan-qing-lu",
@@ -3875,9 +4126,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -156.47,
-        "y": -93.02,
-        "z": 260
+        "x": 106.48,
+        "y": -368.87,
+        "z": 197
       },
       {
         "id": "author-shining-zhu",
@@ -3886,9 +4137,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -102.11,
-        "y": -38.9,
-        "z": 260
+        "x": 160.84,
+        "y": -314.75,
+        "z": 197
       },
       {
         "id": "author-xiao-song-ma",
@@ -3897,9 +4148,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -27.2,
-        "y": -55.4,
-        "z": 260
+        "x": 235.75,
+        "y": -331.25,
+        "z": 197
       },
       {
         "id": "concept-qubit",
@@ -3908,9 +4159,9 @@
         "val": 25,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": -79.76,
-        "y": -25.71,
-        "z": 270
+        "x": 183.19,
+        "y": -301.56,
+        "z": 207
       },
       {
         "id": "arxiv:2608.06683v1",
@@ -3940,9 +4191,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -130.06,
-        "y": -87.32,
-        "z": 233.17
+        "x": 132.89,
+        "y": -363.17,
+        "z": 170.17
       },
       {
         "id": "author-yu-bo-hou",
@@ -3951,9 +4202,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -62.74,
-        "y": -44.1,
-        "z": 283.17
+        "x": 200.21,
+        "y": -319.95,
+        "z": 220.17
       },
       {
         "id": "author-xiaoan-ai",
@@ -3962,9 +4213,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -57.32,
-        "y": -120.61,
-        "z": 283.17
+        "x": 205.63,
+        "y": -396.46,
+        "z": 220.17
       },
       {
         "id": "author-pengbo-li",
@@ -3973,9 +4224,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -118.77,
-        "y": -166.52,
-        "z": 283.17
+        "x": 144.18,
+        "y": -442.37,
+        "z": 220.17
       },
       {
         "id": "author-changchun-zhong",
@@ -3984,9 +4235,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -190.6,
-        "y": -139.61,
-        "z": 283.17
+        "x": 72.35,
+        "y": -415.46,
+        "z": 220.17
       },
       {
         "id": "arxiv:2608.03865v1",
@@ -4015,9 +4266,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -138.51,
-        "y": -116.1,
-        "z": 266
+        "x": 124.45,
+        "y": -391.95,
+        "z": 203
       },
       {
         "id": "author-anushree-pandey",
@@ -4026,9 +4277,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -71.19,
-        "y": -72.88,
-        "z": 316
+        "x": 191.77,
+        "y": -348.73,
+        "z": 253
       },
       {
         "id": "author-sovik-roy",
@@ -4037,9 +4288,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -65.77,
-        "y": -149.39,
-        "z": 316
+        "x": 197.19,
+        "y": -425.24,
+        "z": 253
       },
       {
         "id": "arxiv:2608.01088v1",
@@ -4069,9 +4320,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -156.38,
-        "y": -135.68,
-        "z": 308.5
+        "x": 106.58,
+        "y": -411.53,
+        "z": 245.5
       },
       {
         "id": "author-nan-li",
@@ -4080,9 +4331,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -89.06,
-        "y": -92.46,
-        "z": 358.5
+        "x": 173.9,
+        "y": -368.31,
+        "z": 295.5
       },
       {
         "id": "author-yuan-li",
@@ -4091,9 +4342,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -83.64,
-        "y": -168.97,
-        "z": 358.5
+        "x": 179.32,
+        "y": -444.82,
+        "z": 295.5
       },
       {
         "id": "author-hanyu-yang",
@@ -4102,9 +4353,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -145.09,
-        "y": -214.88,
-        "z": 358.5
+        "x": 117.87,
+        "y": -490.73,
+        "z": 295.5
       },
       {
         "id": "author-shunlong-luo",
@@ -4113,9 +4364,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -216.92,
-        "y": -187.97,
-        "z": 358.5
+        "x": 46.04,
+        "y": -463.82,
+        "z": 295.5
       },
       {
         "id": "arxiv:2607.25395v1",
@@ -4152,9 +4403,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -188.79,
-        "y": -79.58,
-        "z": 307.33
+        "x": 74.17,
+        "y": -355.43,
+        "z": 244.33
       },
       {
         "id": "author-yang-bin-ma",
@@ -4163,9 +4414,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -121.47,
-        "y": -36.36,
-        "z": 357.33
+        "x": 141.49,
+        "y": -312.21,
+        "z": 294.33
       },
       {
         "id": "author-yun-ru-fan",
@@ -4174,9 +4425,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -116.05,
-        "y": -112.87,
-        "z": 357.33
+        "x": 146.91,
+        "y": -388.72,
+        "z": 294.33
       },
       {
         "id": "author-ri-yao-song",
@@ -4185,9 +4436,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -177.5,
-        "y": -158.78,
-        "z": 357.33
+        "x": 85.46,
+        "y": -434.63,
+        "z": 294.33
       },
       {
         "id": "author-ya-zhou-zhao",
@@ -4196,9 +4447,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -249.33,
-        "y": -131.87,
-        "z": 357.33
+        "x": 13.63,
+        "y": -407.72,
+        "z": 294.33
       },
       {
         "id": "author-yi-ye-liu",
@@ -4207,9 +4458,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -265.5,
-        "y": -56.89,
-        "z": 357.33
+        "x": -2.54,
+        "y": -332.74,
+        "z": 294.33
       },
       {
         "id": "author-si-shen",
@@ -4218,9 +4469,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -211.14,
-        "y": -2.77,
-        "z": 357.33
+        "x": 51.82,
+        "y": -278.62,
+        "z": 294.33
       },
       {
         "id": "author-zi-hao-zhan",
@@ -4229,9 +4480,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -136.23,
-        "y": -19.27,
-        "z": 357.33
+        "x": 126.73,
+        "y": -295.12,
+        "z": 294.33
       },
       {
         "id": "author-yan-yu-wei",
@@ -4240,9 +4491,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -109.64,
-        "y": -91.22,
-        "z": 357.33
+        "x": 153.32,
+        "y": -367.07,
+        "z": 294.33
       },
       {
         "id": "author-kai-guo",
@@ -4251,9 +4502,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -155.82,
-        "y": -152.47,
-        "z": 357.33
+        "x": 107.14,
+        "y": -428.32,
+        "z": 294.33
       },
       {
         "id": "author-guang-can-guo",
@@ -4262,9 +4513,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -232.31,
-        "y": -146.71,
-        "z": 357.33
+        "x": 30.65,
+        "y": -422.56,
+        "z": 294.33
       },
       {
         "id": "author-qiang-zhou",
@@ -4273,9 +4524,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -268.79,
-        "y": -79.23,
-        "z": 357.33
+        "x": -5.83,
+        "y": -355.08,
+        "z": 294.33
       },
       {
         "id": "arxiv:2607.25352v1",
@@ -4313,9 +4564,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -204.27,
-        "y": -68.53,
-        "z": 355.83
+        "x": 58.69,
+        "y": -344.38,
+        "z": 292.83
       },
       {
         "id": "author-hao-li",
@@ -4324,9 +4575,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -151.71,
-        "y": -8.22,
-        "z": 405.83
+        "x": 111.25,
+        "y": -284.07,
+        "z": 342.83
       },
       {
         "id": "author-li-xing-you",
@@ -4335,9 +4586,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -125.12,
-        "y": -80.17,
-        "z": 405.83
+        "x": 137.84,
+        "y": -356.02,
+        "z": 342.83
       },
       {
         "id": "arxiv:2607.24105v1",
@@ -4372,9 +4623,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -203.82,
-        "y": 28.2,
-        "z": 86
+        "x": 59.14,
+        "y": -247.65,
+        "z": 23
       },
       {
         "id": "author-yawen-tang",
@@ -4383,9 +4634,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -136.5,
-        "y": 71.42,
-        "z": 136
+        "x": 126.46,
+        "y": -204.43,
+        "z": 73
       },
       {
         "id": "author-wei-ye",
@@ -4394,9 +4645,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -131.08,
-        "y": -5.09,
-        "z": 136
+        "x": 131.88,
+        "y": -280.94,
+        "z": 73
       },
       {
         "id": "author-lu-qin",
@@ -4405,9 +4656,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -192.53,
-        "y": -51,
-        "z": 136
+        "x": 70.43,
+        "y": -326.85,
+        "z": 73
       },
       {
         "id": "author-jinxin-li",
@@ -4416,9 +4667,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -264.36,
-        "y": -24.09,
-        "z": 136
+        "x": -1.4,
+        "y": -299.94,
+        "z": 73
       },
       {
         "id": "author-xinxin-wang",
@@ -4427,9 +4678,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -280.53,
-        "y": 50.89,
-        "z": 136
+        "x": -17.57,
+        "y": -224.96,
+        "z": 73
       },
       {
         "id": "author-zunlue-zhu",
@@ -4438,9 +4689,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -226.17,
-        "y": 105.01,
-        "z": 136
+        "x": 36.79,
+        "y": -170.84,
+        "z": 73
       },
       {
         "id": "author-shoukang-chang",
@@ -4449,9 +4700,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -151.26,
-        "y": 88.51,
-        "z": 136
+        "x": 111.7,
+        "y": -187.34,
+        "z": 73
       },
       {
         "id": "author-shao-ming-fei",
@@ -4460,9 +4711,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -124.67,
-        "y": 16.56,
-        "z": 136
+        "x": 138.29,
+        "y": -259.29,
+        "z": 73
       },
       {
         "id": "author-xingdong-zhao",
@@ -4471,9 +4722,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -170.85,
-        "y": -44.69,
-        "z": 136
+        "x": 92.11,
+        "y": -320.54,
+        "z": 73
       },
       {
         "id": "arxiv:2607.23820v1",
@@ -4504,9 +4755,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -120.11,
-        "y": 16.13,
-        "z": 82.5
+        "x": 142.85,
+        "y": -259.72,
+        "z": 19.5
       },
       {
         "id": "author-soubhik-de",
@@ -4515,9 +4766,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -52.79,
-        "y": 59.35,
-        "z": 132.5
+        "x": 210.17,
+        "y": -216.5,
+        "z": 69.5
       },
       {
         "id": "author-vedhanayagi-r",
@@ -4526,9 +4777,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -47.37,
-        "y": -17.16,
-        "z": 132.5
+        "x": 215.59,
+        "y": -293.01,
+        "z": 69.5
       },
       {
         "id": "author-basherrudin-mahmud-ahmed-a",
@@ -4537,9 +4788,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -108.82,
-        "y": -63.07,
-        "z": 132.5
+        "x": 154.14,
+        "y": -338.92,
+        "z": 69.5
       },
       {
         "id": "author-alok-sharan",
@@ -4548,9 +4799,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -180.65,
-        "y": -36.16,
-        "z": 132.5
+        "x": 82.31,
+        "y": -312.01,
+        "z": 69.5
       },
       {
         "id": "arxiv:2607.19770v1",
@@ -4581,9 +4832,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -73.69,
-        "y": -10.13,
-        "z": 88.67
+        "x": 189.27,
+        "y": -285.98,
+        "z": 25.67
       },
       {
         "id": "author-mahmoud-saad-abouamer",
@@ -4592,9 +4843,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -6.37,
-        "y": 33.09,
-        "z": 138.67
+        "x": 256.59,
+        "y": -242.76,
+        "z": 75.67
       },
       {
         "id": "author-jakob-kaltoft-s-ndergaard",
@@ -4603,9 +4854,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -0.95,
-        "y": -43.42,
-        "z": 138.67
+        "x": 262.01,
+        "y": -319.27,
+        "z": 75.67
       },
       {
         "id": "author-petar-popovski",
@@ -4614,9 +4865,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -62.4,
-        "y": -89.33,
-        "z": 138.67
+        "x": 200.56,
+        "y": -365.18,
+        "z": 75.67
       },
       {
         "id": "arxiv:2607.19212v1",
@@ -4646,9 +4897,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -100.68,
-        "y": -19.06,
-        "z": 144.5
+        "x": 162.28,
+        "y": -294.91,
+        "z": 81.5
       },
       {
         "id": "author-eduardo-reck-miranda",
@@ -4657,9 +4908,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -33.36,
-        "y": 24.16,
-        "z": 194.5
+        "x": 229.6,
+        "y": -251.69,
+        "z": 131.5
       },
       {
         "id": "author-scott-yeiichi-oshiro",
@@ -4668,9 +4919,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -27.94,
-        "y": -52.35,
-        "z": 194.5
+        "x": 235.02,
+        "y": -328.2,
+        "z": 131.5
       },
       {
         "id": "arxiv:2607.17773v1",
@@ -4705,9 +4956,9 @@
             "Grained"
           ]
         },
-        "x": -77.05,
-        "y": -53.57,
-        "z": 156.67
+        "x": 185.9,
+        "y": -329.42,
+        "z": 93.67
       },
       {
         "id": "author-chen-yang",
@@ -4716,9 +4967,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -9.73,
-        "y": -10.35,
-        "z": 206.67
+        "x": 253.22,
+        "y": -286.2,
+        "z": 143.67
       },
       {
         "id": "author-ganye-wen",
@@ -4727,9 +4978,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -4.31,
-        "y": -86.86,
-        "z": 206.67
+        "x": 258.64,
+        "y": -362.71,
+        "z": 143.67
       },
       {
         "id": "author-bin-huang",
@@ -4738,9 +4989,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -65.76,
-        "y": -132.77,
-        "z": 206.67
+        "x": 197.19,
+        "y": -408.62,
+        "z": 143.67
       },
       {
         "id": "author-jiayi-lyu",
@@ -4749,9 +5000,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -137.59,
-        "y": -105.86,
-        "z": 206.67
+        "x": 125.36,
+        "y": -381.71,
+        "z": 143.67
       },
       {
         "id": "author-zehai-niu",
@@ -4760,9 +5011,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -153.76,
-        "y": -30.88,
-        "z": 206.67
+        "x": 109.19,
+        "y": -306.73,
+        "z": 143.67
       },
       {
         "id": "author-linlin-shen",
@@ -4771,9 +5022,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -99.4,
-        "y": 23.24,
-        "z": 206.67
+        "x": 163.55,
+        "y": -252.61,
+        "z": 143.67
       },
       {
         "id": "author-jinbao-wang",
@@ -4782,9 +5033,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -24.49,
-        "y": 6.74,
-        "z": 206.67
+        "x": 238.46,
+        "y": -269.11,
+        "z": 143.67
       },
       {
         "id": "concept-fillgauss",
@@ -4793,9 +5044,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": -77.05,
-        "y": 36.43,
-        "z": 216.67
+        "x": 185.9,
+        "y": -239.42,
+        "z": 153.67
       },
       {
         "id": "concept-fine",
@@ -4804,9 +5055,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 22.7,
-        "y": -46.5,
-        "z": 88.67
+        "x": 285.65,
+        "y": -322.35,
+        "z": 25.67
       },
       {
         "id": "concept-grained",
@@ -4815,9 +5066,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": -61.53,
-        "y": -162.47,
-        "z": 232.67
+        "x": 201.42,
+        "y": -438.32,
+        "z": 169.67
       },
       {
         "id": "arxiv:2607.17216v1",
@@ -4847,9 +5098,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -63.24,
-        "y": -94.13,
-        "z": 178.5
+        "x": 199.72,
+        "y": -369.99,
+        "z": 115.5
       },
       {
         "id": "author-reza-hamzehofi",
@@ -4858,9 +5109,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 4.08,
-        "y": -50.91,
-        "z": 228.5
+        "x": 267.04,
+        "y": -326.77,
+        "z": 165.5
       },
       {
         "id": "author-davood-afshar",
@@ -4869,9 +5120,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 9.5,
-        "y": -127.42,
-        "z": 228.5
+        "x": 272.46,
+        "y": -403.28,
+        "z": 165.5
       },
       {
         "id": "author-mehrzad-ashrafpour",
@@ -4880,9 +5131,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -51.95,
-        "y": -173.33,
-        "z": 228.5
+        "x": 211.01,
+        "y": -449.19,
+        "z": 165.5
       },
       {
         "id": "arxiv:2607.14592v1",
@@ -4913,9 +5164,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": -113.71,
-        "y": -76.32,
-        "z": 210
+        "x": 149.24,
+        "y": -352.17,
+        "z": 147
       },
       {
         "id": "author-rajeswari-suance-p-s",
@@ -4924,9 +5175,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -46.39,
-        "y": -33.1,
-        "z": 260
+        "x": 216.56,
+        "y": -308.95,
+        "z": 197
       },
       {
         "id": "author-anubhab-dutta",
@@ -4935,9 +5186,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -40.97,
-        "y": -109.61,
-        "z": 260
+        "x": 221.98,
+        "y": -385.46,
+        "z": 197
       },
       {
         "id": "author-ruchika-gupta",
@@ -4946,9 +5197,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -102.42,
-        "y": -155.52,
-        "z": 260
+        "x": 160.53,
+        "y": -431.37,
+        "z": 197
       },
       {
         "id": "author-john-jose",
@@ -4957,9 +5208,1140 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -174.25,
-        "y": -128.61,
-        "z": 260
+        "x": 88.7,
+        "y": -404.46,
+        "z": 197
+      },
+      {
+        "id": "arch-church-01",
+        "label": "Church Committee Final Report: Foreign and Military Intelligence and Covert Action Oversight (Book I)",
+        "type": "Paper",
+        "val": 32,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-church-01",
+          "title": "Church Committee Final Report: Foreign and Military Intelligence and Covert Action Oversight (Book I)",
+          "abstract": "Comprehensive congressional oversight findings detailing covert operations, internal agency directives, and unauthorized intercept logs from 1947 through 1975. Analyzes executive accountability, destruction of records, and the legislative shift leading to permanent intelligence committees.",
+          "date": "1976-04-26",
+          "authors": [
+            "Frank Church",
+            "John Tower",
+            "Senate Select Committee on Intelligence"
+          ],
+          "doi": "10.7440/senate.intelligence.1976.94-755",
+          "source": "Declassified Congressional Archives / U.S. Senate Select Committee",
+          "url": "https://www.senate.gov/about/powers-procedures/investigations/church-committee.htm",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "Congressional Inquiries",
+            "Intelligence Oversight Act",
+            "Senate Select Committee"
+          ],
+          "entities": [
+            "Senate Select Committee",
+            "Covert Action Directives",
+            "Destruction of Records",
+            "Intelligence Oversight Act",
+            "CIA Oversight",
+            "Executive Accountability"
+          ],
+          "era": "Church Committee Era (1975–1980)",
+          "agency": "U.S. Senate Select Committee",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -78.65,
+        "y": -237.98,
+        "z": 248.33
+      },
+      {
+        "id": "agency-u-s-senate-select-committee",
+        "label": "U.S. Senate Select Committee",
+        "type": "Agency",
+        "val": 18,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": -3.65,
+        "y": -312.98,
+        "z": 288.33
+      },
+      {
+        "id": "author-frank-church",
+        "label": "Frank Church",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -11.33,
+        "y": -194.76,
+        "z": 298.33
+      },
+      {
+        "id": "author-john-tower",
+        "label": "John Tower",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -5.91,
+        "y": -271.27,
+        "z": 298.33
+      },
+      {
+        "id": "author-senate-select-committee-on-intelligence",
+        "label": "Senate Select Committee on Intelligence",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -67.36,
+        "y": -317.18,
+        "z": 298.33
+      },
+      {
+        "id": "agency-senate-select-committee",
+        "label": "Senate Select Committee",
+        "type": "Agency",
+        "val": 14,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -78.65,
+        "y": -147.98,
+        "z": 308.33
+      },
+      {
+        "id": "policyshift-covert-action-directives",
+        "label": "Covert Action Directives",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 21.1,
+        "y": -230.91,
+        "z": 180.33
+      },
+      {
+        "id": "concept-destruction-of-records",
+        "label": "Destruction of Records",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -63.13,
+        "y": -346.88,
+        "z": 324.33
+      },
+      {
+        "id": "policyshift-intelligence-oversight-act",
+        "label": "Intelligence Oversight Act",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -195.95,
+        "y": -263.28,
+        "z": 164.33
+      },
+      {
+        "id": "agency-cia-oversight",
+        "label": "CIA Oversight",
+        "type": "Agency",
+        "val": 14,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -114.97,
+        "y": -113.16,
+        "z": 340.33
+      },
+      {
+        "id": "concept-executive-accountability",
+        "label": "Executive Accountability",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 52.67,
+        "y": -189.45,
+        "z": 148.33
+      },
+      {
+        "id": "arch-achre-02",
+        "label": "Final Report of the Advisory Committee on Human Radiation Experiments: Declassified Multi-Decade AEC & DoD Logs",
+        "type": "Memorandum",
+        "val": 32,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-achre-02",
+          "title": "Final Report of the Advisory Committee on Human Radiation Experiments: Declassified Multi-Decade AEC & DoD Logs",
+          "abstract": "Multi-decade investigation correlating internal Atomic Energy Commission (AEC), Manhattan Project, and Department of Defense memorandums from 1944 to 1974. Evaluates medical ethics, classified biomedical protocols, isotope tracing experiments, and executive institutional oversight reforms.",
+          "date": "1995-10-01",
+          "authors": [
+            "Ruth Faden",
+            "Advisory Committee on Human Radiation Experiments",
+            "Department of Energy"
+          ],
+          "doi": "10.2172/120993",
+          "source": "Declassified Government Records / Advisory Committee on Human Radiation Experiments",
+          "url": "https://ehss.energy.gov/ohre/roadmap/achre/report.html",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "Atomic Energy Commission",
+            "Biomedical Ethics",
+            "Human Radiation Experiments",
+            "Department of Energy"
+          ],
+          "entities": [
+            "Atomic Energy Commission",
+            "Biomedical Protocol Memos",
+            "Human Radiation Experiments",
+            "Department of Energy",
+            "DoD Research Logs",
+            "Institutional Review Boards"
+          ],
+          "era": "Cold War Era (1947–1975)",
+          "agency": "Atomic Energy Commission",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -91.07,
+        "y": -267.54,
+        "z": 285.83
+      },
+      {
+        "id": "agency-atomic-energy-commission",
+        "label": "Atomic Energy Commission",
+        "type": "Agency",
+        "val": 21,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": -16.07,
+        "y": -342.54,
+        "z": 325.83
+      },
+      {
+        "id": "official-ruth-faden",
+        "label": "Ruth Faden",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -23.75,
+        "y": -224.32,
+        "z": 335.83
+      },
+      {
+        "id": "official-advisory-committee-on-human-radiation-experiments",
+        "label": "Advisory Committee on Human Radiation Experiments",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -18.33,
+        "y": -300.83,
+        "z": 335.83
+      },
+      {
+        "id": "official-department-of-energy",
+        "label": "Department of Energy",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -79.78,
+        "y": -346.74,
+        "z": 335.83
+      },
+      {
+        "id": "concept-biomedical-protocol-memos",
+        "label": "Biomedical Protocol Memos",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 8.68,
+        "y": -260.47,
+        "z": 217.83
+      },
+      {
+        "id": "concept-human-radiation-experiments",
+        "label": "Human Radiation Experiments",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -75.55,
+        "y": -376.44,
+        "z": 361.83
+      },
+      {
+        "id": "agency-department-of-energy",
+        "label": "Department of Energy",
+        "type": "Agency",
+        "val": 14,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -208.37,
+        "y": -292.84,
+        "z": 201.83
+      },
+      {
+        "id": "agency-dod-research-logs",
+        "label": "DoD Research Logs",
+        "type": "Agency",
+        "val": 14,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -127.39,
+        "y": -142.72,
+        "z": 377.83
+      },
+      {
+        "id": "concept-institutional-review-boards",
+        "label": "Institutional Review Boards",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 40.25,
+        "y": -219.01,
+        "z": 185.83
+      },
+      {
+        "id": "arch-shamrock-03",
+        "label": "Project Shamrock & Minaret Declassified Cable Intercept Directives and FISA Statutory Shift",
+        "type": "PolicyShift",
+        "val": 32,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-shamrock-03",
+          "title": "Project Shamrock & Minaret Declassified Cable Intercept Directives and FISA Statutory Shift",
+          "abstract": "Analysis of 1945–1975 internal National Security Agency (NSA) telecommunications intercept memorandums, watchlist management, and subsequent congressional hearings that mandated the Foreign Intelligence Surveillance Act (FISA) of 1978 judicial warrant regime.",
+          "date": "1978-10-25",
+          "authors": [
+            "L. Patrick Gray",
+            "Otis Pike",
+            "House Permanent Select Committee on Intelligence"
+          ],
+          "doi": "10.1080/08850607808434812",
+          "source": "Declassified National Security Archive / U.S. Congress",
+          "url": "https://nsarchive.gwu.edu/briefing-book/intelligence/2021-08-16/project-shamrock-nsa-cable-intercepts",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "National Security Agency",
+            "Project Shamrock",
+            "FISA Act 1978",
+            "Telecommunications Oversight"
+          ],
+          "entities": [
+            "National Security Agency",
+            "Project Shamrock",
+            "FISA Statutory Shift",
+            "Watchlist Logs",
+            "Foreign Intelligence Surveillance Court",
+            "Congressional Hearing"
+          ],
+          "era": "Church Committee Era (1975–1980)",
+          "agency": "National Security Agency",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -132.35,
+        "y": -219.81,
+        "z": 293
+      },
+      {
+        "id": "agency-national-security-agency",
+        "label": "National Security Agency",
+        "type": "Agency",
+        "val": 21,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": -57.35,
+        "y": -294.81,
+        "z": 333
+      },
+      {
+        "id": "author-l-patrick-gray",
+        "label": "L. Patrick Gray",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -65.03,
+        "y": -176.59,
+        "z": 343
+      },
+      {
+        "id": "author-otis-pike",
+        "label": "Otis Pike",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -59.61,
+        "y": -253.1,
+        "z": 343
+      },
+      {
+        "id": "author-house-permanent-select-committee-on-intelligence",
+        "label": "House Permanent Select Committee on Intelligence",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -121.06,
+        "y": -299.01,
+        "z": 343
+      },
+      {
+        "id": "concept-project-shamrock",
+        "label": "Project Shamrock",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -32.6,
+        "y": -212.74,
+        "z": 225
+      },
+      {
+        "id": "policyshift-fisa-statutory-shift",
+        "label": "FISA Statutory Shift",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -116.83,
+        "y": -328.71,
+        "z": 369
+      },
+      {
+        "id": "concept-watchlist-logs",
+        "label": "Watchlist Logs",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -249.65,
+        "y": -245.11,
+        "z": 209
+      },
+      {
+        "id": "concept-foreign-intelligence-surveillance-court",
+        "label": "Foreign Intelligence Surveillance Court",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -168.67,
+        "y": -94.99,
+        "z": 385
+      },
+      {
+        "id": "hearing-congressional-hearing",
+        "label": "Congressional Hearing",
+        "type": "Hearing",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -1.03,
+        "y": -171.28,
+        "z": 193
+      },
+      {
+        "id": "arch-mkultra-04",
+        "label": "CIA Inspector General Survey and Declassified Subproject Memorandums on Behavioral Modification (1953–1973)",
+        "type": "Memorandum",
+        "val": 32,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-mkultra-04",
+          "title": "CIA Inspector General Survey and Declassified Subproject Memorandums on Behavioral Modification (1953–1973)",
+          "abstract": "Declassified internal financial vouchers, subproject authorizations, and Inspector General audit records for MKUltra behavioral modification research. Examines the operational separation between scientific contractors and agency oversight that prompted the 1977 Joint Senate Hearings.",
+          "date": "1977-08-03",
+          "authors": [
+            "Edward Kennedy",
+            "Daniel Inouye",
+            "Joint Committee on Human Resources and Intelligence"
+          ],
+          "doi": "10.1037/e524942006-001",
+          "source": "Declassified CIA FOIA Archive / U.S. Senate Joint Hearings",
+          "url": "https://www.intelligence.senate.gov/hearings/project-mkultra-cia-program-research-behavioral-modification",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "CIA Inspector General",
+            "MKUltra Subprojects",
+            "Behavioral Modification",
+            "Congressional Hearing"
+          ],
+          "entities": [
+            "Central Intelligence Agency",
+            "Inspector General Audit",
+            "MKUltra Subproject Memos",
+            "Joint Congressional Inquiry",
+            "Institutional Oversight Act",
+            "Contractor Disconnect"
+          ],
+          "era": "Cold War Era (1947–1975)",
+          "agency": "Central Intelligence Agency",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -149.35,
+        "y": -227.64,
+        "z": 336.5
+      },
+      {
+        "id": "agency-central-intelligence-agency",
+        "label": "Central Intelligence Agency",
+        "type": "Agency",
+        "val": 21,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": -74.35,
+        "y": -302.64,
+        "z": 376.5
+      },
+      {
+        "id": "official-edward-kennedy",
+        "label": "Edward Kennedy",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -82.03,
+        "y": -184.42,
+        "z": 386.5
+      },
+      {
+        "id": "official-daniel-inouye",
+        "label": "Daniel Inouye",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -76.61,
+        "y": -260.93,
+        "z": 386.5
+      },
+      {
+        "id": "official-joint-committee-on-human-resources-and-intelligence",
+        "label": "Joint Committee on Human Resources and Intelligence",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -138.06,
+        "y": -306.84,
+        "z": 386.5
+      },
+      {
+        "id": "concept-inspector-general-audit",
+        "label": "Inspector General Audit",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -49.6,
+        "y": -220.57,
+        "z": 268.5
+      },
+      {
+        "id": "concept-mkultra-subproject-memos",
+        "label": "MKUltra Subproject Memos",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -133.83,
+        "y": -336.54,
+        "z": 412.5
+      },
+      {
+        "id": "hearing-joint-congressional-inquiry",
+        "label": "Joint Congressional Inquiry",
+        "type": "Hearing",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -266.65,
+        "y": -252.94,
+        "z": 252.5
+      },
+      {
+        "id": "policyshift-institutional-oversight-act",
+        "label": "Institutional Oversight Act",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -185.67,
+        "y": -102.82,
+        "z": 428.5
+      },
+      {
+        "id": "policyshift-contractor-disconnect",
+        "label": "Contractor Disconnect",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -18.03,
+        "y": -179.11,
+        "z": 236.5
+      },
+      {
+        "id": "arch-pentagon-05",
+        "label": "Declassified OSD Vietnam Task Force History & Inter-Agency Policy Memorandums (Pentagon Papers)",
+        "type": "Memorandum",
+        "val": 30,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-pentagon-05",
+          "title": "Declassified OSD Vietnam Task Force History & Inter-Agency Policy Memorandums (Pentagon Papers)",
+          "abstract": "Correlates Office of the Secretary of Defense (OSD) internal working papers, National Security Action Memorandums (NSAM), and State Department diplomatic cables from 1945 to 1967. Documents divergent internal threat modeling vs public policy declarations across four administrations.",
+          "date": "1971-06-13",
+          "authors": [
+            "Leslie H. Gelb",
+            "Morton Halperin",
+            "Office of the Secretary of Defense"
+          ],
+          "doi": "10.1017/CBO9780511818241",
+          "source": "National Archives and Records Administration (NARA) Declassified Edition",
+          "url": "https://www.archives.gov/research/pentagon-papers",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "Office of Secretary of Defense",
+            "Pentagon Papers",
+            "National Security Action Memos",
+            "Policy Drift"
+          ],
+          "entities": [
+            "Department of Defense",
+            "National Security Council",
+            "National Security Action Memos",
+            "Inter-Agency Policy Shift",
+            "NARA Declassified Record"
+          ],
+          "era": "Cold War Era (1947–1975)",
+          "agency": "Department of Defense",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -167.58,
+        "y": -167.18,
+        "z": 323
+      },
+      {
+        "id": "agency-department-of-defense",
+        "label": "Department of Defense",
+        "type": "Agency",
+        "val": 18,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": -92.58,
+        "y": -242.18,
+        "z": 363
+      },
+      {
+        "id": "official-leslie-h-gelb",
+        "label": "Leslie H. Gelb",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -100.26,
+        "y": -123.96,
+        "z": 373
+      },
+      {
+        "id": "official-morton-halperin",
+        "label": "Morton Halperin",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -94.84,
+        "y": -200.47,
+        "z": 373
+      },
+      {
+        "id": "official-office-of-the-secretary-of-defense",
+        "label": "Office of the Secretary of Defense",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -156.29,
+        "y": -246.38,
+        "z": 373
+      },
+      {
+        "id": "concept-department-of-defense",
+        "label": "Department of Defense",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -167.58,
+        "y": -77.18,
+        "z": 383
+      },
+      {
+        "id": "concept-national-security-council",
+        "label": "National Security Council",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -67.83,
+        "y": -160.11,
+        "z": 255
+      },
+      {
+        "id": "policyshift-national-security-action-memos",
+        "label": "National Security Action Memos",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -152.06,
+        "y": -276.08,
+        "z": 399
+      },
+      {
+        "id": "agency-inter-agency-policy-shift",
+        "label": "Inter-Agency Policy Shift",
+        "type": "Agency",
+        "val": 14,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -284.88,
+        "y": -192.48,
+        "z": 239
+      },
+      {
+        "id": "concept-nara-declassified-record",
+        "label": "NARA Declassified Record",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -203.9,
+        "y": -42.36,
+        "z": 415
+      },
+      {
+        "id": "arch-tia-06",
+        "label": "DARPA Total Information Awareness (TIA) Program Directives and Congressional Defunding Oversight",
+        "type": "PolicyShift",
+        "val": 30,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-tia-06",
+          "title": "DARPA Total Information Awareness (TIA) Program Directives and Congressional Defunding Oversight",
+          "abstract": "Review of DARPA Information Awareness Office (IAO) project directives, algorithmic surveillance architecture proposals, and congressional oversight debates from 2002–2003 leading to the Wyden Amendment defunding directive and transfer of component algorithms.",
+          "date": "2003-09-25",
+          "authors": [
+            "Ron Wyden",
+            "Defense Advanced Research Projects Agency",
+            "Congressional Research Service"
+          ],
+          "doi": "10.7551/mitpress/9780262013895.003.0004",
+          "source": "Declassified CRS Reports / DARPA Information Awareness Office Archives",
+          "url": "https://fas.org/irp/crs/RL31786.pdf",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "DARPA IAO",
+            "Total Information Awareness",
+            "Legislative Defunding",
+            "Algorithmic Oversight"
+          ],
+          "entities": [
+            "Defense Advanced Research Projects Agency",
+            "Total Information Awareness",
+            "Wyden Amendment Defunding",
+            "Algorithmic Surveillance Directive",
+            "Congressional Research Service"
+          ],
+          "era": "Modern Oversight (2001–Present)",
+          "agency": "Defense Advanced Research Projects Agency",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -167.26,
+        "y": -99.19,
+        "z": 68.5
+      },
+      {
+        "id": "agency-defense-advanced-research-projects-agency",
+        "label": "Defense Advanced Research Projects Agency",
+        "type": "Agency",
+        "val": 21,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": -92.26,
+        "y": -174.19,
+        "z": 108.5
+      },
+      {
+        "id": "author-ron-wyden",
+        "label": "Ron Wyden",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -99.94,
+        "y": -55.97,
+        "z": 118.5
+      },
+      {
+        "id": "author-defense-advanced-research-projects-agency",
+        "label": "Defense Advanced Research Projects Agency",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -94.52,
+        "y": -132.48,
+        "z": 118.5
+      },
+      {
+        "id": "author-congressional-research-service",
+        "label": "Congressional Research Service",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -155.97,
+        "y": -178.39,
+        "z": 118.5
+      },
+      {
+        "id": "concept-total-information-awareness",
+        "label": "Total Information Awareness",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -67.51,
+        "y": -92.12,
+        "z": 0.5
+      },
+      {
+        "id": "policyshift-wyden-amendment-defunding",
+        "label": "Wyden Amendment Defunding",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -151.74,
+        "y": -208.09,
+        "z": 144.5
+      },
+      {
+        "id": "policyshift-algorithmic-surveillance-directive",
+        "label": "Algorithmic Surveillance Directive",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -284.56,
+        "y": -124.49,
+        "z": -15.5
+      },
+      {
+        "id": "concept-congressional-research-service",
+        "label": "Congressional Research Service",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -203.58,
+        "y": 25.63,
+        "z": 160.5
+      },
+      {
+        "id": "arch-bluebook-07",
+        "label": "Scientific Study of Unidentified Flying Objects (Condon Committee) & Declassified Air Force Technical Logs",
+        "type": "Memorandum",
+        "val": 30,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Declassified Record",
+        "document": {
+          "id": "arch-bluebook-07",
+          "title": "Scientific Study of Unidentified Flying Objects (Condon Committee) & Declassified Air Force Technical Logs",
+          "abstract": "Assessment of U.S. Air Force Project Blue Book case logs, radar tracking records, and the University of Colorado Scientific Advisory Committee review (1966–1969) leading to the termination of USAF aerial phenomena investigations.",
+          "date": "1969-01-09",
+          "authors": [
+            "Edward U. Condon",
+            "Robert J. Low",
+            "Air Force Office of Scientific Research"
+          ],
+          "doi": "10.17226/19445",
+          "source": "National Academy of Sciences / USAF Declassified Historical Branch",
+          "url": "https://www.archives.gov/research/military/air-force/ufos",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "Project Blue Book",
+            "U.S. Air Force",
+            "Condon Committee",
+            "Scientific Assessment Logs"
+          ],
+          "entities": [
+            "U.S. Air Force",
+            "Project Blue Book Logs",
+            "Condon Scientific Committee",
+            "Radar Tracking Records",
+            "Termination Directive"
+          ],
+          "era": "Cold War Era (1947–1975)",
+          "agency": "U.S. Air Force",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -68.24,
+        "y": -113.47,
+        "z": 69.67
+      },
+      {
+        "id": "agency-u-s-air-force",
+        "label": "U.S. Air Force",
+        "type": "Agency",
+        "val": 18,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": 6.76,
+        "y": -188.47,
+        "z": 109.67
+      },
+      {
+        "id": "official-edward-u-condon",
+        "label": "Edward U. Condon",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -0.92,
+        "y": -70.25,
+        "z": 119.67
+      },
+      {
+        "id": "official-robert-j-low",
+        "label": "Robert J. Low",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": 4.5,
+        "y": -146.76,
+        "z": 119.67
+      },
+      {
+        "id": "official-air-force-office-of-scientific-research",
+        "label": "Air Force Office of Scientific Research",
+        "type": "Official",
+        "val": 14,
+        "group": "Officials",
+        "provenance": "Source Verified",
+        "x": -56.95,
+        "y": -192.67,
+        "z": 119.67
+      },
+      {
+        "id": "concept-u-s-air-force",
+        "label": "U.S. Air Force",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -68.24,
+        "y": -23.47,
+        "z": 129.67
+      },
+      {
+        "id": "concept-project-blue-book-logs",
+        "label": "Project Blue Book Logs",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 31.51,
+        "y": -106.4,
+        "z": 1.67
+      },
+      {
+        "id": "concept-condon-scientific-committee",
+        "label": "Condon Scientific Committee",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -52.72,
+        "y": -222.37,
+        "z": 145.67
+      },
+      {
+        "id": "concept-radar-tracking-records",
+        "label": "Radar Tracking Records",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -185.54,
+        "y": -138.77,
+        "z": -14.33
+      },
+      {
+        "id": "policyshift-termination-directive",
+        "label": "Termination Directive",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -104.56,
+        "y": 11.35,
+        "z": 161.67
+      },
+      {
+        "id": "arch-foia-reform-08",
+        "label": "Post-Cold War Declassification Directives and Electronic FOIA Amendments Policy Mapping",
+        "type": "PolicyShift",
+        "val": 30,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "arch-foia-reform-08",
+          "title": "Post-Cold War Declassification Directives and Electronic FOIA Amendments Policy Mapping",
+          "abstract": "Examines the impact of Executive Order 12958 (1995) and the Electronic Freedom of Information Act Amendments of 1996 on institutional declassification workflows, automatic 25-year sunsetting, and inter-agency review board resolutions across 1991–2005.",
+          "date": "1996-10-02",
+          "authors": [
+            "Patrick Leahy",
+            "Information Security Oversight Office",
+            "National Archives"
+          ],
+          "doi": "10.1080/10584609.1997.9963140",
+          "source": "Information Security Oversight Office (ISOO) Annual Archives",
+          "url": "https://www.archives.gov/isoo/policy-documents/eo-12958",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "Executive Order 12958",
+            "Electronic FOIA",
+            "Declassification Directives",
+            "Information Security Oversight Office"
+          ],
+          "entities": [
+            "Information Security Oversight Office",
+            "Executive Order 12958",
+            "Electronic FOIA Amendments",
+            "Automatic Declassification Sunset",
+            "Inter-Agency Security Classification Appeals Panel"
+          ],
+          "era": "Post-Cold War (1981–2000)",
+          "agency": "Information Security Oversight Office",
+          "classificationLevel": "Declassified Record"
+        },
+        "x": -74.31,
+        "y": -126.57,
+        "z": 133.83
+      },
+      {
+        "id": "agency-information-security-oversight-office",
+        "label": "Information Security Oversight Office",
+        "type": "Agency",
+        "val": 18,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "x": 0.69,
+        "y": -201.57,
+        "z": 173.83
+      },
+      {
+        "id": "author-patrick-leahy",
+        "label": "Patrick Leahy",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -6.99,
+        "y": -83.35,
+        "z": 183.83
+      },
+      {
+        "id": "author-information-security-oversight-office",
+        "label": "Information Security Oversight Office",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -1.57,
+        "y": -159.86,
+        "z": 183.83
+      },
+      {
+        "id": "author-national-archives",
+        "label": "National Archives",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -63.02,
+        "y": -205.77,
+        "z": 183.83
+      },
+      {
+        "id": "concept-information-security-oversight-office",
+        "label": "Information Security Oversight Office",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -74.31,
+        "y": -36.57,
+        "z": 193.83
+      },
+      {
+        "id": "concept-executive-order-12958",
+        "label": "Executive Order 12958",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 25.44,
+        "y": -119.5,
+        "z": 65.83
+      },
+      {
+        "id": "policyshift-electronic-foia-amendments",
+        "label": "Electronic FOIA Amendments",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -58.79,
+        "y": -235.47,
+        "z": 209.83
+      },
+      {
+        "id": "concept-automatic-declassification-sunset",
+        "label": "Automatic Declassification Sunset",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -191.61,
+        "y": -151.87,
+        "z": 49.83
+      },
+      {
+        "id": "agency-inter-agency-security-classification-appeals-panel",
+        "label": "Inter-Agency Security Classification Appeals Panel",
+        "type": "Agency",
+        "val": 14,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": -110.63,
+        "y": -1.75,
+        "z": 225.83
       }
     ],
     "edges": [
@@ -5770,8 +7152,8 @@
       },
       {
         "source": "ai-symbol-05",
-        "target": "concept-knowledge-extraction",
-        "relationship": "BUILDS_ON",
+        "target": "policyshift-knowledge-extraction",
+        "relationship": "REVISED_POLICY",
         "weight": 0.7,
         "verified": true
       },
@@ -5812,8 +7194,8 @@
       },
       {
         "source": "ac-meta-01",
-        "target": "concept-non-reciprocal-refraction",
-        "relationship": "BUILDS_ON",
+        "target": "policyshift-non-reciprocal-refraction",
+        "relationship": "REVISED_POLICY",
         "weight": 0.7,
         "verified": true
       },
@@ -6934,6 +8316,510 @@
         "source": "arxiv:2607.14592v1",
         "target": "concept-quantum-teleportation",
         "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "agency-u-s-senate-select-committee",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "author-frank-church",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "author-john-tower",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "author-senate-select-committee-on-intelligence",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "agency-senate-select-committee",
+        "relationship": "SUPERVISED",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "policyshift-covert-action-directives",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "concept-destruction-of-records",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "policyshift-intelligence-oversight-act",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "agency-cia-oversight",
+        "relationship": "SUPERVISED",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-church-01",
+        "target": "concept-executive-accountability",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "agency-atomic-energy-commission",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "official-ruth-faden",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "official-advisory-committee-on-human-radiation-experiments",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "official-department-of-energy",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "concept-biomedical-protocol-memos",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "concept-human-radiation-experiments",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "agency-department-of-energy",
+        "relationship": "SUPERVISED",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "agency-dod-research-logs",
+        "relationship": "SUPERVISED",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-achre-02",
+        "target": "concept-institutional-review-boards",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "agency-national-security-agency",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "author-l-patrick-gray",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "author-otis-pike",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "author-house-permanent-select-committee-on-intelligence",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "concept-project-shamrock",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "policyshift-fisa-statutory-shift",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "concept-watchlist-logs",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "concept-foreign-intelligence-surveillance-court",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-shamrock-03",
+        "target": "hearing-congressional-hearing",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "agency-central-intelligence-agency",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "official-edward-kennedy",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "official-daniel-inouye",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "official-joint-committee-on-human-resources-and-intelligence",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "concept-inspector-general-audit",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "concept-mkultra-subproject-memos",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "hearing-joint-congressional-inquiry",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "policyshift-institutional-oversight-act",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-mkultra-04",
+        "target": "policyshift-contractor-disconnect",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "agency-department-of-defense",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "official-leslie-h-gelb",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "official-morton-halperin",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "official-office-of-the-secretary-of-defense",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "concept-department-of-defense",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "concept-national-security-council",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "policyshift-national-security-action-memos",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "agency-inter-agency-policy-shift",
+        "relationship": "SUPERVISED",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-pentagon-05",
+        "target": "concept-nara-declassified-record",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "agency-defense-advanced-research-projects-agency",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "author-ron-wyden",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "author-defense-advanced-research-projects-agency",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "author-congressional-research-service",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "concept-total-information-awareness",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "policyshift-wyden-amendment-defunding",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "policyshift-algorithmic-surveillance-directive",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-tia-06",
+        "target": "concept-congressional-research-service",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "agency-u-s-air-force",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "official-edward-u-condon",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "official-robert-j-low",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "official-air-force-office-of-scientific-research",
+        "relationship": "TESTIFIED_IN",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "concept-u-s-air-force",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "concept-project-blue-book-logs",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "concept-condon-scientific-committee",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "concept-radar-tracking-records",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-bluebook-07",
+        "target": "policyshift-termination-directive",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "agency-information-security-oversight-office",
+        "relationship": "SUPERVISED",
+        "weight": 0.85,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "author-patrick-leahy",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "author-information-security-oversight-office",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "author-national-archives",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "concept-information-security-oversight-office",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "concept-executive-order-12958",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "policyshift-electronic-foia-amendments",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "concept-automatic-declassification-sunset",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "arch-foia-reform-08",
+        "target": "agency-inter-agency-security-classification-appeals-panel",
+        "relationship": "SUPERVISED",
         "weight": 0.7,
         "verified": true
       },

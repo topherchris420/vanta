@@ -36,6 +36,7 @@ test('SearchEngine provenance filters isolate verified vs inferred subsets', () 
       r.document.source.toLowerCase().includes('openalex') ||
       r.document.source.toLowerCase().includes('ssrn') ||
       r.document.source.toLowerCase().includes('physical review') ||
+      r.document.source.toLowerCase().includes('declassified') ||
       Boolean(r.document.doi)
     );
   });
@@ -44,6 +45,24 @@ test('SearchEngine provenance filters isolate verified vs inferred subsets', () 
   assert.ok(resVerified.graph.nodes.length >= 1);
   resVerified.graph.edges.forEach((edge) => {
     assert.equal(edge.verified, true);
+  });
+});
+
+test('SearchEngine supports administrative era and agency filtering', () => {
+  const engine = new SearchEngine(curatedKnowledge);
+
+  // Filter by era
+  const resEra = engine.search('', { era: 'Church Committee Era' });
+  assert.ok(resEra.results.length >= 2, 'Should find Church Committee era records');
+  resEra.results.forEach((r) => {
+    assert.ok(r.document.era.includes('Church Committee'));
+  });
+
+  // Filter by agency
+  const resAgency = engine.search('', { agency: 'Central Intelligence Agency' });
+  assert.ok(resAgency.results.length >= 1, 'Should find CIA records');
+  resAgency.results.forEach((r) => {
+    assert.ok(r.document.agency.includes('Central Intelligence Agency'));
   });
 });
 

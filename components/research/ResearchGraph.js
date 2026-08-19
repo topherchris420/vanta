@@ -36,6 +36,11 @@ const NODE_COLORS = {
   Technology: "#5ce1e6", // Cyan
   Dataset: "#c4b5fd", // Violet
   Author: "#ffab91", // Coral
+  Memorandum: "#e06c75", // Crimson/Rose
+  Hearing: "#f0932b", // Orange/Amber
+  PolicyShift: "#a29bfe", // Lavender
+  Agency: "#74b9ff", // Azure
+  Official: "#ffeaa7", // Gold
 };
 
 /**

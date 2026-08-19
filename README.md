@@ -1,11 +1,11 @@
 # Vanta | Resonant Instrument & Research Explorer
 
-[![Build & Test](https://img.shields.io/badge/tests-43%20passed-brightgreen)](https://github.com/topherchris420/vanta)
+[![Build & Test](https://img.shields.io/badge/tests-44%20passed-brightgreen)](https://github.com/topherchris420/vanta)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D16.0.0-blue)](https://nodejs.org)
 [![Next.js](https://img.shields.io/badge/Next.js-13.5.6-black)](https://nextjs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> A dark, sharp-edged signal instrument and 3D scientific research explorer uniting books, software, art, frequency, and music as one connected practice.
+> A dark, sharp-edged signal instrument and 3D scientific research explorer uniting books, software, art, frequency, music, and declassified archival intelligence as one connected practice.
 
 ---
 
@@ -15,7 +15,7 @@
 
 The application operates across two interconnected domains:
 1. **The Resonant Instrument (`/`)**: A 5-channel tuned audio-visual experience conducting sound, interactive 3D WebGL geometries, and verified project evidence.
-2. **The Research Explorer (`/research`)**: An interactive 3D knowledge graph and search engine indexing cross-disciplinary research across Quantum Computing, Cymatics, Biosignal Processing, AI & Neural Interfaces, Acoustics, and Nuclear Engineering.
+2. **The Research Explorer (`/research`)**: An interactive 3D knowledge graph and search engine indexing cross-disciplinary research across Quantum Computing, Cymatics, Biosignal Processing, AI & Neural Interfaces, Acoustics, Nuclear Engineering, and Archival Intelligence & Institutional Oversight.
 
 ---
 
@@ -28,9 +28,10 @@ The application operates across two interconnected domains:
 - **Signal Console**: Live readout reporting active channel frequencies and Web Audio synthesizer state (`Sound off`, `Sound on`, `Sound unavailable`).
 - **Adaptive Performance & A11y**: Continuous 60fps WebGL on capable desktops, single-frame static geometry rendering for mobile and `prefers-reduced-motion`, high-contrast styling, and full keyboard navigation.
 
-### 2. Scientific Research Explorer
-- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping documents, concepts, technologies, and authors with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*).
-- **Multi-Discipline Search Engine**: Sub-millisecond TF-IDF search, fuzzy typo tolerance, autocomplete suggestions, and domain filtering across 6 scientific areas.
+### 2. Scientific & Archival Research Explorer
+- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping documents, concepts, technologies, agencies, hearings, and policy shifts with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*).
+- **Archival Oversight & Multi-Decade Intelligence**: Analyzes declassified historical memorandums, correlates agency logs (AEC, CIA, NSA, DARPA, DoD) with congressional inquiries (Church Committee, Joint Senate Hearings), and maps policy shifts across administrative eras (Cold War, Church Committee Era, Post-Cold War, Modern Oversight).
+- **Multi-Discipline Search Engine**: Sub-millisecond TF-IDF search, fuzzy typo tolerance, autocomplete suggestions, era filters, and domain filtering across 7 core research areas.
 - **Dynamic Ingestion Pipeline**: Automated CLI pipeline ([`scripts/syncResearch.js`](scripts/syncResearch.js)) fetching and normalizing papers from **arXiv** and **OpenAlex** APIs.
 
 ---

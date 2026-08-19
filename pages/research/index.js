@@ -20,6 +20,15 @@ const DISCIPLINES = [
   "AI & Neural Interfaces",
   "Acoustics",
   "Nuclear Engineering",
+  "Archival Intelligence & Institutional Oversight",
+];
+
+const ERAS = [
+  "All",
+  "Cold War Era (1947–1975)",
+  "Church Committee Era (1975–1980)",
+  "Post-Cold War (1981–2000)",
+  "Modern Oversight (2001–Present)",
 ];
 
 const PROVENANCE_OPTIONS = [
@@ -40,6 +49,7 @@ const initialSearch = searchEngine.search("", {
 export default function ResearchExplorer() {
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("All");
+  const [activeEra, setActiveEra] = useState("All");
   const [provenanceFilter, setProvenanceFilter] = useState("all");
   const [searchResults, setSearchResults] = useState(initialSearch.results);
   const [dynamicGraph, setDynamicGraph] = useState(initialSearch.graph);
@@ -50,10 +60,11 @@ export default function ResearchExplorer() {
 
   // Perform search & dynamic subgraph extraction
   const performSearch = useCallback(
-    (searchQuery, tag, provFilter) => {
+    (searchQuery, tag, provFilter, era) => {
       const res = searchEngine.search(searchQuery, {
         tag: tag === "All" ? undefined : tag,
         provenanceFilter: provFilter,
+        era: era === "All" ? undefined : era,
         sortBy: searchQuery ? "relevance" : "date-desc",
         hops: 2,
       });
@@ -63,10 +74,10 @@ export default function ResearchExplorer() {
     []
   );
 
-  // Run search when query, tag, or provenance filter changes
+  // Run search when query, tag, era, or provenance filter changes
   useEffect(() => {
-    performSearch(query, activeTag, provenanceFilter);
-  }, [query, activeTag, provenanceFilter, performSearch]);
+    performSearch(query, activeTag, provenanceFilter, activeEra);
+  }, [query, activeTag, provenanceFilter, activeEra, performSearch]);
 
   // Autocomplete suggestions
   useEffect(() => {
@@ -102,6 +113,9 @@ export default function ResearchExplorer() {
   };
 
   const getSourceBadgeText = (doc) => {
+    if (doc.source.toLowerCase().includes("declassified")) {
+      return "Declassified Record: " + (doc.agency || doc.source);
+    }
     if (doc.source.toLowerCase().includes("arxiv")) {
       return "Verified Source: arXiv";
     }
@@ -200,7 +214,7 @@ export default function ResearchExplorer() {
             </div>
 
             {/* Discipline Filter Pills */}
-            <div className={styles.filterPills} role="tablist">
+            <div className={styles.filterPills} role="tablist" aria-label="Discipline filter">
               {DISCIPLINES.map((tag) => (
                 <button
                   key={tag}
@@ -213,6 +227,25 @@ export default function ResearchExplorer() {
                   onClick={() => setActiveTag(tag)}
                 >
                   {tag}
+                </button>
+              ))}
+            </div>
+
+            {/* Administrative Era Filter Pills (shown when Archival Oversight or All selected) */}
+            <div className={styles.filterPills} role="tablist" aria-label="Administrative era filter">
+              <span className={styles.provenanceFilterLabel}>Era:</span>
+              {ERAS.map((era) => (
+                <button
+                  key={era}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeEra === era}
+                  className={`${styles.filterPill} ${
+                    activeEra === era ? styles.filterPillActive : ""
+                  }`}
+                  onClick={() => setActiveEra(era)}
+                >
+                  {era}
                 </button>
               ))}
             </div>
@@ -262,6 +295,7 @@ export default function ResearchExplorer() {
                   onClick={() => {
                     setQuery("");
                     setActiveTag("All");
+                    setActiveEra("All");
                     setProvenanceFilter("all");
                   }}
                 >
@@ -271,6 +305,7 @@ export default function ResearchExplorer() {
             ) : (
               searchResults.map(({ document: doc, score }) => {
                 const isSelected = selectedNode?.id === doc.id;
+                const isDeclassified = doc.source.toLowerCase().includes("declassified");
                 return (
                   <article
                     key={doc.id}
@@ -295,8 +330,17 @@ export default function ResearchExplorer() {
                         <span className={styles.cardSource}>{doc.source}</span>
                       </div>
                       <div style={{ display: "flex", gap: "0.3rem", flexWrap: "wrap" }}>
+                        {doc.agency && (
+                          <span className={styles.cardAgencyBadge}>
+                            {doc.agency}
+                          </span>
+                        )}
                         <span
-                          className={`${styles.provenanceBadge} ${styles.provenanceVerified}`}
+                          className={`${styles.provenanceBadge} ${
+                            isDeclassified
+                              ? styles.provenanceDeclassified
+                              : styles.provenanceVerified
+                          }`}
                         >
                           {getSourceBadgeText(doc)}
                         </span>
@@ -314,6 +358,11 @@ export default function ResearchExplorer() {
                     <p className={styles.cardAbstract}>{doc.abstract}</p>
 
                     <div className={styles.cardTags}>
+                      {doc.era && (
+                        <span className={styles.cardEraBadge}>
+                          {doc.era}
+                        </span>
+                      )}
                       {(doc.tags || []).slice(0, 3).map((tag) => (
                         <span key={tag} className={styles.cardTag}>
                           {tag}

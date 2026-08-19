@@ -21,7 +21,18 @@ test('graphEngine transforms documents into connected 3D nodes and edges with pr
   // Check edge types and relationships
   graph.edges.forEach((edge) => {
     assert.ok(edge.source && edge.target);
-    assert.ok(['CITES', 'BUILDS_ON', 'EXTENDS', 'USES', 'CONTRADICTS'].includes(edge.relationship));
+    assert.ok([
+      'CITES',
+      'BUILDS_ON',
+      'EXTENDS',
+      'USES',
+      'CONTRADICTS',
+      'SUPERVISED',
+      'TESTIFIED_IN',
+      'REVISED_POLICY',
+      'SUBPOENAED_BY',
+      'CORRELATED_WITH',
+    ].includes(edge.relationship));
     assert.ok(edge.weight > 0);
   });
 
@@ -31,9 +42,12 @@ test('graphEngine transforms documents into connected 3D nodes and edges with pr
   assert.ok(neighborhood.edges.length >= 1, 'Should find connected edges');
 });
 
-test('classifyEntity correctly categorizes hardware vs concepts vs datasets', () => {
+test('classifyEntity correctly categorizes hardware vs concepts vs datasets vs oversight entities', () => {
   assert.equal(classifyEntity('FPGA Accelerator'), 'Technology');
   assert.equal(classifyEntity('Neuromorphic Chip Loihi'), 'Technology');
   assert.equal(classifyEntity('64-Channel EEG Recordings'), 'Dataset');
   assert.equal(classifyEntity('Majorana Zero Mode'), 'Concept');
+  assert.equal(classifyEntity('Central Intelligence Agency'), 'Agency');
+  assert.equal(classifyEntity('Joint Congressional Hearing'), 'Hearing');
+  assert.equal(classifyEntity('FISA Statutory Shift Directive'), 'PolicyShift');
 });
