@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test"
+    "test": "node --test",
+    "sync:research": "node scripts/syncResearch.js"
   },
   "dependencies": {
     "next": "latest",

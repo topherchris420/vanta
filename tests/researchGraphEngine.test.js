@@ -1,12 +1,14 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
 const { buildGraphFromDocuments, getNodeNeighborhood, classifyEntity, slugify } = require('../lib/research/graphEngine');
-const curatedKnowledge = require('../data/research/curatedKnowledge.json');
+const { normalizeKnowledgeData } = require('../lib/research/types');
+const rawCuratedKnowledge = require('../data/research/curatedKnowledge.json');
 
 test('graphEngine transforms documents into connected 3D nodes and edges with provenance', () => {
-  const graph = buildGraphFromDocuments(curatedKnowledge);
+  const { documents } = normalizeKnowledgeData(rawCuratedKnowledge);
+  const graph = buildGraphFromDocuments(documents);
 
-  assert.ok(graph.nodes.length > curatedKnowledge.length, 'Should have paper nodes + entities/authors');
+  assert.ok(graph.nodes.length > documents.length, 'Should have paper nodes + entities/authors');
   assert.ok(graph.edges.length > 20, 'Should have connected edges');
 
   // Check paper node properties

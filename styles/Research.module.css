@@ -273,6 +273,53 @@
   box-shadow: 0 0 10px rgba(140, 240, 198, 0.2);
 }
 
+/* Provenance Filters */
+.provenanceFilters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed color-mix(in srgb, var(--line) 60%, transparent);
+}
+
+.provenanceFilterLabel {
+  font: 700 0.58rem / 1 var(--font-mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 0.2rem;
+}
+
+.provenanceFilterPill {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  font: 600 0.6rem / 1 var(--font-mono);
+  padding: 0.28rem 0.55rem;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 160ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.provenanceFilterPill:hover {
+  border-color: var(--paper);
+  color: var(--paper);
+}
+
+.provenanceFilterPillActive {
+  border-color: var(--amber);
+  background: color-mix(in srgb, var(--amber) 15%, transparent);
+  color: var(--amber);
+  box-shadow: 0 0 10px rgba(228, 182, 92, 0.2);
+}
+
+
 /* Search Status HUD Bar */
 .searchStatus {
   display: flex;

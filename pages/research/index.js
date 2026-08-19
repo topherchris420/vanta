@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../../styles/Research.module.css";
-import { defaultProvider } from "../../lib/research/providers";
-import { buildGraphFromDocuments } from "../../lib/research/graphEngine";
+import SearchEngine from "../../lib/research/searchEngine";
+import curatedKnowledgeData from "../../data/research/curatedKnowledge.json";
 import ResearchDetails from "../../components/research/ResearchDetails";
 
 const ResearchGraphNoSSR = dynamic(
@@ -22,84 +22,96 @@ const DISCIPLINES = [
   "Nuclear Engineering",
 ];
 
-const initialResults = defaultProvider
-  .getAllDocuments()
-  .map((doc) => ({ document: doc, score: 1.0, matchedTerms: [] }));
+const PROVENANCE_OPTIONS = [
+  { id: "all", label: "All Records" },
+  { id: "verifiedOnly", label: "Verified Only" },
+  { id: "showInferred", label: "Inferred Links" },
+];
+
+// Singleton SearchEngine instance with curated knowledge data
+const searchEngine = new SearchEngine(curatedKnowledgeData);
+
+// Initial state for SSR pre-rendering
+const initialSearch = searchEngine.search("", {
+  provenanceFilter: "all",
+  tag: undefined,
+});
 
 export default function ResearchExplorer() {
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("All");
-  const [searchResults, setSearchResults] = useState(initialResults);
+  const [provenanceFilter, setProvenanceFilter] = useState("all");
+  const [searchResults, setSearchResults] = useState(initialSearch.results);
+  const [dynamicGraph, setDynamicGraph] = useState(initialSearch.graph);
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
   const [hoveredDocId, setHoveredDocId] = useState(null);
 
-  // Perform search
-  const performSearch = useCallback(async (searchQuery, tag) => {
-    const res = await defaultProvider.search(searchQuery, {
-      tag: tag === "All" ? undefined : tag,
-      sortBy: searchQuery ? "relevance" : "date-desc",
-    });
-    setSearchResults(res.results);
-  }, []);
+  // Perform search & dynamic subgraph extraction
+  const performSearch = useCallback(
+    (searchQuery, tag, provFilter) => {
+      const res = searchEngine.search(searchQuery, {
+        tag: tag === "All" ? undefined : tag,
+        provenanceFilter: provFilter,
+        sortBy: searchQuery ? "relevance" : "date-desc",
+        hops: 2,
+      });
+      setSearchResults(res.results);
+      setDynamicGraph(res.graph);
+    },
+    []
+  );
 
-  // Run search when query or tag changes
+  // Run search when query, tag, or provenance filter changes
   useEffect(() => {
-    performSearch(query, activeTag);
-  }, [query, activeTag, performSearch]);
+    performSearch(query, activeTag, provenanceFilter);
+  }, [query, activeTag, provenanceFilter, performSearch]);
 
   // Autocomplete suggestions
   useEffect(() => {
     if (query.trim().length >= 2) {
-      defaultProvider.suggest(query, 6).then((suggs) => {
-        setSuggestions(suggs);
-        setShowSuggestions(suggs.length > 0);
-      });
+      const suggs = searchEngine.suggest(query, 6);
+      setSuggestions(suggs);
+      setShowSuggestions(suggs.length > 0);
     } else {
       setSuggestions([]);
       setShowSuggestions(false);
     }
   }, [query]);
 
-  // Construct 3D Knowledge Graph from search result documents (or all if filtered)
-  const currentDocuments = useMemo(() => {
-    return searchResults.map((r) => r.document);
-  }, [searchResults]);
-
-  const graphData = useMemo(() => {
-    return buildGraphFromDocuments(
-      currentDocuments.length > 0
-        ? currentDocuments
-        : defaultProvider.getAllDocuments()
-    );
-  }, [currentDocuments]);
-
   // Handle selecting a node from 3D canvas or search list
   const handleSelectNode = useCallback(
     (node) => {
       if (typeof node === "string") {
-        const found = graphData.nodes.find((n) => n.id === node);
+        const found = dynamicGraph.nodes.find((n) => n.id === node);
         if (found) setSelectedNode(found);
       } else {
         setSelectedNode(node);
       }
     },
-    [graphData]
+    [dynamicGraph]
   );
 
   // Handle clicking a document card in search list
   const handleCardClick = (doc) => {
-    const matchingNode = graphData.nodes.find((n) => n.id === doc.id);
+    const matchingNode = dynamicGraph.nodes.find((n) => n.id === doc.id);
     if (matchingNode) {
       setSelectedNode(matchingNode);
     }
   };
 
-  const getProvenanceClass = (prov) => {
-    if (prov === "Source Verified") return styles.provenanceVerified;
-    if (prov === "Local Index") return styles.provenanceLocal;
-    return styles.provenanceInferred;
+  const getSourceBadgeText = (doc) => {
+    if (doc.source.toLowerCase().includes("arxiv")) {
+      return "Verified Source: arXiv";
+    }
+    if (doc.source.toLowerCase().includes("openalex")) {
+      return "Verified Source: OpenAlex";
+    }
+    if (doc.source.toLowerCase().includes("ssrn")) {
+      return "Verified Source: SSRN";
+    }
+    return `Source Verified: ${doc.source}`;
   };
 
   return (
@@ -147,7 +159,7 @@ export default function ResearchExplorer() {
               <input
                 type="search"
                 className={styles.searchInput}
-                placeholder="Search quantum, cymatics, neural interfaces..."
+                placeholder="Search quantum teleportation, cymatics, BCI..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onFocus={() => {
@@ -204,6 +216,25 @@ export default function ResearchExplorer() {
                 </button>
               ))}
             </div>
+
+            {/* Provenance Filter Toggle Chips */}
+            <div className={styles.provenanceFilters} role="radiogroup" aria-label="Provenance filter">
+              <span className={styles.provenanceFilterLabel}>Provenance:</span>
+              {PROVENANCE_OPTIONS.map((opt) => (
+                <button
+                  key={opt.id}
+                  type="button"
+                  role="radio"
+                  aria-checked={provenanceFilter === opt.id}
+                  className={`${styles.provenanceFilterPill} ${
+                    provenanceFilter === opt.id ? styles.provenanceFilterPillActive : ""
+                  }`}
+                  onClick={() => setProvenanceFilter(opt.id)}
+                >
+                  <span>{opt.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Search Status */}
@@ -214,7 +245,9 @@ export default function ResearchExplorer() {
               </strong>{" "}
               {searchResults.length === 1 ? "Artifact Found" : "Artifacts Indexed"}
             </span>
-            <span>Provenance: 100% Verified</span>
+            <span>
+              Subgraph: {dynamicGraph.nodes.length} Nodes &bull; {dynamicGraph.edges.length} Edges
+            </span>
           </div>
 
           {/* Search Result Cards */}
@@ -222,16 +255,17 @@ export default function ResearchExplorer() {
             {searchResults.length === 0 ? (
               <div className={styles.emptyState}>
                 <span className={styles.emptyStateIcon}>&#x25C7;</span>
-                <p>No research records matched your query.</p>
+                <p>No research records matched your query and filters.</p>
                 <button
                   type="button"
                   className={styles.filterPill}
                   onClick={() => {
                     setQuery("");
                     setActiveTag("All");
+                    setProvenanceFilter("all");
                   }}
                 >
-                  Reset Search
+                  Reset Search & Filters
                 </button>
               </div>
             ) : (
@@ -260,13 +294,20 @@ export default function ResearchExplorer() {
                         <span>&bull;</span>
                         <span className={styles.cardSource}>{doc.source}</span>
                       </div>
-                      <span
-                        className={`${styles.provenanceBadge} ${getProvenanceClass(
-                          "Source Verified"
-                        )}`}
-                      >
-                        Source Verified
-                      </span>
+                      <div style={{ display: "flex", gap: "0.3rem", flexWrap: "wrap" }}>
+                        <span
+                          className={`${styles.provenanceBadge} ${styles.provenanceVerified}`}
+                        >
+                          {getSourceBadgeText(doc)}
+                        </span>
+                        {provenanceFilter === "showInferred" && (
+                          <span
+                            className={`${styles.provenanceBadge} ${styles.provenanceInferred}`}
+                          >
+                            Inferred Relation
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <h2 className={styles.cardTitle}>{doc.title}</h2>
@@ -315,7 +356,7 @@ export default function ResearchExplorer() {
           aria-label="3D Knowledge Graph Visualization"
         >
           <ResearchGraphNoSSR
-            graph={graphData}
+            graph={dynamicGraph}
             selectedNodeId={selectedNode?.id || null}
             onSelectNode={handleSelectNode}
             hoveredDocId={hoveredDocId}
@@ -326,7 +367,7 @@ export default function ResearchExplorer() {
       {/* Slide-out Inspector Drawer */}
       <ResearchDetails
         node={selectedNode}
-        graph={graphData}
+        graph={dynamicGraph}
         onClose={() => setSelectedNode(null)}
         onSelectNode={handleSelectNode}
       />

@@ -2,12 +2,14 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 const { defaultProvider } = require('../lib/research/providers');
 const { buildGraphFromDocuments, getNodeNeighborhood } = require('../lib/research/graphEngine');
-const curatedKnowledge = require('../data/research/curatedKnowledge.json');
+const { normalizeKnowledgeData } = require('../lib/research/types');
+const rawCuratedKnowledge = require('../data/research/curatedKnowledge.json');
 
 test('research page end-to-end data pipeline integrity', async () => {
+  const { documents } = normalizeKnowledgeData(rawCuratedKnowledge);
   // 1. Provider loads all documents
   const allDocs = defaultProvider.getAllDocuments();
-  assert.equal(allDocs.length, curatedKnowledge.length);
+  assert.equal(allDocs.length, documents.length);
 
   // 2. Search query yields scored results
   const searchRes = await defaultProvider.search('Quantum', { sortBy: 'relevance' });
@@ -33,6 +35,7 @@ test('research page end-to-end data pipeline integrity', async () => {
 });
 
 test('curated knowledge covers all required scientific disciplines with valid URLs', () => {
+  const { documents } = normalizeKnowledgeData(rawCuratedKnowledge);
   const disciplines = [
     'Quantum Computing',
     'Cymatics',
@@ -43,7 +46,7 @@ test('curated knowledge covers all required scientific disciplines with valid UR
   ];
 
   disciplines.forEach((disc) => {
-    const matches = curatedKnowledge.filter((d) =>
+    const matches = documents.filter((d) =>
       d.tags.some((t) => t.toLowerCase().includes(disc.toLowerCase()))
     );
     assert.ok(matches.length >= 3, `Expected at least 3 papers in ${disc}, found ${matches.length}`);

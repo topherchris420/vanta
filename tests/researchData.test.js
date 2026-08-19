@@ -1,11 +1,12 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
-const { validateDocument, validateGraphNode, validateGraphEdge } = require('../lib/research/types');
-const curatedKnowledge = require('../data/research/curatedKnowledge.json');
+const { validateDocument, validateGraphNode, validateGraphEdge, normalizeKnowledgeData } = require('../lib/research/types');
+const rawCuratedKnowledge = require('../data/research/curatedKnowledge.json');
 
 test('curated knowledge dataset contains at least 25 structured records across all 6 core domains', () => {
-  assert.ok(Array.isArray(curatedKnowledge), 'Dataset must be an array');
-  assert.ok(curatedKnowledge.length >= 25, `Expected at least 25 records, found ${curatedKnowledge.length}`);
+  const { documents, graph } = normalizeKnowledgeData(rawCuratedKnowledge);
+  assert.ok(Array.isArray(documents), 'Documents must be an array');
+  assert.ok(documents.length >= 25, `Expected at least 25 records, found ${documents.length}`);
 
   const expectedDomains = [
     'Quantum Computing',
@@ -19,7 +20,7 @@ test('curated knowledge dataset contains at least 25 structured records across a
   const foundDomains = new Set();
   const ids = new Set();
 
-  curatedKnowledge.forEach((doc) => {
+  documents.forEach((doc) => {
     // Validate each document against schema
     assert.doesNotThrow(() => validateDocument(doc), `Document ${doc.id} failed validation`);
 

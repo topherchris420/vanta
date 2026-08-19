@@ -1,10 +1,12 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
 const { LocalProvider } = require('../lib/research/providers');
-const curatedKnowledge = require('../data/research/curatedKnowledge.json');
+const { normalizeKnowledgeData } = require('../lib/research/types');
+const rawCuratedKnowledge = require('../data/research/curatedKnowledge.json');
 
 test('LocalProvider performs fast TF-IDF and fuzzy search', async () => {
-  const provider = new LocalProvider(curatedKnowledge);
+  const provider = new LocalProvider(rawCuratedKnowledge);
+  const { documents } = normalizeKnowledgeData(rawCuratedKnowledge);
 
   // Search keyword "Majorana"
   const resMajorana = await provider.search('Majorana');
@@ -23,11 +25,11 @@ test('LocalProvider performs fast TF-IDF and fuzzy search', async () => {
 
   // Search with empty query returns all documents
   const resAll = await provider.search('');
-  assert.equal(resAll.results.length, curatedKnowledge.length);
+  assert.equal(resAll.results.length, documents.length);
 });
 
 test('LocalProvider supports discipline filtering and sorting', async () => {
-  const provider = new LocalProvider(curatedKnowledge);
+  const provider = new LocalProvider(rawCuratedKnowledge);
 
   // Filter by tag "Nuclear Engineering"
   const resNuc = await provider.search('', { tag: 'Nuclear Engineering' });
@@ -44,7 +46,7 @@ test('LocalProvider supports discipline filtering and sorting', async () => {
 });
 
 test('LocalProvider generates autocomplete query suggestions', async () => {
-  const provider = new LocalProvider(curatedKnowledge);
+  const provider = new LocalProvider(rawCuratedKnowledge);
 
   const suggestions = await provider.suggest('quan', 5);
   assert.ok(suggestions.length >= 1);
