@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import { SRGBColorSpace, WebGLRenderer } from "three";
 import styles from "../styles/Home.module.css";
 import displayPedestalModels from "../lib/displayPedestalModels.json";
@@ -14,25 +15,70 @@ const STATIC_FRAME_SECONDS = 9.4;
 const MAX_FRAME_DELTA = 1 / 24;
 
 const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
+  const router = useRouter();
   const hostRef = useRef(null);
   const sceneApiRef = useRef(null);
   const modelIndexRef = useRef(0);
   const [modelIndex, setModelIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hudPos, setHudPos] = useState({ x: 0, y: 0 });
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const transitionRef = useRef(false);
   const activeModel = displayPedestalModels[modelIndex];
 
-  const swapModel = useCallback(() => {
-    const nextIndex =
-      (modelIndexRef.current + 1) % displayPedestalModels.length;
-    const nextModel = displayPedestalModels[nextIndex];
-    modelIndexRef.current = nextIndex;
-    setModelIndex(nextIndex);
-    onResonance({
-      channelId: "hero-model-" + nextIndex,
-      color: nextModel.primary,
-      frequency: [261.63, 329.63, 392, 440][nextIndex],
-      intensity: 1,
-    });
-  }, [onResonance]);
+  const triggerPortalTransition = useCallback(() => {
+    if (transitionRef.current) return;
+    transitionRef.current = true;
+    setIsTransitioning(true);
+
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const duration = mediaQuery.matches ? 200 : 900;
+
+    window.dispatchEvent(
+      new CustomEvent("vanta:portal-warp", {
+        detail: { active: true, duration },
+      })
+    );
+
+    setTimeout(() => {
+      router.push("/research");
+    }, duration);
+  }, [router]);
+
+  const swapModel = useCallback(
+    (event) => {
+      if (event) event.stopPropagation();
+      const nextIndex =
+        (modelIndexRef.current + 1) % displayPedestalModels.length;
+      const nextModel = displayPedestalModels[nextIndex];
+      modelIndexRef.current = nextIndex;
+      setModelIndex(nextIndex);
+      onResonance({
+        channelId: "hero-model-" + nextIndex,
+        color: nextModel.primary,
+        frequency: [261.63, 329.63, 392, 440][nextIndex],
+        intensity: 1,
+      });
+    },
+    [onResonance]
+  );
+
+  const selectModel = useCallback(
+    (index, event) => {
+      if (event) event.stopPropagation();
+      const nextModel = displayPedestalModels[index];
+      if (!nextModel) return;
+      modelIndexRef.current = index;
+      setModelIndex(index);
+      onResonance({
+        channelId: "hero-model-" + index,
+        color: nextModel.primary,
+        frequency: [261.63, 329.63, 392, 440][index],
+        intensity: 1,
+      });
+    },
+    [onResonance]
+  );
 
   useEffect(() => {
     modelIndexRef.current = modelIndex;
@@ -152,6 +198,12 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
       }
     };
 
+    const handlePortalWarp = (event) => {
+      if (event?.detail?.active) {
+        archive.ingestPulse();
+      }
+    };
+
     sceneApiRef.current = {
       setModel: (model) => {
         archive.setIndexModel(model);
@@ -199,6 +251,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
           )
         : null;
 
+    window.addEventListener("vanta:portal-warp", handlePortalWarp);
     motionQuery.addEventListener("change", onMotionChange);
     mobileQuery.addEventListener("change", onMobileChange);
     document.addEventListener("visibilitychange", onVisibilityChange);
@@ -207,6 +260,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
 
     return () => {
       stopLoop();
+      window.removeEventListener("vanta:portal-warp", handlePortalWarp);
       motionQuery.removeEventListener("change", onMotionChange);
       mobileQuery.removeEventListener("change", onMobileChange);
       document.removeEventListener("visibilitychange", onVisibilityChange);
@@ -224,7 +278,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
   const handleKeyDown = (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      swapModel();
+      triggerPortalTransition();
     }
   };
 
@@ -235,6 +289,7 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
       ((event.clientX - bounds.left) / bounds.width) * 2 - 1,
       ((event.clientY - bounds.top) / bounds.height) * 2 - 1
     );
+    setHudPos({ x: event.clientX, y: event.clientY });
   };
 
   return (
@@ -242,39 +297,69 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
       className={`${styles.displayPedestal} ${className}`.trim()}
       role="button"
       tabIndex={0}
-      aria-label={`Swap the archived index model. Current model: ${activeModel.label}`}
-      onClick={swapModel}
+      aria-label="Cross Event Horizon to Research Explorer"
+      onClick={triggerPortalTransition}
       onKeyDown={handleKeyDown}
       onPointerMove={handlePointerMove}
       onPointerEnter={() => {
         sceneApiRef.current?.setHover(true);
+        setIsHovered(true);
       }}
       onPointerLeave={() => {
         sceneApiRef.current?.setHover(false);
         sceneApiRef.current?.setPointer(0, 0);
+        setIsHovered(false);
       }}
       onFocus={() => {
         sceneApiRef.current?.setHover(true);
+        setIsHovered(true);
       }}
       onBlur={() => {
         sceneApiRef.current?.setHover(false);
+        setIsHovered(false);
       }}
     >
       <div ref={hostRef} className={styles.displayPedestalCanvas} aria-hidden="true" />
       <div className={styles.displayPedestalHud} aria-hidden="true">
-        <span className={styles.displayPedestalModel}>{activeModel.label}</span>
+        <button
+          type="button"
+          className={styles.displayPedestalModelBtn}
+          onClick={swapModel}
+          aria-label={`Current model: ${activeModel.label}. Click to switch model.`}
+        >
+          {activeModel.label}
+        </button>
         <span className={styles.displayPedestalSwatches}>
           {displayPedestalModels.map((model, index) => (
-            <span
+            <button
+              type="button"
               key={model.label}
               className={`${styles.displayPedestalSwatch} ${
                 index === modelIndex ? styles.displayPedestalSwatchActive : ""
               }`}
               style={{ "--swatch": model.primary }}
+              onClick={(e) => selectModel(index, e)}
+              aria-label={`Select model ${model.label}`}
             />
           ))}
         </span>
       </div>
+
+      {/* Interactive Black Hole Hover HUD Tooltip */}
+      {isHovered && !isTransitioning && (
+        <div
+          className={styles.eventHorizonTooltip}
+          style={{
+            left: hudPos.x,
+            top: hudPos.y - 48,
+          }}
+          aria-hidden="true"
+        >
+          <div className={styles.eventHorizonBadge}>SINGULARITY PORTAL</div>
+          <div className={styles.eventHorizonLabel}>CROSS THE EVENT HORIZON</div>
+          <div className={styles.eventHorizonSub}>Click to Enter Research Explorer</div>
+        </div>
+      )}
     </div>
   );
 };

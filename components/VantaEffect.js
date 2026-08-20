@@ -9,7 +9,6 @@ import {
   ShaderMaterial,
   Mesh,
   WebGLRenderer,
-  Raycaster,
 } from "three";
 import signalExperience from "../lib/signalExperience";
 import styles from "../styles/Home.module.css";
@@ -127,8 +126,6 @@ const fragmentShader = `
 const VantaEffect = ({ className, ...props }) => {
   const router = useRouter();
   const containerRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [hudPos, setHudPos] = useState({ x: 0, y: 0 });
   const [isTransitioning, setIsTransitioning] = useState(false);
   const transitionRef = useRef(false);
 
@@ -183,8 +180,6 @@ const VantaEffect = ({ className, ...props }) => {
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    const raycaster = new Raycaster();
-    const pointer = new Vector2();
     let currentHover = 0.0;
     let targetHover = 0.0;
     let currentWarp = 0.0;
@@ -271,53 +266,11 @@ const VantaEffect = ({ className, ...props }) => {
 
     const debouncedResize = debounce(onWindowResize, 200);
 
-    const checkPointerIntersection = (clientX, clientY) => {
-      if (transitionRef.current) return false;
-      const rect = container.getBoundingClientRect();
-      pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1;
-      pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1;
-
-      // Distance from center normalized to viewport aspect
-      const aspect = rect.width / rect.height;
-      const normX = pointer.x * (aspect >= 1 ? aspect : 1);
-      const normY = pointer.y * (aspect < 1 ? 1 / aspect : 1);
-      const dist = Math.sqrt(normX * normX + normY * normY);
-
-      // Event horizon / accretion disk hit zone (center radius ~0.5)
-      return dist < 0.58;
-    };
-
-    const onPointerMove = (event) => {
-      if (transitionRef.current) return;
-      const hit = checkPointerIntersection(event.clientX, event.clientY);
-      targetHover = hit ? 1.0 : 0.0;
-      setIsHovered(hit);
-      if (hit) {
-        setHudPos({ x: event.clientX, y: event.clientY });
-        container.style.cursor = "pointer";
-      } else {
-        container.style.cursor = "default";
-      }
-    };
-
-    const onPointerLeave = () => {
-      if (transitionRef.current) return;
-      targetHover = 0.0;
-      setIsHovered(false);
-      container.style.cursor = "default";
-    };
-
-    const onPointerDown = (event) => {
-      if (transitionRef.current) return;
-      if (checkPointerIntersection(event.clientX, event.clientY)) {
-        triggerPortalTransition();
-      }
-    };
-
     const handlePortalWarp = (event) => {
       if (event?.detail?.active) {
         targetWarp = 1.0;
         targetHover = 1.0;
+        setIsTransitioning(true);
       }
     };
 
@@ -390,9 +343,6 @@ const VantaEffect = ({ className, ...props }) => {
     };
 
     window.addEventListener("resize", debouncedResize);
-    window.addEventListener("pointermove", onPointerMove);
-    window.addEventListener("pointerleave", onPointerLeave);
-    window.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("vanta:resonance", handleResonance);
     window.addEventListener("vanta:portal-warp", handlePortalWarp);
     document.addEventListener("visibilitychange", onVisibilityChange);
@@ -403,9 +353,6 @@ const VantaEffect = ({ className, ...props }) => {
 
     return () => {
       window.removeEventListener("resize", debouncedResize);
-      window.removeEventListener("pointermove", onPointerMove);
-      window.removeEventListener("pointerleave", onPointerLeave);
-      window.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("vanta:resonance", handleResonance);
       window.removeEventListener("vanta:portal-warp", handlePortalWarp);
       document.removeEventListener("visibilitychange", onVisibilityChange);
@@ -423,7 +370,7 @@ const VantaEffect = ({ className, ...props }) => {
       material.dispose();
       renderer.dispose();
     };
-  }, [triggerPortalTransition]);
+  }, []);
 
   return (
     <>
@@ -439,22 +386,6 @@ const VantaEffect = ({ className, ...props }) => {
         <span className={styles.accessiblePortalIcon}>✦</span>
         <span>Cross Event Horizon &rarr; Research Explorer</span>
       </button>
-
-      {/* Interactive Black Hole Hover HUD Tooltip */}
-      {isHovered && !isTransitioning && (
-        <div
-          className={styles.eventHorizonTooltip}
-          style={{
-            left: hudPos.x,
-            top: hudPos.y - 48,
-          }}
-          aria-hidden="true"
-        >
-          <div className={styles.eventHorizonBadge}>SINGULARITY PORTAL</div>
-          <div className={styles.eventHorizonLabel}>CROSS THE EVENT HORIZON</div>
-          <div className={styles.eventHorizonSub}>Click to Enter Research Explorer</div>
-        </div>
-      )}
 
       {/* Cinematic Warp Blackout Overlay */}
       {isTransitioning && (
