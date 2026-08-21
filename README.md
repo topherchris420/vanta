@@ -1,11 +1,11 @@
 # Vanta | Resonant Instrument & Research Explorer
 
-[![Build & Test](https://img.shields.io/badge/tests-44%20passed-brightgreen)](https://github.com/topherchris420/vanta)
+[![Build & Test](https://img.shields.io/badge/tests-45%20passed-brightgreen)](https://github.com/topherchris420/vanta)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D16.0.0-blue)](https://nodejs.org)
 [![Next.js](https://img.shields.io/badge/Next.js-13.5.6-black)](https://nextjs.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> A dark, sharp-edged signal instrument and 3D scientific research explorer uniting books, software, art, frequency, music, and declassified archival intelligence as one connected practice.
+> A dark, sharp-edged signal instrument and 3D scientific research explorer uniting books, software, art, frequency, music, open neuroscience datasets, and declassified archival intelligence as one connected practice.
 
 ---
 
@@ -15,7 +15,7 @@
 
 The application operates across two interconnected domains:
 1. **The Resonant Instrument (`/`)**: A 5-channel tuned audio-visual experience conducting sound, interactive 3D WebGL geometries, and verified project evidence.
-2. **The Research Explorer (`/research`)**: An interactive 3D knowledge graph and search engine indexing cross-disciplinary research across Quantum Computing, Cymatics, Biosignal Processing, AI & Neural Interfaces, Acoustics, Nuclear Engineering, and Archival Intelligence & Institutional Oversight.
+2. **The Research Explorer (`/research`)**: An interactive 3D knowledge graph and hybrid search engine indexing cross-disciplinary research across Quantum Computing, Cymatics, Biosignal Processing, AI & Neural Interfaces, Neuroscience & Neural Datasets, Acoustics, Nuclear Engineering, and Archival Intelligence & Institutional Oversight.
 
 ---
 
@@ -29,10 +29,15 @@ The application operates across two interconnected domains:
 - **Adaptive Performance & A11y**: Continuous 60fps WebGL on capable desktops, single-frame static geometry rendering for mobile and `prefers-reduced-motion`, high-contrast styling, and full keyboard navigation.
 
 ### 2. Scientific & Archival Research Explorer
-- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping documents, concepts, technologies, agencies, hearings, and policy shifts with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*).
+- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping 63 structured publications & datasets into 420+ connected nodes and 570+ relational edges with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*, *Dataset Atlas*).
+- **Neuro2 Open Neuroscience Dataset Atlas**: Deep integration with the [Neuro2 Open Science Catalog](https://huggingface.co/datasets/ciaochris/neuro2-neuroscience-datasets), indexing high-density 128-channel EEG/BCI recordings, Sleep-EDF polysomnography, Neuropixels electrophysiology, 306-channel MEG, 3T fMRI, wearable fNIRS, and vibroacoustic entrainment data.
+- **Ecosystem & Simulation Artifacts**:
+  - [**IONS-X Deep Emergence Lab**](https://github.com/topherchris420/ions-x-deep-emergence-lab): GPU-optional multi-agent simulation sandbox modeling coupled dynamical fields, REG variance deviations, and emergent graph reconstruction.
+  - [**R.A.I.N. DataMatrix Engine (Anna)**](https://github.com/topherchris420/anna): Air-gapped technical knowledge infrastructure with hybrid BM25 + dense-vector kNN retrieval.
+  - [**R.A.I.N. Lab & TRIBE v2**](https://github.com/topherchris420/james_library): Autonomous multi-agent scientific deliberation runtime and fMRI cortical response prediction engine.
+- **Hybrid Search & Reciprocal Rank Fusion (RRF)**: Sub-millisecond multi-field scoring (title: 0.4, abstract: 0.3, entities: 0.2, tags: 0.1, authors: 0.15), typo-tolerant fuzzy matching, autocomplete suggestions, and RRF rank fusion across 8 core disciplines.
 - **Archival Oversight & Multi-Decade Intelligence**: Analyzes declassified historical memorandums, correlates agency logs (AEC, CIA, NSA, DARPA, DoD) with congressional inquiries (Church Committee, Joint Senate Hearings), and maps policy shifts across administrative eras (Cold War, Church Committee Era, Post-Cold War, Modern Oversight).
-- **Multi-Discipline Search Engine**: Sub-millisecond TF-IDF search, fuzzy typo tolerance, autocomplete suggestions, era filters, and domain filtering across 7 core research areas.
-- **Dynamic Ingestion Pipeline**: Automated CLI pipeline ([`scripts/syncResearch.js`](scripts/syncResearch.js)) fetching and normalizing papers from **arXiv** and **OpenAlex** APIs.
+- **Dynamic Ingestion Pipelines**: Automated CLI ingestion pipelines ([`scripts/syncResearch.js`](scripts/syncResearch.js) and [`scripts/ingestNeuro2.js`](scripts/ingestNeuro2.js)) for arXiv, OpenAlex, SSRN, and Neuro2/Hugging Face corpora.
 
 ---
 
@@ -76,7 +81,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## ✦ Testing & Building
 
 ### Running Tests
-The project features a comprehensive test suite of 43 unit, contract, layout, and live HTTP integration tests:
+The project features a comprehensive test suite of 45 unit, contract, layout, and live HTTP integration tests:
 
 ```bash
 npm test
@@ -102,12 +107,18 @@ npx next build && npx next export
 
 ---
 
-## ✦ Scientific Ingestion Pipeline
+## ✦ Research Ingestion Pipelines
 
 To fetch the latest research papers from arXiv and OpenAlex and update the curated knowledge graph:
 
 ```bash
 npm run sync:research
+```
+
+To re-ingest and validate curated datasets from the Neuro2 Open Science Atlas:
+
+```bash
+npm run ingest:neuro2
 ```
 
 ---

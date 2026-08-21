@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "test": "node --test",
-    "sync:research": "node scripts/syncResearch.js"
+    "sync:research": "node scripts/syncResearch.js",
+    "ingest:neuro2": "node scripts/ingestNeuro2.js"
   },
   "dependencies": {
     "next": "13.5.6",
