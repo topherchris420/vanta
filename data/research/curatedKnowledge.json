@@ -1584,6 +1584,34 @@
         "REG Variance Deviation",
         "Autonomous Operators"
       ]
+    },
+    {
+      "id": "app-rain-datamatrix-engine",
+      "title": "R.A.I.N. DataMatrix Engine: Hybrid BM25 & Dense-Vector Knowledge Infrastructure",
+      "abstract": "Self-hostable, air-gapped open knowledge platform combining lexical BM25 and dense-vector kNN embeddings via Reciprocal Rank Fusion (RRF) with citation-first summaries across 12 engineering corpora (arXiv, NASA NTRS, DOE OSTI, NIST, IEEE, Linux Kernel).",
+      "date": "2026-08-18",
+      "authors": [
+        "Christopher Woodyard",
+        "Vers3Dynamics Research Team"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/anna",
+      "tags": [
+        "AI & Neural Interfaces",
+        "Archival Intelligence & Institutional Oversight",
+        "Open Infrastructure",
+        "Hybrid Search",
+        "Knowledge Graph"
+      ],
+      "entities": [
+        "Reciprocal Rank Fusion",
+        "BM25 Retrieval",
+        "Dense Vector Search",
+        "Open Infrastructure",
+        "Citation-First Synthesis",
+        "NASA NTRS",
+        "DOE OSTI"
+      ]
     }
   ],
   "graph": {
@@ -7605,6 +7633,133 @@
         "x": -137.65,
         "y": -18.47,
         "z": -378
+      },
+      {
+        "id": "app-rain-datamatrix-engine",
+        "label": "R.A.I.N. DataMatrix Engine: Hybrid BM25 & Dense-Vector Knowledge Infrastructure",
+        "type": "Paper",
+        "val": 32,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-rain-datamatrix-engine",
+          "title": "R.A.I.N. DataMatrix Engine: Hybrid BM25 & Dense-Vector Knowledge Infrastructure",
+          "abstract": "Self-hostable, air-gapped open knowledge platform combining lexical BM25 and dense-vector kNN embeddings via Reciprocal Rank Fusion (RRF) with citation-first summaries across 12 engineering corpora (arXiv, NASA NTRS, DOE OSTI, NIST, IEEE, Linux Kernel).",
+          "date": "2026-08-18",
+          "authors": [
+            "Christopher Woodyard",
+            "Vers3Dynamics Research Team"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/anna",
+          "tags": [
+            "AI & Neural Interfaces",
+            "Archival Intelligence & Institutional Oversight",
+            "Open Infrastructure",
+            "Hybrid Search",
+            "Knowledge Graph"
+          ],
+          "entities": [
+            "Reciprocal Rank Fusion",
+            "BM25 Retrieval",
+            "Dense Vector Search",
+            "Open Infrastructure",
+            "Citation-First Synthesis",
+            "NASA NTRS",
+            "DOE OSTI"
+          ]
+        },
+        "x": -198.39,
+        "y": -77.18,
+        "z": -205.5
+      },
+      {
+        "id": "author-vers3dynamics-research-team",
+        "label": "Vers3Dynamics Research Team",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -125.65,
+        "y": -110.47,
+        "z": -155.5
+      },
+      {
+        "id": "concept-reciprocal-rank-fusion",
+        "label": "Reciprocal Rank Fusion",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -198.39,
+        "y": 12.82,
+        "z": -145.5
+      },
+      {
+        "id": "concept-bm25-retrieval",
+        "label": "BM25 Retrieval",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -98.64,
+        "y": -70.11,
+        "z": -273.5
+      },
+      {
+        "id": "concept-dense-vector-search",
+        "label": "Dense Vector Search",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -182.87,
+        "y": -186.08,
+        "z": -129.5
+      },
+      {
+        "id": "concept-open-infrastructure",
+        "label": "Open Infrastructure",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -315.69,
+        "y": -102.48,
+        "z": -289.5
+      },
+      {
+        "id": "concept-citation-first-synthesis",
+        "label": "Citation-First Synthesis",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -234.71,
+        "y": 47.64,
+        "z": -113.5
+      },
+      {
+        "id": "concept-nasa-ntrs",
+        "label": "NASA NTRS",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -67.07,
+        "y": -28.65,
+        "z": -305.5
+      },
+      {
+        "id": "concept-doe-osti",
+        "label": "DOE OSTI",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -136.57,
+        "y": -213.85,
+        "z": -97.5
       }
     ],
     "edges": [
@@ -10647,6 +10802,69 @@
         "verified": true
       },
       {
+        "source": "app-rain-datamatrix-engine",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "author-vers3dynamics-research-team",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-reciprocal-rank-fusion",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-bm25-retrieval",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-dense-vector-search",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-open-infrastructure",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-citation-first-synthesis",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-nasa-ntrs",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
+        "target": "concept-doe-osti",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
         "source": "cym-chladni-01",
         "target": "cym-geom-05",
         "relationship": "CITES",
@@ -11292,6 +11510,13 @@
       },
       {
         "source": "app-ions-x-deep-emergence",
+        "target": "dataset-neuro2-complete-atlas",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-rain-datamatrix-engine",
         "target": "dataset-neuro2-complete-atlas",
         "relationship": "CITES",
         "weight": 0.5,

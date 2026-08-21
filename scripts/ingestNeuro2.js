@@ -285,6 +285,34 @@ const NEURO2_DATASETS = [
       'Autonomous Operators',
     ],
   },
+  {
+    id: 'app-rain-datamatrix-engine',
+    title: 'R.A.I.N. DataMatrix Engine: Hybrid BM25 & Dense-Vector Knowledge Infrastructure',
+    abstract: 'Self-hostable, air-gapped open knowledge platform combining lexical BM25 and dense-vector kNN embeddings via Reciprocal Rank Fusion (RRF) with citation-first summaries across 12 engineering corpora (arXiv, NASA NTRS, DOE OSTI, NIST, IEEE, Linux Kernel).',
+    date: '2026-08-18',
+    authors: [
+      'Christopher Woodyard',
+      'Vers3Dynamics Research Team',
+    ],
+    source: 'GitHub / Vers3Dynamics',
+    url: 'https://github.com/topherchris420/anna',
+    tags: [
+      'AI & Neural Interfaces',
+      'Archival Intelligence & Institutional Oversight',
+      'Open Infrastructure',
+      'Hybrid Search',
+      'Knowledge Graph',
+    ],
+    entities: [
+      'Reciprocal Rank Fusion',
+      'BM25 Retrieval',
+      'Dense Vector Search',
+      'Open Infrastructure',
+      'Citation-First Synthesis',
+      'NASA NTRS',
+      'DOE OSTI',
+    ],
+  },
 ];
 
 function ingest() {

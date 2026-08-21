@@ -263,6 +263,13 @@ function extractEntities(text) {
     'Multi-Agent Simulation',
     'Coupled Dynamical Field',
     'Environmental Coherence',
+    'Reciprocal Rank Fusion',
+    'BM25 Retrieval',
+    'Dense Vector Search',
+    'Citation-First Synthesis',
+    'NASA NTRS',
+    'DOE OSTI',
+    'R.A.I.N. DataMatrix',
   ];
 
   const extracted = new Set();

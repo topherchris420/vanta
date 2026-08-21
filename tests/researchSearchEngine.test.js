@@ -89,3 +89,24 @@ test('SearchEngine autocomplete suggestions return relevant entity and tag match
   assert.ok(suggestions.length >= 1);
   assert.ok(suggestions.some((s) => s.toLowerCase().includes('quant')));
 });
+
+test('SearchEngine.reciprocalRankFusion fuses multiple ranked result sets with RRF formula', () => {
+  const listA = [{ id: 'doc-1' }, { id: 'doc-2' }, { id: 'doc-3' }];
+  const listB = [{ id: 'doc-2' }, { id: 'doc-1' }, { id: 'doc-4' }];
+
+  const scores = SearchEngine.reciprocalRankFusion([listA, listB], 60);
+
+  assert.ok(scores.has('doc-1'));
+  assert.ok(scores.has('doc-2'));
+  assert.ok(scores.has('doc-3'));
+  assert.ok(scores.has('doc-4'));
+
+  // doc-1 score = 1/(60+1) + 1/(60+2) = 1/61 + 1/62
+  const expectedDoc1 = 1 / 61 + 1 / 62;
+  assert.ok(Math.abs(scores.get('doc-1') - expectedDoc1) < 1e-6);
+
+  // doc-1 and doc-2 are in both lists top 2, should beat doc-3 and doc-4
+  assert.ok(scores.get('doc-1') > scores.get('doc-3'));
+  assert.ok(scores.get('doc-2') > scores.get('doc-4'));
+});
+
