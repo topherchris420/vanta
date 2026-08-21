@@ -383,7 +383,7 @@ const ResearchGraph = ({
     container.addEventListener("pointermove", onPointerMove);
     container.addEventListener("pointerdown", onPointerDown);
 
-    // Window Resize
+    // Window & Container Resize
     const onResize = () => {
       if (!container) return;
       const w = container.clientWidth || 800;
@@ -393,6 +393,14 @@ const ResearchGraph = ({
       renderer.setSize(w, h);
     };
     window.addEventListener("resize", onResize);
+
+    let resizeObserver = null;
+    if (typeof ResizeObserver !== "undefined") {
+      resizeObserver = new ResizeObserver(() => {
+        onResize();
+      });
+      resizeObserver.observe(container);
+    }
 
     // Animation Loop
     let animId = 0;
@@ -450,6 +458,7 @@ const ResearchGraph = ({
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener("resize", onResize);
+      if (resizeObserver) resizeObserver.disconnect();
       container.removeEventListener("pointermove", onPointerMove);
       container.removeEventListener("pointerdown", onPointerDown);
 

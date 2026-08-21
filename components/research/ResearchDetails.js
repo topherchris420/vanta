@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "../../styles/Research.module.css";
 import { getNodeNeighborhood } from "../../lib/research/graphEngine";
 
@@ -12,6 +12,8 @@ import { getNodeNeighborhood } from "../../lib/research/graphEngine";
  * }} props
  */
 const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
+  const bodyRef = useRef(null);
+
   // Listen for Escape key to close drawer
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -24,6 +26,13 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
     }
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [node, onClose]);
+
+  // Reset scroll position when node changes
+  useEffect(() => {
+    if (bodyRef.current) {
+      bodyRef.current.scrollTop = 0;
+    }
+  }, [node?.id]);
 
   if (!node) {
     return null;
@@ -66,7 +75,7 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
         </button>
       </header>
 
-      <div className={styles.detailsBody}>
+      <div className={styles.detailsBody} ref={bodyRef}>
         <h2 id="details-drawer-title" className={styles.detailsNodeLabel}>
           {node.label}
         </h2>
