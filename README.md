@@ -29,12 +29,16 @@ The application operates across two interconnected domains:
 - **Adaptive Performance & A11y**: Continuous 60fps WebGL on capable desktops, single-frame static geometry rendering for mobile and `prefers-reduced-motion`, high-contrast styling, and full keyboard navigation.
 
 ### 2. Scientific & Archival Research Explorer
-- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping 63 structured publications & datasets into 420+ connected nodes and 570+ relational edges with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*, *Dataset Atlas*).
+- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping 67 structured publications & datasets into 440+ connected nodes and 610+ relational edges with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*, *Dataset Atlas*).
 - **Neuro2 Open Neuroscience Dataset Atlas**: Deep integration with the [Neuro2 Open Science Catalog](https://huggingface.co/datasets/ciaochris/neuro2-neuroscience-datasets), indexing high-density 128-channel EEG/BCI recordings, Sleep-EDF polysomnography, Neuropixels electrophysiology, 306-channel MEG, 3T fMRI, wearable fNIRS, and vibroacoustic entrainment data.
 - **Ecosystem & Simulation Artifacts**:
-  - [**IONS-X Deep Emergence Lab**](https://github.com/topherchris420/ions-x-deep-emergence-lab): GPU-optional multi-agent simulation sandbox modeling coupled dynamical fields, REG variance deviations, and emergent graph reconstruction.
+  - [**CIRCLE Biosignal Platform**](https://github.com/topherchris420/circle): Open-source multimodal EDA, raw PPG, and IMU hardware architecture with 5 kVrms laboratory isolation.
+  - [**Lop Nur Geospatial Digital Twin**](https://github.com/topherchris420/lop-nur-twin): 3D GEOINT/OSINT analytical digital twin testbed with derived evidence registers and uncertainty envelopes.
+  - [**IONS-X Deep Emergence Lab**](https://github.com/topherchris420/ions-x-deep-emergence-lab): GPU-optional multi-agent simulation sandbox modeling coupled dynamical fields and emergent graph reconstruction.
   - [**R.A.I.N. DataMatrix Engine (Anna)**](https://github.com/topherchris420/anna): Air-gapped technical knowledge infrastructure with hybrid BM25 + dense-vector kNN retrieval.
   - [**R.A.I.N. Lab & TRIBE v2**](https://github.com/topherchris420/james_library): Autonomous multi-agent scientific deliberation runtime and fMRI cortical response prediction engine.
+  - [**Orpheus Tactical Protocol**](https://github.com/topherchris420/orpheus-resonance-protocol): Command-and-control dashboard with cognitive workload monitoring.
+  - [**Waveform Shift Quantum**](https://github.com/topherchris420/waveform-shift-quantum): Computational framework for reproducible physical resonance models.
 - **Hybrid Search & Reciprocal Rank Fusion (RRF)**: Sub-millisecond multi-field scoring (title: 0.4, abstract: 0.3, entities: 0.2, tags: 0.1, authors: 0.15), typo-tolerant fuzzy matching, autocomplete suggestions, and RRF rank fusion across 8 core disciplines.
 - **Archival Oversight & Multi-Decade Intelligence**: Analyzes declassified historical memorandums, correlates agency logs (AEC, CIA, NSA, DARPA, DoD) with congressional inquiries (Church Committee, Joint Senate Hearings), and maps policy shifts across administrative eras (Cold War, Church Committee Era, Post-Cold War, Modern Oversight).
 - **Dynamic Ingestion Pipelines**: Automated CLI ingestion pipelines ([`scripts/syncResearch.js`](scripts/syncResearch.js) and [`scripts/ingestNeuro2.js`](scripts/ingestNeuro2.js)) for arXiv, OpenAlex, SSRN, and Neuro2/Hugging Face corpora.

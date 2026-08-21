@@ -275,6 +275,15 @@ function extractEntities(text) {
     'Multi-Agent Deliberation',
     'ZeroClaw Runtime',
     'Formal Logic Verification',
+    'Geospatial Digital Twin',
+    'Satellite Earth Observation',
+    'Derived Evidence Ledger',
+    'Structured Uncertainty Envelope',
+    'Galvanic Isolation',
+    'ESP32-S3 Compute',
+    'Multimodal Biosensing',
+    'Cognitive Load Monitoring',
+    'Quantum State Geometry',
   ];
 
   const extracted = new Set();

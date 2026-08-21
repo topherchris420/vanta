@@ -1639,6 +1639,104 @@
         "ZeroClaw Runtime",
         "Autonomous Research"
       ]
+    },
+    {
+      "id": "app-circle-biosignal-platform",
+      "title": "CIRCLE: Open-Source Multimodal Biosignal Hardware & Closed-Loop Feedback Platform",
+      "abstract": "An evidence-first biosignal acquisition and closed-loop feedback architecture combining synchronized electrodermal activity (EDA), raw dual-wavelength photoplethysmography (PPG), and IMU motion capture on isolated ESP32-S3 hardware with 5 kVrms laboratory isolation barriers.",
+      "date": "2026-08-20",
+      "authors": [
+        "Christopher Woodyard",
+        "Vers3Dynamics Hardware Group"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/circle",
+      "tags": [
+        "Biosignal Processing",
+        "AI & Neural Interfaces",
+        "Electrodermal Activity",
+        "Photoplethysmography",
+        "Closed-Loop BCI"
+      ],
+      "entities": [
+        "Electrodermal Response",
+        "Photoplethysmography",
+        "Closed-Loop BCI",
+        "Galvanic Isolation",
+        "ESP32-S3 Compute",
+        "Multimodal Biosensing"
+      ]
+    },
+    {
+      "id": "app-lop-nur-geoint-twin",
+      "title": "Lop Nur Geospatial Digital Twin: 3D Open-Source GEOINT Analytical Testbed",
+      "abstract": "An unclassified, public-source 3D geospatial digital twin of the remote Lop Nur test facility in the Gobi Desert, featuring derived evidence registers, structured uncertainty envelopes, EPSG:32645 coordinate geodesy, and temporal satellite change comparison.",
+      "date": "2026-08-17",
+      "authors": [
+        "Christopher Woodyard",
+        "Vers3Dynamics Intelligence Research"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/lop-nur-twin",
+      "tags": [
+        "Archival Intelligence & Institutional Oversight",
+        "GEOINT",
+        "Digital Twin",
+        "Remote Sensing"
+      ],
+      "entities": [
+        "Geospatial Digital Twin",
+        "Satellite Earth Observation",
+        "Derived Evidence Ledger",
+        "Structured Uncertainty Envelope",
+        "Archival Intelligence"
+      ]
+    },
+    {
+      "id": "app-orpheus-resonance-protocol",
+      "title": "Orpheus Command Protocol: Tactical Data Streams & Cognitive-Load C2 Dashboard",
+      "abstract": "An AI-assisted tactical command-and-control prototype interface featuring real-time operator cognitive-load monitoring, pupillary spectral dynamics, spatial audio trajectory tracking, and simulated multi-source intelligence feeds.",
+      "date": "2026-08-12",
+      "authors": [
+        "Christopher Woodyard",
+        "Vers3Dynamics Research Team"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/orpheus-resonance-protocol",
+      "tags": [
+        "AI & Neural Interfaces",
+        "Acoustics",
+        "Cognitive Load",
+        "Command and Control"
+      ],
+      "entities": [
+        "Cognitive Load Monitoring",
+        "Tactical Data Stream",
+        "Pupillary Dynamics",
+        "Spatial Audio C2"
+      ]
+    },
+    {
+      "id": "app-waveform-shift-quantum",
+      "title": "Waveform Shift Quantum: Experimental Framework for Physical Model Falsification",
+      "abstract": "An open computational framework turning physical resonance hypotheses and internal quantum state geometries into ranked, reproducible, and falsifiable experimental models.",
+      "date": "2026-08-14",
+      "authors": [
+        "Christopher Woodyard"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/waveform-shift-quantum",
+      "tags": [
+        "Quantum Computing",
+        "Cymatics",
+        "Resonance Physics"
+      ],
+      "entities": [
+        "Quantum State Geometry",
+        "Internal Resonance State",
+        "Falsifiable Physical Modeling",
+        "Waveform Shift"
+      ]
     }
   ],
   "graph": {
@@ -2752,7 +2850,7 @@
         "id": "concept-photoplethysmography",
         "label": "Photoplethysmography",
         "type": "Concept",
-        "val": 10,
+        "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
         "x": -71.3,
@@ -2913,7 +3011,7 @@
         "id": "concept-electrodermal-response",
         "label": "Electrodermal Response",
         "type": "Concept",
-        "val": 10,
+        "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
         "x": 10.53,
@@ -7902,6 +8000,357 @@
         "x": -24.68,
         "y": -51.74,
         "z": -303.33
+      },
+      {
+        "id": "app-circle-biosignal-platform",
+        "label": "CIRCLE: Open-Source Multimodal Biosignal Hardware & Closed-Loop Feedback Platform",
+        "type": "Paper",
+        "val": 32,
+        "group": "Biosignal Processing",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-circle-biosignal-platform",
+          "title": "CIRCLE: Open-Source Multimodal Biosignal Hardware & Closed-Loop Feedback Platform",
+          "abstract": "An evidence-first biosignal acquisition and closed-loop feedback architecture combining synchronized electrodermal activity (EDA), raw dual-wavelength photoplethysmography (PPG), and IMU motion capture on isolated ESP32-S3 hardware with 5 kVrms laboratory isolation barriers.",
+          "date": "2026-08-20",
+          "authors": [
+            "Christopher Woodyard",
+            "Vers3Dynamics Hardware Group"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/circle",
+          "tags": [
+            "Biosignal Processing",
+            "AI & Neural Interfaces",
+            "Electrodermal Activity",
+            "Photoplethysmography",
+            "Closed-Loop BCI"
+          ],
+          "entities": [
+            "Electrodermal Response",
+            "Photoplethysmography",
+            "Closed-Loop BCI",
+            "Galvanic Isolation",
+            "ESP32-S3 Compute",
+            "Multimodal Biosensing"
+          ]
+        },
+        "x": 60.92,
+        "y": -296.17,
+        "z": -256.83
+      },
+      {
+        "id": "author-vers3dynamics-hardware-group",
+        "label": "Vers3Dynamics Hardware Group",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": 133.66,
+        "y": -329.46,
+        "z": -206.83
+      },
+      {
+        "id": "concept-closed-loop-bci",
+        "label": "Closed-Loop BCI",
+        "type": "Concept",
+        "val": 10,
+        "group": "Biosignal Processing",
+        "provenance": "Local Index",
+        "x": 76.44,
+        "y": -405.07,
+        "z": -180.83
+      },
+      {
+        "id": "concept-galvanic-isolation",
+        "label": "Galvanic Isolation",
+        "type": "Concept",
+        "val": 10,
+        "group": "Biosignal Processing",
+        "provenance": "Local Index",
+        "x": -56.38,
+        "y": -321.47,
+        "z": -340.83
+      },
+      {
+        "id": "concept-esp32-s3-compute",
+        "label": "ESP32-S3 Compute",
+        "type": "Concept",
+        "val": 10,
+        "group": "Biosignal Processing",
+        "provenance": "Local Index",
+        "x": 24.6,
+        "y": -171.35,
+        "z": -164.83
+      },
+      {
+        "id": "concept-multimodal-biosensing",
+        "label": "Multimodal Biosensing",
+        "type": "Concept",
+        "val": 10,
+        "group": "Biosignal Processing",
+        "provenance": "Local Index",
+        "x": 192.24,
+        "y": -247.64,
+        "z": -356.83
+      },
+      {
+        "id": "app-lop-nur-geoint-twin",
+        "label": "Lop Nur Geospatial Digital Twin: 3D Open-Source GEOINT Analytical Testbed",
+        "type": "Paper",
+        "val": 30,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-lop-nur-geoint-twin",
+          "title": "Lop Nur Geospatial Digital Twin: 3D Open-Source GEOINT Analytical Testbed",
+          "abstract": "An unclassified, public-source 3D geospatial digital twin of the remote Lop Nur test facility in the Gobi Desert, featuring derived evidence registers, structured uncertainty envelopes, EPSG:32645 coordinate geodesy, and temporal satellite change comparison.",
+          "date": "2026-08-17",
+          "authors": [
+            "Christopher Woodyard",
+            "Vers3Dynamics Intelligence Research"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/lop-nur-twin",
+          "tags": [
+            "Archival Intelligence & Institutional Oversight",
+            "GEOINT",
+            "Digital Twin",
+            "Remote Sensing"
+          ],
+          "entities": [
+            "Geospatial Digital Twin",
+            "Satellite Earth Observation",
+            "Derived Evidence Ledger",
+            "Structured Uncertainty Envelope",
+            "Archival Intelligence"
+          ]
+        },
+        "x": 324.85,
+        "y": -181.86,
+        "z": 118
+      },
+      {
+        "id": "author-vers3dynamics-intelligence-research",
+        "label": "Vers3Dynamics Intelligence Research",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": 397.59,
+        "y": -215.15,
+        "z": 168
+      },
+      {
+        "id": "concept-geospatial-digital-twin",
+        "label": "Geospatial Digital Twin",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 324.85,
+        "y": -91.86,
+        "z": 178
+      },
+      {
+        "id": "concept-satellite-earth-observation",
+        "label": "Satellite Earth Observation",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 424.6,
+        "y": -174.79,
+        "z": 50
+      },
+      {
+        "id": "concept-derived-evidence-ledger",
+        "label": "Derived Evidence Ledger",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 340.37,
+        "y": -290.76,
+        "z": 194
+      },
+      {
+        "id": "concept-structured-uncertainty-envelope",
+        "label": "Structured Uncertainty Envelope",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 207.55,
+        "y": -207.16,
+        "z": 34
+      },
+      {
+        "id": "concept-archival-intelligence",
+        "label": "Archival Intelligence",
+        "type": "Concept",
+        "val": 10,
+        "group": "Archival Intelligence & Institutional Oversight",
+        "provenance": "Local Index",
+        "x": 288.53,
+        "y": -57.04,
+        "z": 210
+      },
+      {
+        "id": "app-orpheus-resonance-protocol",
+        "label": "Orpheus Command Protocol: Tactical Data Streams & Cognitive-Load C2 Dashboard",
+        "type": "Paper",
+        "val": 28,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-orpheus-resonance-protocol",
+          "title": "Orpheus Command Protocol: Tactical Data Streams & Cognitive-Load C2 Dashboard",
+          "abstract": "An AI-assisted tactical command-and-control prototype interface featuring real-time operator cognitive-load monitoring, pupillary spectral dynamics, spatial audio trajectory tracking, and simulated multi-source intelligence feeds.",
+          "date": "2026-08-12",
+          "authors": [
+            "Christopher Woodyard",
+            "Vers3Dynamics Research Team"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/orpheus-resonance-protocol",
+          "tags": [
+            "AI & Neural Interfaces",
+            "Acoustics",
+            "Cognitive Load",
+            "Command and Control"
+          ],
+          "entities": [
+            "Cognitive Load Monitoring",
+            "Tactical Data Stream",
+            "Pupillary Dynamics",
+            "Spatial Audio C2"
+          ]
+        },
+        "x": -146.24,
+        "y": -173.8,
+        "z": -125.5
+      },
+      {
+        "id": "concept-cognitive-load-monitoring",
+        "label": "Cognitive Load Monitoring",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -146.24,
+        "y": -83.8,
+        "z": -65.5
+      },
+      {
+        "id": "policyshift-tactical-data-stream",
+        "label": "Tactical Data Stream",
+        "type": "PolicyShift",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -46.49,
+        "y": -166.73,
+        "z": -193.5
+      },
+      {
+        "id": "concept-pupillary-dynamics",
+        "label": "Pupillary Dynamics",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -130.72,
+        "y": -282.7,
+        "z": -49.5
+      },
+      {
+        "id": "concept-spatial-audio-c2",
+        "label": "Spatial Audio C2",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -263.54,
+        "y": -199.1,
+        "z": -209.5
+      },
+      {
+        "id": "app-waveform-shift-quantum",
+        "label": "Waveform Shift Quantum: Experimental Framework for Physical Model Falsification",
+        "type": "Paper",
+        "val": 28,
+        "group": "Quantum Computing",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-waveform-shift-quantum",
+          "title": "Waveform Shift Quantum: Experimental Framework for Physical Model Falsification",
+          "abstract": "An open computational framework turning physical resonance hypotheses and internal quantum state geometries into ranked, reproducible, and falsifiable experimental models.",
+          "date": "2026-08-14",
+          "authors": [
+            "Christopher Woodyard"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/waveform-shift-quantum",
+          "tags": [
+            "Quantum Computing",
+            "Cymatics",
+            "Resonance Physics"
+          ],
+          "entities": [
+            "Quantum State Geometry",
+            "Internal Resonance State",
+            "Falsifiable Physical Modeling",
+            "Waveform Shift"
+          ]
+        },
+        "x": 126.67,
+        "y": -146.94,
+        "z": -294
+      },
+      {
+        "id": "concept-quantum-state-geometry",
+        "label": "Quantum State Geometry",
+        "type": "Concept",
+        "val": 10,
+        "group": "Quantum Computing",
+        "provenance": "Local Index",
+        "x": 126.67,
+        "y": -56.94,
+        "z": -234
+      },
+      {
+        "id": "concept-internal-resonance-state",
+        "label": "Internal Resonance State",
+        "type": "Concept",
+        "val": 10,
+        "group": "Quantum Computing",
+        "provenance": "Local Index",
+        "x": 226.42,
+        "y": -139.87,
+        "z": -362
+      },
+      {
+        "id": "concept-falsifiable-physical-modeling",
+        "label": "Falsifiable Physical Modeling",
+        "type": "Concept",
+        "val": 10,
+        "group": "Quantum Computing",
+        "provenance": "Local Index",
+        "x": 142.19,
+        "y": -255.84,
+        "z": -218
+      },
+      {
+        "id": "concept-waveform-shift",
+        "label": "Waveform Shift",
+        "type": "Concept",
+        "val": 10,
+        "group": "Quantum Computing",
+        "provenance": "Local Index",
+        "x": 9.37,
+        "y": -172.24,
+        "z": -378
       }
     ],
     "edges": [
@@ -11063,6 +11512,188 @@
         "verified": true
       },
       {
+        "source": "app-circle-biosignal-platform",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "author-vers3dynamics-hardware-group",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "concept-electrodermal-response",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "concept-photoplethysmography",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "concept-closed-loop-bci",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "concept-galvanic-isolation",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "concept-esp32-s3-compute",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "concept-multimodal-biosensing",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "author-vers3dynamics-intelligence-research",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "concept-geospatial-digital-twin",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "concept-satellite-earth-observation",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "concept-derived-evidence-ledger",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "concept-structured-uncertainty-envelope",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-lop-nur-geoint-twin",
+        "target": "concept-archival-intelligence",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "author-vers3dynamics-research-team",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "concept-cognitive-load-monitoring",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "policyshift-tactical-data-stream",
+        "relationship": "REVISED_POLICY",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "concept-pupillary-dynamics",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "concept-spatial-audio-c2",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-waveform-shift-quantum",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-waveform-shift-quantum",
+        "target": "concept-quantum-state-geometry",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-waveform-shift-quantum",
+        "target": "concept-internal-resonance-state",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-waveform-shift-quantum",
+        "target": "concept-falsifiable-physical-modeling",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-waveform-shift-quantum",
+        "target": "concept-waveform-shift",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
         "source": "cym-chladni-01",
         "target": "cym-geom-05",
         "relationship": "CITES",
@@ -11077,10 +11708,24 @@
         "verified": false
       },
       {
+        "source": "app-circle-biosignal-platform",
+        "target": "bio-hrv-02",
+        "relationship": "BUILDS_ON",
+        "weight": 0.85,
+        "verified": false
+      },
+      {
         "source": "bio-neuro-03",
         "target": "dataset-physionet-sleep-edfx",
         "relationship": "EXTENDS",
         "weight": 0.85,
+        "verified": false
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "bio-neuro-03",
+        "relationship": "CITES",
+        "weight": 0.5,
         "verified": false
       },
       {
@@ -11091,8 +11736,22 @@
         "verified": false
       },
       {
+        "source": "app-circle-biosignal-platform",
+        "target": "bio-gsr-04",
+        "relationship": "BUILDS_ON",
+        "weight": 0.85,
+        "verified": false
+      },
+      {
         "source": "ai-bci-01",
         "target": "dataset-bnci-horizon-2020-001",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-orpheus-resonance-protocol",
+        "target": "ai-cog-04",
         "relationship": "CITES",
         "weight": 0.5,
         "verified": false
@@ -11728,6 +12387,13 @@
         "verified": false
       },
       {
+        "source": "app-circle-biosignal-platform",
+        "target": "dataset-neuro2-complete-atlas",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-openneuro-ds003838",
         "target": "dataset-physionet-sleep-edfx",
         "relationship": "EXTENDS",
@@ -11785,6 +12451,13 @@
       },
       {
         "source": "app-rain-lab-james",
+        "target": "dataset-openneuro-ds003838",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-circle-biosignal-platform",
         "target": "dataset-openneuro-ds003838",
         "relationship": "CITES",
         "weight": 0.5,
@@ -11882,6 +12555,13 @@
         "verified": false
       },
       {
+        "source": "app-circle-biosignal-platform",
+        "target": "dataset-bnci-horizon-2020-001",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-zenodo-vibroacoustic-resonance",
         "target": "dataset-openneuro-ds003645",
         "relationship": "CITES",
@@ -11945,7 +12625,28 @@
         "verified": false
       },
       {
+        "source": "app-circle-biosignal-platform",
+        "target": "dataset-zenodo-fnirs-wearable-bci",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "app-ions-x-deep-emergence",
+        "target": "app-rain-lab-james",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-circle-biosignal-platform",
+        "target": "app-ions-x-deep-emergence",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-circle-biosignal-platform",
         "target": "app-rain-lab-james",
         "relationship": "CITES",
         "weight": 0.5,
