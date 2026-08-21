@@ -1558,6 +1558,32 @@
         "Wearable BCI",
         "Zenodo"
       ]
+    },
+    {
+      "id": "app-ions-x-deep-emergence",
+      "title": "IONS-X Deep Emergence Lab: Multi-Agent Simulation Sandbox for Coupled Dynamical Fields",
+      "abstract": "A GPU-optional, multi-agent computational simulation environment modeling collective sensing operators, 4-channel coupled dynamical fields, environmental coherence modulation, REG variance deviations, and emergent relational network graphs.",
+      "date": "2026-08-20",
+      "authors": [
+        "Christopher Woodyard"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/ions-x-deep-emergence-lab",
+      "tags": [
+        "AI & Neural Interfaces",
+        "Cymatics",
+        "Biosignal Processing",
+        "Multi-Agent Systems",
+        "Emergence"
+      ],
+      "entities": [
+        "Multi-Agent Simulation",
+        "Coupled Dynamical Field",
+        "Environmental Coherence",
+        "Emergent Graph",
+        "REG Variance Deviation",
+        "Autonomous Operators"
+      ]
     }
   ],
   "graph": {
@@ -7476,6 +7502,109 @@
         "x": -94.21,
         "y": -292.06,
         "z": 270.5
+      },
+      {
+        "id": "app-ions-x-deep-emergence",
+        "label": "IONS-X Deep Emergence Lab: Multi-Agent Simulation Sandbox for Coupled Dynamical Fields",
+        "type": "Paper",
+        "val": 32,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-ions-x-deep-emergence",
+          "title": "IONS-X Deep Emergence Lab: Multi-Agent Simulation Sandbox for Coupled Dynamical Fields",
+          "abstract": "A GPU-optional, multi-agent computational simulation environment modeling collective sensing operators, 4-channel coupled dynamical fields, environmental coherence modulation, REG variance deviations, and emergent relational network graphs.",
+          "date": "2026-08-20",
+          "authors": [
+            "Christopher Woodyard"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/ions-x-deep-emergence-lab",
+          "tags": [
+            "AI & Neural Interfaces",
+            "Cymatics",
+            "Biosignal Processing",
+            "Multi-Agent Systems",
+            "Emergence"
+          ],
+          "entities": [
+            "Multi-Agent Simulation",
+            "Coupled Dynamical Field",
+            "Environmental Coherence",
+            "Emergent Graph",
+            "REG Variance Deviation",
+            "Autonomous Operators"
+          ]
+        },
+        "x": -268.97,
+        "y": -67,
+        "z": -278
+      },
+      {
+        "id": "concept-multi-agent-simulation",
+        "label": "Multi-Agent Simulation",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -268.97,
+        "y": 23,
+        "z": -218
+      },
+      {
+        "id": "concept-coupled-dynamical-field",
+        "label": "Coupled Dynamical Field",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -169.22,
+        "y": -59.93,
+        "z": -346
+      },
+      {
+        "id": "concept-environmental-coherence",
+        "label": "Environmental Coherence",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -253.45,
+        "y": -175.9,
+        "z": -202
+      },
+      {
+        "id": "concept-emergent-graph",
+        "label": "Emergent Graph",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -386.27,
+        "y": -92.3,
+        "z": -362
+      },
+      {
+        "id": "concept-reg-variance-deviation",
+        "label": "REG Variance Deviation",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -305.29,
+        "y": 57.82,
+        "z": -186
+      },
+      {
+        "id": "concept-autonomous-operators",
+        "label": "Autonomous Operators",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -137.65,
+        "y": -18.47,
+        "z": -378
       }
     ],
     "edges": [
@@ -10469,6 +10598,55 @@
         "verified": true
       },
       {
+        "source": "app-ions-x-deep-emergence",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "concept-multi-agent-simulation",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "concept-coupled-dynamical-field",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "concept-environmental-coherence",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "concept-emergent-graph",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "concept-reg-variance-deviation",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "concept-autonomous-operators",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
         "source": "cym-chladni-01",
         "target": "cym-geom-05",
         "relationship": "CITES",
@@ -11113,6 +11291,13 @@
         "verified": false
       },
       {
+        "source": "app-ions-x-deep-emergence",
+        "target": "dataset-neuro2-complete-atlas",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-openneuro-ds003838",
         "target": "dataset-physionet-sleep-edfx",
         "relationship": "EXTENDS",
@@ -11157,6 +11342,13 @@
       {
         "source": "dataset-openneuro-ds003838",
         "target": "dataset-zenodo-fnirs-wearable-bci",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "dataset-openneuro-ds003838",
         "relationship": "CITES",
         "weight": 0.5,
         "verified": false
@@ -11239,6 +11431,13 @@
         "verified": false
       },
       {
+        "source": "app-ions-x-deep-emergence",
+        "target": "dataset-bnci-horizon-2020-001",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-zenodo-vibroacoustic-resonance",
         "target": "dataset-openneuro-ds003645",
         "relationship": "CITES",
@@ -11267,8 +11466,22 @@
         "verified": false
       },
       {
+        "source": "app-ions-x-deep-emergence",
+        "target": "dataset-zenodo-vibroacoustic-resonance",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-zenodo-fnirs-wearable-bci",
         "target": "dataset-openneuro-ds000102",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "dataset-zenodo-fnirs-wearable-bci",
         "relationship": "CITES",
         "weight": 0.5,
         "verified": false

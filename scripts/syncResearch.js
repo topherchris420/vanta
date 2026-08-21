@@ -260,6 +260,9 @@ function extractEntities(text) {
     'DANDI Archive',
     'BNCI Horizon',
     'Neuro2 Atlas',
+    'Multi-Agent Simulation',
+    'Coupled Dynamical Field',
+    'Environmental Coherence',
   ];
 
   const extracted = new Set();

@@ -259,6 +259,32 @@ const NEURO2_DATASETS = [
       'Zenodo',
     ],
   },
+  {
+    id: 'app-ions-x-deep-emergence',
+    title: 'IONS-X Deep Emergence Lab: Multi-Agent Simulation Sandbox for Coupled Dynamical Fields',
+    abstract: 'A GPU-optional, multi-agent computational simulation environment modeling collective sensing operators, 4-channel coupled dynamical fields, environmental coherence modulation, REG variance deviations, and emergent relational network graphs.',
+    date: '2026-08-20',
+    authors: [
+      'Christopher Woodyard',
+    ],
+    source: 'GitHub / Vers3Dynamics',
+    url: 'https://github.com/topherchris420/ions-x-deep-emergence-lab',
+    tags: [
+      'AI & Neural Interfaces',
+      'Cymatics',
+      'Biosignal Processing',
+      'Multi-Agent Systems',
+      'Emergence',
+    ],
+    entities: [
+      'Multi-Agent Simulation',
+      'Coupled Dynamical Field',
+      'Environmental Coherence',
+      'Emergent Graph',
+      'REG Variance Deviation',
+      'Autonomous Operators',
+    ],
+  },
 ];
 
 function ingest() {
