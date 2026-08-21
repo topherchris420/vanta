@@ -284,6 +284,12 @@ function extractEntities(text) {
     'Multimodal Biosensing',
     'Cognitive Load Monitoring',
     'Quantum State Geometry',
+    'Folding-Fin Aerodynamics',
+    'Closed-Loop PID Stabilization',
+    'ESP32 Flight Computer',
+    'OpenRocket Simulation',
+    'Ground Station Telemetry',
+    'Hardware Safety Interlock',
   ];
 
   const extracted = new Set();

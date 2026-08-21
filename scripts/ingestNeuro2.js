@@ -438,6 +438,32 @@ const NEURO2_DATASETS = [
       'Waveform Shift',
     ],
   },
+  {
+    id: 'app-project-33-aerospace',
+    title: 'Project 33: Low-Cost Folding-Fin Rocket Testbed & Open Telemetry Ground Station',
+    abstract: 'An open-source applied aerospace testbed combining OpenRocket aerodynamic simulation, Fusion 360 four-bar linkage fin CAD, dual ESP32 flight computer firmware with closed-loop PID roll stabilization, and a Python telemetry ground station.',
+    date: '2026-08-21',
+    authors: [
+      'Christopher Woodyard',
+      'Vers3Dynamics Aerospace Research',
+    ],
+    source: 'GitHub / Vers3Dynamics',
+    url: 'https://github.com/topherchris420/33',
+    tags: [
+      'Aerospace Engineering',
+      'Applied Physics',
+      'Control Systems',
+      'Embedded Hardware',
+    ],
+    entities: [
+      'Folding-Fin Aerodynamics',
+      'Closed-Loop PID Stabilization',
+      'ESP32 Flight Computer',
+      'OpenRocket Simulation',
+      'Ground Station Telemetry',
+      'Hardware Safety Interlock',
+    ],
+  },
 ];
 
 function ingest() {

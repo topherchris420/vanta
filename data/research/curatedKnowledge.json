@@ -1737,6 +1737,32 @@
         "Falsifiable Physical Modeling",
         "Waveform Shift"
       ]
+    },
+    {
+      "id": "app-project-33-aerospace",
+      "title": "Project 33: Low-Cost Folding-Fin Rocket Testbed & Open Telemetry Ground Station",
+      "abstract": "An open-source applied aerospace testbed combining OpenRocket aerodynamic simulation, Fusion 360 four-bar linkage fin CAD, dual ESP32 flight computer firmware with closed-loop PID roll stabilization, and a Python telemetry ground station.",
+      "date": "2026-08-21",
+      "authors": [
+        "Christopher Woodyard",
+        "Vers3Dynamics Aerospace Research"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/33",
+      "tags": [
+        "Aerospace Engineering",
+        "Applied Physics",
+        "Control Systems",
+        "Embedded Hardware"
+      ],
+      "entities": [
+        "Folding-Fin Aerodynamics",
+        "Closed-Loop PID Stabilization",
+        "ESP32 Flight Computer",
+        "OpenRocket Simulation",
+        "Ground Station Telemetry",
+        "Hardware Safety Interlock"
+      ]
     }
   ],
   "graph": {
@@ -2274,9 +2300,9 @@
             "Harmonic Excitation"
           ]
         },
-        "x": 242.7,
-        "y": -271.74,
-        "z": -259.5
+        "x": 274.97,
+        "y": -230.42,
+        "z": -266.03
       },
       {
         "id": "concept-chladni-plate",
@@ -2285,9 +2311,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 242.7,
-        "y": -181.74,
-        "z": -199.5
+        "x": 274.97,
+        "y": -140.42,
+        "z": -206.03
       },
       {
         "id": "concept-nodal-lines",
@@ -2296,9 +2322,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 342.45,
-        "y": -264.67,
-        "z": -327.5
+        "x": 374.72,
+        "y": -223.35,
+        "z": -334.03
       },
       {
         "id": "concept-bifurcation-topology",
@@ -2307,9 +2333,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 258.22,
-        "y": -380.64,
-        "z": -183.5
+        "x": 290.49,
+        "y": -339.32,
+        "z": -190.03
       },
       {
         "id": "concept-harmonic-excitation",
@@ -2318,9 +2344,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 125.4,
-        "y": -297.04,
-        "z": -343.5
+        "x": 157.67,
+        "y": -255.72,
+        "z": -350.03
       },
       {
         "id": "cym-faraday-02",
@@ -2354,9 +2380,9 @@
             "Particulate Self-Assembly"
           ]
         },
-        "x": 192.59,
-        "y": -253.49,
-        "z": -228.67
+        "x": 224.86,
+        "y": -212.17,
+        "z": -235.2
       },
       {
         "id": "author-r-sterling",
@@ -2365,9 +2391,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 265.33,
-        "y": -286.78,
-        "z": -178.67
+        "x": 297.6,
+        "y": -245.46,
+        "z": -185.2
       },
       {
         "id": "concept-faraday-wave",
@@ -2376,9 +2402,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 192.59,
-        "y": -163.49,
-        "z": -168.67
+        "x": 224.86,
+        "y": -122.17,
+        "z": -175.2
       },
       {
         "id": "concept-hydrodynamic-trap",
@@ -2387,9 +2413,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 292.34,
-        "y": -246.42,
-        "z": -296.67
+        "x": 324.61,
+        "y": -205.1,
+        "z": -303.2
       },
       {
         "id": "concept-acoustic-soliton",
@@ -2398,9 +2424,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 208.11,
-        "y": -362.39,
-        "z": -152.67
+        "x": 240.38,
+        "y": -321.07,
+        "z": -159.2
       },
       {
         "id": "concept-particulate-self-assembly",
@@ -2409,9 +2435,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 75.29,
-        "y": -278.79,
-        "z": -312.67
+        "x": 107.56,
+        "y": -237.47,
+        "z": -319.2
       },
       {
         "id": "cym-crypt-03",
@@ -2445,9 +2471,9 @@
             "Bone Conduction"
           ]
         },
-        "x": 191.59,
-        "y": -287.46,
-        "z": -201.5
+        "x": 223.85,
+        "y": -246.14,
+        "z": -208.03
       },
       {
         "id": "author-d-miller",
@@ -2456,9 +2482,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 264.33,
-        "y": -320.75,
-        "z": -151.5
+        "x": 296.59,
+        "y": -279.43,
+        "z": -158.03
       },
       {
         "id": "concept-acoustic-transfer-function",
@@ -2467,9 +2493,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 191.59,
-        "y": -197.46,
-        "z": -141.5
+        "x": 223.85,
+        "y": -156.14,
+        "z": -148.03
       },
       {
         "id": "concept-cranial-resonance",
@@ -2478,9 +2504,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 291.34,
-        "y": -280.39,
-        "z": -269.5
+        "x": 323.6,
+        "y": -239.07,
+        "z": -276.03
       },
       {
         "id": "concept-key-derivation",
@@ -2489,9 +2515,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 207.11,
-        "y": -396.36,
-        "z": -125.5
+        "x": 239.37,
+        "y": -355.04,
+        "z": -132.03
       },
       {
         "id": "concept-bone-conduction",
@@ -2500,9 +2526,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 74.29,
-        "y": -312.76,
-        "z": -285.5
+        "x": 106.55,
+        "y": -271.44,
+        "z": -292.03
       },
       {
         "id": "cym-levit-04",
@@ -2537,9 +2563,9 @@
             "Viscoelasticity"
           ]
         },
-        "x": 179.74,
-        "y": -316.91,
-        "z": -164.67
+        "x": 212,
+        "y": -275.59,
+        "z": -171.2
       },
       {
         "id": "author-p-gomez",
@@ -2548,9 +2574,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 252.48,
-        "y": -350.2,
-        "z": -114.67
+        "x": 284.74,
+        "y": -308.88,
+        "z": -121.2
       },
       {
         "id": "author-s-kim",
@@ -2559,9 +2585,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 191.03,
-        "y": -396.11,
-        "z": -114.67
+        "x": 223.29,
+        "y": -354.79,
+        "z": -121.2
       },
       {
         "id": "technology-ultrasonic-phased-array",
@@ -2570,9 +2596,9 @@
         "val": 14,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 179.74,
-        "y": -226.91,
-        "z": -104.67
+        "x": 212,
+        "y": -185.59,
+        "z": -111.2
       },
       {
         "id": "concept-acoustic-radiation-force",
@@ -2581,9 +2607,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 279.49,
-        "y": -309.84,
-        "z": -232.67
+        "x": 311.75,
+        "y": -268.52,
+        "z": -239.2
       },
       {
         "id": "concept-micro-droplet-levitation",
@@ -2592,9 +2618,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 195.26,
-        "y": -425.81,
-        "z": -88.67
+        "x": 227.52,
+        "y": -384.49,
+        "z": -95.2
       },
       {
         "id": "concept-viscoelasticity",
@@ -2603,9 +2629,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 62.44,
-        "y": -342.21,
-        "z": -248.67
+        "x": 94.7,
+        "y": -300.89,
+        "z": -255.2
       },
       {
         "id": "cym-geom-05",
@@ -2638,9 +2664,9 @@
             "Micro-Intervals"
           ]
         },
-        "x": 139.05,
-        "y": -269.29,
-        "z": -158.17
+        "x": 171.32,
+        "y": -227.97,
+        "z": -164.7
       },
       {
         "id": "concept-resonance-manifold",
@@ -2649,9 +2675,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 139.05,
-        "y": -179.29,
-        "z": -98.17
+        "x": 171.32,
+        "y": -137.97,
+        "z": -104.7
       },
       {
         "id": "concept-spectral-topology",
@@ -2660,9 +2686,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 238.8,
-        "y": -262.22,
-        "z": -226.17
+        "x": 271.07,
+        "y": -220.9,
+        "z": -232.7
       },
       {
         "id": "concept-polyphonic-curvature",
@@ -2671,9 +2697,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 154.57,
-        "y": -378.19,
-        "z": -82.17
+        "x": 186.84,
+        "y": -336.87,
+        "z": -88.7
       },
       {
         "id": "concept-micro-intervals",
@@ -2682,9 +2708,9 @@
         "val": 10,
         "group": "Cymatics",
         "provenance": "Local Index",
-        "x": 21.75,
-        "y": -294.59,
-        "z": -242.17
+        "x": 54.02,
+        "y": -253.27,
+        "z": -248.7
       },
       {
         "id": "bio-eeg-01",
@@ -2718,9 +2744,9 @@
             "Inter-Hemispheric Synchrony"
           ]
         },
-        "x": -68.81,
-        "y": -354.21,
-        "z": -50
+        "x": 67.54,
+        "y": -355.31,
+        "z": -63.07
       },
       {
         "id": "author-dr-a-chen",
@@ -2729,9 +2755,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 3.93,
-        "y": -387.5,
-        "z": 0
+        "x": 140.28,
+        "y": -388.6,
+        "z": -13.07
       },
       {
         "id": "concept-phase-amplitude-coupling",
@@ -2740,9 +2766,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -68.81,
-        "y": -264.21,
-        "z": 10
+        "x": 67.54,
+        "y": -265.31,
+        "z": -3.07
       },
       {
         "id": "concept-cross-frequency-coupling",
@@ -2751,9 +2777,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 30.94,
-        "y": -347.14,
-        "z": -118
+        "x": 167.29,
+        "y": -348.24,
+        "z": -131.07
       },
       {
         "id": "concept-theta-oscillations",
@@ -2762,9 +2788,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -53.29,
-        "y": -463.11,
-        "z": 26
+        "x": 83.06,
+        "y": -464.21,
+        "z": 12.93
       },
       {
         "id": "concept-inter-hemispheric-synchrony",
@@ -2773,9 +2799,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -186.11,
-        "y": -379.51,
-        "z": -134
+        "x": -49.76,
+        "y": -380.61,
+        "z": -147.07
       },
       {
         "id": "bio-hrv-02",
@@ -2809,9 +2835,9 @@
             "Baroreflex Resonance"
           ]
         },
-        "x": -86.82,
-        "y": -338.71,
-        "z": 2.5
+        "x": 49.53,
+        "y": -339.81,
+        "z": -10.57
       },
       {
         "id": "author-l-hoffman",
@@ -2820,9 +2846,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -14.08,
-        "y": -372,
-        "z": 52.5
+        "x": 122.27,
+        "y": -373.1,
+        "z": 39.43
       },
       {
         "id": "concept-continuous-wavelet-transform",
@@ -2831,9 +2857,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -86.82,
-        "y": -248.71,
-        "z": 62.5
+        "x": 49.53,
+        "y": -249.81,
+        "z": 49.43
       },
       {
         "id": "concept-sympathovagal-balance",
@@ -2842,9 +2868,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 12.93,
-        "y": -331.64,
-        "z": -65.5
+        "x": 149.28,
+        "y": -332.74,
+        "z": -78.57
       },
       {
         "id": "concept-photoplethysmography",
@@ -2853,9 +2879,9 @@
         "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -71.3,
-        "y": -447.61,
-        "z": 78.5
+        "x": 65.05,
+        "y": -448.71,
+        "z": 65.43
       },
       {
         "id": "concept-baroreflex-resonance",
@@ -2864,9 +2890,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -204.12,
-        "y": -364.01,
-        "z": -81.5
+        "x": -67.77,
+        "y": -365.11,
+        "z": -94.57
       },
       {
         "id": "bio-neuro-03",
@@ -2901,9 +2927,9 @@
             "Cortical Arousal Inhibition"
           ]
         },
-        "x": -86.31,
-        "y": -228.71,
-        "z": -311.33
+        "x": 50.04,
+        "y": -229.81,
+        "z": -324.4
       },
       {
         "id": "author-s-patel",
@@ -2912,9 +2938,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -13.57,
-        "y": -262,
-        "z": -261.33
+        "x": 122.78,
+        "y": -263.1,
+        "z": -274.4
       },
       {
         "id": "concept-slow-wave-sleep",
@@ -2923,9 +2949,9 @@
         "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -86.31,
-        "y": -138.71,
-        "z": -251.33
+        "x": 50.04,
+        "y": -139.81,
+        "z": -264.4
       },
       {
         "id": "concept-delta-power-enhancement",
@@ -2934,9 +2960,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 13.44,
-        "y": -221.64,
-        "z": -379.33
+        "x": 149.79,
+        "y": -222.74,
+        "z": -392.4
       },
       {
         "id": "concept-phase-locked-stimulation",
@@ -2945,9 +2971,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -70.79,
-        "y": -337.61,
-        "z": -235.33
+        "x": 65.56,
+        "y": -338.71,
+        "z": -248.4
       },
       {
         "id": "concept-cortical-arousal-inhibition",
@@ -2956,9 +2982,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -203.61,
-        "y": -254.01,
-        "z": -395.33
+        "x": -67.26,
+        "y": -255.11,
+        "z": -408.4
       },
       {
         "id": "bio-gsr-04",
@@ -2992,9 +3018,9 @@
             "Acoustic Immersion"
           ]
         },
-        "x": 10.53,
-        "y": -242.68,
-        "z": -310.83
+        "x": 146.88,
+        "y": -243.78,
+        "z": -323.9
       },
       {
         "id": "author-n-tanaka",
@@ -3003,9 +3029,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 83.27,
-        "y": -275.97,
-        "z": -260.83
+        "x": 219.62,
+        "y": -277.07,
+        "z": -273.9
       },
       {
         "id": "concept-electrodermal-response",
@@ -3014,9 +3040,9 @@
         "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 10.53,
-        "y": -152.68,
-        "z": -250.83
+        "x": 146.88,
+        "y": -153.78,
+        "z": -263.9
       },
       {
         "id": "concept-phasic-eda",
@@ -3025,9 +3051,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 110.28,
-        "y": -235.61,
-        "z": -378.83
+        "x": 246.63,
+        "y": -236.71,
+        "z": -391.9
       },
       {
         "id": "concept-spatial-trajectory",
@@ -3036,9 +3062,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 26.05,
-        "y": -351.58,
-        "z": -234.83
+        "x": 162.4,
+        "y": -352.68,
+        "z": -247.9
       },
       {
         "id": "concept-acoustic-immersion",
@@ -3047,9 +3073,9 @@
         "val": 13,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -106.77,
-        "y": -267.98,
-        "z": -394.83
+        "x": 29.58,
+        "y": -269.08,
+        "z": -407.9
       },
       {
         "id": "ai-bci-01",
@@ -3084,9 +3110,9 @@
             "Latent Space Alignment"
           ]
         },
-        "x": -178.88,
-        "y": -93.53,
-        "z": -182
+        "x": -30.45,
+        "y": -267.53,
+        "z": -201.6
       },
       {
         "id": "concept-neural-manifold",
@@ -3095,9 +3121,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -178.88,
-        "y": -3.53,
-        "z": -122
+        "x": -30.45,
+        "y": -177.53,
+        "z": -141.6
       },
       {
         "id": "concept-zero-shot-decoding",
@@ -3106,9 +3132,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -79.13,
-        "y": -86.46,
-        "z": -250
+        "x": 69.3,
+        "y": -260.46,
+        "z": -269.6
       },
       {
         "id": "concept-riemannian-geometry",
@@ -3117,9 +3143,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -163.36,
-        "y": -202.43,
-        "z": -106
+        "x": -14.93,
+        "y": -376.43,
+        "z": -125.6
       },
       {
         "id": "concept-latent-space-alignment",
@@ -3128,9 +3154,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -296.18,
-        "y": -118.83,
-        "z": -266
+        "x": -147.75,
+        "y": -292.83,
+        "z": -285.6
       },
       {
         "id": "ai-spiking-02",
@@ -3164,9 +3190,9 @@
             "Binaural Delay Line"
           ]
         },
-        "x": -146.94,
-        "y": -122.92,
-        "z": -175.5
+        "x": 1.49,
+        "y": -296.91,
+        "z": -195.1
       },
       {
         "id": "author-a-o-connor",
@@ -3175,9 +3201,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -74.2,
-        "y": -156.21,
-        "z": -125.5
+        "x": 74.23,
+        "y": -330.2,
+        "z": -145.1
       },
       {
         "id": "technology-spiking-transformer",
@@ -3186,9 +3212,9 @@
         "val": 14,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -146.94,
-        "y": -32.92,
-        "z": -115.5
+        "x": 1.49,
+        "y": -206.91,
+        "z": -135.1
       },
       {
         "id": "technology-neuromorphic-chip",
@@ -3197,9 +3223,9 @@
         "val": 14,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -47.19,
-        "y": -115.85,
-        "z": -243.5
+        "x": 101.24,
+        "y": -289.84,
+        "z": -263.1
       },
       {
         "id": "concept-event-driven-audio",
@@ -3208,9 +3234,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -131.42,
-        "y": -231.82,
-        "z": -99.5
+        "x": 17.01,
+        "y": -405.81,
+        "z": -119.1
       },
       {
         "id": "concept-binaural-delay-line",
@@ -3219,9 +3245,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -264.24,
-        "y": -148.22,
-        "z": -259.5
+        "x": -115.81,
+        "y": -322.21,
+        "z": -279.1
       },
       {
         "id": "ai-synth-03",
@@ -3254,9 +3280,9 @@
             "Restorative Bio-Soundscape"
           ]
         },
-        "x": -123.19,
-        "y": -161.03,
-        "z": -159.33
+        "x": 25.24,
+        "y": -335.03,
+        "z": -178.93
       },
       {
         "id": "concept-audio-diffusion",
@@ -3265,9 +3291,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -123.19,
-        "y": -71.03,
-        "z": -99.33
+        "x": 25.24,
+        "y": -245.03,
+        "z": -118.93
       },
       {
         "id": "concept-physiological-conditioning",
@@ -3276,9 +3302,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -23.44,
-        "y": -153.96,
-        "z": -227.33
+        "x": 124.99,
+        "y": -327.96,
+        "z": -246.93
       },
       {
         "id": "concept-latent-embedding",
@@ -3287,9 +3313,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -107.67,
-        "y": -269.93,
-        "z": -83.33
+        "x": 40.76,
+        "y": -443.93,
+        "z": -102.93
       },
       {
         "id": "concept-restorative-bio-soundscape",
@@ -3298,9 +3324,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -240.49,
-        "y": -186.33,
-        "z": -243.33
+        "x": -92.06,
+        "y": -360.33,
+        "z": -262.93
       },
       {
         "id": "ai-cog-04",
@@ -3334,9 +3360,9 @@
             "Agentic Teaming"
           ]
         },
-        "x": -170.04,
-        "y": -153.09,
-        "z": -120.17
+        "x": -21.61,
+        "y": -327.08,
+        "z": -139.77
       },
       {
         "id": "concept-pupillary-oscillations",
@@ -3345,9 +3371,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -170.04,
-        "y": -63.09,
-        "z": -60.17
+        "x": -21.61,
+        "y": -237.08,
+        "z": -79.77
       },
       {
         "id": "concept-cognitive-load-theory",
@@ -3356,9 +3382,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -70.29,
-        "y": -146.02,
-        "z": -188.17
+        "x": 78.14,
+        "y": -320.01,
+        "z": -207.77
       },
       {
         "id": "concept-multimodal-attention",
@@ -3367,9 +3393,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -154.52,
-        "y": -261.99,
-        "z": -44.17
+        "x": -6.09,
+        "y": -435.98,
+        "z": -63.77
       },
       {
         "id": "concept-agentic-teaming",
@@ -3378,9 +3404,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -287.34,
-        "y": -178.39,
-        "z": -204.17
+        "x": -138.91,
+        "y": -352.38,
+        "z": -223.77
       },
       {
         "id": "ai-symbol-05",
@@ -3414,9 +3440,9 @@
             "Physics-Informed AI"
           ]
         },
-        "x": -163.19,
-        "y": -189.7,
-        "z": -98
+        "x": -14.76,
+        "y": -363.69,
+        "z": -117.6
       },
       {
         "id": "concept-symbolic-algebra",
@@ -3425,9 +3451,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -163.19,
-        "y": -99.7,
-        "z": -38
+        "x": -14.76,
+        "y": -273.69,
+        "z": -57.6
       },
       {
         "id": "concept-formal-verification",
@@ -3436,9 +3462,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -63.44,
-        "y": -182.63,
-        "z": -166
+        "x": 84.99,
+        "y": -356.62,
+        "z": -185.6
       },
       {
         "id": "policyshift-knowledge-extraction",
@@ -3447,9 +3473,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -147.67,
-        "y": -298.6,
-        "z": -22
+        "x": 0.76,
+        "y": -472.59,
+        "z": -41.6
       },
       {
         "id": "concept-physics-informed-ai",
@@ -3458,9 +3484,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -280.49,
-        "y": -215,
-        "z": -182
+        "x": -132.06,
+        "y": -388.99,
+        "z": -201.6
       },
       {
         "id": "ac-meta-01",
@@ -3494,9 +3520,9 @@
             "Subwavelength Cloak"
           ]
         },
-        "x": -117.99,
-        "y": 34.3,
-        "z": -0.83
+        "x": -160.63,
+        "y": -278.51,
+        "z": -26.97
       },
       {
         "id": "author-g-richter",
@@ -3505,9 +3531,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -45.25,
-        "y": 1.01,
-        "z": 49.17
+        "x": -87.89,
+        "y": -311.8,
+        "z": 23.03
       },
       {
         "id": "concept-labyrinthine-unit-cell",
@@ -3516,9 +3542,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -117.99,
-        "y": 124.3,
-        "z": 59.17
+        "x": -160.63,
+        "y": -188.51,
+        "z": 33.03
       },
       {
         "id": "technology-acoustic-metamaterial",
@@ -3527,9 +3553,9 @@
         "val": 14,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -18.24,
-        "y": 41.37,
-        "z": -68.83
+        "x": -60.88,
+        "y": -271.44,
+        "z": -94.97
       },
       {
         "id": "policyshift-non-reciprocal-refraction",
@@ -3538,9 +3564,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -102.47,
-        "y": -74.6,
-        "z": 75.17
+        "x": -145.11,
+        "y": -387.41,
+        "z": 49.03
       },
       {
         "id": "concept-subwavelength-cloak",
@@ -3549,9 +3575,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -235.29,
-        "y": 9,
-        "z": -84.83
+        "x": -277.93,
+        "y": -303.81,
+        "z": -110.97
       },
       {
         "id": "ac-infra-02",
@@ -3585,9 +3611,9 @@
             "Boundary Inversion"
           ]
         },
-        "x": -164.91,
-        "y": 72.78,
-        "z": 14
+        "x": -207.56,
+        "y": -240.02,
+        "z": -12.13
       },
       {
         "id": "technology-atmospheric-waveguide",
@@ -3596,9 +3622,9 @@
         "val": 14,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -164.91,
-        "y": 162.78,
-        "z": 74
+        "x": -207.56,
+        "y": -150.02,
+        "z": 47.87
       },
       {
         "id": "concept-infrasound-ray-tracing",
@@ -3607,9 +3633,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -65.16,
-        "y": 79.85,
-        "z": -54
+        "x": -107.81,
+        "y": -232.95,
+        "z": -80.13
       },
       {
         "id": "concept-seismo-acoustic-coupling",
@@ -3618,9 +3644,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -149.39,
-        "y": -36.12,
-        "z": 90
+        "x": -192.04,
+        "y": -348.92,
+        "z": 63.87
       },
       {
         "id": "concept-boundary-inversion",
@@ -3629,9 +3655,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -282.21,
-        "y": 47.48,
-        "z": -70
+        "x": -324.86,
+        "y": -265.32,
+        "z": -96.13
       },
       {
         "id": "ac-sono-03",
@@ -3666,9 +3692,9 @@
             "Deuterated Solvents"
           ]
         },
-        "x": -178.64,
-        "y": 52.45,
-        "z": 51.83
+        "x": -221.28,
+        "y": -260.36,
+        "z": 25.7
       },
       {
         "id": "concept-single-bubble-cavitation",
@@ -3677,9 +3703,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -178.64,
-        "y": 142.45,
-        "z": 111.83
+        "x": -221.28,
+        "y": -170.36,
+        "z": 85.7
       },
       {
         "id": "concept-picosecond-sonoluminescence",
@@ -3688,9 +3714,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -78.89,
-        "y": 59.52,
-        "z": -16.17
+        "x": -121.53,
+        "y": -253.29,
+        "z": -42.3
       },
       {
         "id": "concept-plasma-flash",
@@ -3699,9 +3725,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -163.12,
-        "y": -56.45,
-        "z": 127.83
+        "x": -205.76,
+        "y": -369.26,
+        "z": 101.7
       },
       {
         "id": "concept-deuterated-solvents",
@@ -3710,9 +3736,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -295.94,
-        "y": 27.15,
-        "z": -32.17
+        "x": -338.58,
+        "y": -285.66,
+        "z": -58.3
       },
       {
         "id": "ac-spat-04",
@@ -3745,9 +3771,9 @@
             "Acoustic Immersion"
           ]
         },
-        "x": -198.95,
-        "y": 46.87,
-        "z": 99.33
+        "x": -241.6,
+        "y": -265.94,
+        "z": 73.2
       },
       {
         "id": "concept-higher-order-ambisonics",
@@ -3756,9 +3782,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -198.95,
-        "y": 136.87,
-        "z": 159.33
+        "x": -241.6,
+        "y": -175.94,
+        "z": 133.2
       },
       {
         "id": "concept-boundary-element-method",
@@ -3767,9 +3793,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -99.2,
-        "y": 53.94,
-        "z": 31.33
+        "x": -141.85,
+        "y": -258.87,
+        "z": 5.2
       },
       {
         "id": "concept-holographic-audio",
@@ -3778,9 +3804,9 @@
         "val": 10,
         "group": "Acoustics",
         "provenance": "Local Index",
-        "x": -183.43,
-        "y": -62.03,
-        "z": 175.33
+        "x": -226.08,
+        "y": -374.84,
+        "z": 149.2
       },
       {
         "id": "nuc-fusion-01",
@@ -3815,9 +3841,9 @@
             "Acoustic Compression"
           ]
         },
-        "x": 33.65,
-        "y": 208.93,
-        "z": 155.17
+        "x": -285.29,
+        "y": -8.7,
+        "z": 122.5
       },
       {
         "id": "author-dr-v-morozov",
@@ -3826,9 +3852,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 106.39,
-        "y": 175.64,
-        "z": 205.17
+        "x": -212.55,
+        "y": -41.99,
+        "z": 172.5
       },
       {
         "id": "concept-magneto-inertial-confinement",
@@ -3837,9 +3863,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 33.65,
-        "y": 298.93,
-        "z": 215.17
+        "x": -285.29,
+        "y": 81.3,
+        "z": 182.5
       },
       {
         "id": "concept-rayleigh-taylor-stabilization",
@@ -3848,9 +3874,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 133.4,
-        "y": 216,
-        "z": 87.17
+        "x": -185.54,
+        "y": -1.63,
+        "z": 54.5
       },
       {
         "id": "concept-liquid-lithium-vortex",
@@ -3859,9 +3885,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 49.17,
-        "y": 100.03,
-        "z": 231.17
+        "x": -269.77,
+        "y": -117.6,
+        "z": 198.5
       },
       {
         "id": "concept-acoustic-compression",
@@ -3870,9 +3896,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -83.65,
-        "y": 183.63,
-        "z": 71.17
+        "x": -402.59,
+        "y": -34,
+        "z": 38.5
       },
       {
         "id": "nuc-reactor-02",
@@ -3906,9 +3932,9 @@
             "Thermal Resonance"
           ]
         },
-        "x": 34.03,
-        "y": 290.19,
-        "z": -143.33
+        "x": -284.91,
+        "y": 72.56,
+        "z": -176
       },
       {
         "id": "concept-molten-salt-core",
@@ -3917,9 +3943,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 34.03,
-        "y": 380.19,
-        "z": -83.33
+        "x": -284.91,
+        "y": 162.56,
+        "z": -116
       },
       {
         "id": "concept-neutron-flux-kinetics",
@@ -3928,9 +3954,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 133.78,
-        "y": 297.26,
-        "z": -211.33
+        "x": -185.16,
+        "y": 79.63,
+        "z": -244
       },
       {
         "id": "concept-graphite-moderator",
@@ -3939,9 +3965,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 49.55,
-        "y": 181.29,
-        "z": -67.33
+        "x": -269.39,
+        "y": -36.34,
+        "z": -100
       },
       {
         "id": "concept-thermal-resonance",
@@ -3950,9 +3976,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -83.27,
-        "y": 264.89,
-        "z": -227.33
+        "x": -402.21,
+        "y": 47.26,
+        "z": -260
       },
       {
         "id": "nuc-muon-03",
@@ -3986,9 +4012,9 @@
             "Resonant Target"
           ]
         },
-        "x": 102.42,
-        "y": 280.33,
-        "z": -71.5
+        "x": -216.52,
+        "y": 62.7,
+        "z": -104.17
       },
       {
         "id": "concept-muon-catalyzed-fusion",
@@ -3997,9 +4023,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 102.42,
-        "y": 370.33,
-        "z": -11.5
+        "x": -216.52,
+        "y": 152.7,
+        "z": -44.17
       },
       {
         "id": "concept-mesomolecule-formation",
@@ -4008,9 +4034,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 202.17,
-        "y": 287.4,
-        "z": -139.5
+        "x": -116.77,
+        "y": 69.77,
+        "z": -172.17
       },
       {
         "id": "concept-alpha-sticking-probability",
@@ -4019,9 +4045,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 117.94,
-        "y": 171.43,
-        "z": 4.5
+        "x": -201,
+        "y": -46.2,
+        "z": -28.17
       },
       {
         "id": "concept-resonant-target",
@@ -4030,9 +4056,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": -14.88,
-        "y": 255.03,
-        "z": -155.5
+        "x": -333.82,
+        "y": 37.4,
+        "z": -188.17
       },
       {
         "id": "nuc-sensor-04",
@@ -4066,9 +4092,9 @@
             "Acoustic Thermometry"
           ]
         },
-        "x": 144.14,
-        "y": 257.76,
-        "z": -70
+        "x": -174.8,
+        "y": 40.13,
+        "z": -102.67
       },
       {
         "id": "technology-magnetostrictive-waveguide",
@@ -4077,9 +4103,9 @@
         "val": 14,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 144.14,
-        "y": 347.76,
-        "z": -10
+        "x": -174.8,
+        "y": 130.13,
+        "z": -42.67
       },
       {
         "id": "technology-in-core-sensor",
@@ -4088,9 +4114,9 @@
         "val": 14,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 243.89,
-        "y": 264.83,
-        "z": -138
+        "x": -75.05,
+        "y": 47.2,
+        "z": -170.67
       },
       {
         "id": "concept-fast-breeder-diagnostics",
@@ -4099,9 +4125,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 159.66,
-        "y": 148.86,
-        "z": 6
+        "x": -159.28,
+        "y": -68.77,
+        "z": -26.67
       },
       {
         "id": "concept-acoustic-thermometry",
@@ -4110,9 +4136,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 26.84,
-        "y": 232.46,
-        "z": -154
+        "x": -292.1,
+        "y": 14.83,
+        "z": -186.67
       },
       {
         "id": "nuc-decay-05",
@@ -4146,9 +4172,9 @@
             "Transient Megabar Pressure"
           ]
         },
-        "x": 178.11,
-        "y": 224.17,
-        "z": -58.83
+        "x": -140.83,
+        "y": 6.54,
+        "z": -91.5
       },
       {
         "id": "concept-cavitation-collapse",
@@ -4157,9 +4183,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 178.11,
-        "y": 314.17,
-        "z": 1.17
+        "x": -140.83,
+        "y": 96.54,
+        "z": -31.5
       },
       {
         "id": "concept-electron-capture",
@@ -4168,9 +4194,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 277.86,
-        "y": 231.24,
-        "z": -126.83
+        "x": -41.08,
+        "y": 13.61,
+        "z": -159.5
       },
       {
         "id": "concept-beta-decay-rates",
@@ -4179,9 +4205,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 193.63,
-        "y": 115.27,
-        "z": 17.17
+        "x": -125.31,
+        "y": -102.36,
+        "z": -15.5
       },
       {
         "id": "concept-transient-megabar-pressure",
@@ -4190,9 +4216,9 @@
         "val": 10,
         "group": "Nuclear Engineering",
         "provenance": "Local Index",
-        "x": 60.81,
-        "y": 198.87,
-        "z": -142.83
+        "x": -258.13,
+        "y": -18.76,
+        "z": -175.5
       },
       {
         "id": "arxiv:2608.17470v1",
@@ -4224,9 +4250,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 349.38,
-        "y": 62.56,
-        "z": 54
+        "x": -68.19,
+        "y": 163.03,
+        "z": 14.8
       },
       {
         "id": "author-taichi-fujiwara",
@@ -4235,9 +4261,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 416.7,
-        "y": 105.78,
-        "z": 104
+        "x": -0.87,
+        "y": 206.25,
+        "z": 64.8
       },
       {
         "id": "author-yuhei-sekiguchi",
@@ -4246,9 +4272,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 422.12,
-        "y": 29.27,
-        "z": 104
+        "x": 4.55,
+        "y": 129.74,
+        "z": 64.8
       },
       {
         "id": "author-raustin-reyes",
@@ -4257,9 +4283,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 360.67,
-        "y": -16.64,
-        "z": 104
+        "x": -56.9,
+        "y": 83.83,
+        "z": 64.8
       },
       {
         "id": "author-toshiharu-makino",
@@ -4268,9 +4294,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 288.84,
-        "y": 10.27,
-        "z": 104
+        "x": -128.73,
+        "y": 110.74,
+        "z": 64.8
       },
       {
         "id": "author-hiromitsu-kato",
@@ -4279,9 +4305,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 272.67,
-        "y": 85.25,
-        "z": 104
+        "x": -144.9,
+        "y": 185.72,
+        "z": 64.8
       },
       {
         "id": "author-hideo-kosaka",
@@ -4290,9 +4316,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 327.03,
-        "y": 139.37,
-        "z": 104
+        "x": -90.54,
+        "y": 239.84,
+        "z": 64.8
       },
       {
         "id": "concept-quantum-teleportation",
@@ -4301,9 +4327,9 @@
         "val": 28,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 349.38,
-        "y": 152.56,
-        "z": 114
+        "x": -68.19,
+        "y": 253.03,
+        "z": 74.8
       },
       {
         "id": "arxiv:2608.13772v1",
@@ -4340,9 +4366,9 @@
             "Bringing"
           ]
         },
-        "x": 364.55,
-        "y": 25.81,
-        "z": 71.17
+        "x": -53.02,
+        "y": 126.28,
+        "z": 31.97
       },
       {
         "id": "author-yihan-wang",
@@ -4351,9 +4377,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 431.87,
-        "y": 69.03,
-        "z": 121.17
+        "x": 14.3,
+        "y": 169.5,
+        "z": 81.97
       },
       {
         "id": "author-ruilin-you",
@@ -4362,9 +4388,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 437.29,
-        "y": -7.48,
-        "z": 121.17
+        "x": 19.72,
+        "y": 92.99,
+        "z": 81.97
       },
       {
         "id": "author-jiabin-chen",
@@ -4373,9 +4399,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 375.84,
-        "y": -53.39,
-        "z": 121.17
+        "x": -41.73,
+        "y": 47.08,
+        "z": 81.97
       },
       {
         "id": "author-bofan-song",
@@ -4384,9 +4410,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 304.01,
-        "y": -26.48,
-        "z": 121.17
+        "x": -113.56,
+        "y": 73.99,
+        "z": 81.97
       },
       {
         "id": "author-zien-feng",
@@ -4395,9 +4421,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 287.84,
-        "y": 48.5,
-        "z": 121.17
+        "x": -129.73,
+        "y": 148.97,
+        "z": 81.97
       },
       {
         "id": "author-paula-patricia-villarreal",
@@ -4406,9 +4432,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 342.2,
-        "y": 102.62,
-        "z": 121.17
+        "x": -75.37,
+        "y": 203.09,
+        "z": 81.97
       },
       {
         "id": "author-gracie-vargas",
@@ -4417,9 +4443,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 417.11,
-        "y": 86.12,
-        "z": 121.17
+        "x": -0.46,
+        "y": 186.59,
+        "z": 81.97
       },
       {
         "id": "author-rongguang-liang",
@@ -4428,9 +4454,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 443.7,
-        "y": 14.17,
-        "z": 121.17
+        "x": 26.13,
+        "y": 114.64,
+        "z": 81.97
       },
       {
         "id": "concept-fully",
@@ -4439,9 +4465,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 364.55,
-        "y": 115.81,
-        "z": 131.17
+        "x": -53.02,
+        "y": 216.28,
+        "z": 91.97
       },
       {
         "id": "concept-optical",
@@ -4450,9 +4476,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 464.3,
-        "y": 32.88,
-        "z": 3.17
+        "x": 46.73,
+        "y": 133.35,
+        "z": -36.03
       },
       {
         "id": "concept-bringing",
@@ -4461,9 +4487,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 380.07,
-        "y": -83.09,
-        "z": 147.17
+        "x": -37.5,
+        "y": 17.38,
+        "z": 107.97
       },
       {
         "id": "arxiv:2608.11718v1",
@@ -4498,9 +4524,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 368.86,
-        "y": -13.89,
-        "z": 98
+        "x": -48.72,
+        "y": 86.59,
+        "z": 58.8
       },
       {
         "id": "author-zicong-wen",
@@ -4509,9 +4535,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 436.18,
-        "y": 29.33,
-        "z": 148
+        "x": 18.6,
+        "y": 129.81,
+        "z": 108.8
       },
       {
         "id": "author-kai-wang",
@@ -4520,9 +4546,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 441.6,
-        "y": -47.18,
-        "z": 148
+        "x": 24.02,
+        "y": 53.3,
+        "z": 108.8
       },
       {
         "id": "author-bochi-wu",
@@ -4531,9 +4557,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 380.15,
-        "y": -93.09,
-        "z": 148
+        "x": -37.43,
+        "y": 7.39,
+        "z": 108.8
       },
       {
         "id": "author-leizhen-chen",
@@ -4542,9 +4568,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 308.32,
-        "y": -66.18,
-        "z": 148
+        "x": -109.26,
+        "y": 34.3,
+        "z": 108.8
       },
       {
         "id": "author-yan-qing-lu",
@@ -4553,9 +4579,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 292.15,
-        "y": 8.8,
-        "z": 148
+        "x": -125.43,
+        "y": 109.28,
+        "z": 108.8
       },
       {
         "id": "author-shining-zhu",
@@ -4564,9 +4590,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 346.51,
-        "y": 62.92,
-        "z": 148
+        "x": -71.07,
+        "y": 163.4,
+        "z": 108.8
       },
       {
         "id": "author-xiao-song-ma",
@@ -4575,9 +4601,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 421.42,
-        "y": 46.42,
-        "z": 148
+        "x": 3.84,
+        "y": 146.9,
+        "z": 108.8
       },
       {
         "id": "concept-qubit",
@@ -4586,9 +4612,9 @@
         "val": 25,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 368.86,
-        "y": 76.11,
-        "z": 158
+        "x": -48.72,
+        "y": 176.59,
+        "z": 118.8
       },
       {
         "id": "arxiv:2608.06683v1",
@@ -4618,9 +4644,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 318.55,
-        "y": 14.5,
-        "z": 121.17
+        "x": -99.02,
+        "y": 114.98,
+        "z": 81.97
       },
       {
         "id": "author-yu-bo-hou",
@@ -4629,9 +4655,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 385.87,
-        "y": 57.72,
-        "z": 171.17
+        "x": -31.7,
+        "y": 158.2,
+        "z": 131.97
       },
       {
         "id": "author-xiaoan-ai",
@@ -4640,9 +4666,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 391.29,
-        "y": -18.79,
-        "z": 171.17
+        "x": -26.28,
+        "y": 81.69,
+        "z": 131.97
       },
       {
         "id": "author-pengbo-li",
@@ -4651,9 +4677,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 329.84,
-        "y": -64.7,
-        "z": 171.17
+        "x": -87.73,
+        "y": 35.78,
+        "z": 131.97
       },
       {
         "id": "author-changchun-zhong",
@@ -4662,9 +4688,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 258.01,
-        "y": -37.79,
-        "z": 171.17
+        "x": -159.56,
+        "y": 62.69,
+        "z": 131.97
       },
       {
         "id": "arxiv:2608.03865v1",
@@ -4693,9 +4719,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 310.11,
-        "y": -14.28,
-        "z": 154
+        "x": -107.46,
+        "y": 86.19,
+        "z": 114.8
       },
       {
         "id": "author-anushree-pandey",
@@ -4704,9 +4730,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 377.43,
-        "y": 28.94,
-        "z": 204
+        "x": -40.14,
+        "y": 129.41,
+        "z": 164.8
       },
       {
         "id": "author-sovik-roy",
@@ -4715,9 +4741,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 382.85,
-        "y": -47.57,
-        "z": 204
+        "x": -34.72,
+        "y": 52.9,
+        "z": 164.8
       },
       {
         "id": "arxiv:2608.01088v1",
@@ -4747,9 +4773,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 292.24,
-        "y": -33.86,
-        "z": 196.5
+        "x": -125.33,
+        "y": 66.62,
+        "z": 157.3
       },
       {
         "id": "author-nan-li",
@@ -4758,9 +4784,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 359.56,
-        "y": 9.36,
-        "z": 246.5
+        "x": -58.01,
+        "y": 109.84,
+        "z": 207.3
       },
       {
         "id": "author-yuan-li",
@@ -4769,9 +4795,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 364.98,
-        "y": -67.15,
-        "z": 246.5
+        "x": -52.59,
+        "y": 33.33,
+        "z": 207.3
       },
       {
         "id": "author-hanyu-yang",
@@ -4780,9 +4806,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 303.53,
-        "y": -113.06,
-        "z": 246.5
+        "x": -114.04,
+        "y": -12.58,
+        "z": 207.3
       },
       {
         "id": "author-shunlong-luo",
@@ -4791,9 +4817,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 231.7,
-        "y": -86.15,
-        "z": 246.5
+        "x": -185.87,
+        "y": 14.33,
+        "z": 207.3
       },
       {
         "id": "arxiv:2607.25395v1",
@@ -4830,9 +4856,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 259.83,
-        "y": 22.24,
-        "z": 195.33
+        "x": -157.74,
+        "y": 122.72,
+        "z": 156.13
       },
       {
         "id": "author-yang-bin-ma",
@@ -4841,9 +4867,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 327.15,
-        "y": 65.46,
-        "z": 245.33
+        "x": -90.42,
+        "y": 165.94,
+        "z": 206.13
       },
       {
         "id": "author-yun-ru-fan",
@@ -4852,9 +4878,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 332.57,
-        "y": -11.05,
-        "z": 245.33
+        "x": -85,
+        "y": 89.43,
+        "z": 206.13
       },
       {
         "id": "author-ri-yao-song",
@@ -4863,9 +4889,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 271.12,
-        "y": -56.96,
-        "z": 245.33
+        "x": -146.45,
+        "y": 43.52,
+        "z": 206.13
       },
       {
         "id": "author-ya-zhou-zhao",
@@ -4874,9 +4900,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 199.29,
-        "y": -30.05,
-        "z": 245.33
+        "x": -218.28,
+        "y": 70.43,
+        "z": 206.13
       },
       {
         "id": "author-yi-ye-liu",
@@ -4885,9 +4911,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 183.12,
-        "y": 44.93,
-        "z": 245.33
+        "x": -234.45,
+        "y": 145.41,
+        "z": 206.13
       },
       {
         "id": "author-si-shen",
@@ -4896,9 +4922,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 237.48,
-        "y": 99.05,
-        "z": 245.33
+        "x": -180.09,
+        "y": 199.53,
+        "z": 206.13
       },
       {
         "id": "author-zi-hao-zhan",
@@ -4907,9 +4933,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 312.39,
-        "y": 82.55,
-        "z": 245.33
+        "x": -105.18,
+        "y": 183.03,
+        "z": 206.13
       },
       {
         "id": "author-yan-yu-wei",
@@ -4918,9 +4944,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 338.98,
-        "y": 10.6,
-        "z": 245.33
+        "x": -78.59,
+        "y": 111.08,
+        "z": 206.13
       },
       {
         "id": "author-kai-guo",
@@ -4929,9 +4955,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 292.8,
-        "y": -50.65,
-        "z": 245.33
+        "x": -124.77,
+        "y": 49.83,
+        "z": 206.13
       },
       {
         "id": "author-guang-can-guo",
@@ -4940,9 +4966,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 216.31,
-        "y": -44.89,
-        "z": 245.33
+        "x": -201.26,
+        "y": 55.59,
+        "z": 206.13
       },
       {
         "id": "author-qiang-zhou",
@@ -4951,9 +4977,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 179.83,
-        "y": 22.59,
-        "z": 245.33
+        "x": -237.74,
+        "y": 123.07,
+        "z": 206.13
       },
       {
         "id": "arxiv:2607.25352v1",
@@ -4991,9 +5017,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 244.35,
-        "y": 33.29,
-        "z": 243.83
+        "x": -173.22,
+        "y": 133.76,
+        "z": 204.63
       },
       {
         "id": "author-hao-li",
@@ -5002,9 +5028,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 296.91,
-        "y": 93.6,
-        "z": 293.83
+        "x": -120.66,
+        "y": 194.07,
+        "z": 254.63
       },
       {
         "id": "author-li-xing-you",
@@ -5013,9 +5039,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 323.5,
-        "y": 21.65,
-        "z": 293.83
+        "x": -94.07,
+        "y": 122.12,
+        "z": 254.63
       },
       {
         "id": "arxiv:2607.24105v1",
@@ -5050,9 +5076,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 244.8,
-        "y": 130.02,
-        "z": -26
+        "x": -172.77,
+        "y": 230.5,
+        "z": -65.2
       },
       {
         "id": "author-yawen-tang",
@@ -5061,9 +5087,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 312.12,
-        "y": 173.24,
-        "z": 24
+        "x": -105.45,
+        "y": 273.72,
+        "z": -15.2
       },
       {
         "id": "author-wei-ye",
@@ -5072,9 +5098,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 317.54,
-        "y": 96.73,
-        "z": 24
+        "x": -100.03,
+        "y": 197.21,
+        "z": -15.2
       },
       {
         "id": "author-lu-qin",
@@ -5083,9 +5109,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 256.09,
-        "y": 50.82,
-        "z": 24
+        "x": -161.48,
+        "y": 151.3,
+        "z": -15.2
       },
       {
         "id": "author-jinxin-li",
@@ -5094,9 +5120,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 184.26,
-        "y": 77.73,
-        "z": 24
+        "x": -233.31,
+        "y": 178.21,
+        "z": -15.2
       },
       {
         "id": "author-xinxin-wang",
@@ -5105,9 +5131,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 168.09,
-        "y": 152.71,
-        "z": 24
+        "x": -249.48,
+        "y": 253.19,
+        "z": -15.2
       },
       {
         "id": "author-zunlue-zhu",
@@ -5116,9 +5142,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 222.45,
-        "y": 206.83,
-        "z": 24
+        "x": -195.12,
+        "y": 307.31,
+        "z": -15.2
       },
       {
         "id": "author-shoukang-chang",
@@ -5127,9 +5153,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 297.36,
-        "y": 190.33,
-        "z": 24
+        "x": -120.21,
+        "y": 290.81,
+        "z": -15.2
       },
       {
         "id": "author-shao-ming-fei",
@@ -5138,9 +5164,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 323.95,
-        "y": 118.38,
-        "z": 24
+        "x": -93.62,
+        "y": 218.86,
+        "z": -15.2
       },
       {
         "id": "author-xingdong-zhao",
@@ -5149,9 +5175,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 277.77,
-        "y": 57.13,
-        "z": 24
+        "x": -139.8,
+        "y": 157.61,
+        "z": -15.2
       },
       {
         "id": "arxiv:2607.23820v1",
@@ -5182,9 +5208,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 328.51,
-        "y": 117.95,
-        "z": -29.5
+        "x": -89.06,
+        "y": 218.42,
+        "z": -68.7
       },
       {
         "id": "author-soubhik-de",
@@ -5193,9 +5219,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 395.83,
-        "y": 161.17,
-        "z": 20.5
+        "x": -21.74,
+        "y": 261.64,
+        "z": -18.7
       },
       {
         "id": "author-vedhanayagi-r",
@@ -5204,9 +5230,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 401.25,
-        "y": 84.66,
-        "z": 20.5
+        "x": -16.32,
+        "y": 185.13,
+        "z": -18.7
       },
       {
         "id": "author-basherrudin-mahmud-ahmed-a",
@@ -5215,9 +5241,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 339.8,
-        "y": 38.75,
-        "z": 20.5
+        "x": -77.77,
+        "y": 139.22,
+        "z": -18.7
       },
       {
         "id": "author-alok-sharan",
@@ -5226,9 +5252,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 267.97,
-        "y": 65.66,
-        "z": 20.5
+        "x": -149.6,
+        "y": 166.13,
+        "z": -18.7
       },
       {
         "id": "arxiv:2607.19770v1",
@@ -5259,9 +5285,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 374.93,
-        "y": 91.69,
-        "z": -23.33
+        "x": -42.64,
+        "y": 192.17,
+        "z": -62.53
       },
       {
         "id": "author-mahmoud-saad-abouamer",
@@ -5270,9 +5296,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 442.25,
-        "y": 134.91,
-        "z": 26.67
+        "x": 24.68,
+        "y": 235.39,
+        "z": -12.53
       },
       {
         "id": "author-jakob-kaltoft-s-ndergaard",
@@ -5281,9 +5307,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 447.67,
-        "y": 58.4,
-        "z": 26.67
+        "x": 30.1,
+        "y": 158.88,
+        "z": -12.53
       },
       {
         "id": "author-petar-popovski",
@@ -5292,9 +5318,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 386.22,
-        "y": 12.49,
-        "z": 26.67
+        "x": -31.35,
+        "y": 112.97,
+        "z": -12.53
       },
       {
         "id": "arxiv:2607.19212v1",
@@ -5324,9 +5350,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 347.94,
-        "y": 82.76,
-        "z": 32.5
+        "x": -69.64,
+        "y": 183.24,
+        "z": -6.7
       },
       {
         "id": "author-eduardo-reck-miranda",
@@ -5335,9 +5361,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 415.26,
-        "y": 125.98,
-        "z": 82.5
+        "x": -2.32,
+        "y": 226.46,
+        "z": 43.3
       },
       {
         "id": "author-scott-yeiichi-oshiro",
@@ -5346,9 +5372,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 420.68,
-        "y": 49.47,
-        "z": 82.5
+        "x": 3.1,
+        "y": 149.95,
+        "z": 43.3
       },
       {
         "id": "arxiv:2607.17773v1",
@@ -5383,9 +5409,9 @@
             "Grained"
           ]
         },
-        "x": 371.56,
-        "y": 48.25,
-        "z": 44.67
+        "x": -46.01,
+        "y": 148.72,
+        "z": 5.47
       },
       {
         "id": "author-chen-yang",
@@ -5394,9 +5420,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 438.88,
-        "y": 91.47,
-        "z": 94.67
+        "x": 21.31,
+        "y": 191.94,
+        "z": 55.47
       },
       {
         "id": "author-ganye-wen",
@@ -5405,9 +5431,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 444.3,
-        "y": 14.96,
-        "z": 94.67
+        "x": 26.73,
+        "y": 115.43,
+        "z": 55.47
       },
       {
         "id": "author-bin-huang",
@@ -5416,9 +5442,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 382.85,
-        "y": -30.95,
-        "z": 94.67
+        "x": -34.72,
+        "y": 69.52,
+        "z": 55.47
       },
       {
         "id": "author-jiayi-lyu",
@@ -5427,9 +5453,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 311.02,
-        "y": -4.04,
-        "z": 94.67
+        "x": -106.55,
+        "y": 96.43,
+        "z": 55.47
       },
       {
         "id": "author-zehai-niu",
@@ -5438,9 +5464,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 294.85,
-        "y": 70.94,
-        "z": 94.67
+        "x": -122.72,
+        "y": 171.41,
+        "z": 55.47
       },
       {
         "id": "author-linlin-shen",
@@ -5449,9 +5475,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 349.21,
-        "y": 125.06,
-        "z": 94.67
+        "x": -68.36,
+        "y": 225.53,
+        "z": 55.47
       },
       {
         "id": "author-jinbao-wang",
@@ -5460,9 +5486,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 424.12,
-        "y": 108.56,
-        "z": 94.67
+        "x": 6.55,
+        "y": 209.03,
+        "z": 55.47
       },
       {
         "id": "concept-fillgauss",
@@ -5471,9 +5497,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 371.56,
-        "y": 138.25,
-        "z": 104.67
+        "x": -46.01,
+        "y": 238.72,
+        "z": 65.47
       },
       {
         "id": "concept-fine",
@@ -5482,9 +5508,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 471.31,
-        "y": 55.32,
-        "z": -23.33
+        "x": 53.74,
+        "y": 155.79,
+        "z": -62.53
       },
       {
         "id": "concept-grained",
@@ -5493,9 +5519,9 @@
         "val": 10,
         "group": "arXiv",
         "provenance": "Local Index",
-        "x": 387.08,
-        "y": -60.65,
-        "z": 120.67
+        "x": -30.49,
+        "y": 39.82,
+        "z": 81.47
       },
       {
         "id": "arxiv:2607.17216v1",
@@ -5525,9 +5551,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 385.38,
-        "y": 7.68,
-        "z": 66.5
+        "x": -32.19,
+        "y": 108.16,
+        "z": 27.3
       },
       {
         "id": "author-reza-hamzehofi",
@@ -5536,9 +5562,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 452.7,
-        "y": 50.9,
-        "z": 116.5
+        "x": 35.13,
+        "y": 151.38,
+        "z": 77.3
       },
       {
         "id": "author-davood-afshar",
@@ -5547,9 +5573,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 458.12,
-        "y": -25.61,
-        "z": 116.5
+        "x": 40.55,
+        "y": 74.87,
+        "z": 77.3
       },
       {
         "id": "author-mehrzad-ashrafpour",
@@ -5558,9 +5584,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 396.67,
-        "y": -71.52,
-        "z": 116.5
+        "x": -20.9,
+        "y": 28.96,
+        "z": 77.3
       },
       {
         "id": "arxiv:2607.14592v1",
@@ -5591,9 +5617,9 @@
             "Quantum Teleportation"
           ]
         },
-        "x": 334.9,
-        "y": 25.5,
-        "z": 98
+        "x": -82.67,
+        "y": 125.97,
+        "z": 58.8
       },
       {
         "id": "author-rajeswari-suance-p-s",
@@ -5602,9 +5628,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 402.22,
-        "y": 68.72,
-        "z": 148
+        "x": -15.35,
+        "y": 169.19,
+        "z": 108.8
       },
       {
         "id": "author-anubhab-dutta",
@@ -5613,9 +5639,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 407.64,
-        "y": -7.79,
-        "z": 148
+        "x": -9.93,
+        "y": 92.68,
+        "z": 108.8
       },
       {
         "id": "author-ruchika-gupta",
@@ -5624,9 +5650,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 346.19,
-        "y": -53.7,
-        "z": 148
+        "x": -71.38,
+        "y": 46.77,
+        "z": 108.8
       },
       {
         "id": "author-john-jose",
@@ -5635,9 +5661,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 274.36,
-        "y": -26.79,
-        "z": 148
+        "x": -143.21,
+        "y": 73.68,
+        "z": 108.8
       },
       {
         "id": "arch-church-01",
@@ -5677,9 +5703,9 @@
           "agency": "U.S. Senate Select Committee",
           "classificationLevel": "Declassified Record"
         },
-        "x": 305.71,
-        "y": -251.15,
-        "z": 191.17
+        "x": 98.03,
+        "y": 130.5,
+        "z": 145.43
       },
       {
         "id": "agency-u-s-senate-select-committee",
@@ -5688,9 +5714,9 @@
         "val": 18,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 380.71,
-        "y": -326.15,
-        "z": 231.17
+        "x": 173.03,
+        "y": 55.5,
+        "z": 185.43
       },
       {
         "id": "author-frank-church",
@@ -5699,9 +5725,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 373.03,
-        "y": -207.93,
-        "z": 241.17
+        "x": 165.35,
+        "y": 173.72,
+        "z": 195.43
       },
       {
         "id": "author-john-tower",
@@ -5710,9 +5736,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 378.45,
-        "y": -284.44,
-        "z": 241.17
+        "x": 170.77,
+        "y": 97.21,
+        "z": 195.43
       },
       {
         "id": "author-senate-select-committee-on-intelligence",
@@ -5721,9 +5747,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 317,
-        "y": -330.35,
-        "z": 241.17
+        "x": 109.32,
+        "y": 51.3,
+        "z": 195.43
       },
       {
         "id": "agency-senate-select-committee",
@@ -5732,9 +5758,9 @@
         "val": 14,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 305.71,
-        "y": -161.15,
-        "z": 251.17
+        "x": 98.03,
+        "y": 220.5,
+        "z": 205.43
       },
       {
         "id": "policyshift-covert-action-directives",
@@ -5743,9 +5769,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 405.46,
-        "y": -244.08,
-        "z": 123.17
+        "x": 197.78,
+        "y": 137.57,
+        "z": 77.43
       },
       {
         "id": "concept-destruction-of-records",
@@ -5754,9 +5780,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 321.23,
-        "y": -360.05,
-        "z": 267.17
+        "x": 113.55,
+        "y": 21.6,
+        "z": 221.43
       },
       {
         "id": "policyshift-intelligence-oversight-act",
@@ -5765,9 +5791,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 188.41,
-        "y": -276.45,
-        "z": 107.17
+        "x": -19.27,
+        "y": 105.2,
+        "z": 61.43
       },
       {
         "id": "agency-cia-oversight",
@@ -5776,9 +5802,9 @@
         "val": 14,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 269.39,
-        "y": -126.33,
-        "z": 283.17
+        "x": 61.71,
+        "y": 255.32,
+        "z": 237.43
       },
       {
         "id": "concept-executive-accountability",
@@ -5787,9 +5813,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 437.03,
-        "y": -202.62,
-        "z": 91.17
+        "x": 229.35,
+        "y": 179.03,
+        "z": 45.43
       },
       {
         "id": "arch-achre-02",
@@ -5830,9 +5856,9 @@
           "agency": "Atomic Energy Commission",
           "classificationLevel": "Declassified Record"
         },
-        "x": 293.3,
-        "y": -280.71,
-        "z": 228.67
+        "x": 85.61,
+        "y": 100.94,
+        "z": 182.93
       },
       {
         "id": "agency-atomic-energy-commission",
@@ -5841,9 +5867,9 @@
         "val": 21,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 368.3,
-        "y": -355.71,
-        "z": 268.67
+        "x": 160.61,
+        "y": 25.94,
+        "z": 222.93
       },
       {
         "id": "official-ruth-faden",
@@ -5852,9 +5878,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 360.62,
-        "y": -237.49,
-        "z": 278.67
+        "x": 152.93,
+        "y": 144.16,
+        "z": 232.93
       },
       {
         "id": "official-advisory-committee-on-human-radiation-experiments",
@@ -5863,9 +5889,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 366.04,
-        "y": -314,
-        "z": 278.67
+        "x": 158.35,
+        "y": 67.65,
+        "z": 232.93
       },
       {
         "id": "official-department-of-energy",
@@ -5874,9 +5900,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 304.59,
-        "y": -359.91,
-        "z": 278.67
+        "x": 96.9,
+        "y": 21.74,
+        "z": 232.93
       },
       {
         "id": "concept-biomedical-protocol-memos",
@@ -5885,9 +5911,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 393.05,
-        "y": -273.64,
-        "z": 160.67
+        "x": 185.36,
+        "y": 108.01,
+        "z": 114.93
       },
       {
         "id": "concept-human-radiation-experiments",
@@ -5896,9 +5922,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 308.82,
-        "y": -389.61,
-        "z": 304.67
+        "x": 101.13,
+        "y": -7.96,
+        "z": 258.93
       },
       {
         "id": "agency-department-of-energy",
@@ -5907,9 +5933,9 @@
         "val": 14,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 176,
-        "y": -306.01,
-        "z": 144.67
+        "x": -31.69,
+        "y": 75.64,
+        "z": 98.93
       },
       {
         "id": "agency-dod-research-logs",
@@ -5918,9 +5944,9 @@
         "val": 14,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 256.98,
-        "y": -155.89,
-        "z": 320.67
+        "x": 49.29,
+        "y": 225.76,
+        "z": 274.93
       },
       {
         "id": "concept-institutional-review-boards",
@@ -5929,9 +5955,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 424.62,
-        "y": -232.18,
-        "z": 128.67
+        "x": 216.93,
+        "y": 149.47,
+        "z": 82.93
       },
       {
         "id": "arch-shamrock-03",
@@ -5972,9 +5998,9 @@
           "agency": "National Security Agency",
           "classificationLevel": "Declassified Record"
         },
-        "x": 252.02,
-        "y": -232.98,
-        "z": 235.83
+        "x": 44.34,
+        "y": 148.67,
+        "z": 190.1
       },
       {
         "id": "agency-national-security-agency",
@@ -5983,9 +6009,9 @@
         "val": 21,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 327.02,
-        "y": -307.98,
-        "z": 275.83
+        "x": 119.34,
+        "y": 73.67,
+        "z": 230.1
       },
       {
         "id": "author-l-patrick-gray",
@@ -5994,9 +6020,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 319.34,
-        "y": -189.76,
-        "z": 285.83
+        "x": 111.66,
+        "y": 191.89,
+        "z": 240.1
       },
       {
         "id": "author-otis-pike",
@@ -6005,9 +6031,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 324.76,
-        "y": -266.27,
-        "z": 285.83
+        "x": 117.08,
+        "y": 115.38,
+        "z": 240.1
       },
       {
         "id": "author-house-permanent-select-committee-on-intelligence",
@@ -6016,9 +6042,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 263.31,
-        "y": -312.18,
-        "z": 285.83
+        "x": 55.63,
+        "y": 69.47,
+        "z": 240.1
       },
       {
         "id": "concept-project-shamrock",
@@ -6027,9 +6053,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 351.77,
-        "y": -225.91,
-        "z": 167.83
+        "x": 144.09,
+        "y": 155.74,
+        "z": 122.1
       },
       {
         "id": "policyshift-fisa-statutory-shift",
@@ -6038,9 +6064,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 267.54,
-        "y": -341.88,
-        "z": 311.83
+        "x": 59.86,
+        "y": 39.77,
+        "z": 266.1
       },
       {
         "id": "concept-watchlist-logs",
@@ -6049,9 +6075,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 134.72,
-        "y": -258.28,
-        "z": 151.83
+        "x": -72.96,
+        "y": 123.37,
+        "z": 106.1
       },
       {
         "id": "concept-foreign-intelligence-surveillance-court",
@@ -6060,9 +6086,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 215.7,
-        "y": -108.16,
-        "z": 327.83
+        "x": 8.02,
+        "y": 273.49,
+        "z": 282.1
       },
       {
         "id": "hearing-congressional-hearing",
@@ -6071,9 +6097,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 383.34,
-        "y": -184.45,
-        "z": 135.83
+        "x": 175.66,
+        "y": 197.2,
+        "z": 90.1
       },
       {
         "id": "arch-mkultra-04",
@@ -6114,9 +6140,9 @@
           "agency": "Central Intelligence Agency",
           "classificationLevel": "Declassified Record"
         },
-        "x": 235.01,
-        "y": -240.81,
-        "z": 279.33
+        "x": 27.33,
+        "y": 140.84,
+        "z": 233.6
       },
       {
         "id": "agency-central-intelligence-agency",
@@ -6125,9 +6151,9 @@
         "val": 21,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 310.01,
-        "y": -315.81,
-        "z": 319.33
+        "x": 102.33,
+        "y": 65.84,
+        "z": 273.6
       },
       {
         "id": "official-edward-kennedy",
@@ -6136,9 +6162,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 302.33,
-        "y": -197.59,
-        "z": 329.33
+        "x": 94.65,
+        "y": 184.06,
+        "z": 283.6
       },
       {
         "id": "official-daniel-inouye",
@@ -6147,9 +6173,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 307.75,
-        "y": -274.1,
-        "z": 329.33
+        "x": 100.07,
+        "y": 107.55,
+        "z": 283.6
       },
       {
         "id": "official-joint-committee-on-human-resources-and-intelligence",
@@ -6158,9 +6184,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 246.3,
-        "y": -320.01,
-        "z": 329.33
+        "x": 38.62,
+        "y": 61.64,
+        "z": 283.6
       },
       {
         "id": "concept-inspector-general-audit",
@@ -6169,9 +6195,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 334.76,
-        "y": -233.74,
-        "z": 211.33
+        "x": 127.08,
+        "y": 147.91,
+        "z": 165.6
       },
       {
         "id": "concept-mkultra-subproject-memos",
@@ -6180,9 +6206,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 250.53,
-        "y": -349.71,
-        "z": 355.33
+        "x": 42.85,
+        "y": 31.94,
+        "z": 309.6
       },
       {
         "id": "hearing-joint-congressional-inquiry",
@@ -6191,9 +6217,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 117.71,
-        "y": -266.11,
-        "z": 195.33
+        "x": -89.97,
+        "y": 115.54,
+        "z": 149.6
       },
       {
         "id": "policyshift-institutional-oversight-act",
@@ -6202,9 +6228,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 198.69,
-        "y": -115.99,
-        "z": 371.33
+        "x": -8.99,
+        "y": 265.66,
+        "z": 325.6
       },
       {
         "id": "policyshift-contractor-disconnect",
@@ -6213,9 +6239,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 366.33,
-        "y": -192.28,
-        "z": 179.33
+        "x": 158.65,
+        "y": 189.37,
+        "z": 133.6
       },
       {
         "id": "arch-pentagon-05",
@@ -6255,9 +6281,9 @@
           "agency": "Department of Defense",
           "classificationLevel": "Declassified Record"
         },
-        "x": 216.78,
-        "y": -180.35,
-        "z": 265.83
+        "x": 9.1,
+        "y": 201.3,
+        "z": 220.1
       },
       {
         "id": "agency-department-of-defense",
@@ -6266,9 +6292,9 @@
         "val": 18,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 291.78,
-        "y": -255.35,
-        "z": 305.83
+        "x": 84.1,
+        "y": 126.3,
+        "z": 260.1
       },
       {
         "id": "official-leslie-h-gelb",
@@ -6277,9 +6303,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 284.1,
-        "y": -137.13,
-        "z": 315.83
+        "x": 76.42,
+        "y": 244.52,
+        "z": 270.1
       },
       {
         "id": "official-morton-halperin",
@@ -6288,9 +6314,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 289.52,
-        "y": -213.64,
-        "z": 315.83
+        "x": 81.84,
+        "y": 168.01,
+        "z": 270.1
       },
       {
         "id": "official-office-of-the-secretary-of-defense",
@@ -6299,9 +6325,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 228.07,
-        "y": -259.55,
-        "z": 315.83
+        "x": 20.39,
+        "y": 122.1,
+        "z": 270.1
       },
       {
         "id": "concept-department-of-defense",
@@ -6310,9 +6336,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 216.78,
-        "y": -90.35,
-        "z": 325.83
+        "x": 9.1,
+        "y": 291.3,
+        "z": 280.1
       },
       {
         "id": "concept-national-security-council",
@@ -6321,9 +6347,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 316.53,
-        "y": -173.28,
-        "z": 197.83
+        "x": 108.85,
+        "y": 208.37,
+        "z": 152.1
       },
       {
         "id": "policyshift-national-security-action-memos",
@@ -6332,9 +6358,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 232.3,
-        "y": -289.25,
-        "z": 341.83
+        "x": 24.62,
+        "y": 92.4,
+        "z": 296.1
       },
       {
         "id": "agency-inter-agency-policy-shift",
@@ -6343,9 +6369,9 @@
         "val": 14,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 99.48,
-        "y": -205.65,
-        "z": 181.83
+        "x": -108.2,
+        "y": 176,
+        "z": 136.1
       },
       {
         "id": "concept-nara-declassified-record",
@@ -6354,9 +6380,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 180.46,
-        "y": -55.53,
-        "z": 357.83
+        "x": -27.22,
+        "y": 326.12,
+        "z": 312.1
       },
       {
         "id": "arch-tia-06",
@@ -6396,9 +6422,9 @@
           "agency": "Defense Advanced Research Projects Agency",
           "classificationLevel": "Declassified Record"
         },
-        "x": 217.1,
-        "y": -112.36,
-        "z": 11.33
+        "x": 9.42,
+        "y": 269.29,
+        "z": -34.4
       },
       {
         "id": "agency-defense-advanced-research-projects-agency",
@@ -6407,9 +6433,9 @@
         "val": 21,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 292.1,
-        "y": -187.36,
-        "z": 51.33
+        "x": 84.42,
+        "y": 194.29,
+        "z": 5.6
       },
       {
         "id": "author-ron-wyden",
@@ -6418,9 +6444,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 284.42,
-        "y": -69.14,
-        "z": 61.33
+        "x": 76.74,
+        "y": 312.51,
+        "z": 15.6
       },
       {
         "id": "author-defense-advanced-research-projects-agency",
@@ -6429,9 +6455,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 289.84,
-        "y": -145.65,
-        "z": 61.33
+        "x": 82.16,
+        "y": 236,
+        "z": 15.6
       },
       {
         "id": "author-congressional-research-service",
@@ -6440,9 +6466,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 228.39,
-        "y": -191.56,
-        "z": 61.33
+        "x": 20.71,
+        "y": 190.09,
+        "z": 15.6
       },
       {
         "id": "concept-total-information-awareness",
@@ -6451,9 +6477,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 316.85,
-        "y": -105.29,
-        "z": -56.67
+        "x": 109.17,
+        "y": 276.36,
+        "z": -102.4
       },
       {
         "id": "policyshift-wyden-amendment-defunding",
@@ -6462,9 +6488,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 232.62,
-        "y": -221.26,
-        "z": 87.33
+        "x": 24.94,
+        "y": 160.39,
+        "z": 41.6
       },
       {
         "id": "policyshift-algorithmic-surveillance-directive",
@@ -6473,9 +6499,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 99.8,
-        "y": -137.66,
-        "z": -72.67
+        "x": -107.88,
+        "y": 243.99,
+        "z": -118.4
       },
       {
         "id": "concept-congressional-research-service",
@@ -6484,9 +6510,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 180.78,
-        "y": 12.46,
-        "z": 103.33
+        "x": -26.9,
+        "y": 394.11,
+        "z": 57.6
       },
       {
         "id": "arch-bluebook-07",
@@ -6526,9 +6552,9 @@
           "agency": "U.S. Air Force",
           "classificationLevel": "Declassified Record"
         },
-        "x": 316.13,
-        "y": -126.64,
-        "z": 12.5
+        "x": 108.45,
+        "y": 255.01,
+        "z": -33.23
       },
       {
         "id": "agency-u-s-air-force",
@@ -6537,9 +6563,9 @@
         "val": 18,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 391.13,
-        "y": -201.64,
-        "z": 52.5
+        "x": 183.45,
+        "y": 180.01,
+        "z": 6.77
       },
       {
         "id": "official-edward-u-condon",
@@ -6548,9 +6574,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 383.45,
-        "y": -83.42,
-        "z": 62.5
+        "x": 175.77,
+        "y": 298.23,
+        "z": 16.77
       },
       {
         "id": "official-robert-j-low",
@@ -6559,9 +6585,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 388.87,
-        "y": -159.93,
-        "z": 62.5
+        "x": 181.19,
+        "y": 221.72,
+        "z": 16.77
       },
       {
         "id": "official-air-force-office-of-scientific-research",
@@ -6570,9 +6596,9 @@
         "val": 14,
         "group": "Officials",
         "provenance": "Source Verified",
-        "x": 327.42,
-        "y": -205.84,
-        "z": 62.5
+        "x": 119.74,
+        "y": 175.81,
+        "z": 16.77
       },
       {
         "id": "concept-u-s-air-force",
@@ -6581,9 +6607,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 316.13,
-        "y": -36.64,
-        "z": 72.5
+        "x": 108.45,
+        "y": 345.01,
+        "z": 26.77
       },
       {
         "id": "concept-project-blue-book-logs",
@@ -6592,9 +6618,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 415.88,
-        "y": -119.57,
-        "z": -55.5
+        "x": 208.2,
+        "y": 262.08,
+        "z": -101.23
       },
       {
         "id": "concept-condon-scientific-committee",
@@ -6603,9 +6629,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 331.65,
-        "y": -235.54,
-        "z": 88.5
+        "x": 123.97,
+        "y": 146.11,
+        "z": 42.77
       },
       {
         "id": "concept-radar-tracking-records",
@@ -6614,9 +6640,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 198.83,
-        "y": -151.94,
-        "z": -71.5
+        "x": -8.85,
+        "y": 229.71,
+        "z": -117.23
       },
       {
         "id": "policyshift-termination-directive",
@@ -6625,9 +6651,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 279.81,
-        "y": -1.82,
-        "z": 104.5
+        "x": 72.13,
+        "y": 379.83,
+        "z": 58.77
       },
       {
         "id": "arch-foia-reform-08",
@@ -6667,9 +6693,9 @@
           "agency": "Information Security Oversight Office",
           "classificationLevel": "Declassified Record"
         },
-        "x": 310.05,
-        "y": -139.74,
-        "z": 76.67
+        "x": 102.37,
+        "y": 241.91,
+        "z": 30.93
       },
       {
         "id": "agency-information-security-oversight-office",
@@ -6678,9 +6704,9 @@
         "val": 18,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Source Verified",
-        "x": 385.05,
-        "y": -214.74,
-        "z": 116.67
+        "x": 177.37,
+        "y": 166.91,
+        "z": 70.93
       },
       {
         "id": "author-patrick-leahy",
@@ -6689,9 +6715,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 377.37,
-        "y": -96.52,
-        "z": 126.67
+        "x": 169.69,
+        "y": 285.13,
+        "z": 80.93
       },
       {
         "id": "author-information-security-oversight-office",
@@ -6700,9 +6726,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 382.79,
-        "y": -173.03,
-        "z": 126.67
+        "x": 175.11,
+        "y": 208.62,
+        "z": 80.93
       },
       {
         "id": "author-national-archives",
@@ -6711,9 +6737,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 321.34,
-        "y": -218.94,
-        "z": 126.67
+        "x": 113.66,
+        "y": 162.71,
+        "z": 80.93
       },
       {
         "id": "concept-information-security-oversight-office",
@@ -6722,9 +6748,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 310.05,
-        "y": -49.74,
-        "z": 136.67
+        "x": 102.37,
+        "y": 331.91,
+        "z": 90.93
       },
       {
         "id": "concept-executive-order-12958",
@@ -6733,9 +6759,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 409.8,
-        "y": -132.67,
-        "z": 8.67
+        "x": 202.12,
+        "y": 248.98,
+        "z": -37.07
       },
       {
         "id": "policyshift-electronic-foia-amendments",
@@ -6744,9 +6770,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 325.57,
-        "y": -248.64,
-        "z": 152.67
+        "x": 117.89,
+        "y": 133.01,
+        "z": 106.93
       },
       {
         "id": "concept-automatic-declassification-sunset",
@@ -6755,9 +6781,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 192.75,
-        "y": -165.04,
-        "z": -7.33
+        "x": -14.93,
+        "y": 216.61,
+        "z": -53.07
       },
       {
         "id": "agency-inter-agency-security-classification-appeals-panel",
@@ -6766,9 +6792,9 @@
         "val": 14,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 273.73,
-        "y": -14.92,
-        "z": 168.67
+        "x": 66.05,
+        "y": 366.73,
+        "z": 122.93
       },
       {
         "id": "dataset-neuro2-complete-atlas",
@@ -6805,9 +6831,9 @@
             "Electroencephalography"
           ]
         },
-        "x": 148.66,
-        "y": -240.65,
-        "z": 149.17
+        "x": 279.06,
+        "y": 120.52,
+        "z": 96.9
       },
       {
         "id": "author-nataliya-kosmyna",
@@ -6816,9 +6842,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 215.98,
-        "y": -197.43,
-        "z": 199.17
+        "x": 346.38,
+        "y": 163.74,
+        "z": 146.9
       },
       {
         "id": "author-eugene-hauptmann",
@@ -6827,9 +6853,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 221.4,
-        "y": -273.94,
-        "z": 199.17
+        "x": 351.8,
+        "y": 87.23,
+        "z": 146.9
       },
       {
         "id": "dataset-neuro2-atlas",
@@ -6838,9 +6864,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 148.66,
-        "y": -150.65,
-        "z": 209.17
+        "x": 279.06,
+        "y": 210.52,
+        "z": 156.9
       },
       {
         "id": "concept-3d-knowledge-graph",
@@ -6849,9 +6875,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 248.41,
-        "y": -233.58,
-        "z": 81.17
+        "x": 378.81,
+        "y": 127.59,
+        "z": 28.9
       },
       {
         "id": "dataset-openneuro",
@@ -6860,9 +6886,9 @@
         "val": 19,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 164.18,
-        "y": -349.55,
-        "z": 225.17
+        "x": 294.58,
+        "y": 11.62,
+        "z": 172.9
       },
       {
         "id": "dataset-dandi-archive",
@@ -6871,9 +6897,9 @@
         "val": 13,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 31.36,
-        "y": -265.95,
-        "z": 65.17
+        "x": 161.76,
+        "y": 95.22,
+        "z": 12.9
       },
       {
         "id": "concept-parquet-table",
@@ -6882,9 +6908,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 112.34,
-        "y": -115.83,
-        "z": 241.17
+        "x": 242.74,
+        "y": 245.34,
+        "z": 188.9
       },
       {
         "id": "concept-electroencephalography",
@@ -6893,9 +6919,9 @@
         "val": 22,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 279.98,
-        "y": -192.12,
-        "z": 49.17
+        "x": 410.38,
+        "y": 169.05,
+        "z": -3.1
       },
       {
         "id": "dataset-openneuro-ds003838",
@@ -6932,9 +6958,9 @@
             "OpenNeuro"
           ]
         },
-        "x": 172.42,
-        "y": -279.37,
-        "z": 166
+        "x": 302.82,
+        "y": 81.8,
+        "z": 113.73
       },
       {
         "id": "author-neuro2-open-science-consortia",
@@ -6943,9 +6969,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 245.16,
-        "y": -312.66,
-        "z": 216
+        "x": 375.56,
+        "y": 48.51,
+        "z": 163.73
       },
       {
         "id": "author-openneuro-team",
@@ -6954,9 +6980,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 183.71,
-        "y": -358.57,
-        "z": 216
+        "x": 314.11,
+        "y": 2.6,
+        "z": 163.73
       },
       {
         "id": "concept-brain-computer-interface",
@@ -6965,9 +6991,9 @@
         "val": 13,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 272.17,
-        "y": -272.3,
-        "z": 98
+        "x": 402.57,
+        "y": 88.87,
+        "z": 45.73
       },
       {
         "id": "concept-auditory-evoked-potential",
@@ -6976,9 +7002,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 187.94,
-        "y": -388.27,
-        "z": 242
+        "x": 318.34,
+        "y": -27.1,
+        "z": 189.73
       },
       {
         "id": "concept-neural-decoding",
@@ -6987,9 +7013,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 55.12,
-        "y": -304.67,
-        "z": 82
+        "x": 185.52,
+        "y": 56.5,
+        "z": 29.73
       },
       {
         "id": "dataset-physionet-sleep-edfx",
@@ -7025,9 +7051,9 @@
             "PhysioNet"
           ]
         },
-        "x": 125.38,
-        "y": -271.97,
-        "z": 205.83
+        "x": 255.78,
+        "y": 89.2,
+        "z": 153.57
       },
       {
         "id": "author-b-kemp",
@@ -7036,9 +7062,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 192.7,
-        "y": -228.75,
-        "z": 255.83
+        "x": 323.1,
+        "y": 132.42,
+        "z": 203.57
       },
       {
         "id": "author-a-h-zwinderman",
@@ -7047,9 +7073,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 198.12,
-        "y": -305.26,
-        "z": 255.83
+        "x": 328.52,
+        "y": 55.91,
+        "z": 203.57
       },
       {
         "id": "author-neuro2-open-science",
@@ -7058,9 +7084,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 136.67,
-        "y": -351.17,
-        "z": 255.83
+        "x": 267.07,
+        "y": 10,
+        "z": 203.57
       },
       {
         "id": "concept-delta-oscillation",
@@ -7069,9 +7095,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 225.13,
-        "y": -264.9,
-        "z": 137.83
+        "x": 355.53,
+        "y": 96.27,
+        "z": 85.57
       },
       {
         "id": "dataset-polysomnography",
@@ -7080,9 +7106,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 140.9,
-        "y": -380.87,
-        "z": 281.83
+        "x": 271.3,
+        "y": -19.7,
+        "z": 229.57
       },
       {
         "id": "dataset-physionet",
@@ -7091,9 +7117,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 89.06,
-        "y": -147.15,
-        "z": 297.83
+        "x": 219.46,
+        "y": 214.02,
+        "z": 245.57
       },
       {
         "id": "dataset-dandi-000003",
@@ -7129,9 +7155,9 @@
             "DANDI Archive"
           ]
         },
-        "x": 131.86,
-        "y": -309.02,
-        "z": 228.67
+        "x": 262.26,
+        "y": 52.15,
+        "z": 176.4
       },
       {
         "id": "author-allen-institute-for-brain-science",
@@ -7140,9 +7166,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 199.18,
-        "y": -265.8,
-        "z": 278.67
+        "x": 329.58,
+        "y": 95.37,
+        "z": 226.4
       },
       {
         "id": "author-dandi-archive",
@@ -7151,9 +7177,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 204.6,
-        "y": -342.31,
-        "z": 278.67
+        "x": 335,
+        "y": 18.86,
+        "z": 226.4
       },
       {
         "id": "technology-neuropixels-array",
@@ -7162,9 +7188,9 @@
         "val": 14,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 131.86,
-        "y": -219.02,
-        "z": 288.67
+        "x": 262.26,
+        "y": 142.15,
+        "z": 236.4
       },
       {
         "id": "concept-spike-sorting",
@@ -7173,9 +7199,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 231.61,
-        "y": -301.95,
-        "z": 160.67
+        "x": 362.01,
+        "y": 59.22,
+        "z": 108.4
       },
       {
         "id": "concept-hippocampal-circuit",
@@ -7184,9 +7210,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 147.38,
-        "y": -417.92,
-        "z": 304.67
+        "x": 277.78,
+        "y": -56.75,
+        "z": 252.4
       },
       {
         "id": "concept-electrophysiology",
@@ -7195,9 +7221,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 14.56,
-        "y": -334.32,
-        "z": 144.67
+        "x": 144.96,
+        "y": 26.85,
+        "z": 92.4
       },
       {
         "id": "dataset-bnci-horizon-2020-001",
@@ -7235,9 +7261,9 @@
             "BNCI Horizon"
           ]
         },
-        "x": 126.95,
-        "y": -345.35,
-        "z": 261.17
+        "x": 257.34,
+        "y": 15.82,
+        "z": 208.9
       },
       {
         "id": "author-g-brunner",
@@ -7246,9 +7272,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 194.27,
-        "y": -302.13,
-        "z": 311.17
+        "x": 324.66,
+        "y": 59.04,
+        "z": 258.9
       },
       {
         "id": "author-r-leeb",
@@ -7257,9 +7283,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 199.69,
-        "y": -378.64,
-        "z": 311.17
+        "x": 330.08,
+        "y": -17.47,
+        "z": 258.9
       },
       {
         "id": "author-g-pfurtscheller",
@@ -7268,9 +7294,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 138.24,
-        "y": -424.55,
-        "z": 311.17
+        "x": 268.63,
+        "y": -63.38,
+        "z": 258.9
       },
       {
         "id": "concept-motor-imagery",
@@ -7279,9 +7305,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 126.95,
-        "y": -255.35,
-        "z": 321.17
+        "x": 257.34,
+        "y": 105.82,
+        "z": 268.9
       },
       {
         "id": "technology-sensorimotor-rhythm",
@@ -7290,9 +7316,9 @@
         "val": 14,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 226.7,
-        "y": -338.28,
-        "z": 193.17
+        "x": 357.09,
+        "y": 22.89,
+        "z": 140.9
       },
       {
         "id": "concept-bnci-horizon",
@@ -7301,9 +7327,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 90.63,
-        "y": -220.53,
-        "z": 353.17
+        "x": 221.02,
+        "y": 140.64,
+        "z": 300.9
       },
       {
         "id": "dataset-openneuro-ds003645",
@@ -7340,9 +7366,9 @@
             "OpenNeuro"
           ]
         },
-        "x": 79.46,
-        "y": -306.98,
-        "z": 276.67
+        "x": 209.85,
+        "y": 54.19,
+        "z": 224.4
       },
       {
         "id": "author-openneuro-consortia",
@@ -7351,9 +7377,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 152.2,
-        "y": -340.27,
-        "z": 326.67
+        "x": 282.59,
+        "y": 20.9,
+        "z": 274.4
       },
       {
         "id": "concept-magnetoencephalography",
@@ -7362,9 +7388,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 79.46,
-        "y": -216.98,
-        "z": 336.67
+        "x": 209.85,
+        "y": 144.19,
+        "z": 284.4
       },
       {
         "id": "concept-auditory-cortex",
@@ -7373,9 +7399,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 179.21,
-        "y": -299.91,
-        "z": 208.67
+        "x": 309.6,
+        "y": 61.26,
+        "z": 156.4
       },
       {
         "id": "concept-spatial-sound",
@@ -7384,9 +7410,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 94.98,
-        "y": -415.88,
-        "z": 352.67
+        "x": 225.37,
+        "y": -54.71,
+        "z": 300.4
       },
       {
         "id": "concept-phase-synchronization",
@@ -7395,9 +7421,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": -37.84,
-        "y": -332.28,
-        "z": 192.67
+        "x": 92.55,
+        "y": 28.89,
+        "z": 140.4
       },
       {
         "id": "dataset-zenodo-vibroacoustic-resonance",
@@ -7434,9 +7460,9 @@
             "Zenodo"
           ]
         },
-        "x": 65.14,
-        "y": -327.21,
-        "z": 315.17
+        "x": 195.53,
+        "y": 33.97,
+        "z": 262.9
       },
       {
         "id": "concept-vibroacoustic-resonance",
@@ -7445,9 +7471,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 65.14,
-        "y": -237.21,
-        "z": 375.17
+        "x": 195.53,
+        "y": 123.97,
+        "z": 322.9
       },
       {
         "id": "concept-theta-gamma-coupling",
@@ -7456,9 +7482,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 164.89,
-        "y": -320.14,
-        "z": 247.17
+        "x": 295.28,
+        "y": 41.04,
+        "z": 194.9
       },
       {
         "id": "technology-chladni-resonator",
@@ -7467,9 +7493,9 @@
         "val": 14,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 80.66,
-        "y": -436.11,
-        "z": 391.17
+        "x": 211.05,
+        "y": -74.93,
+        "z": 338.9
       },
       {
         "id": "concept-zenodo",
@@ -7478,9 +7504,9 @@
         "val": 13,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 28.82,
-        "y": -202.39,
-        "z": 407.17
+        "x": 159.21,
+        "y": 158.79,
+        "z": 354.9
       },
       {
         "id": "dataset-openneuro-ds000102",
@@ -7516,9 +7542,9 @@
             "OpenNeuro"
           ]
         },
-        "x": 36.04,
-        "y": -273.36,
-        "z": 310
+        "x": 166.43,
+        "y": 87.82,
+        "z": 257.73
       },
       {
         "id": "author-kelly-et-al",
@@ -7527,9 +7553,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 103.36,
-        "y": -230.14,
-        "z": 360
+        "x": 233.75,
+        "y": 131.04,
+        "z": 307.73
       },
       {
         "id": "concept-fmri",
@@ -7538,9 +7564,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 36.04,
-        "y": -183.36,
-        "z": 370
+        "x": 166.43,
+        "y": 177.82,
+        "z": 317.73
       },
       {
         "id": "concept-flanker-paradigm",
@@ -7549,9 +7575,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 135.79,
-        "y": -266.29,
-        "z": 242
+        "x": 266.18,
+        "y": 94.89,
+        "z": 189.73
       },
       {
         "id": "concept-cognitive-control",
@@ -7560,9 +7586,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 51.56,
-        "y": -382.26,
-        "z": 386
+        "x": 181.95,
+        "y": -21.08,
+        "z": 333.73
       },
       {
         "id": "concept-brain-imaging-data-structure",
@@ -7571,9 +7597,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": -81.26,
-        "y": -298.66,
-        "z": 226
+        "x": 49.13,
+        "y": 62.52,
+        "z": 173.73
       },
       {
         "id": "dataset-zenodo-fnirs-wearable-bci",
@@ -7608,9 +7634,9 @@
             "Zenodo"
           ]
         },
-        "x": 23.09,
-        "y": -266.76,
-        "z": 354.5
+        "x": 153.48,
+        "y": 94.41,
+        "z": 302.23
       },
       {
         "id": "concept-fnirs",
@@ -7619,9 +7645,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 23.09,
-        "y": -176.76,
-        "z": 414.5
+        "x": 153.48,
+        "y": 184.41,
+        "z": 362.23
       },
       {
         "id": "concept-oxyhemoglobin-dynamics",
@@ -7630,9 +7656,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 122.84,
-        "y": -259.69,
-        "z": 286.5
+        "x": 253.23,
+        "y": 101.48,
+        "z": 234.23
       },
       {
         "id": "concept-prefrontal-cortex",
@@ -7641,9 +7667,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": 38.61,
-        "y": -375.66,
-        "z": 430.5
+        "x": 169,
+        "y": -14.49,
+        "z": 378.23
       },
       {
         "id": "concept-wearable-bci",
@@ -7652,9 +7678,9 @@
         "val": 10,
         "group": "Neuroscience & Neural Datasets",
         "provenance": "Local Index",
-        "x": -94.21,
-        "y": -292.06,
-        "z": 270.5
+        "x": 36.18,
+        "y": 69.11,
+        "z": 218.23
       },
       {
         "id": "app-ions-x-deep-emergence",
@@ -7689,9 +7715,9 @@
             "Autonomous Operators"
           ]
         },
-        "x": -268.97,
-        "y": -67,
-        "z": -278
+        "x": -120.54,
+        "y": -240.99,
+        "z": -297.6
       },
       {
         "id": "concept-multi-agent-simulation",
@@ -7700,9 +7726,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -268.97,
-        "y": 23,
-        "z": -218
+        "x": -120.54,
+        "y": -150.99,
+        "z": -237.6
       },
       {
         "id": "concept-coupled-dynamical-field",
@@ -7711,9 +7737,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -169.22,
-        "y": -59.93,
-        "z": -346
+        "x": -20.79,
+        "y": -233.92,
+        "z": -365.6
       },
       {
         "id": "concept-environmental-coherence",
@@ -7722,9 +7748,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -253.45,
-        "y": -175.9,
-        "z": -202
+        "x": -105.02,
+        "y": -349.89,
+        "z": -221.6
       },
       {
         "id": "concept-emergent-graph",
@@ -7733,9 +7759,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -386.27,
-        "y": -92.3,
-        "z": -362
+        "x": -237.84,
+        "y": -266.29,
+        "z": -381.6
       },
       {
         "id": "concept-reg-variance-deviation",
@@ -7744,9 +7770,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -305.29,
-        "y": 57.82,
-        "z": -186
+        "x": -156.86,
+        "y": -116.17,
+        "z": -205.6
       },
       {
         "id": "concept-autonomous-operators",
@@ -7755,9 +7781,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -137.65,
-        "y": -18.47,
-        "z": -378
+        "x": 10.78,
+        "y": -192.46,
+        "z": -397.6
       },
       {
         "id": "app-rain-datamatrix-engine",
@@ -7794,9 +7820,9 @@
             "DOE OSTI"
           ]
         },
-        "x": -198.39,
-        "y": -77.18,
-        "z": -205.5
+        "x": -49.96,
+        "y": -251.17,
+        "z": -225.1
       },
       {
         "id": "author-vers3dynamics-research-team",
@@ -7805,9 +7831,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -125.65,
-        "y": -110.47,
-        "z": -155.5
+        "x": 22.78,
+        "y": -284.46,
+        "z": -175.1
       },
       {
         "id": "concept-reciprocal-rank-fusion",
@@ -7816,9 +7842,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -198.39,
-        "y": 12.82,
-        "z": -145.5
+        "x": -49.96,
+        "y": -161.17,
+        "z": -165.1
       },
       {
         "id": "concept-bm25-retrieval",
@@ -7827,9 +7853,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -98.64,
-        "y": -70.11,
-        "z": -273.5
+        "x": 49.79,
+        "y": -244.1,
+        "z": -293.1
       },
       {
         "id": "concept-dense-vector-search",
@@ -7838,9 +7864,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -182.87,
-        "y": -186.08,
-        "z": -129.5
+        "x": -34.44,
+        "y": -360.07,
+        "z": -149.1
       },
       {
         "id": "concept-open-infrastructure",
@@ -7849,9 +7875,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -315.69,
-        "y": -102.48,
-        "z": -289.5
+        "x": -167.26,
+        "y": -276.47,
+        "z": -309.1
       },
       {
         "id": "concept-citation-first-synthesis",
@@ -7860,9 +7886,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -234.71,
-        "y": 47.64,
-        "z": -113.5
+        "x": -86.28,
+        "y": -126.35,
+        "z": -133.1
       },
       {
         "id": "concept-nasa-ntrs",
@@ -7871,9 +7897,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -67.07,
-        "y": -28.65,
-        "z": -305.5
+        "x": 81.36,
+        "y": -202.64,
+        "z": -325.1
       },
       {
         "id": "concept-doe-osti",
@@ -7882,9 +7908,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -136.57,
-        "y": -213.85,
-        "z": -97.5
+        "x": 11.86,
+        "y": -387.84,
+        "z": -117.1
       },
       {
         "id": "app-rain-lab-james",
@@ -7920,9 +7946,9 @@
             "Autonomous Research"
           ]
         },
-        "x": -156,
-        "y": -100.27,
-        "z": -203.33
+        "x": -7.57,
+        "y": -274.27,
+        "z": -222.93
       },
       {
         "id": "author-r-a-i-n-lab-consortia",
@@ -7931,9 +7957,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": -83.26,
-        "y": -133.56,
-        "z": -153.33
+        "x": 65.17,
+        "y": -307.56,
+        "z": -172.93
       },
       {
         "id": "concept-multi-agent-deliberation",
@@ -7942,9 +7968,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -156,
-        "y": -10.27,
-        "z": -143.33
+        "x": -7.57,
+        "y": -184.27,
+        "z": -162.93
       },
       {
         "id": "concept-tribe-v2-brain-encoding",
@@ -7953,9 +7979,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -56.25,
-        "y": -93.2,
-        "z": -271.33
+        "x": 92.18,
+        "y": -267.2,
+        "z": -290.93
       },
       {
         "id": "concept-fmri-response-prediction",
@@ -7964,9 +7990,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -140.48,
-        "y": -209.17,
-        "z": -127.33
+        "x": 7.95,
+        "y": -383.17,
+        "z": -146.93
       },
       {
         "id": "concept-formal-logic-verification",
@@ -7975,9 +8001,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -273.3,
-        "y": -125.57,
-        "z": -287.33
+        "x": -124.87,
+        "y": -299.57,
+        "z": -306.93
       },
       {
         "id": "concept-zeroclaw-runtime",
@@ -7986,9 +8012,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -192.32,
-        "y": 24.55,
-        "z": -111.33
+        "x": -43.89,
+        "y": -149.45,
+        "z": -130.93
       },
       {
         "id": "concept-autonomous-research",
@@ -7997,9 +8023,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -24.68,
-        "y": -51.74,
-        "z": -303.33
+        "x": 123.75,
+        "y": -225.74,
+        "z": -322.93
       },
       {
         "id": "app-circle-biosignal-platform",
@@ -8035,9 +8061,9 @@
             "Multimodal Biosensing"
           ]
         },
-        "x": 60.92,
-        "y": -296.17,
-        "z": -256.83
+        "x": 197.27,
+        "y": -297.28,
+        "z": -269.9
       },
       {
         "id": "author-vers3dynamics-hardware-group",
@@ -8046,9 +8072,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 133.66,
-        "y": -329.46,
-        "z": -206.83
+        "x": 270.01,
+        "y": -330.57,
+        "z": -219.9
       },
       {
         "id": "concept-closed-loop-bci",
@@ -8057,9 +8083,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 76.44,
-        "y": -405.07,
-        "z": -180.83
+        "x": 212.79,
+        "y": -406.18,
+        "z": -193.9
       },
       {
         "id": "concept-galvanic-isolation",
@@ -8068,9 +8094,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": -56.38,
-        "y": -321.47,
-        "z": -340.83
+        "x": 79.97,
+        "y": -322.58,
+        "z": -353.9
       },
       {
         "id": "concept-esp32-s3-compute",
@@ -8079,9 +8105,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 24.6,
-        "y": -171.35,
-        "z": -164.83
+        "x": 160.95,
+        "y": -172.46,
+        "z": -177.9
       },
       {
         "id": "concept-multimodal-biosensing",
@@ -8090,9 +8116,9 @@
         "val": 10,
         "group": "Biosignal Processing",
         "provenance": "Local Index",
-        "x": 192.24,
-        "y": -247.64,
-        "z": -356.83
+        "x": 328.59,
+        "y": -248.75,
+        "z": -369.9
       },
       {
         "id": "app-lop-nur-geoint-twin",
@@ -8126,9 +8152,9 @@
             "Archival Intelligence"
           ]
         },
-        "x": 324.85,
-        "y": -181.86,
-        "z": 118
+        "x": 117.17,
+        "y": 199.79,
+        "z": 72.27
       },
       {
         "id": "author-vers3dynamics-intelligence-research",
@@ -8137,9 +8163,9 @@
         "val": 14,
         "group": "Authors",
         "provenance": "Source Verified",
-        "x": 397.59,
-        "y": -215.15,
-        "z": 168
+        "x": 189.91,
+        "y": 166.5,
+        "z": 122.27
       },
       {
         "id": "concept-geospatial-digital-twin",
@@ -8148,9 +8174,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 324.85,
-        "y": -91.86,
-        "z": 178
+        "x": 117.17,
+        "y": 289.79,
+        "z": 132.27
       },
       {
         "id": "concept-satellite-earth-observation",
@@ -8159,9 +8185,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 424.6,
-        "y": -174.79,
-        "z": 50
+        "x": 216.92,
+        "y": 206.86,
+        "z": 4.27
       },
       {
         "id": "concept-derived-evidence-ledger",
@@ -8170,9 +8196,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 340.37,
-        "y": -290.76,
-        "z": 194
+        "x": 132.69,
+        "y": 90.89,
+        "z": 148.27
       },
       {
         "id": "concept-structured-uncertainty-envelope",
@@ -8181,9 +8207,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 207.55,
-        "y": -207.16,
-        "z": 34
+        "x": -0.13,
+        "y": 174.49,
+        "z": -11.73
       },
       {
         "id": "concept-archival-intelligence",
@@ -8192,9 +8218,9 @@
         "val": 10,
         "group": "Archival Intelligence & Institutional Oversight",
         "provenance": "Local Index",
-        "x": 288.53,
-        "y": -57.04,
-        "z": 210
+        "x": 80.85,
+        "y": 324.61,
+        "z": 164.27
       },
       {
         "id": "app-orpheus-resonance-protocol",
@@ -8227,9 +8253,9 @@
             "Spatial Audio C2"
           ]
         },
-        "x": -146.24,
-        "y": -173.8,
-        "z": -125.5
+        "x": 2.19,
+        "y": -347.79,
+        "z": -145.1
       },
       {
         "id": "concept-cognitive-load-monitoring",
@@ -8238,9 +8264,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -146.24,
-        "y": -83.8,
-        "z": -65.5
+        "x": 2.19,
+        "y": -257.79,
+        "z": -85.1
       },
       {
         "id": "policyshift-tactical-data-stream",
@@ -8249,9 +8275,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -46.49,
-        "y": -166.73,
-        "z": -193.5
+        "x": 101.94,
+        "y": -340.72,
+        "z": -213.1
       },
       {
         "id": "concept-pupillary-dynamics",
@@ -8260,9 +8286,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -130.72,
-        "y": -282.7,
-        "z": -49.5
+        "x": 17.71,
+        "y": -456.69,
+        "z": -69.1
       },
       {
         "id": "concept-spatial-audio-c2",
@@ -8271,9 +8297,9 @@
         "val": 10,
         "group": "AI & Neural Interfaces",
         "provenance": "Local Index",
-        "x": -263.54,
-        "y": -199.1,
-        "z": -209.5
+        "x": -115.11,
+        "y": -373.09,
+        "z": -229.1
       },
       {
         "id": "app-waveform-shift-quantum",
@@ -8351,6 +8377,120 @@
         "x": 9.37,
         "y": -172.24,
         "z": -378
+      },
+      {
+        "id": "app-project-33-aerospace",
+        "label": "Project 33: Low-Cost Folding-Fin Rocket Testbed & Open Telemetry Ground Station",
+        "type": "Paper",
+        "val": 32,
+        "group": "Aerospace Engineering",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-project-33-aerospace",
+          "title": "Project 33: Low-Cost Folding-Fin Rocket Testbed & Open Telemetry Ground Station",
+          "abstract": "An open-source applied aerospace testbed combining OpenRocket aerodynamic simulation, Fusion 360 four-bar linkage fin CAD, dual ESP32 flight computer firmware with closed-loop PID roll stabilization, and a Python telemetry ground station.",
+          "date": "2026-08-21",
+          "authors": [
+            "Christopher Woodyard",
+            "Vers3Dynamics Aerospace Research"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/33",
+          "tags": [
+            "Aerospace Engineering",
+            "Applied Physics",
+            "Control Systems",
+            "Embedded Hardware"
+          ],
+          "entities": [
+            "Folding-Fin Aerodynamics",
+            "Closed-Loop PID Stabilization",
+            "ESP32 Flight Computer",
+            "OpenRocket Simulation",
+            "Ground Station Telemetry",
+            "Hardware Safety Interlock"
+          ]
+        },
+        "x": 249.44,
+        "y": -87.36,
+        "z": 259.03
+      },
+      {
+        "id": "author-vers3dynamics-aerospace-research",
+        "label": "Vers3Dynamics Aerospace Research",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": 322.18,
+        "y": -120.65,
+        "z": 309.03
+      },
+      {
+        "id": "concept-folding-fin-aerodynamics",
+        "label": "Folding-Fin Aerodynamics",
+        "type": "Concept",
+        "val": 10,
+        "group": "Aerospace Engineering",
+        "provenance": "Local Index",
+        "x": 249.44,
+        "y": 2.64,
+        "z": 319.03
+      },
+      {
+        "id": "concept-closed-loop-pid-stabilization",
+        "label": "Closed-Loop PID Stabilization",
+        "type": "Concept",
+        "val": 10,
+        "group": "Aerospace Engineering",
+        "provenance": "Local Index",
+        "x": 349.19,
+        "y": -80.29,
+        "z": 191.03
+      },
+      {
+        "id": "concept-esp32-flight-computer",
+        "label": "ESP32 Flight Computer",
+        "type": "Concept",
+        "val": 10,
+        "group": "Aerospace Engineering",
+        "provenance": "Local Index",
+        "x": 264.96,
+        "y": -196.26,
+        "z": 335.03
+      },
+      {
+        "id": "concept-openrocket-simulation",
+        "label": "OpenRocket Simulation",
+        "type": "Concept",
+        "val": 10,
+        "group": "Aerospace Engineering",
+        "provenance": "Local Index",
+        "x": 132.14,
+        "y": -112.66,
+        "z": 175.03
+      },
+      {
+        "id": "concept-ground-station-telemetry",
+        "label": "Ground Station Telemetry",
+        "type": "Concept",
+        "val": 10,
+        "group": "Aerospace Engineering",
+        "provenance": "Local Index",
+        "x": 213.12,
+        "y": 37.46,
+        "z": 351.03
+      },
+      {
+        "id": "technology-hardware-safety-interlock",
+        "label": "Hardware Safety Interlock",
+        "type": "Technology",
+        "val": 14,
+        "group": "Aerospace Engineering",
+        "provenance": "Local Index",
+        "x": 380.76,
+        "y": -38.83,
+        "z": 159.03
       }
     ],
     "edges": [
@@ -11690,6 +11830,62 @@
         "source": "app-waveform-shift-quantum",
         "target": "concept-waveform-shift",
         "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "author-vers3dynamics-aerospace-research",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "concept-folding-fin-aerodynamics",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "concept-closed-loop-pid-stabilization",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "concept-esp32-flight-computer",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "concept-openrocket-simulation",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "concept-ground-station-telemetry",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-project-33-aerospace",
+        "target": "technology-hardware-safety-interlock",
+        "relationship": "USES",
         "weight": 0.7,
         "verified": true
       },
