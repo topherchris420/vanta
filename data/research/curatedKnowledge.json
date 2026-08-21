@@ -1763,6 +1763,34 @@
         "Ground Station Telemetry",
         "Hardware Safety Interlock"
       ]
+    },
+    {
+      "id": "app-drr-framework",
+      "title": "Dynamic Resonance Rooting (DRR): Complex Systems Diagnostics & Supervisory State-Space Framework",
+      "abstract": "An open mathematical framework (PyPI: drr-framework) uniting Morlet wavelet spectral decomposition, transfer entropy causal rooting, Herbst–Schorfheide tempered particle filtering, and Federal Reserve SR 11-7 supervisory banking liquidity diagnostics.",
+      "date": "2026-08-21",
+      "authors": [
+        "Christopher Woodyard",
+        "Vers3Dynamics Complex Systems Group"
+      ],
+      "source": "GitHub / Vers3Dynamics / PyPI",
+      "url": "https://github.com/topherchris420/dynamic-resonance-rooting",
+      "tags": [
+        "Cymatics",
+        "Archival Intelligence & Institutional Oversight",
+        "Biosignal Processing",
+        "Resonance Physics",
+        "Open Infrastructure"
+      ],
+      "entities": [
+        "Dynamic Resonance Rooting",
+        "Wavelet Scalograms",
+        "Transfer Entropy",
+        "State-Space Smoothing",
+        "Resonance Depth",
+        "SR 11-7 Compliance",
+        "Kalman Filtering"
+      ]
     }
   ],
   "graph": {
@@ -8491,6 +8519,133 @@
         "x": 380.76,
         "y": -38.83,
         "z": 159.03
+      },
+      {
+        "id": "app-drr-framework",
+        "label": "Dynamic Resonance Rooting (DRR): Complex Systems Diagnostics & Supervisory State-Space Framework",
+        "type": "Paper",
+        "val": 32,
+        "group": "Cymatics",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-drr-framework",
+          "title": "Dynamic Resonance Rooting (DRR): Complex Systems Diagnostics & Supervisory State-Space Framework",
+          "abstract": "An open mathematical framework (PyPI: drr-framework) uniting Morlet wavelet spectral decomposition, transfer entropy causal rooting, Herbst–Schorfheide tempered particle filtering, and Federal Reserve SR 11-7 supervisory banking liquidity diagnostics.",
+          "date": "2026-08-21",
+          "authors": [
+            "Christopher Woodyard",
+            "Vers3Dynamics Complex Systems Group"
+          ],
+          "source": "GitHub / Vers3Dynamics / PyPI",
+          "url": "https://github.com/topherchris420/dynamic-resonance-rooting",
+          "tags": [
+            "Cymatics",
+            "Archival Intelligence & Institutional Oversight",
+            "Biosignal Processing",
+            "Resonance Physics",
+            "Open Infrastructure"
+          ],
+          "entities": [
+            "Dynamic Resonance Rooting",
+            "Wavelet Scalograms",
+            "Transfer Entropy",
+            "State-Space Smoothing",
+            "Resonance Depth",
+            "SR 11-7 Compliance",
+            "Kalman Filtering"
+          ]
+        },
+        "x": 204.23,
+        "y": -258.41,
+        "z": -177.87
+      },
+      {
+        "id": "author-vers3dynamics-complex-systems-group",
+        "label": "Vers3Dynamics Complex Systems Group",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": 276.97,
+        "y": -291.7,
+        "z": -127.87
+      },
+      {
+        "id": "concept-dynamic-resonance-rooting",
+        "label": "Dynamic Resonance Rooting",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 204.23,
+        "y": -168.41,
+        "z": -117.87
+      },
+      {
+        "id": "concept-wavelet-scalograms",
+        "label": "Wavelet Scalograms",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 303.98,
+        "y": -251.34,
+        "z": -245.87
+      },
+      {
+        "id": "concept-transfer-entropy",
+        "label": "Transfer Entropy",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 219.75,
+        "y": -367.31,
+        "z": -101.87
+      },
+      {
+        "id": "concept-state-space-smoothing",
+        "label": "State-Space Smoothing",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 86.93,
+        "y": -283.71,
+        "z": -261.87
+      },
+      {
+        "id": "concept-resonance-depth",
+        "label": "Resonance Depth",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 167.91,
+        "y": -133.59,
+        "z": -85.87
+      },
+      {
+        "id": "concept-sr-11-7-compliance",
+        "label": "SR 11-7 Compliance",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 335.55,
+        "y": -209.88,
+        "z": -277.87
+      },
+      {
+        "id": "concept-kalman-filtering",
+        "label": "Kalman Filtering",
+        "type": "Concept",
+        "val": 10,
+        "group": "Cymatics",
+        "provenance": "Local Index",
+        "x": 266.05,
+        "y": -395.08,
+        "z": -69.87
       }
     ],
     "edges": [
@@ -11890,6 +12045,69 @@
         "verified": true
       },
       {
+        "source": "app-drr-framework",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "author-vers3dynamics-complex-systems-group",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-dynamic-resonance-rooting",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-wavelet-scalograms",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-transfer-entropy",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-state-space-smoothing",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-resonance-depth",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-sr-11-7-compliance",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "concept-kalman-filtering",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
         "source": "cym-chladni-01",
         "target": "cym-geom-05",
         "relationship": "CITES",
@@ -12793,6 +13011,13 @@
         "verified": false
       },
       {
+        "source": "app-drr-framework",
+        "target": "dataset-zenodo-vibroacoustic-resonance",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-zenodo-fnirs-wearable-bci",
         "target": "dataset-openneuro-ds000102",
         "relationship": "CITES",
@@ -12842,8 +13067,29 @@
         "verified": false
       },
       {
+        "source": "app-drr-framework",
+        "target": "app-ions-x-deep-emergence",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "app-rain-datamatrix-engine",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "app-circle-biosignal-platform",
         "target": "app-rain-lab-james",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-drr-framework",
+        "target": "app-waveform-shift-quantum",
         "relationship": "CITES",
         "weight": 0.5,
         "verified": false

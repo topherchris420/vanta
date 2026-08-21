@@ -29,9 +29,10 @@ The application operates across two interconnected domains:
 - **Adaptive Performance & A11y**: Continuous 60fps WebGL on capable desktops, single-frame static geometry rendering for mobile and `prefers-reduced-motion`, high-contrast styling, and full keyboard navigation.
 
 ### 2. Scientific & Archival Research Explorer
-- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping 68 structured publications & datasets into 450+ connected nodes and 620+ relational edges with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*, *Dataset Atlas*).
+- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping 69 structured publications & datasets into 460+ connected nodes and 630+ relational edges with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*, *Dataset Atlas*).
 - **Neuro2 Open Neuroscience Dataset Atlas**: Deep integration with the [Neuro2 Open Science Catalog](https://huggingface.co/datasets/ciaochris/neuro2-neuroscience-datasets), indexing high-density 128-channel EEG/BCI recordings, Sleep-EDF polysomnography, Neuropixels electrophysiology, 306-channel MEG, 3T fMRI, wearable fNIRS, and vibroacoustic entrainment data.
 - **Ecosystem & Simulation Artifacts**:
+  - [**Dynamic Resonance Rooting (DRR)**](https://github.com/topherchris420/dynamic-resonance-rooting): Complex adaptive systems mathematical diagnostics, wavelet scalograms, and Federal Reserve SR 11-7 supervisory banking framework (PyPI: `drr-framework`).
   - [**Project 33 Aerospace Testbed**](https://github.com/topherchris420/33): Open-source folding-fin rocket testbed with dual ESP32 flight computer, OpenRocket simulation, and telemetry ground station.
   - [**CIRCLE Biosignal Platform**](https://github.com/topherchris420/circle): Open-source multimodal EDA, raw PPG, and IMU hardware architecture with 5 kVrms laboratory isolation.
   - [**Lop Nur Geospatial Digital Twin**](https://github.com/topherchris420/lop-nur-twin): 3D GEOINT/OSINT analytical digital twin testbed with derived evidence registers and uncertainty envelopes.

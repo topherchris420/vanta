@@ -464,6 +464,34 @@ const NEURO2_DATASETS = [
       'Hardware Safety Interlock',
     ],
   },
+  {
+    id: 'app-drr-framework',
+    title: 'Dynamic Resonance Rooting (DRR): Complex Systems Diagnostics & Supervisory State-Space Framework',
+    abstract: 'An open mathematical framework (PyPI: drr-framework) uniting Morlet wavelet spectral decomposition, transfer entropy causal rooting, Herbst–Schorfheide tempered particle filtering, and Federal Reserve SR 11-7 supervisory banking liquidity diagnostics.',
+    date: '2026-08-21',
+    authors: [
+      'Christopher Woodyard',
+      'Vers3Dynamics Complex Systems Group',
+    ],
+    source: 'GitHub / Vers3Dynamics / PyPI',
+    url: 'https://github.com/topherchris420/dynamic-resonance-rooting',
+    tags: [
+      'Cymatics',
+      'Archival Intelligence & Institutional Oversight',
+      'Biosignal Processing',
+      'Resonance Physics',
+      'Open Infrastructure',
+    ],
+    entities: [
+      'Dynamic Resonance Rooting',
+      'Wavelet Scalograms',
+      'Transfer Entropy',
+      'State-Space Smoothing',
+      'Resonance Depth',
+      'SR 11-7 Compliance',
+      'Kalman Filtering',
+    ],
+  },
 ];
 
 function ingest() {

@@ -290,6 +290,13 @@ function extractEntities(text) {
     'OpenRocket Simulation',
     'Ground Station Telemetry',
     'Hardware Safety Interlock',
+    'Dynamic Resonance Rooting',
+    'Wavelet Scalograms',
+    'Transfer Entropy',
+    'State-Space Smoothing',
+    'Resonance Depth',
+    'SR 11-7 Compliance',
+    'Kalman Filtering',
   ];
 
   const extracted = new Set();
