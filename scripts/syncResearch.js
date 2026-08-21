@@ -19,6 +19,8 @@ const SEARCH_TOPICS = [
   'biosignal processing',
   'neural interface',
   'acoustic resonance',
+  'neuroscience dataset',
+  'brain-computer interface',
 ];
 
 /**
@@ -244,6 +246,20 @@ function extractEntities(text) {
     'Cavitation Dynamics',
     'FPGA Accelerator',
     'Spiking Transformer',
+    'Magnetoencephalography',
+    'fMRI',
+    'Electrophysiology',
+    'Neuropixels',
+    'fNIRS',
+    'Auditory Evoked Potential',
+    'Motor Imagery',
+    'Polysomnography',
+    'Sensorimotor Rhythm',
+    'OpenNeuro',
+    'PhysioNet',
+    'DANDI Archive',
+    'BNCI Horizon',
+    'Neuro2 Atlas',
   ];
 
   const extracted = new Set();

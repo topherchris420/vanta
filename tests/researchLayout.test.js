@@ -41,6 +41,7 @@ test('curated knowledge covers all required scientific disciplines with valid UR
     'Cymatics',
     'Biosignal Processing',
     'AI & Neural Interfaces',
+    'Neuroscience & Neural Datasets',
     'Acoustics',
     'Nuclear Engineering',
     'Archival Intelligence & Institutional Oversight',

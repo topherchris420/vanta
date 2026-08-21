@@ -18,6 +18,7 @@ const DISCIPLINES = [
   "Cymatics",
   "Biosignal Processing",
   "AI & Neural Interfaces",
+  "Neuroscience & Neural Datasets",
   "Acoustics",
   "Nuclear Engineering",
   "Archival Intelligence & Institutional Oversight",
@@ -116,6 +117,9 @@ export default function ResearchExplorer() {
     if (doc.source.toLowerCase().includes("declassified")) {
       return "Declassified Record: " + (doc.agency || doc.source);
     }
+    if (doc.source.toLowerCase().includes("neuro2")) {
+      return "Dataset Atlas: " + doc.source;
+    }
     if (doc.source.toLowerCase().includes("arxiv")) {
       return "Verified Source: arXiv";
     }
@@ -173,7 +177,7 @@ export default function ResearchExplorer() {
               <input
                 type="search"
                 className={styles.searchInput}
-                placeholder="Search quantum teleportation, cymatics, BCI..."
+                placeholder="Search quantum teleportation, cymatics, EEG, BCI datasets..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onFocus={() => {
