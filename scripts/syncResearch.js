@@ -270,6 +270,11 @@ function extractEntities(text) {
     'NASA NTRS',
     'DOE OSTI',
     'R.A.I.N. DataMatrix',
+    'TRIBE v2 Brain Encoding',
+    'fMRI Response Prediction',
+    'Multi-Agent Deliberation',
+    'ZeroClaw Runtime',
+    'Formal Logic Verification',
   ];
 
   const extracted = new Set();

@@ -1612,6 +1612,33 @@
         "NASA NTRS",
         "DOE OSTI"
       ]
+    },
+    {
+      "id": "app-rain-lab-james",
+      "title": "R.A.I.N. Lab: Autonomous Multi-Agent Scientific Deliberation & TRIBE v2 Brain Encoding Platform",
+      "abstract": "Rust-powered autonomous multi-agent research runtime assembling specialized domain agents (James, Jasmine, Luca, Elena) to stress-test scientific hypotheses against empirical constraints, formal logic proofs, and TRIBE v2 fMRI cortical response predictions.",
+      "date": "2026-08-19",
+      "authors": [
+        "Christopher Woodyard",
+        "R.A.I.N. Lab Consortia"
+      ],
+      "source": "GitHub / Vers3Dynamics",
+      "url": "https://github.com/topherchris420/james_library",
+      "tags": [
+        "AI & Neural Interfaces",
+        "Biosignal Processing",
+        "Multi-Agent Systems",
+        "Formal Logic",
+        "fMRI"
+      ],
+      "entities": [
+        "Multi-Agent Deliberation",
+        "TRIBE v2 Brain Encoding",
+        "fMRI Response Prediction",
+        "Formal Logic Verification",
+        "ZeroClaw Runtime",
+        "Autonomous Research"
+      ]
     }
   ],
   "graph": {
@@ -7760,6 +7787,121 @@
         "x": -136.57,
         "y": -213.85,
         "z": -97.5
+      },
+      {
+        "id": "app-rain-lab-james",
+        "label": "R.A.I.N. Lab: Autonomous Multi-Agent Scientific Deliberation & TRIBE v2 Brain Encoding Platform",
+        "type": "Paper",
+        "val": 32,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "app-rain-lab-james",
+          "title": "R.A.I.N. Lab: Autonomous Multi-Agent Scientific Deliberation & TRIBE v2 Brain Encoding Platform",
+          "abstract": "Rust-powered autonomous multi-agent research runtime assembling specialized domain agents (James, Jasmine, Luca, Elena) to stress-test scientific hypotheses against empirical constraints, formal logic proofs, and TRIBE v2 fMRI cortical response predictions.",
+          "date": "2026-08-19",
+          "authors": [
+            "Christopher Woodyard",
+            "R.A.I.N. Lab Consortia"
+          ],
+          "source": "GitHub / Vers3Dynamics",
+          "url": "https://github.com/topherchris420/james_library",
+          "tags": [
+            "AI & Neural Interfaces",
+            "Biosignal Processing",
+            "Multi-Agent Systems",
+            "Formal Logic",
+            "fMRI"
+          ],
+          "entities": [
+            "Multi-Agent Deliberation",
+            "TRIBE v2 Brain Encoding",
+            "fMRI Response Prediction",
+            "Formal Logic Verification",
+            "ZeroClaw Runtime",
+            "Autonomous Research"
+          ]
+        },
+        "x": -156,
+        "y": -100.27,
+        "z": -203.33
+      },
+      {
+        "id": "author-r-a-i-n-lab-consortia",
+        "label": "R.A.I.N. Lab Consortia",
+        "type": "Author",
+        "val": 14,
+        "group": "Authors",
+        "provenance": "Source Verified",
+        "x": -83.26,
+        "y": -133.56,
+        "z": -153.33
+      },
+      {
+        "id": "concept-multi-agent-deliberation",
+        "label": "Multi-Agent Deliberation",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -156,
+        "y": -10.27,
+        "z": -143.33
+      },
+      {
+        "id": "concept-tribe-v2-brain-encoding",
+        "label": "TRIBE v2 Brain Encoding",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -56.25,
+        "y": -93.2,
+        "z": -271.33
+      },
+      {
+        "id": "concept-fmri-response-prediction",
+        "label": "fMRI Response Prediction",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -140.48,
+        "y": -209.17,
+        "z": -127.33
+      },
+      {
+        "id": "concept-formal-logic-verification",
+        "label": "Formal Logic Verification",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -273.3,
+        "y": -125.57,
+        "z": -287.33
+      },
+      {
+        "id": "concept-zeroclaw-runtime",
+        "label": "ZeroClaw Runtime",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -192.32,
+        "y": 24.55,
+        "z": -111.33
+      },
+      {
+        "id": "concept-autonomous-research",
+        "label": "Autonomous Research",
+        "type": "Concept",
+        "val": 10,
+        "group": "AI & Neural Interfaces",
+        "provenance": "Local Index",
+        "x": -24.68,
+        "y": -51.74,
+        "z": -303.33
       }
     ],
     "edges": [
@@ -10865,6 +11007,62 @@
         "verified": true
       },
       {
+        "source": "app-rain-lab-james",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "author-r-a-i-n-lab-consortia",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "concept-multi-agent-deliberation",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "concept-tribe-v2-brain-encoding",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "concept-fmri-response-prediction",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "concept-formal-logic-verification",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "concept-zeroclaw-runtime",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "concept-autonomous-research",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
         "source": "cym-chladni-01",
         "target": "cym-geom-05",
         "relationship": "CITES",
@@ -11523,6 +11721,13 @@
         "verified": false
       },
       {
+        "source": "app-rain-lab-james",
+        "target": "dataset-neuro2-complete-atlas",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-openneuro-ds003838",
         "target": "dataset-physionet-sleep-edfx",
         "relationship": "EXTENDS",
@@ -11573,6 +11778,13 @@
       },
       {
         "source": "app-ions-x-deep-emergence",
+        "target": "dataset-openneuro-ds003838",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-rain-lab-james",
         "target": "dataset-openneuro-ds003838",
         "relationship": "CITES",
         "weight": 0.5,
@@ -11663,6 +11875,13 @@
         "verified": false
       },
       {
+        "source": "app-rain-lab-james",
+        "target": "dataset-bnci-horizon-2020-001",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "dataset-zenodo-vibroacoustic-resonance",
         "target": "dataset-openneuro-ds003645",
         "relationship": "CITES",
@@ -11705,8 +11924,29 @@
         "verified": false
       },
       {
+        "source": "app-rain-lab-james",
+        "target": "dataset-openneuro-ds000102",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "app-ions-x-deep-emergence",
         "target": "dataset-zenodo-fnirs-wearable-bci",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-rain-lab-james",
+        "target": "dataset-zenodo-fnirs-wearable-bci",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "app-ions-x-deep-emergence",
+        "target": "app-rain-lab-james",
         "relationship": "CITES",
         "weight": 0.5,
         "verified": false

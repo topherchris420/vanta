@@ -313,6 +313,33 @@ const NEURO2_DATASETS = [
       'DOE OSTI',
     ],
   },
+  {
+    id: 'app-rain-lab-james',
+    title: 'R.A.I.N. Lab: Autonomous Multi-Agent Scientific Deliberation & TRIBE v2 Brain Encoding Platform',
+    abstract: 'Rust-powered autonomous multi-agent research runtime assembling specialized domain agents (James, Jasmine, Luca, Elena) to stress-test scientific hypotheses against empirical constraints, formal logic proofs, and TRIBE v2 fMRI cortical response predictions.',
+    date: '2026-08-19',
+    authors: [
+      'Christopher Woodyard',
+      'R.A.I.N. Lab Consortia',
+    ],
+    source: 'GitHub / Vers3Dynamics',
+    url: 'https://github.com/topherchris420/james_library',
+    tags: [
+      'AI & Neural Interfaces',
+      'Biosignal Processing',
+      'Multi-Agent Systems',
+      'Formal Logic',
+      'fMRI',
+    ],
+    entities: [
+      'Multi-Agent Deliberation',
+      'TRIBE v2 Brain Encoding',
+      'fMRI Response Prediction',
+      'Formal Logic Verification',
+      'ZeroClaw Runtime',
+      'Autonomous Research',
+    ],
+  },
 ];
 
 function ingest() {
