@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import CustomCursor from "../components/CustomCursor";
+import ErrorBoundary from "../components/ErrorBoundary";
 import FrequencyRail from "../components/FrequencyRail";
 import Navbar from "../components/Navbar";
 import ProjectChannel from "../components/ProjectChannel";
@@ -254,7 +255,9 @@ export default function Home() {
       <CustomCursor />
       <ScrollProgress />
       <Navbar />
-      <VantaEffectNoSSR className={styles.background} />
+      <ErrorBoundary className={styles.background}>
+        <VantaEffectNoSSR className={styles.background} />
+      </ErrorBoundary>
 
       <main id="main-content" tabIndex={-1} className={styles.main}>
         <section
@@ -315,14 +318,16 @@ export default function Home() {
               </a>
             </nav>
           </div>
-          <DisplayPedestalNoSSR
-            className={styles.heroStage}
-            onResonance={(detail) =>
-              window.dispatchEvent(
-                new CustomEvent("vanta:resonance", { detail })
-              )
-            }
-          />
+          <ErrorBoundary className={styles.heroStage}>
+            <DisplayPedestalNoSSR
+              className={styles.heroStage}
+              onResonance={(detail) =>
+                window.dispatchEvent(
+                  new CustomEvent("vanta:resonance", { detail })
+                )
+              }
+            />
+          </ErrorBoundary>
           <p className={styles.scrollCue} aria-hidden="true">
             Scroll to tune
           </p>

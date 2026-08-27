@@ -64,8 +64,8 @@ test("render policy covers every runtime mode", () => {
   });
   assert.equal(mode({ webglAvailable: false }), "css-fallback");
   assert.equal(mode({ visible: false }), "paused");
-  assert.equal(mode({ reducedMotion: true }), "static");
-  assert.equal(mode({ isMobile: true }), "static");
+  assert.equal(mode({ reducedMotion: true }), "css-fallback");
+  assert.equal(mode({ isMobile: true }), "css-fallback");
   assert.equal(mode({}), "continuous");
 });
 

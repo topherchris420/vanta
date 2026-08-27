@@ -61,9 +61,9 @@ test("render and pedestal policies cover runtime state transitions literally", (
   assert.equal(renderMode({}), "continuous");
   assert.equal(renderMode({ visible: false }), "paused");
   assert.equal(renderMode({ visible: true }), "continuous");
-  assert.equal(renderMode({ reducedMotion: true }), "static");
+  assert.equal(renderMode({ reducedMotion: true }), "css-fallback");
   assert.equal(renderMode({ reducedMotion: false }), "continuous");
-  assert.equal(renderMode({ isMobile: true }), "static");
+  assert.equal(renderMode({ isMobile: true }), "css-fallback");
   assert.equal(renderMode({ isMobile: false }), "continuous");
   assert.equal(renderMode({ webglAvailable: false }), "css-fallback");
 
@@ -72,7 +72,7 @@ test("render and pedestal policies cover runtime state transitions literally", (
   assert.equal(pedestalMode({ visible: true }), "continuous");
   assert.equal(pedestalMode({ inViewport: false }), "paused");
   assert.equal(pedestalMode({ inViewport: true }), "continuous");
-  assert.equal(pedestalMode({ reducedMotion: true }), "static");
+  assert.equal(pedestalMode({ reducedMotion: true }), "css-fallback");
   assert.equal(pedestalMode({ reducedMotion: false }), "continuous");
   assert.equal(pedestalMode({ webglAvailable: false }), "css-fallback");
 });

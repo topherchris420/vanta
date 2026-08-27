@@ -11,52 +11,74 @@ export default function useSignalAudio() {
   const [soundAvailable, setSoundAvailable] = useState(true);
 
   const getContextFromGesture = useCallback(() => {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioContext) {
+    if (typeof window === "undefined") {
       setSoundAvailable(false);
       return null;
     }
 
-    contextRef.current ??= new AudioContext();
-    return contextRef.current;
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+
+      if (!AudioCtx) {
+        setSoundAvailable(false);
+        return null;
+      }
+
+      if (!contextRef.current) {
+        contextRef.current = new AudioCtx();
+      }
+      return contextRef.current;
+    } catch {
+      setSoundAvailable(false);
+      return null;
+    }
   }, []);
 
   const stopFrequency = useCallback(() => {
-    const context = contextRef.current;
-    const oscillator = oscillatorRef.current;
-    const gain = gainRef.current;
+    try {
+      const context = contextRef.current;
+      const oscillator = oscillatorRef.current;
+      const gain = gainRef.current;
 
-    if (!context || !oscillator || !gain) return;
+      if (!context || !oscillator || !gain) return;
 
-    gain.gain.cancelScheduledValues(context.currentTime);
-    gain.gain.setValueAtTime(gain.gain.value, context.currentTime);
-    gain.gain.linearRampToValueAtTime(0, context.currentTime + 0.12);
-    oscillator.stop(context.currentTime + 0.14);
-    oscillatorRef.current = null;
-    gainRef.current = null;
+      gain.gain.cancelScheduledValues(context.currentTime);
+      gain.gain.setValueAtTime(gain.gain.value, context.currentTime);
+      gain.gain.linearRampToValueAtTime(0, context.currentTime + 0.12);
+      oscillator.stop(context.currentTime + 0.14);
+    } catch {
+      // Ignore audio stop errors
+    } finally {
+      oscillatorRef.current = null;
+      gainRef.current = null;
+    }
   }, []);
 
   const playFrequency = useCallback(
     (frequency) => {
-      const context = contextRef.current;
+      try {
+        const context = contextRef.current;
 
-      if (!soundEnabled || !context || !Number.isFinite(frequency)) return;
+        if (!soundEnabled || !context || !Number.isFinite(frequency)) return;
 
-      stopFrequency();
+        stopFrequency();
 
-      const oscillator = context.createOscillator();
-      const gain = context.createGain();
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
 
-      oscillator.type = "sine";
-      oscillator.frequency.setValueAtTime(frequency, context.currentTime);
-      gain.gain.setValueAtTime(0, context.currentTime);
-      gain.gain.linearRampToValueAtTime(0.09, context.currentTime + 0.08);
-      oscillator.connect(gain);
-      gain.connect(context.destination);
-      oscillator.start();
-      oscillatorRef.current = oscillator;
-      gainRef.current = gain;
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(frequency, context.currentTime);
+        gain.gain.setValueAtTime(0, context.currentTime);
+        gain.gain.linearRampToValueAtTime(0.09, context.currentTime + 0.08);
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        oscillator.start();
+        oscillatorRef.current = oscillator;
+        gainRef.current = gain;
+      } catch {
+        setSoundAvailable(false);
+        setSoundEnabled(false);
+      }
     },
     [soundEnabled, stopFrequency]
   );
@@ -100,8 +122,15 @@ export default function useSignalAudio() {
   useEffect(
     () => () => {
       stopFrequency();
-      contextRef.current?.close();
-      contextRef.current = null;
+      try {
+        if (contextRef.current && contextRef.current.state !== "closed") {
+          contextRef.current.close().catch(() => {});
+        }
+      } catch {
+        // Safe disposal
+      } finally {
+        contextRef.current = null;
+      }
     },
     [stopFrequency]
   );

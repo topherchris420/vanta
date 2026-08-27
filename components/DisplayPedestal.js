@@ -5,6 +5,11 @@ import styles from "../styles/Home.module.css";
 import displayPedestalModels from "../lib/displayPedestalModels.json";
 import signalExperience from "../lib/signalExperience";
 import { createEventHorizonArchive } from "../lib/eventHorizonArchive";
+import {
+  isMobileDevice,
+  prefersReducedMotion,
+  supportsWebGL,
+} from "../lib/runtimeCapabilities";
 
 const { resolveArchiveDetail, resolvePedestalMode, resolveWebGLPixelRatio } =
   signalExperience;
@@ -91,8 +96,22 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
       return undefined;
     }
 
-    const mobileQuery = window.matchMedia("(max-width: 720px)");
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // Capability check BEFORE WebGL context allocation
+    const isMobile = isMobileDevice();
+    const reducedMotion = prefersReducedMotion();
+    const webglSupported = supportsWebGL();
+
+    if (isMobile || reducedMotion || !webglSupported) {
+      host.dataset.webgl = "fallback";
+      return undefined;
+    }
+
+    const mobileQuery = window.matchMedia
+      ? window.matchMedia("(max-width: 720px)")
+      : { matches: false, addEventListener: () => {}, removeEventListener: () => {} };
+    const motionQuery = window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)")
+      : { matches: false, addEventListener: () => {}, removeEventListener: () => {} };
 
     let renderer;
     try {
