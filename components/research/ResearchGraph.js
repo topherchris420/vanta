@@ -8,6 +8,14 @@ import {
   shouldUseWebGL,
 } from "../../lib/runtimeCapabilities";
 import styles from "../../styles/Research.module.css";
+import {
+  Color,
+  Group,
+  Mesh,
+  MeshStandardMaterial,
+  SphereGeometry,
+} from "three";
+import SpriteText from "three-spritetext";
 
 const { resolveWebGLPixelRatio } = signalExperience;
 
