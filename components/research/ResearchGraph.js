@@ -55,7 +55,9 @@ const ResearchGraph = ({
 }) => {
   const containerRef = useRef(null);
   const fgRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  // Start with the original desktop canvas size so the graph renders immediately;
+  // ResizeObserver will replace it with the actual container dimensions on mount.
+  const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const [autoRotate, setAutoRotate] = useState(false);
   const [particleFlow, setParticleFlow] = useState(true);
   const [hoveredNode, setHoveredNode] = useState(null);
