@@ -55,7 +55,7 @@ const ResearchGraph = ({
 }) => {
   const containerRef = useRef(null);
   const fgRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [autoRotate, setAutoRotate] = useState(false);
   const [particleFlow, setParticleFlow] = useState(true);
   const [hoveredNode, setHoveredNode] = useState(null);
@@ -65,9 +65,12 @@ const ResearchGraph = ({
     if (!containerRef.current) return;
     const updateDimensions = () => {
       if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const width = containerRef.current.clientWidth || rect.width || (typeof window !== "undefined" ? window.innerWidth : 800);
+        const height = containerRef.current.clientHeight || rect.height || (typeof window !== "undefined" ? window.innerHeight - 60 : 600);
         setDimensions({
-          width: containerRef.current.clientWidth || 800,
-          height: containerRef.current.clientHeight || 600,
+          width: Math.max(width, 300),
+          height: Math.max(height, 400),
         });
       }
     };
@@ -219,10 +222,9 @@ const ResearchGraph = ({
     );
   };
 
-  const isMobile = isMobileDevice();
   const reducedMotion = prefersReducedMotion();
   const webglSupported = supportsWebGL();
-  const enableWebGL = shouldUseWebGL({ isMobile, reducedMotion, webglAvailable: webglSupported });
+  const enableWebGL = shouldUseWebGL({ isMobile: false, reducedMotion, webglAvailable: webglSupported });
 
   if (!enableWebGL) {
     return (
