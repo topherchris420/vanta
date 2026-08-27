@@ -57,6 +57,7 @@ export default function ProjectChannel({
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`${link.label} (opens in new tab)`}
             >
               {link.label}
               <span aria-hidden="true">↗</span>
