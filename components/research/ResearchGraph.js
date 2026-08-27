@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import dynamic from "next/dynamic";
-import {
-  SphereGeometry,
-  MeshStandardMaterial,
-  Mesh,
-  Group,
-  Color,
-} from "three";
-import SpriteText from "three-spritetext";
 import signalExperience from "../../lib/signalExperience";
 import {
   isMobileDevice,
