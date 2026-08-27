@@ -9,6 +9,7 @@ import {
 } from "three";
 import SpriteText from "three-spritetext";
 import signalExperience from "../../lib/signalExperience";
+import { isMobileDevice, prefersReducedMotion, supportsWebGL } from "../../lib/runtimeCapabilities";
 import styles from "../../styles/Research.module.css";
 
 const { resolveWebGLPixelRatio } = signalExperience;
@@ -212,6 +213,43 @@ const ResearchGraph = ({
       1000
     );
   };
+
+  const isMobile = isMobileDevice();
+  const webglSupported = supportsWebGL();
+
+  if (isMobile || !webglSupported) {
+    return (
+      <div className={styles.graphContainer} ref={containerRef} data-webgl="fallback">
+        <div className={styles.graphHudTop}>
+          <div className={styles.graphHudCard}>
+            <div className={styles.graphHudTitle}>Knowledge Index (Static Mode)</div>
+            <div className={styles.graphHudStats}>
+              {graphData.nodes.length} Structured Records Indexed
+            </div>
+          </div>
+        </div>
+        <div className={styles.resultsList} style={{ padding: "1rem" }}>
+          {graphData.nodes.slice(0, 15).map((node) => (
+            <div
+              key={node.id}
+              className={`${styles.resultCard} ${
+                selectedNodeId === node.id ? styles.resultCardActive : ""
+              }`}
+              onClick={() => onSelectNode(node)}
+              style={{ cursor: "pointer", marginBottom: "0.75rem" }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span className={styles.cardAgencyBadge} style={{ background: NODE_COLORS[node.type] || "#8cf0c6", color: "#060b09" }}>
+                  {node.type}
+                </span>
+                <span className={styles.cardDate}>{node.label}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.graphContainer} ref={containerRef}>

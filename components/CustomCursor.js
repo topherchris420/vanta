@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import signalExperience from "../lib/signalExperience";
+import { isMobileDevice, prefersReducedMotion, hasFinePointer } from "../lib/runtimeCapabilities";
 import styles from "../styles/Home.module.css";
 
 const { resolveCursorEnabled } = signalExperience;
@@ -13,25 +14,35 @@ const CustomCursor = () => {
   const ringRef = useRef(null);
 
   useEffect(() => {
-    const pointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (isMobileDevice()) {
+      setEnabled(false);
+      return undefined;
+    }
+
+    const pointerQuery = window.matchMedia
+      ? window.matchMedia("(hover: hover) and (pointer: fine)")
+      : { matches: hasFinePointer(), addEventListener: () => {}, removeEventListener: () => {} };
+    const motionQuery = window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)")
+      : { matches: prefersReducedMotion(), addEventListener: () => {}, removeEventListener: () => {} };
+
     const syncEnabled = () =>
       setEnabled(
         resolveCursorEnabled({
-          finePointer: pointerQuery.matches,
+          finePointer: pointerQuery.matches && !isMobileDevice(),
           reducedMotion: motionQuery.matches,
           visible: !document.hidden,
         })
       );
 
     syncEnabled();
-    pointerQuery.addEventListener("change", syncEnabled);
-    motionQuery.addEventListener("change", syncEnabled);
+    pointerQuery.addEventListener?.("change", syncEnabled);
+    motionQuery.addEventListener?.("change", syncEnabled);
     document.addEventListener("visibilitychange", syncEnabled);
 
     return () => {
-      pointerQuery.removeEventListener("change", syncEnabled);
-      motionQuery.removeEventListener("change", syncEnabled);
+      pointerQuery.removeEventListener?.("change", syncEnabled);
+      motionQuery.removeEventListener?.("change", syncEnabled);
       document.removeEventListener("visibilitychange", syncEnabled);
     };
   }, []);

@@ -6,6 +6,7 @@ import styles from "../../styles/Research.module.css";
 import SearchEngine from "../../lib/research/searchEngine";
 import curatedKnowledgeData from "../../data/research/curatedKnowledge.json";
 import ResearchDetails from "../../components/research/ResearchDetails";
+import ErrorBoundary from "../../components/ErrorBoundary";
 
 const ResearchGraphNoSSR = dynamic(
   () => import("../../components/research/ResearchGraph"),
@@ -446,12 +447,14 @@ export default function ResearchExplorer() {
           }`}
           aria-label="3D Knowledge Graph Visualization"
         >
-          <ResearchGraphNoSSR
-            graph={dynamicGraph}
-            selectedNodeId={selectedNode?.id || null}
-            onSelectNode={handleSelectNode}
-            hoveredDocId={hoveredDocId}
-          />
+          <ErrorBoundary className={styles.graphContainer}>
+            <ResearchGraphNoSSR
+              graph={dynamicGraph}
+              selectedNodeId={selectedNode?.id || null}
+              onSelectNode={handleSelectNode}
+              hoveredDocId={hoveredDocId}
+            />
+          </ErrorBoundary>
         </section>
       </main>
 

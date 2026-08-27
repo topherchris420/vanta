@@ -11,6 +11,13 @@ import {
   WebGLRenderer,
 } from "three";
 import signalExperience from "../lib/signalExperience";
+import {
+  isMobileDevice,
+  prefersReducedMotion,
+  supportsWebGL,
+  shouldUseWebGL,
+  getSafePixelRatio,
+} from "../lib/runtimeCapabilities";
 import styles from "../styles/Home.module.css";
 
 const { resolveRenderMode, resolveWebGLPixelRatio } = signalExperience;
@@ -155,38 +162,65 @@ const VantaEffect = ({ className, ...props }) => {
 
     const container = containerRef.current;
 
-    const camera = new PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.z = 1.8;
+    // Feature check BEFORE WebGL context allocation
+    const isMobile = isMobileDevice();
+    const reducedMotion = prefersReducedMotion();
+    const webglSupported = supportsWebGL();
 
-    const scene = new Scene();
-    const geometry = new PlaneGeometry(2, 2);
+    if (isMobile || reducedMotion || !webglSupported) {
+      container.dataset.webgl = "fallback";
+      return undefined;
+    }
 
-    const uniforms = {
-      time: { value: 1.0 },
-      resolution: { value: new Vector2() },
-      resonance: { value: 0 },
-      resonanceColor: { value: new Color("#8cf0c6") },
-      hover: { value: 0.0 },
-      warp: { value: 0.0 },
-    };
+    let camera;
+    let scene;
+    let geometry;
+    let uniforms;
+    let material;
+    let mesh;
 
-    const material = new ShaderMaterial({
-      uniforms,
-      vertexShader,
-      fragmentShader,
-      depthWrite: false,
-    });
+    try {
+      camera = new PerspectiveCamera(45, 1, 0.1, 100);
+      camera.position.z = 1.8;
 
-    const mesh = new Mesh(geometry, material);
-    scene.add(mesh);
+      scene = new Scene();
+      geometry = new PlaneGeometry(2, 2);
+
+      uniforms = {
+        time: { value: 1.0 },
+        resolution: { value: new Vector2() },
+        resonance: { value: 0 },
+        resonanceColor: { value: new Color("#8cf0c6") },
+        hover: { value: 0.0 },
+        warp: { value: 0.0 },
+      };
+
+      material = new ShaderMaterial({
+        uniforms,
+        vertexShader,
+        fragmentShader,
+        depthWrite: false,
+      });
+
+      mesh = new Mesh(geometry, material);
+      scene.add(mesh);
+    } catch (error) {
+      container.dataset.webgl = "fallback";
+      console.warn("Unable to construct WebGL scene resources.", error);
+      return undefined;
+    }
 
     let currentHover = 0.0;
     let targetHover = 0.0;
     let currentWarp = 0.0;
     let targetWarp = 0.0;
 
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const mobileQuery = window.matchMedia("(max-width: 720px)");
+    const mediaQuery = window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)")
+      : { matches: false, addEventListener: () => {}, removeEventListener: () => {} };
+    const mobileQuery = window.matchMedia
+      ? window.matchMedia("(max-width: 720px)")
+      : { matches: false, addEventListener: () => {}, removeEventListener: () => {} };
     let animationId = 0;
     let hasRenderError = false;
     let visible = !document.hidden;
