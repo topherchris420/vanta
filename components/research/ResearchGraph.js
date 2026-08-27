@@ -9,7 +9,12 @@ import {
 } from "three";
 import SpriteText from "three-spritetext";
 import signalExperience from "../../lib/signalExperience";
-import { isMobileDevice, prefersReducedMotion, supportsWebGL } from "../../lib/runtimeCapabilities";
+import {
+  isMobileDevice,
+  prefersReducedMotion,
+  supportsWebGL,
+  shouldUseWebGL,
+} from "../../lib/runtimeCapabilities";
 import styles from "../../styles/Research.module.css";
 
 const { resolveWebGLPixelRatio } = signalExperience;
@@ -160,7 +165,7 @@ const ResearchGraph = ({
 
   // Focus node in 3D spacetime
   const focusNode = useCallback((node) => {
-    if (!node || !fgRef.current) return;
+    if (!node || !fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
     const distance = 160;
     const distRatio =
       1 + distance / Math.hypot(node.x || 0, node.y || 0, node.z || 0 || 1);
@@ -185,7 +190,7 @@ const ResearchGraph = ({
 
   // Configure D3 forces once mounted
   useEffect(() => {
-    if (fgRef.current) {
+    if (fgRef.current && typeof fgRef.current.d3Force === "function") {
       const chargeForce = fgRef.current.d3Force("charge");
       if (chargeForce) chargeForce.strength(-140);
       const linkForce = fgRef.current.d3Force("link");
@@ -195,7 +200,7 @@ const ResearchGraph = ({
 
   // Handle auto-rotation
   useEffect(() => {
-    if (fgRef.current) {
+    if (fgRef.current && typeof fgRef.current.controls === "function") {
       const controls = fgRef.current.controls();
       if (controls) {
         controls.autoRotate = autoRotate;
@@ -206,7 +211,7 @@ const ResearchGraph = ({
 
   // Reset Camera View
   const handleResetCamera = () => {
-    if (!fgRef.current) return;
+    if (!fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
     fgRef.current.cameraPosition(
       { x: 0, y: 80, z: 580 },
       { x: 0, y: 0, z: 0 },
@@ -215,9 +220,11 @@ const ResearchGraph = ({
   };
 
   const isMobile = isMobileDevice();
+  const reducedMotion = prefersReducedMotion();
   const webglSupported = supportsWebGL();
+  const enableWebGL = shouldUseWebGL({ isMobile, reducedMotion, webglAvailable: webglSupported });
 
-  if (isMobile || !webglSupported) {
+  if (!enableWebGL) {
     return (
       <div className={styles.graphContainer} ref={containerRef} data-webgl="fallback">
         <div className={styles.graphHudTop}>
