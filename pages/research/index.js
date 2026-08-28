@@ -59,7 +59,6 @@ export default function ResearchExplorer() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
   const [hoveredDocId, setHoveredDocId] = useState(null);
-  const [mobileTab, setMobileTab] = useState("records"); // "records" | "graph"
 
   // Perform search & dynamic subgraph extraction
   const performSearch = useCallback(
@@ -166,45 +165,11 @@ export default function ResearchExplorer() {
         </div>
       </header>
 
-      {/* Mobile View Switcher HUD */}
-      <div
-        className={styles.mobileViewSwitcher}
-        role="tablist"
-        aria-label="Mobile view switcher"
-      >
-        <button
-          type="button"
-          role="tab"
-          aria-selected={mobileTab === "records"}
-          className={`${styles.mobileTabBtn} ${
-            mobileTab === "records" ? styles.mobileTabBtnActive : ""
-          }`}
-          onClick={() => setMobileTab("records")}
-        >
-          <span aria-hidden="true">&#x1F4C4;</span>
-          <span>Records ({searchResults.length})</span>
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={mobileTab === "graph"}
-          className={`${styles.mobileTabBtn} ${
-            mobileTab === "graph" ? styles.mobileTabBtnActive : ""
-          }`}
-          onClick={() => setMobileTab("graph")}
-        >
-          <span aria-hidden="true">&#x1F310;</span>
-          <span>3D Graph ({dynamicGraph.nodes.length})</span>
-        </button>
-      </div>
-
       {/* Main Split Interface */}
       <main className={styles.main}>
         {/* Left Search & Result Panel */}
         <section
-          className={`${styles.searchPanel} ${
-            mobileTab === "graph" ? styles.searchPanelHiddenMobile : ""
-          }`}
+          className={styles.searchPanel}
           aria-label="Research search and filters"
         >
           <div className={styles.searchHeader}>
@@ -417,7 +382,6 @@ export default function ResearchExplorer() {
                         onClick={(e) => {
                           e.stopPropagation();
                           handleCardClick(doc);
-                          setMobileTab("graph");
                         }}
                       >
                         Focus in 3D Graph &rarr;
@@ -442,9 +406,7 @@ export default function ResearchExplorer() {
 
         {/* Right 3D Knowledge Graph Canvas */}
         <section
-          className={`${styles.graphContainer} ${
-            mobileTab === "records" ? styles.graphContainerHiddenMobile : ""
-          }`}
+          className={styles.graphContainer}
           aria-label="3D Knowledge Graph Visualization"
         >
           <ErrorBoundary className={styles.graphContainer}>
