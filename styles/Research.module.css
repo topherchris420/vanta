@@ -887,74 +887,25 @@
   box-shadow: 0 0 20px rgba(140, 240, 198, 0.4);
 }
 
-/* Mobile View Switcher HUD */
-.mobileViewSwitcher {
-  display: none;
-}
-
 /* Responsive Media Queries */
 @media (max-width: 900px) {
-  .mobileViewSwitcher {
-    display: flex;
-    position: sticky;
-    top: 3.75rem;
-    z-index: 35;
-    background: color-mix(in srgb, var(--ink) 96%, transparent);
-    border-bottom: 1px solid var(--line);
-    padding: 0.5rem 1rem;
-    gap: 0.5rem;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  .mobileTabBtn {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.45rem;
-    padding: 0.65rem 0.85rem;
-    border: 1px solid var(--line);
-    background: color-mix(in srgb, var(--surface) 70%, transparent);
-    color: var(--muted);
-    font: 700 0.72rem / 1 var(--font-mono);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 180ms ease;
-  }
-
-  .mobileTabBtnActive {
-    border-color: var(--signal);
-    background: color-mix(in srgb, var(--signal) 15%, var(--surface));
-    color: var(--signal);
-    box-shadow: 0 0 12px rgba(140, 240, 198, 0.2);
-  }
-
   .main {
     grid-template-columns: 1fr;
-    min-height: calc(100vh - 7rem);
+    height: auto;
+    min-height: 0;
+    overflow: visible;
   }
 
   .searchPanel {
     border-right: none;
-    border-bottom: none;
+    border-bottom: 1px solid var(--line);
     max-height: none;
-    min-height: calc(100vh - 7rem);
-  }
-
-  .searchPanelHiddenMobile {
-    display: none !important;
+    min-height: 0;
   }
 
   .graphContainer {
-    min-height: calc(100vh - 7rem);
-    height: calc(100vh - 7rem);
-  }
-
-  .graphContainerHiddenMobile {
-    display: none !important;
+    min-height: 520px;
+    height: 520px;
   }
 }
 
