@@ -61,6 +61,7 @@ const ResearchGraph = ({
   const [autoRotate, setAutoRotate] = useState(false);
   const [particleFlow, setParticleFlow] = useState(true);
   const [hoveredNode, setHoveredNode] = useState(null);
+  const initialCameraSetRef = useRef(false);
 
   // ResizeObserver for container dimensions
   useEffect(() => {
@@ -168,10 +169,11 @@ const ResearchGraph = ({
     [selectedNodeId, hoveredNode, hoveredDocId, baseSphereGeo]
   );
 
-  // Focus node in 3D spacetime
+  // Focus node in 3D spacetime. Keep the camera close enough to make the
+  // network feel immersive while leaving room for the selected node label.
   const focusNode = useCallback((node) => {
     if (!node || !fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
-    const distance = 160;
+    const distance = 95;
     const distRatio =
       1 + distance / Math.hypot(node.x || 0, node.y || 0, node.z || 0 || 1);
     fgRef.current.cameraPosition(
@@ -184,6 +186,24 @@ const ResearchGraph = ({
       1000
     );
   }, []);
+
+  // Start closer to the network so the graph fills the viewport on first render.
+  useEffect(() => {
+    if (
+      initialCameraSetRef.current ||
+      !fgRef.current ||
+      typeof fgRef.current.cameraPosition !== "function" ||
+      !dimensions.width ||
+      !dimensions.height
+    ) return;
+
+    initialCameraSetRef.current = true;
+    fgRef.current.cameraPosition(
+      { x: 0, y: 52, z: 360 },
+      { x: 0, y: 0, z: 0 },
+      0
+    );
+  }, [dimensions.width, dimensions.height]);
 
   // Handle external selection
   useEffect(() => {
@@ -218,7 +238,7 @@ const ResearchGraph = ({
   const handleResetCamera = () => {
     if (!fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
     fgRef.current.cameraPosition(
-      { x: 0, y: 80, z: 580 },
+      { x: 0, y: 52, z: 360 },
       { x: 0, y: 0, z: 0 },
       1000
     );
