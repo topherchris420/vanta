@@ -1144,6 +1144,7 @@
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--ink) 88%, transparent);
   color: var(--signal);
+  cursor: pointer;
   opacity: 0;
   pointer-events: none;
   transform: translateY(0.75rem);
@@ -1152,16 +1153,14 @@
   transition:
     opacity 160ms ease,
     transform 160ms ease,
-    background 160ms ease,
     border-color 160ms ease,
-    color 160ms ease;
+    background-color 160ms ease;
 }
 
 .scrollToTop:hover,
 .scrollToTop:focus-visible {
-  background: color-mix(in srgb, var(--ink) 80%, var(--signal) 20%);
   border-color: var(--signal);
-  color: var(--signal);
+  background: color-mix(in srgb, var(--ink) 78%, transparent);
 }
 
 .scrollToTop svg {
@@ -1173,6 +1172,11 @@
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.scrollToTop.visible:hover,
+.scrollToTop.visible:focus-visible {
+  transform: translateY(-2px);
 }
 
 .cursorDot,

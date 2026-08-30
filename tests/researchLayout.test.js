@@ -54,3 +54,15 @@ test('curated knowledge covers all required scientific disciplines with valid UR
     assert.ok(matches.length >= 3, `Expected at least 3 papers in ${disc}, found ${matches.length}`);
   });
 });
+
+test('Research.module.css exposes proper 3D graph container layout styles for desktop viewports', () => {
+  const fs = require('fs');
+  const path = require('path');
+  const cssPath = path.join(__dirname, '../styles/Research.module.css');
+  const css = fs.readFileSync(cssPath, 'utf8');
+
+  // Verify desktop main layout uses a two-column split layout for search panel and 3D graph container
+  assert.ok(css.includes('.main {'), 'CSS must define .main layout container');
+  assert.ok(css.includes('grid-template-columns: minmax(360px, 460px) 1fr;'), 'CSS desktop layout must split search panel and 3D graph');
+  assert.ok(css.includes('.graphContainer {'), 'CSS must define .graphContainer layout block');
+});
