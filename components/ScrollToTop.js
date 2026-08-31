@@ -29,6 +29,7 @@ const ScrollToTop = () => {
       onClick={scrollToTop}
       className={`${styles.scrollToTop} ${isVisible ? styles.visible : ""}`}
       aria-label="Scroll to top"
+      title="Scroll to top"
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
       type="button"
