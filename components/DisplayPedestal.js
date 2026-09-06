@@ -329,7 +329,14 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
         sceneApiRef.current?.setPointer(0, 0);
         setIsHovered(false);
       }}
-      onFocus={() => {
+      onFocus={(event) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        if (bounds.width && bounds.height) {
+          setHudPos({
+            x: bounds.left + bounds.width / 2,
+            y: bounds.top + bounds.height / 2,
+          });
+        }
         sceneApiRef.current?.setHover(true);
         setIsHovered(true);
       }}

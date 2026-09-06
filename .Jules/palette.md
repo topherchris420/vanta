@@ -13,3 +13,11 @@
 ## 2024-05-24 - Consistent Floating UI Focus States
 **Learning:** Floating utility elements (like `ScrollToTop` or sticky navigation buttons) that are visually detached from the main document flow frequently lack clear focus outlines, reducing keyboard navigation discoverability, especially when relying solely on opacity or background changes for hover/active states.
 **Action:** When implementing floating UI elements, explicitly define a high-contrast `:focus-visible` outline with an appropriate `outline-offset` to ensure it is visible regardless of the underlying content.
+
+## 2026-03-30 - Keyboard Tooltip Alignment on Fixed Canvas Controls
+**Learning:** Fixed 3D canvas HUD tooltips that rely solely on `pointerMove` client coordinates default to `(0,0)` when focused via keyboard navigation, rendering off-screen or misaligned.
+**Action:** In `onFocus` handlers for interactive canvas controls, calculate the element's bounding client rect center to position tooltips predictably for keyboard users.
+
+## 2026-03-30 - Motion-Aware Smooth Scrolling
+**Learning:** Programmatic smooth scrolling (`window.scrollTo({ behavior: "smooth" })`) ignores `prefers-reduced-motion` if hardcoded, causing unexpected movement for motion-sensitive users.
+**Action:** Dynamically check `window.matchMedia("(prefers-reduced-motion: reduce)").matches` and fallback to `behavior: "auto"` when motion reduction is requested.

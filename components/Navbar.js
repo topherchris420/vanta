@@ -15,10 +15,21 @@ const Navbar = () => {
   const destination = (hash) => (pathname === "/" ? hash : "/" + hash);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let frameId = 0;
+    const onScroll = () => {
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 24);
+          frameId = 0;
+        });
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   // Highlight the nav link whose section currently crosses the middle band

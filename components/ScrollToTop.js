@@ -5,22 +5,29 @@ const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    let frameId = 0;
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+      if (!frameId) {
+        frameId = window.requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > 300);
+          frameId = 0;
+        });
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    toggleVisibility();
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   const scrollToTop = () => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: prefersReduced ? "auto" : "smooth",
     });
   };
 
