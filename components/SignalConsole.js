@@ -25,6 +25,9 @@ export default function SignalConsole({
       className={styles.signalConsole}
       data-tuned={view.tuned ? "true" : "false"}
     >
+      <div className={styles.visuallyHidden} aria-live="polite" aria-atomic="true">
+        {soundEnabled ? "Audio output enabled" : "Audio output disabled"}
+      </div>
       <p className={styles.consoleReadout} aria-hidden="true">
         <span className={styles.consoleChannel}>
           <span className={styles.consoleNumber}>{view.channelNumber}</span>
