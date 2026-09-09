@@ -92,6 +92,12 @@ test(
     const html = await response.text();
 
     assert.equal(response.status, 200);
+    const workIndex = html.match(/<nav[^>]*aria-label="Choose a medium"[\s\S]*?<\/nav>/)?.[0] ?? "";
+    assert.ok(workIndex, "visitors can scan all five mediums before exploring");
+    for (const id of ["books", "apps", "art", "frequency", "music"]) {
+      assert.ok(workIndex.includes(`href="#signal-${id}"`), `index reaches ${id}`);
+    }
+    assert.match(html, /href="\/research"[^>]*>\s*Research/);
     ["Five notes.", "One chord.", "Enter the instrument", "Explore without sound"]
       .forEach((copy) => assert.ok(html.includes(copy), `missing rendered copy: ${copy}`));
 

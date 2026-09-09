@@ -747,20 +747,15 @@ three-spritetext@^1.10.0:
   resolved "https://registry.npmjs.org/three-spritetext/-/three-spritetext-1.10.0.tgz"
   integrity sha512-t08iP1FCU1lQh8T5MmCpdijKgas8GDHJE0LqMGBuVu3xqMMpFnEZhTlih7FlxLPQizHIGoumUSpfOlY1GO/Tgg==
 
-three@*, three@^0.156.0, three@>=0.118.3, three@>=0.86.0, three@0.x.x:
-  version "0.156.1"
-  resolved "https://registry.npmjs.org/three/-/three-0.156.1.tgz"
-  integrity sha512-kP7H0FK9d/k6t/XvQ9FO6i+QrePoDcNhwl0I02+wmUJRNSLCUIDMcfObnzQvxb37/0Uc9TDT0T1HgsRRrO6SYQ==
+three@*, three@^0.185.1, three@>=0.118.3, three@>=0.179, "three@>=0.179 <1", three@>=0.86.0, three@0.x.x:
+  version "0.185.1"
+  resolved "https://registry.npmjs.org/three/-/three-0.185.1.tgz"
+  integrity sha512-5aojFCXKwnjBRZvUnt3WFfEcvUJgkN5LlijRFN95hMy8WVkG4I0QNcJE+OuWvuJ0bOdStrbfXn0pkd6/QyiAlg==
 
 three@^0.164.0:
   version "0.164.1"
   resolved "https://registry.npmjs.org/three/-/three-0.164.1.tgz"
   integrity sha512-iC/hUBbl1vzFny7f5GtqzVXYjMJKaTPxiCxXfrvVdBi1Sf+jhd1CAkitiFwC7mIBFCo3MrDLJG97yisoaWig0w==
-
-three@>=0.179, "three@>=0.179 <1":
-  version "0.185.1"
-  resolved "https://registry.npmjs.org/three/-/three-0.185.1.tgz"
-  integrity sha512-5aojFCXKwnjBRZvUnt3WFfEcvUJgkN5LlijRFN95hMy8WVkG4I0QNcJE+OuWvuJ0bOdStrbfXn0pkd6/QyiAlg==
 
 "three@npm:super-three@0.184.0":
   version "0.184.0"

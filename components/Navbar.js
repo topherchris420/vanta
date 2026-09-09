@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 const navLinks = [
-  { label: "Signal", href: "#top" },
   { label: "Work", href: "#work" },
+  { label: "Research", href: "/research" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -12,7 +12,7 @@ const Navbar = () => {
   const { pathname } = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [activeHref, setActiveHref] = useState("");
-  const destination = (hash) => (pathname === "/" ? hash : "/" + hash);
+  const destination = (href) => (href.startsWith("/") || pathname === "/" ? href : "/" + href);
 
   useEffect(() => {
     let frameId = 0;
@@ -40,6 +40,7 @@ const Navbar = () => {
     }
 
     const sections = navLinks
+      .filter((link) => link.href.startsWith("#"))
       .map((link) => document.querySelector(link.href))
       .filter(Boolean);
 

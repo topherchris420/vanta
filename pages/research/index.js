@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
@@ -55,8 +55,15 @@ export default function ResearchExplorer() {
   const [provenanceFilter, setProvenanceFilter] = useState("all");
   const [searchResults, setSearchResults] = useState(initialSearch.results);
   const [dynamicGraph, setDynamicGraph] = useState(initialSearch.graph);
-  const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [activeSuggestion, setActiveSuggestion] = useState(-1);
+  const searchInputRef = useRef(null);
+  const suggestions = useMemo(
+    () => query.trim().length >= 2 ? searchEngine.suggest(query, 6) : [],
+    [query]
+  );
+  const suggestionsOpen = showSuggestions && suggestions.length > 0;
+  const filterCount = Number(activeTag !== "All") + Number(activeEra !== "All") + Number(provenanceFilter !== "all");
   const [selectedNode, setSelectedNode] = useState(null);
   const [hoveredDocId, setHoveredDocId] = useState(null);
 
@@ -81,17 +88,21 @@ export default function ResearchExplorer() {
     performSearch(query, activeTag, provenanceFilter, activeEra);
   }, [query, activeTag, provenanceFilter, activeEra, performSearch]);
 
-  // Autocomplete suggestions
-  useEffect(() => {
-    if (query.trim().length >= 2) {
-      const suggs = searchEngine.suggest(query, 6);
-      setSuggestions(suggs);
-      setShowSuggestions(suggs.length > 0);
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    }
-  }, [query]);
+  const resetSearch = () => {
+    setQuery("");
+    setActiveTag("All");
+    setActiveEra("All");
+    setProvenanceFilter("all");
+    setShowSuggestions(false);
+    setActiveSuggestion(-1);
+    searchInputRef.current?.focus();
+  };
+
+  const selectSuggestion = (suggestion) => {
+    setQuery(suggestion);
+    setShowSuggestions(false);
+    setActiveSuggestion(-1);
+  };
 
   // Handle selecting a node from 3D canvas or search list
   const handleSelectNode = useCallback(
@@ -173,16 +184,48 @@ export default function ResearchExplorer() {
           aria-label="Research search and filters"
         >
           <div className={styles.searchHeader}>
+            <p className={styles.searchGuidance}>Find a publication. Follow its connections.</p>
             <div className={styles.searchBarWrapper}>
-              <span className={styles.searchIcon}>&#x2315;</span>
+              <span className={styles.searchIcon} aria-hidden="true">&#x2315;</span>
               <input
+                ref={searchInputRef}
                 type="search"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded={suggestionsOpen}
+                aria-controls={suggestionsOpen ? "research-suggestions" : undefined}
+                aria-activedescendant={suggestionsOpen && activeSuggestion >= 0 ? `research-suggestion-${activeSuggestion}` : undefined}
                 className={styles.searchInput}
-                placeholder="Search quantum teleportation, cymatics, EEG, BCI datasets..."
+                placeholder="Search topics, publications, datasets…"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setActiveSuggestion(-1);
+                  setShowSuggestions(true);
+                }}
                 onFocus={() => {
                   if (suggestions.length > 0) setShowSuggestions(true);
+                }}
+                onBlur={() => {
+                  setShowSuggestions(false);
+                  setActiveSuggestion(-1);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") {
+                    e.preventDefault();
+                    setShowSuggestions(false);
+                    setActiveSuggestion(-1);
+                  } else if ((e.key === "ArrowDown" || e.key === "ArrowUp") && suggestions.length) {
+                    e.preventDefault();
+                    setShowSuggestions(true);
+                    const direction = e.key === "ArrowDown" ? 1 : -1;
+                    setActiveSuggestion((current) => current < 0
+                      ? (direction === 1 ? 0 : suggestions.length - 1)
+                      : (current + direction + suggestions.length) % suggestions.length);
+                  } else if (e.key === "Enter" && suggestionsOpen && activeSuggestion >= 0) {
+                    e.preventDefault();
+                    selectSuggestion(suggestions[activeSuggestion]);
+                  }
                 }}
                 aria-label="Search research publications"
               />
@@ -190,7 +233,11 @@ export default function ResearchExplorer() {
                 <button
                   type="button"
                   className={styles.clearButton}
-                  onClick={() => setQuery("")}
+                  onClick={() => {
+                    setQuery("");
+                    setShowSuggestions(false);
+                    searchInputRef.current?.focus();
+                  }}
                   aria-label="Clear search query"
                 >
                   &#x2715;
@@ -198,17 +245,19 @@ export default function ResearchExplorer() {
               )}
 
               {/* Suggestions Dropdown */}
-              {showSuggestions && suggestions.length > 0 && (
-                <div className={styles.suggestionsDropdown}>
-                  {suggestions.map((sugg) => (
+              {suggestionsOpen && (
+                <div id="research-suggestions" role="listbox" aria-label="Suggested search terms" className={styles.suggestionsDropdown}>
+                  {suggestions.map((sugg, index) => (
                     <button
                       key={sugg}
+                      id={`research-suggestion-${index}`}
+                      role="option"
+                      aria-selected={activeSuggestion === index}
+                      tabIndex={-1}
                       type="button"
                       className={styles.suggestionItem}
-                      onClick={() => {
-                        setQuery(sugg);
-                        setShowSuggestions(false);
-                      }}
+                      onMouseDown={(e) => e.preventDefault()}
+                      onClick={() => selectSuggestion(sugg)}
                     >
                       <span>{sugg}</span>
                       <span className={styles.suggestionType}>Keyword</span>
@@ -219,13 +268,12 @@ export default function ResearchExplorer() {
             </div>
 
             {/* Discipline Filter Pills */}
-            <div className={styles.filterPills} role="tablist" aria-label="Discipline filter">
+            <div className={styles.filterPills} role="group" aria-label="Discipline filter">
               {DISCIPLINES.map((tag) => (
                 <button
                   key={tag}
                   type="button"
-                  role="tab"
-                  aria-selected={activeTag === tag}
+                  aria-pressed={activeTag === tag}
                   className={`${styles.filterPill} ${
                     activeTag === tag ? styles.filterPillActive : ""
                   }`}
@@ -237,14 +285,13 @@ export default function ResearchExplorer() {
             </div>
 
             {/* Administrative Era Filter Pills (shown when Archival Oversight or All selected) */}
-            <div className={styles.filterPills} role="tablist" aria-label="Administrative era filter">
+            <div className={styles.filterPills} role="group" aria-label="Administrative era filter">
               <span className={styles.provenanceFilterLabel}>Era:</span>
               {ERAS.map((era) => (
                 <button
                   key={era}
                   type="button"
-                  role="tab"
-                  aria-selected={activeEra === era}
+                  aria-pressed={activeEra === era}
                   className={`${styles.filterPill} ${
                     activeEra === era ? styles.filterPillActive : ""
                   }`}
@@ -256,14 +303,13 @@ export default function ResearchExplorer() {
             </div>
 
             {/* Provenance Filter Toggle Chips */}
-            <div className={styles.provenanceFilters} role="radiogroup" aria-label="Provenance filter">
+            <div className={styles.provenanceFilters} role="group" aria-label="Provenance filter">
               <span className={styles.provenanceFilterLabel}>Provenance:</span>
               {PROVENANCE_OPTIONS.map((opt) => (
                 <button
                   key={opt.id}
                   type="button"
-                  role="radio"
-                  aria-checked={provenanceFilter === opt.id}
+                  aria-pressed={provenanceFilter === opt.id}
                   className={`${styles.provenanceFilterPill} ${
                     provenanceFilter === opt.id ? styles.provenanceFilterPillActive : ""
                   }`}
@@ -273,15 +319,21 @@ export default function ResearchExplorer() {
                 </button>
               ))}
             </div>
+            {(query || filterCount > 0) && (
+              <div className={styles.activeFilters}>
+                <span>{filterCount > 0 ? `${filterCount} active ${filterCount === 1 ? "filter" : "filters"}` : "Search applied"}</span>
+                <button type="button" onClick={resetSearch} className={styles.resetButton}>Clear search & filters</button>
+              </div>
+            )}
           </div>
 
           {/* Search Status */}
           <div className={styles.searchStatus}>
-            <span>
+            <span role="status" aria-live="polite" aria-atomic="true">
               <strong className={styles.resultCount}>
                 {searchResults.length}
               </strong>{" "}
-              {searchResults.length === 1 ? "Artifact Found" : "Artifacts Indexed"}
+              {searchResults.length === 1 ? "record found" : "records found"}
             </span>
             <span>
               Subgraph: {dynamicGraph.nodes.length} Nodes &bull; {dynamicGraph.edges.length} Edges
@@ -293,22 +345,18 @@ export default function ResearchExplorer() {
             {searchResults.length === 0 ? (
               <div className={styles.emptyState}>
                 <span className={styles.emptyStateIcon}>&#x25C7;</span>
-                <p>No research records matched your query and filters.</p>
+                <h2>No matching records</h2>
+                <p>Try a broader topic or clear your filters to explore the full collection.</p>
                 <button
                   type="button"
                   className={styles.filterPill}
-                  onClick={() => {
-                    setQuery("");
-                    setActiveTag("All");
-                    setActiveEra("All");
-                    setProvenanceFilter("all");
-                  }}
+                  onClick={resetSearch}
                 >
-                  Reset Search & Filters
+                  Browse all research
                 </button>
               </div>
             ) : (
-              searchResults.map(({ document: doc, score }) => {
+              searchResults.map(({ document: doc }) => {
                 const isSelected = selectedNode?.id === doc.id;
                 const isDeclassified = doc.source.toLowerCase().includes("declassified");
                 return (
@@ -320,13 +368,6 @@ export default function ResearchExplorer() {
                     onClick={() => handleCardClick(doc)}
                     onMouseEnter={() => setHoveredDocId(doc.id)}
                     onMouseLeave={() => setHoveredDocId(null)}
-                    tabIndex={0}
-                    role="button"
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        handleCardClick(doc);
-                      }
-                    }}
                   >
                     <div className={styles.cardTop}>
                       <div className={styles.cardMeta}>
@@ -393,7 +434,7 @@ export default function ResearchExplorer() {
                         className={styles.sourceLink}
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <span>Artifact URL</span>
+                        <span>Read source</span>
                         <span>&#x2197;</span>
                       </a>
                     </div>

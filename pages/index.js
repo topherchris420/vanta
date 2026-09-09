@@ -277,20 +277,24 @@ export default function Home() {
               writing, and music built as one connected practice.
             </p>
             <div className={styles.heroActions}>
+              <a href="#work" className={styles.signalPrimary}>
+                Explore without sound <span aria-hidden="true">↓</span>
+              </a>
               <button
                 type="button"
-                className={styles.signalPrimary}
-                onClick={async () => {
-                  await enableSound();
+                className={styles.signalTextLink}
+                aria-describedby="sound-entry-hint"
+                onClick={() => {
+                  enableSound();
                   document.querySelector("#work")?.scrollIntoView();
                 }}
               >
                 Enter the instrument
               </button>
-              <a href="#work" className={styles.signalTextLink}>
-                Explore without sound
-              </a>
             </div>
+            <p id="sound-entry-hint" className={styles.entryHint}>
+              Enter the instrument adds sound. You can turn it off at any time.
+            </p>
             <nav
               className={styles.identityLinks}
               aria-label="Christopher's work"
@@ -352,6 +356,24 @@ export default function Home() {
           className={styles.signalChannels}
           aria-label="Selected work"
         >
+          <div className={styles.workIndex}>
+            <div className={styles.workIndexIntro}>
+              <p className={styles.instrumentLabel}>Selected work / 01—05</p>
+              <h2>Find your frequency.</h2>
+              <p>Five ways into the practice. Choose a medium, or keep scrolling to explore them all.</p>
+              <a href="/research" className={styles.signalTextLink}>Research explorer <span aria-hidden="true">↗</span></a>
+            </div>
+            <nav className={styles.workIndexLinks} aria-label="Choose a medium">
+              {projectSections.map((project) => (
+                <a key={project.id} href={`#signal-${project.id}`}>
+                  <span className={styles.workIndexNumber}>{project.number}</span>
+                  <span className={styles.workIndexName}>{project.title}</span>
+                  <span className={styles.workIndexPreview}>{project.primaryLabel}</span>
+                  <span className={styles.workIndexArrow} aria-hidden="true">↗</span>
+                </a>
+              ))}
+            </nav>
+          </div>
           {projectSections.map((project, index) => (
             <ProjectChannel
               key={project.id}
