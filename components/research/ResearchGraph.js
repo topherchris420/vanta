@@ -173,7 +173,7 @@ const ResearchGraph = ({
   // network feel immersive while leaving room for the selected node label.
   const focusNode = useCallback((node) => {
     if (!node || !fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
-    const distance = 95;
+    const distance = isMobileDevice() ? 62 : 95;
     const distRatio =
       1 + distance / Math.hypot(node.x || 0, node.y || 0, node.z || 0 || 1);
     fgRef.current.cameraPosition(
@@ -198,8 +198,9 @@ const ResearchGraph = ({
     ) return;
 
     initialCameraSetRef.current = true;
+    const mobile = isMobileDevice();
     fgRef.current.cameraPosition(
-      { x: 0, y: 52, z: 360 },
+      { x: 0, y: mobile ? 30 : 52, z: mobile ? 235 : 360 },
       { x: 0, y: 0, z: 0 },
       0
     );
@@ -237,8 +238,9 @@ const ResearchGraph = ({
   // Reset Camera View
   const handleResetCamera = () => {
     if (!fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
+    const mobile = isMobileDevice();
     fgRef.current.cameraPosition(
-      { x: 0, y: 52, z: 360 },
+      { x: 0, y: mobile ? 30 : 52, z: mobile ? 235 : 360 },
       { x: 0, y: 0, z: 0 },
       1000
     );
