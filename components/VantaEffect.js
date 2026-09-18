@@ -167,7 +167,10 @@ const VantaEffect = ({ className, ...props }) => {
     const reducedMotion = prefersReducedMotion();
     const webglSupported = supportsWebGL();
 
-    if (isMobile || reducedMotion || !webglSupported) {
+    // Mobile keeps the same event-horizon composition as a single, GPU-cheap
+    // frame. The render policy below pauses animation on small screens, but
+    // still lets the blackhole exist as a real canvas rather than a flat tint.
+    if (reducedMotion || !webglSupported) {
       container.dataset.webgl = "fallback";
       return undefined;
     }

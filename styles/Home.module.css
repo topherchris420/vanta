@@ -51,6 +51,18 @@
     var(--ink);
 }
 
+.background[data-webgl="active"] canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 720px) {
+  .background[data-webgl="active"] {
+    opacity: 0.23;
+  }
+}
+
 .main {
   position: relative;
   z-index: 2;
