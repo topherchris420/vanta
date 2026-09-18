@@ -1,11 +1,16 @@
 :root {
-  --ink: #060b09;
-  --surface: #0b1210;
-  --paper: #edf9f4;
-  --muted: #a5b6ae;
-  --signal: #8cf0c6;
-  --amber: #e4b65c;
-  --line: rgba(237, 249, 244, 0.16);
+  --ink: #050806;
+  --surface: #0a110e;
+  --surface-raised: #101a16;
+  --paper: #f2fbf7;
+  --muted: #9dafaa;
+  --muted-bright: #c4d4cd;
+  --signal: #89f2c2;
+  --signal-soft: #b8ffe0;
+  --amber: #e7b85e;
+  --line: rgba(242, 251, 247, 0.15);
+  --line-strong: rgba(137, 242, 194, 0.42);
+  --shadow-deep: 0 2rem 6rem rgba(0, 0, 0, 0.42);
   --font-display: "Syne", sans-serif;
   --font-body: "Space Grotesk", sans-serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
@@ -39,6 +44,25 @@ body,
 button,
 a {
   font-family: var(--font-body);
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 50% -20%, rgba(137, 242, 194, 0.07), transparent 36rem),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: auto, 5px 5px;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --muted: #c0d1c9;
+    --line: rgba(242, 251, 247, 0.34);
+  }
 }
 
 button {
