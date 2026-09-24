@@ -1,139 +1,85 @@
-# Vanta | Resonant Instrument & Research Explorer
+# Vanta
 
-[![Build & Test](https://img.shields.io/badge/tests-45%20passed-brightgreen)](https://github.com/topherchris420/vanta)
-[![Node Version](https://img.shields.io/badge/node-%3E%3D16.0.0-blue)](https://nodejs.org)
-[![Next.js](https://img.shields.io/badge/Next.js-13.5.6-black)](https://nextjs.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+**Five notes. One chord.**
 
-> A dark, sharp-edged signal instrument and 3D scientific research explorer uniting books, software, art, frequency, music, open neuroscience datasets, and declassified archival intelligence as one connected practice.
+Christopher Woodyard’s portfolio and research atlas, built at [Vers3Dynamics](https://vers3dynamics.com/). Writing, software, art, frequency, and music form one instrument; the research explorer gives visitors a way to follow the ideas behind it.
 
----
+[Explore Vanta](https://mitpress.vercel.app/) · [Open the research atlas](https://mitpress.vercel.app/research) · [Contact Christopher](mailto:christopher@vers3dynamics.com)
 
-## ✦ Overview
+## The instrument
 
-**Vanta** is the personal portfolio, resonant instrument, and research platform of **Christopher Woodyard** ([Vers3Dynamics](https://vers3dynamics.com/) / [R.A.I.N. Lab](https://rainlabteam.vercel.app/)).
+The home page connects five practices through a shared signal. Scroll or use the keyboard to tune a channel. Its frequency, visual state, and optional Web Audio tone move together. The event-horizon archive is a custom Three.js scene with a spacetime lattice, accretion tracks, and interchangeable index models.
 
-The application operates across two interconnected domains:
-1. **The Resonant Instrument (`/`)**: A 5-channel tuned audio-visual experience conducting sound, interactive 3D WebGL geometries, and verified project evidence.
-2. **The Research Explorer (`/research`)**: An interactive 3D knowledge graph and hybrid search engine indexing cross-disciplinary research across Quantum Computing, Cymatics, Biosignal Processing, AI & Neural Interfaces, Neuroscience & Neural Datasets, Acoustics, Nuclear Engineering, and Archival Intelligence & Institutional Oversight.
+Every visit starts silent. Sound requires an explicit action, and the work remains accessible without it. Reduced motion, mobile, hidden tabs, and unavailable WebGL have dedicated rendering paths. Links lead to the work itself: books, repositories, exhibitions, and recordings.
 
----
+## The research atlas
 
-## ✦ Key Features
+`/research` searches a bundled local catalog across eight disciplines, with weighted text matching, typo tolerance, autocomplete, and an interactive connection map.
 
-### 1. Resonant Instrument
-- **5 Signal Channels**: Structured sections covering *Books*, *Apps*, *Art*, *Frequency*, and *Music*, each calibrated to dedicated harmonic frequencies (C4, E4, G4, C5, G3).
-- **Event Horizon Archive**: Interactive 3D hero stage featuring a black hole spacetime lattice, Keplerian accretion platter, and swappable containment shell models.
-- **Frequency Rail**: Keyboard-tunable (`Arrow`, `Home`, `End`) navigation rail with real-time preview states and scroll-depth tracking.
-- **Signal Console**: Live readout reporting active channel frequencies and Web Audio synthesizer state (`Sound off`, `Sound on`, `Sound unavailable`).
-- **Adaptive Performance & A11y**: Continuous 60fps WebGL on capable desktops, single-frame static geometry rendering for mobile and `prefers-reduced-motion`, high-contrast styling, and full keyboard navigation.
+- **Addressable sessions.** Queries, discipline, era, connection filters, sort order, view, and the selected record are encoded in the URL. Copy a link to reopen that state.
+- **Private reading lists.** Save records in this browser, revisit them independently of search filters, and export source metadata as JSON. Reading lists are excluded from shared URLs. Storage failures leave the current session usable.
+- **A useful mobile view.** Switch between records and the map. The 3D graph loads when the mobile map is opened. Reduced-motion and unavailable-WebGL visitors get keyboard-accessible indexed nodes.
+- **Inspect and follow.** A native modal inspector supports keyboard navigation, Escape, focus restoration, linked records, and source destinations.
+- **Consistent empty states.** An empty search yields an empty graph; it never silently resets to the full corpus.
 
-### 2. Scientific & Archival Research Explorer
-- **Interactive 3D Knowledge Graph**: Three.js force-directed network graph mapping 69 structured publications & datasets into 460+ connected nodes and 630+ relational edges with provenance badges (*Source Verified*, *Local Index*, *Inferred Relation*, *Declassified Record*, *Dataset Atlas*).
-- **Neuro2 Open Neuroscience Dataset Atlas**: Deep integration with the [Neuro2 Open Science Catalog](https://huggingface.co/datasets/ciaochris/neuro2-neuroscience-datasets), indexing high-density 128-channel EEG/BCI recordings, Sleep-EDF polysomnography, Neuropixels electrophysiology, 306-channel MEG, 3T fMRI, wearable fNIRS, and vibroacoustic entrainment data.
-- **Ecosystem & Simulation Artifacts**:
-  - [**Dynamic Resonance Rooting (DRR)**](https://github.com/topherchris420/dynamic-resonance-rooting): Complex adaptive systems mathematical diagnostics, wavelet scalograms, and Federal Reserve SR 11-7 supervisory banking framework (PyPI: `drr-framework`).
-  - [**Project 33 Aerospace Testbed**](https://github.com/topherchris420/33): Open-source folding-fin rocket testbed with dual ESP32 flight computer, OpenRocket simulation, and telemetry ground station.
-  - [**CIRCLE Biosignal Platform**](https://github.com/topherchris420/circle): Open-source multimodal EDA, raw PPG, and IMU hardware architecture with 5 kVrms laboratory isolation.
-  - [**Lop Nur Geospatial Digital Twin**](https://github.com/topherchris420/lop-nur-twin): 3D GEOINT/OSINT analytical digital twin testbed with derived evidence registers and uncertainty envelopes.
-  - [**IONS-X Deep Emergence Lab**](https://github.com/topherchris420/ions-x-deep-emergence-lab): GPU-optional multi-agent simulation sandbox modeling coupled dynamical fields and emergent graph reconstruction.
-  - [**R.A.I.N. DataMatrix Engine (Anna)**](https://github.com/topherchris420/anna): Air-gapped technical knowledge infrastructure with hybrid BM25 + dense-vector kNN retrieval.
-  - [**R.A.I.N. Lab & TRIBE v2**](https://github.com/topherchris420/james_library): Autonomous multi-agent scientific deliberation runtime and fMRI cortical response prediction engine.
-  - [**Orpheus Tactical Protocol**](https://github.com/topherchris420/orpheus-resonance-protocol): Command-and-control dashboard with cognitive workload monitoring.
-  - [**Waveform Shift Quantum**](https://github.com/topherchris420/waveform-shift-quantum): Computational framework for reproducible physical resonance models.
-- **Hybrid Search & Reciprocal Rank Fusion (RRF)**: Sub-millisecond multi-field scoring (title: 0.4, abstract: 0.3, entities: 0.2, tags: 0.1, authors: 0.15), typo-tolerant fuzzy matching, autocomplete suggestions, and RRF rank fusion across 8 core disciplines.
-- **Archival Oversight & Multi-Decade Intelligence**: Analyzes declassified historical memorandums, correlates agency logs (AEC, CIA, NSA, DARPA, DoD) with congressional inquiries (Church Committee, Joint Senate Hearings), and maps policy shifts across administrative eras (Cold War, Church Committee Era, Post-Cold War, Modern Oversight).
-- **Dynamic Ingestion Pipelines**: Automated CLI ingestion pipelines ([`scripts/syncResearch.js`](scripts/syncResearch.js) and [`scripts/ingestNeuro2.js`](scripts/ingestNeuro2.js)) for arXiv, OpenAlex, SSRN, and Neuro2/Hugging Face corpora.
+Try [EEG](https://mitpress.vercel.app/research?q=EEG), [resonance](https://mitpress.vercel.app/research?q=resonance), or [open source](https://mitpress.vercel.app/research?q=open+source).
 
----
+### What the catalog establishes
 
-## ✦ Tech Stack
+The bundled data contains locally supplied metadata, summaries, and relationships. **Inclusion is not independent verification of a publication, authorship, DOI, historical attribution, or scientific result.** Some source URLs lead to broader collections rather than the named record. Check the original artifact before citing or relying on a claim.
 
-- **Framework**: [Next.js](https://nextjs.org/) 13 (Pages Router, Static Export configured)
-- **3D & Graphics**: [Three.js](https://threejs.org/), [Vanta.js](https://www.vantajs.com/), Custom WebGL Shaders
-- **Styling**: CSS Modules, Syne (display face), Space Grotesk (body), Monospace system stack
-- **Audio**: Web Audio API (custom oscillator synthesizer with smooth release curves)
-- **Testing**: Native Node.js Test Runner (`node --test`)
+“Catalog references” uses the existing source/DOI heuristic. “Inferred connections” selects relationships marked inferred in the local graph. Neither establishes evidentiary validity. Legacy internal names such as `verifiedOnly`, `Source Verified`, and edge `verified` fields are retained for data compatibility; the interface does not present these as verification.
 
----
+The live UI uses weighted lexical search. A standalone reciprocal-rank-fusion utility exists in the code; embedding retrieval and live external search are not part of the browser search path.
 
-## ✦ Getting Started
+## Run locally
 
-### Prerequisites
-- Node.js `>= 16.0.0`
-- npm, pnpm, or yarn
+Use Node.js 22 (minimum 20.9) and npm.
 
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/topherchris420/vanta.git
-cd vanta
-
-# Install dependencies
-npm install
-```
-
-### Development Server
-
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open `http://localhost:3000`. Production:
 
----
-
-## ✦ Testing & Building
-
-### Running Tests
-The project features a comprehensive test suite of 45 unit, contract, layout, and live HTTP integration tests:
-
-```bash
-npm test
+```sh
+npm run build
+npm start
 ```
 
-### Production Build & Export
-Generates an optimized static production export in `out/`:
+The app uses Next.js Pages Router with prerendered pages. Deploy to a Next.js-compatible host such as Vercel. This repository does not currently enable `output: 'export'`; `next export` is not a deployment step.
 
-```bash
+## Quality checks
+
+```sh
+npm test
 npm run build
 ```
 
----
+The Node test suite covers search, graph extraction, URL round trips, invalid state, reading-list persistence boundaries, exports, audio and render policies, and rendered HTTP contracts. GitHub Actions runs tests and the production build on Node 22. Desktop and mobile browser checks are documented in [the implementation notes](docs/research-workbench.md).
 
-## ✦ Deployment
+## Code map
 
-Vanta is configured for zero-configuration static export (`output: 'export'`), ready for deployment to decentralized networks (e.g. **Dappling Network**), **Vercel**, **GitHub Pages**, or **AWS S3/CloudFront**.
+| Area | Entry point |
+| --- | --- |
+| Canonical portfolio channels | `pages/index.js` |
+| Audio lifecycle | `hooks/useSignalAudio.js` |
+| Research interface | `pages/research/index.js` |
+| URL and reading-list contracts | `lib/research/workbench.js` |
+| Browser persistence | `hooks/useResearchSession.js` |
+| Search and graph extraction | `lib/research/searchEngine.js` |
+| Bundled catalog | `data/research/curatedKnowledge.json` |
+| Runtime capabilities | `lib/runtimeCapabilities.js` |
+| Design and behavior contracts | `PRODUCT.md` |
 
-```bash
-# Build & export command for hosting providers
-npx next build && npx next export
-```
+## Catalog maintenance
 
----
-
-## ✦ Research Ingestion Pipelines
-
-To fetch the latest research papers from arXiv and OpenAlex and update the curated knowledge graph:
-
-```bash
+```sh
 npm run sync:research
-```
-
-To re-ingest and validate curated datasets from the Neuro2 Open Science Atlas:
-
-```bash
 npm run ingest:neuro2
 ```
 
----
+These are explicit maintenance commands, not background requests from a visitor’s browser. Review changes to metadata and source URLs before committing ingestion output.
 
-## ✦ Contact & Destinations
-
-- **Author**: Christopher Woodyard
-- **Email**: [christopher@vers3dynamics.com](mailto:christopher@vers3dynamics.com)
-- **Organization**: [Vers3Dynamics](https://vers3dynamics.com/) / [R.A.I.N. Lab](https://rainlabteam.vercel.app/)
-- **Live Deployment**: [mitpress.vercel.app](https://mitpress.vercel.app/)
-- **Decentralized Network**: [woodyard.dappling.network](https://woodyard.dappling.network)
-- **Publications & Preprints**: [SSRN Author Page](https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976) | [Hugging Face](https://huggingface.co/ciaochris) | [Bandcamp](https://chriswoodyard.bandcamp.com/)
+Built with Next.js, React, Three.js, react-force-graph-3d, and the Web Audio API.

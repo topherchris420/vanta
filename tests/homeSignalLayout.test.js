@@ -182,9 +182,9 @@ test(
     const researchHtml = await researchResponse.text();
     assert.equal(researchResponse.status, 200);
     assert.ok(researchHtml.includes("Research Explorer"));
-    assert.ok(researchHtml.includes("Live Index"));
+    assert.ok(researchHtml.includes("Local catalog"));
     assert.ok(researchHtml.includes("Portfolio"));
-    assert.ok(researchHtml.includes("Source Verified"));
+    assert.ok(researchHtml.includes("Catalog entry"));
     assert.ok(researchHtml.includes("Quantum Computing"));
   }
 );

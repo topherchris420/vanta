@@ -69,8 +69,14 @@ const ResearchGraph = ({
     const updateDimensions = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
-        const width = containerRef.current.clientWidth || rect.width || (typeof window !== "undefined" ? window.innerWidth : 800);
-        const height = containerRef.current.clientHeight || rect.height || (typeof window !== "undefined" ? window.innerHeight - 60 : 600);
+        const width =
+          containerRef.current.clientWidth ||
+          rect.width ||
+          (typeof window !== "undefined" ? window.innerWidth : 800);
+        const height =
+          containerRef.current.clientHeight ||
+          rect.height ||
+          (typeof window !== "undefined" ? window.innerHeight - 60 : 600);
         setDimensions({
           width: Math.max(width, 300),
           height: Math.max(height, 400),
@@ -114,10 +120,10 @@ const ResearchGraph = ({
         node.type === "Paper"
           ? 7.5
           : node.type === "Dataset"
-          ? 6.8
-          : node.type === "Author"
-          ? 5.2
-          : 4.2;
+            ? 6.8
+            : node.type === "Author"
+              ? 5.2
+              : 4.2;
 
       const group = new Group();
 
@@ -127,27 +133,28 @@ const ResearchGraph = ({
         emissiveIntensity: isSelected
           ? 0.95
           : isHovered
-          ? 0.8
-          : node.type === "Paper" || node.type === "Dataset"
-          ? 0.55
-          : 0.35,
+            ? 0.8
+            : node.type === "Paper" || node.type === "Dataset"
+              ? 0.55
+              : 0.35,
         roughness: 0.2,
         metalness: 0.8,
       });
 
       const sphere = new Mesh(baseSphereGeo, mat);
-      const scale = isSelected ? radius * 1.35 : isHovered ? radius * 1.2 : radius;
+      const scale = isSelected
+        ? radius * 1.35
+        : isHovered
+          ? radius * 1.2
+          : radius;
       sphere.scale.set(scale, scale, scale);
       group.add(sphere);
 
       // Render billboard text sprite with three-spritetext
       if (
-        node.type === "Paper" ||
-        node.type === "Technology" ||
-        node.type === "Dataset" ||
-        node.type === "Agency" ||
         isSelected ||
-        isHovered
+        isHovered ||
+        (graphData.nodes.length <= 70 && node.document)
       ) {
         const sprite = new SpriteText(node.label);
         sprite.color = isSelected ? "#ffffff" : colorHex;
@@ -166,16 +173,28 @@ const ResearchGraph = ({
 
       return group;
     },
-    [selectedNodeId, hoveredNode, hoveredDocId, baseSphereGeo]
+    [
+      selectedNodeId,
+      hoveredNode,
+      hoveredDocId,
+      baseSphereGeo,
+      graphData.nodes.length,
+    ],
   );
 
   // Focus node in 3D spacetime. Keep the camera close enough to make the
   // network feel immersive while leaving room for the selected node label.
   const focusNode = useCallback((node) => {
-    if (!node || !fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
+    if (
+      !node ||
+      !fgRef.current ||
+      typeof fgRef.current.cameraPosition !== "function"
+    )
+      return;
     const distance = isMobileDevice() ? 62 : 95;
     const distRatio =
-      1 + distance / Math.hypot(node.x || 0, node.y || 0, node.z || 0 || 1);
+      1 +
+      distance / Math.max(1, Math.hypot(node.x || 0, node.y || 0, node.z || 0));
     fgRef.current.cameraPosition(
       {
         x: (node.x || 0) * distRatio,
@@ -183,7 +202,7 @@ const ResearchGraph = ({
         z: (node.z || 0) * distRatio,
       },
       { x: node.x || 0, y: node.y || 0, z: node.z || 0 },
-      1000
+      1000,
     );
   }, []);
 
@@ -195,14 +214,15 @@ const ResearchGraph = ({
       typeof fgRef.current.cameraPosition !== "function" ||
       !dimensions.width ||
       !dimensions.height
-    ) return;
+    )
+      return;
 
     initialCameraSetRef.current = true;
     const mobile = isMobileDevice();
     fgRef.current.cameraPosition(
       { x: 0, y: mobile ? 30 : 52, z: mobile ? 235 : 360 },
       { x: 0, y: 0, z: 0 },
-      0
+      0,
     );
   }, [dimensions.width, dimensions.height]);
 
@@ -237,47 +257,51 @@ const ResearchGraph = ({
 
   // Reset Camera View
   const handleResetCamera = () => {
-    if (!fgRef.current || typeof fgRef.current.cameraPosition !== "function") return;
+    if (!fgRef.current || typeof fgRef.current.cameraPosition !== "function")
+      return;
     const mobile = isMobileDevice();
     fgRef.current.cameraPosition(
       { x: 0, y: mobile ? 30 : 52, z: mobile ? 235 : 360 },
       { x: 0, y: 0, z: 0 },
-      1000
+      1000,
     );
   };
 
   const reducedMotion = prefersReducedMotion();
   const webglSupported = supportsWebGL();
-  const enableWebGL = shouldUseWebGL({ isMobile: false, reducedMotion, webglAvailable: webglSupported });
+  const enableWebGL = shouldUseWebGL({
+    isMobile: false,
+    reducedMotion,
+    webglAvailable: webglSupported,
+  });
 
   if (!enableWebGL) {
     return (
-      <div className={styles.graphContainer} ref={containerRef} data-webgl="fallback">
+      <div
+        className={styles.graphContainer}
+        ref={containerRef}
+        data-webgl="fallback"
+      >
         <div className={styles.graphHudTop}>
           <div className={styles.graphHudCard}>
-            <div className={styles.graphHudTitle}>Knowledge Index (Static Mode)</div>
+            <div className={styles.graphHudTitle}>
+              Knowledge Index (Static Mode)
+            </div>
             <div className={styles.graphHudStats}>
-              {graphData.nodes.length} Structured Records Indexed
+              {graphData.nodes.length} Indexed Nodes
             </div>
           </div>
         </div>
-        <div className={styles.resultsList} style={{ padding: "1rem" }}>
-          {graphData.nodes.slice(0, 15).map((node) => (
-            <div
+        <div className={styles.staticGraphList}>
+          {graphData.nodes.map((node) => (
+            <button
               key={node.id}
-              className={`${styles.resultCard} ${
-                selectedNodeId === node.id ? styles.resultCardActive : ""
-              }`}
+              type="button"
               onClick={() => onSelectNode(node)}
-              style={{ cursor: "pointer", marginBottom: "0.75rem" }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <span className={styles.cardAgencyBadge} style={{ background: NODE_COLORS[node.type] || "#8cf0c6", color: "#060b09" }}>
-                  {node.type}
-                </span>
-                <span className={styles.cardDate}>{node.label}</span>
-              </div>
-            </div>
+              <small>{node.type}</small>
+              {node.label}
+            </button>
           ))}
         </div>
       </div>
@@ -291,7 +315,8 @@ const ResearchGraph = ({
         <div className={styles.graphHudCard}>
           <div className={styles.graphHudTitle}>3D Knowledge Graph</div>
           <div className={styles.graphHudStats}>
-            {graphData.nodes.length} Nodes &bull; {graphData.links.length} Semantic Edges
+            {graphData.nodes.length} Nodes &bull; {graphData.links.length}{" "}
+            Indexed Connections
           </div>
         </div>
       </div>
@@ -302,7 +327,10 @@ const ResearchGraph = ({
         <div className={styles.legendItems}>
           {Object.entries(NODE_COLORS).map(([type, color]) => (
             <div key={type} className={styles.legendItem}>
-              <span className={styles.legendDot} style={{ background: color }} />
+              <span
+                className={styles.legendDot}
+                style={{ background: color }}
+              />
               <span>{type}</span>
             </div>
           ))}

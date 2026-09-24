@@ -12,6 +12,7 @@ import ScrollToTop from "../components/ScrollToTop";
 import SignalConsole from "../components/SignalConsole";
 import useSignalAudio from "../hooks/useSignalAudio";
 import signalExperience from "../lib/signalExperience";
+import curatedKnowledge from "../data/research/curatedKnowledge.json";
 import styles from "../styles/Home.module.css";
 
 const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
@@ -130,7 +131,7 @@ const elsewhereLinks = [
 
 const siteUrl = "https://mitpress.vercel.app";
 const siteDescription =
-  "Christopher Woodyard builds sound-driven wellness, consciousness engines, immersive art, writing, and music through Vers3Dynamics.";
+  "Writing, sound, art, and open-source research by Christopher Woodyard. Explore five connected practices and a local research atlas from Vers3Dynamics.";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -219,7 +220,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Vers3Dynamics | Christopher</title>
+        <title>Christopher Woodyard — Vanta / Vers3Dynamics</title>
         <link rel="icon" href="/Logo.jpg" />
         <meta name="description" content={siteDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -229,7 +230,7 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Vers3Dynamics" />
         <meta property="og:url" content={`${siteUrl}/`} />
-        <meta property="og:title" content="Vers3Dynamics | Christopher" />
+        <meta property="og:title" content="Christopher Woodyard — Vanta" />
         <meta property="og:description" content={siteDescription} />
         <meta property="og:image" content={`${siteUrl}/surreal-sun.png`} />
         <meta
@@ -239,7 +240,7 @@ export default function Home() {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={`${siteUrl}/`} />
-        <meta name="twitter:title" content="Vers3Dynamics | Christopher" />
+        <meta name="twitter:title" content="Christopher Woodyard — Vanta" />
         <meta name="twitter:description" content={siteDescription} />
         <meta name="twitter:image" content={`${siteUrl}/surreal-sun.png`} />
 
@@ -273,8 +274,8 @@ export default function Home() {
               Five notes.<span>One chord.</span>
             </h1>
             <p className={styles.signalSummary}>
-              Sound-driven wellness, consciousness engines, immersive art,
-              writing, and music built as one connected practice.
+              Writing, sound, art, and open-source experiments in how we
+              sense the world—and ourselves. One connected practice.
             </p>
             <div className={styles.heroActions}>
               <a href="#work" className={styles.signalPrimary}>
@@ -374,6 +375,24 @@ export default function Home() {
               ))}
             </nav>
           </div>
+          <section className={styles.researchGateway} aria-labelledby="research-gateway-title">
+            <div className={styles.gatewayIntro}>
+              <p className={styles.instrumentLabel}>Beyond the portfolio / Research atlas</p>
+              <h2 id="research-gateway-title">An idea is only<br />the beginning.</h2>
+              <p>Follow it into a paper, a dataset, a different discipline.
+                Keep a reading list. Find the next question.</p>
+              <a href="/research" className={styles.signalPrimary}>Enter the research atlas <span aria-hidden="true">↗</span></a>
+            </div>
+            <div className={styles.gatewayIndex}>
+              <div className={styles.gatewayStats}><span><strong>{curatedKnowledge.documents.length}</strong> indexed records</span><span><strong>08</strong> disciplines</span></div>
+              <nav aria-label="Research starting points">
+                <a href="/research?q=EEG"><span>01 / Living signals</span><strong>Brain, body & feedback</strong><span aria-hidden="true">↗</span></a>
+                <a href="/research?q=resonance"><span>02 / Sound & structure</span><strong>Where patterns emerge</strong><span aria-hidden="true">↗</span></a>
+                <a href="/research?q=open+source"><span>03 / Open systems</span><strong>Ideas you can inspect</strong><span aria-hidden="true">↗</span></a>
+              </nav>
+              <p>A local catalog for discovery. Follow original sources before citing.</p>
+            </div>
+          </section>
           {projectSections.map((project, index) => (
             <ProjectChannel
               key={project.id}

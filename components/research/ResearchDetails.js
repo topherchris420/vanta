@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import styles from "../../styles/Research.module.css";
 import { getNodeNeighborhood } from "../../lib/research/graphEngine";
+import workbench from "../../lib/research/workbench";
 
 /**
  * Slide-out details inspector for selected research nodes and documents.
@@ -11,21 +12,33 @@ import { getNodeNeighborhood } from "../../lib/research/graphEngine";
  *   onSelectNode: (nodeId: string) => void
  * }} props
  */
-const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
+const ResearchDetails = ({
+  node,
+  graph,
+  onClose,
+  onSelectNode,
+  saved,
+  onToggleSaved,
+}) => {
   const bodyRef = useRef(null);
+  const dialogRef = useRef(null);
+  const isOpen = Boolean(node);
 
-  // Listen for Escape key to close drawer
+  // Native modal semantics make the background inert, trap keyboard focus,
+  // handle Escape, and restore focus to the element that opened the record.
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
+    const dialog = dialogRef.current;
+    if (!isOpen || !dialog) return;
+    const previous = document.activeElement;
+    dialog.showModal();
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      dialog.close();
+      document.body.style.overflow = overflow;
+      if (previous?.isConnected) previous.focus({ preventScroll: true });
     };
-    if (node) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [node, onClose]);
+  }, [isOpen]);
 
   // Reset scroll position when node changes
   useEffect(() => {
@@ -48,20 +61,23 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
   };
 
   return (
-    <aside
+    <dialog
+      ref={dialogRef}
       className={`${styles.detailsDrawer} ${node ? styles.detailsDrawerOpen : ""}`}
       aria-labelledby="details-drawer-title"
-      role="dialog"
-      aria-modal="true"
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
     >
       <header className={styles.detailsHeader}>
         <div className={styles.detailsTitleRow}>
           <span
             className={`${styles.provenanceBadge} ${getProvenanceClass(
-              node.provenance
+              "Local Index",
             )}`}
           >
-            {node.provenance}
+            {doc ? "Catalog entry" : "Indexed entity"}
           </span>
           <span className={styles.pageBadge}>{node.type}</span>
         </div>
@@ -79,11 +95,12 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
         <h2 id="details-drawer-title" className={styles.detailsNodeLabel}>
           {node.label}
         </h2>
+        <p className={styles.inspectorNote}>{workbench.PROVENANCE_NOTE}</p>
 
         {doc && (
           <div className={styles.detailsMetadataGrid}>
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>Published</span>
+              <span className={styles.metaLabel}>Catalog date</span>
               <span className={styles.metaValue}>{doc.date}</span>
             </div>
             <div className={styles.metaItem}>
@@ -103,7 +120,9 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
               </div>
             )}
             <div className={styles.metaItem}>
-              <span className={styles.metaLabel}>Authors / Investigators</span>
+              <span className={styles.metaLabel}>
+                Listed authors / investigators
+              </span>
               <span className={styles.metaValue}>{doc.authors.join(", ")}</span>
             </div>
             {doc.doi && (
@@ -150,17 +169,11 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
                 if (!targetNode) return null;
 
                 return (
-                  <div
+                  <button
+                    type="button"
                     key={targetId + "-" + idx}
                     className={styles.connectedNodeItem}
                     onClick={() => onSelectNode(targetId)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        onSelectNode(targetId);
-                      }
-                    }}
                   >
                     <span className={styles.connectedLabel}>
                       {targetNode.label}
@@ -168,7 +181,7 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
                     <span className={styles.relationshipTag}>
                       {edge.relationship}
                     </span>
-                  </div>
+                  </button>
                 );
               })}
             </div>
@@ -178,17 +191,27 @@ const ResearchDetails = ({ node, graph, onClose, onSelectNode }) => {
 
       {doc && doc.url && (
         <footer className={styles.detailsFooter}>
+          {onToggleSaved && (
+            <button
+              type="button"
+              className={styles.inspectorSave}
+              aria-pressed={saved}
+              onClick={() => onToggleSaved(doc.id)}
+            >
+              {saved ? "✓ Saved to reading list" : "+ Save to reading list"}
+            </button>
+          )}
           <a
             href={doc.url}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.viewSourceButton}
           >
-            <span>View Source Artifact &rarr;</span>
+            <span>Open catalog source &rarr;</span>
           </a>
         </footer>
       )}
-    </aside>
+    </dialog>
   );
 };
 

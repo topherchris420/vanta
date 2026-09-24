@@ -131,3 +131,28 @@ npm run build
 ```
 
 The test suite includes production policy tests and rendered HTTP integration tests. It must not infer behavior from source-code grep assertions.
+
+## Research workbench
+
+The research explorer preserves query, discipline, era, connection filter, sort order,
+selected node, and mobile view in an addressable URL. URL state is normalized against
+known enum values and node IDs; searches are limited to 300 characters.
+
+Reading-list IDs are stored under `vanta:reading-list:v1` in local browser storage.
+They are never placed in shared URLs or sent to a backend. Storage failures keep
+in-memory saving and JSON export available. Unknown and duplicate saved IDs are
+ignored. The reading list shows saved records independently of search filters.
+
+No result means no graph. Catalog metadata is not independently verified, and the
+interface must not infer verification from a source name or DOI. Exported records
+include the same provenance qualification as the inspector. Internal legacy
+provenance values are data compatibility fields, not verification claims.
+
+The record inspector uses a native modal dialog: background content is inert,
+Escape closes it, and focus returns to its opener. Every connected record is a
+native button. On screens at or below 900px, the visitor switches between records
+and map; the graph component mounts only when the map is requested. The static
+map exposes every indexed node through keyboard-accessible controls.
+
+The home-page research gateway reads its record count from the bundled catalog
+and links into the same query-state contract as the explorer.
