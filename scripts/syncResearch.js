@@ -95,13 +95,16 @@ function parseArxivAtom(xmlText) {
       authors.push(authorMatch[1].trim());
     }
 
-    // Categories / Tags
-    const tags = new Set(['arXiv']);
+    // Categories / Tags. The first tag is the atlas discipline, so quantum
+    // records file under Quantum Information instead of a bare "arXiv".
+    const categories = [];
     const categoryRegex = /<category term="([^"]+)"/g;
     let catMatch;
     while ((catMatch = categoryRegex.exec(entry)) !== null) {
-      tags.add(catMatch[1].trim());
+      categories.push(catMatch[1].trim());
     }
+    const discipline = categories.includes('quant-ph') ? 'Quantum Information' : null;
+    const tags = new Set([...(discipline ? [discipline] : []), 'arXiv', ...categories]);
 
     // Entities extraction from title & abstract
     const entities = extractEntities(rawTitle + ' ' + rawAbstract);
@@ -112,7 +115,7 @@ function parseArxivAtom(xmlText) {
         title: rawTitle,
         abstract: rawAbstract,
         date: rawDate,
-        authors: authors.length > 0 ? authors : ['arXiv Researcher'],
+        authors: authors.length > 0 ? authors : ['Unknown (arXiv)'],
         doi,
         source: 'arXiv',
         url: 'https://arxiv.org/abs/' + arxivId,

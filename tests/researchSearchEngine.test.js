@@ -9,9 +9,9 @@ test('SearchEngine initializes and indexes documents with exact field weights', 
   assert.ok(docs.length >= 25, 'Should have indexed documents');
 
   // Search keyword in title vs abstract vs entities
-  const res = engine.search('Majorana');
+  const res = engine.search('Fubini');
   assert.ok(res.results.length >= 1);
-  assert.equal(res.results[0].document.id, 'qc-topo-01');
+  assert.equal(res.results[0].document.id, 'zenodo-geometric-dlt');
   assert.ok(res.results[0].score > 0.3);
 });
 
@@ -53,16 +53,16 @@ test('SearchEngine supports administrative era and agency filtering', () => {
 
   // Filter by era
   const resEra = engine.search('', { era: 'Church Committee Era' });
-  assert.ok(resEra.results.length >= 2, 'Should find Church Committee era records');
+  assert.ok(resEra.results.length >= 1, 'Should find Church Committee era records');
   resEra.results.forEach((r) => {
     assert.ok(r.document.era.includes('Church Committee'));
   });
 
   // Filter by agency
-  const resAgency = engine.search('', { agency: 'Central Intelligence Agency' });
-  assert.ok(resAgency.results.length >= 1, 'Should find CIA records');
+  const resAgency = engine.search('', { agency: 'Department of Defense' });
+  assert.ok(resAgency.results.length >= 1, 'Should find Department of Defense records');
   resAgency.results.forEach((r) => {
-    assert.ok(r.document.agency.includes('Central Intelligence Agency'));
+    assert.ok(r.document.agency.includes('Department of Defense'));
   });
 });
 
@@ -70,7 +70,7 @@ test('SearchEngine dynamically extracts 1-hop and 2-hop connected subgraphs', ()
   const engine = new SearchEngine(curatedKnowledge);
 
   // Search single focused topic
-  const res = engine.search('Chladni', { hops: 2 });
+  const res = engine.search('Dynamic Resonance Rooting', { hops: 2 });
   assert.ok(res.results.length >= 1);
 
   // Subgraph should include the matched paper node plus connected concept/technology/author nodes

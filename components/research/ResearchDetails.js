@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react";
 import styles from "../../styles/Research.module.css";
 import { getNodeNeighborhood } from "../../lib/research/graphEngine";
 import workbench from "../../lib/research/workbench";
+import practice from "../../data/practice";
+
+const worksById = new Map(practice.works.map((work) => [work.id, work]));
 
 /**
  * Slide-out details inspector for selected research nodes and documents.
@@ -53,6 +56,13 @@ const ResearchDetails = ({
 
   const doc = node.document;
   const neighborhood = getNodeNeighborhood(graph, node.id);
+  const practiceWorks = (doc?.practice || [])
+    .map((id) => worksById.get(id))
+    .filter(Boolean);
+  // Stated relations first: they carry the sentence that justifies them.
+  const edges = [...neighborhood.edges].sort(
+    (a, b) => Number(Boolean(b.basis)) - Number(Boolean(a.basis)),
+  );
 
   const getProvenanceClass = (prov) => {
     if (prov === "Source Verified") return styles.provenanceVerified;
@@ -143,6 +153,22 @@ const ResearchDetails = ({
           </p>
         </div>
 
+        {practiceWorks.length > 0 && (
+          <div>
+            <h3 className={styles.detailsSectionTitle}>In the portfolio</h3>
+            <ul className={styles.practiceLinks}>
+              {practiceWorks.map((work) => (
+                <li key={work.id}>
+                  <a href={`/#work-${work.id}`}>
+                    {work.title} <span aria-hidden="true">↗</span>
+                  </a>
+                  {work.question && <p>{work.question}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {doc && doc.entities && doc.entities.length > 0 && (
           <div>
             <h3 className={styles.detailsSectionTitle}>Extracted Entities</h3>
@@ -159,10 +185,14 @@ const ResearchDetails = ({
         {neighborhood.nodes.length > 1 && (
           <div>
             <h3 className={styles.detailsSectionTitle}>
-              Connected Graph Relations ({neighborhood.edges.length})
+              Connections ({edges.length})
             </h3>
+            <p className={styles.connectionKey}>
+              Stated: the records say so, and the reason is shown. Inferred:
+              shared terms only.
+            </p>
             <div className={styles.connectedList}>
-              {neighborhood.edges.map((edge, idx) => {
+              {edges.map((edge, idx) => {
                 const targetId =
                   edge.source === node.id ? edge.target : edge.source;
                 const targetNode = graph.nodes.find((n) => n.id === targetId);
@@ -177,9 +207,18 @@ const ResearchDetails = ({
                   >
                     <span className={styles.connectedLabel}>
                       {targetNode.label}
+                      {edge.basis && (
+                        <span className={styles.connectionBasis}>
+                          {edge.basis}
+                        </span>
+                      )}
                     </span>
                     <span className={styles.relationshipTag}>
-                      {edge.relationship}
+                      {edge.basis
+                        ? `Stated · ${edge.relationship}`
+                        : targetNode.document && edge.verified === false
+                          ? `Inferred · ${edge.relationship}`
+                          : edge.relationship}
                     </span>
                   </button>
                 );

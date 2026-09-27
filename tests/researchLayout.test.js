@@ -36,22 +36,17 @@ test('research page end-to-end data pipeline integrity', async () => {
 
 test('curated knowledge covers all required scientific disciplines with valid URLs', () => {
   const { documents } = normalizeKnowledgeData(rawCuratedKnowledge);
-  const disciplines = [
-    'Quantum Computing',
-    'Cymatics',
-    'Biosignal Processing',
-    'AI & Neural Interfaces',
-    'Neuroscience & Neural Datasets',
-    'Acoustics',
-    'Nuclear Engineering',
-    'Archival Intelligence & Institutional Oversight',
-  ];
+  const { DISCIPLINES } = require('../lib/research/workbench');
 
-  disciplines.forEach((disc) => {
-    const matches = documents.filter((d) =>
-      d.tags.some((t) => t.toLowerCase().includes(disc.toLowerCase()))
-    );
-    assert.ok(matches.length >= 3, `Expected at least 3 papers in ${disc}, found ${matches.length}`);
+  // Every discipline the filter offers leads at least one real record, and
+  // every record files under an offered discipline.
+  DISCIPLINES.filter((disc) => disc !== 'All').forEach((disc) => {
+    const matches = documents.filter((d) => d.tags[0] === disc);
+    assert.ok(matches.length >= 1, `No record files under ${disc}`);
+  });
+  documents.forEach((d) => {
+    assert.ok(DISCIPLINES.includes(d.tags[0]), `${d.id} files under unknown discipline ${d.tags[0]}`);
+    assert.doesNotThrow(() => new URL(d.url), `${d.id} has an invalid URL`);
   });
 });
 

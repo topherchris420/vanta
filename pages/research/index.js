@@ -29,7 +29,7 @@ const documents = searchEngine.getAllDocuments();
 const fullGraph = searchEngine.getFullGraph();
 const nodeIds = new Set(fullGraph.nodes.map((node) => node.id));
 const documentIds = new Set(documents.map((doc) => doc.id));
-const entryPoints = ["EEG", "Resonance", "Quantum", "Open source"];
+const entryPoints = ["Dynamic Location Theory", "Resonance", "Agent", "Oversight"];
 
 export default function ResearchExplorer() {
   const {
@@ -173,10 +173,10 @@ export default function ResearchExplorer() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Research Explorer — Vanta / Vers3Dynamics</title>
+        <title>Research atlas — Christopher Woodyard</title>
         <meta
           name="description"
-          content="Follow connections across sound, biosignals, AI, and open research. Build a private reading list and share your path through the Vanta catalog."
+          content="The papers, repositories, and records behind Christopher Woodyard's work: his own preprints beside other people's sources, with every stated connection explained. A local catalog; inclusion is not verification."
         />
         <link rel="canonical" href="https://mitpress.vercel.app/research" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -188,11 +188,11 @@ export default function ResearchExplorer() {
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <Link href="/" className={styles.brand} aria-label="Back to home">
-            Vers<span className={styles.brandMark}>3</span>Dynamics
+            Christopher Woodyard
           </Link>
           <div className={styles.headerDivider} />
           <h1 className={styles.pageTitle}>
-            Research Explorer{" "}
+            Research atlas{" "}
             <span className={styles.pageBadge}>Local catalog</span>
           </h1>
         </div>
@@ -203,8 +203,8 @@ export default function ResearchExplorer() {
       <div className={styles.workbenchBar}>
         <div className={styles.catalogIdentity}>
           <span className={styles.statusDot} />
-          {documents.length} records <span aria-hidden="true">/</span> 8
-          disciplines
+          {documents.length} records <span aria-hidden="true">/</span>{" "}
+          {DISCIPLINES.length - 1} disciplines
         </div>
         <div className={styles.workbenchActions}>
           <button type="button" onClick={shareSearch}>
@@ -248,10 +248,12 @@ export default function ResearchExplorer() {
           ref={searchPanelRef}
         >
           <div className={styles.searchHeader}>
-            <p className={styles.eyebrow}>An atlas of connected ideas</p>
+            <p className={styles.eyebrow}>The ideas behind the work</p>
             <h2 className={styles.searchHeadline}>Follow your curiosity.</h2>
             <p className={styles.searchGuidance}>
-              Publications, datasets, and experiments. One place to begin.
+              What the work keeps returning to: Christopher&rsquo;s preprints
+              and repositories, other people&rsquo;s papers, a few public
+              records. Being here is not an endorsement or a verification.
             </p>
             <div className={styles.searchBarWrapper}>
               <span className={styles.searchIcon} aria-hidden="true">

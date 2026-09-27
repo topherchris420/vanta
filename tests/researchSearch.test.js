@@ -8,18 +8,17 @@ test('LocalProvider performs fast TF-IDF and fuzzy search', async () => {
   const provider = new LocalProvider(rawCuratedKnowledge);
   const { documents } = normalizeKnowledgeData(rawCuratedKnowledge);
 
-  // Search keyword "Majorana"
-  const resMajorana = await provider.search('Majorana');
-  assert.ok(resMajorana.results.length >= 1, 'Should find Majorana paper');
-  assert.equal(resMajorana.results[0].document.id, 'qc-topo-01');
-  assert.ok(resMajorana.results[0].score > 0);
+  // A distinctive title term ranks its record first
+  const resClock = await provider.search('Atomic Clock');
+  assert.ok(resClock.results.length >= 1, 'Should find the clock-bound preprint');
+  assert.equal(resClock.results[0].document.id, 'zenodo-bounding-gamma');
+  assert.ok(resClock.results[0].score > 0);
 
-  // Search keyword "Chladni"
-  const resChladni = await provider.search('Chladni');
-  assert.ok(resChladni.results.length >= 1);
-  assert.equal(resChladni.results[0].document.id, 'cym-chladni-01');
+  const resBlueBook = await provider.search('Blue Book');
+  assert.ok(resBlueBook.results.length >= 1);
+  assert.equal(resBlueBook.results[0].document.id, 'arch-bluebook-07');
 
-  // Search by author "Woodyard"
+  // Search by author "Woodyard" finds his preprints and repositories
   const resAuthor = await provider.search('Woodyard');
   assert.ok(resAuthor.results.length >= 20);
 
@@ -31,11 +30,11 @@ test('LocalProvider performs fast TF-IDF and fuzzy search', async () => {
 test('LocalProvider supports discipline filtering and sorting', async () => {
   const provider = new LocalProvider(rawCuratedKnowledge);
 
-  // Filter by tag "Nuclear Engineering"
-  const resNuc = await provider.search('', { tag: 'Nuclear Engineering' });
-  assert.ok(resNuc.results.length >= 4);
-  resNuc.results.forEach((r) => {
-    assert.ok(r.document.tags.includes('Nuclear Engineering'));
+  // Filter by discipline tag
+  const resPhysics = await provider.search('', { tag: 'Speculative Physics' });
+  assert.ok(resPhysics.results.length >= 4);
+  resPhysics.results.forEach((r) => {
+    assert.ok(r.document.tags.includes('Speculative Physics'));
   });
 
   // Sort by date descending

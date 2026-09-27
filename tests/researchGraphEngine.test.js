@@ -12,7 +12,7 @@ test('graphEngine transforms documents into connected 3D nodes and edges with pr
   assert.ok(graph.edges.length > 20, 'Should have connected edges');
 
   // Check paper node properties
-  const paperNode = graph.nodes.find((n) => n.id === 'qc-topo-01');
+  const paperNode = graph.nodes.find((n) => n.id === 'zenodo-location-dynamic-variable');
   assert.ok(paperNode);
   assert.equal(paperNode.type, 'Paper');
   assert.equal(paperNode.provenance, 'Source Verified');
@@ -37,7 +37,7 @@ test('graphEngine transforms documents into connected 3D nodes and edges with pr
   });
 
   // Check neighborhood helper
-  const neighborhood = getNodeNeighborhood(graph, 'qc-topo-01');
+  const neighborhood = getNodeNeighborhood(graph, 'zenodo-location-dynamic-variable');
   assert.ok(neighborhood.nodes.length >= 2, 'Should find connected nodes');
   assert.ok(neighborhood.edges.length >= 1, 'Should find connected edges');
 });
