@@ -11,6 +11,8 @@ export default function SignalConsole({
   activeId,
   soundEnabled,
   soundAvailable,
+  thread = null,
+  chordSize = 0,
   onToggleSound,
 }) {
   const view = createSignalConsoleView({
@@ -18,6 +20,8 @@ export default function SignalConsole({
     activeId,
     soundEnabled,
     soundAvailable,
+    thread,
+    chordSize,
   });
 
   return (

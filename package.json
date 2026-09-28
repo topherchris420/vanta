@@ -8,10 +8,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx --yes serve@14 out",
     "test": "node --test",
     "sync:research": "node scripts/syncResearch.js",
-    "ingest:neuro2": "node scripts/ingestNeuro2.js"
+    "ingest:neuro2": "node scripts/ingestNeuro2.js",
+    "build:research-graph": "node scripts/buildResearchGraph.js"
   },
   "dependencies": {
     "next": "15.5.26",

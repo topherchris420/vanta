@@ -7,10 +7,11 @@ const { createFrequencyRailItems, resolveRailKeyIndex } = signalExperience;
 export default function FrequencyRail({
   channels,
   activeId,
+  chordIds = [],
   onPreview,
   onPreviewEnd,
 }) {
-  const items = createFrequencyRailItems(channels, activeId);
+  const items = createFrequencyRailItems(channels, activeId, chordIds);
   const linkRefs = useRef([]);
 
   // Arrow keys move focus along the rail like a tuner dial; focus already
@@ -53,6 +54,7 @@ export default function FrequencyRail({
                 href={item.href}
                 className={styles.frequencyRailLink}
                 aria-current={item.current}
+                data-chord={item.chord ? "true" : undefined}
                 onMouseEnter={preview}
                 onMouseLeave={onPreviewEnd}
                 onFocus={preview}

@@ -1234,3 +1234,40 @@
   .focusGraphButton, .sourceLink { padding: 0.5rem 0; }
   .cardFooter { gap: 0.5rem; }
 }
+
+/* Stated relations carry their reason; the portfolio link leads back to the work. */
+.connectedNodeItem { gap: 0.75rem; }
+.relationshipTag { flex: none; white-space: nowrap; }
+.connectionBasis {
+  display: block;
+  margin-top: 0.35rem;
+  font: 400 0.7rem / 1.5 var(--font-body);
+  color: var(--muted-bright);
+}
+.connectionKey {
+  margin: -0.25rem 0 0.75rem;
+  font: 0.68rem / 1.6 var(--font-mono);
+  color: var(--muted);
+}
+.practiceLinks { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.practiceLinks li { border-left: 2px solid var(--signal); padding-left: 0.85rem; }
+.practiceLinks a {
+  color: var(--paper);
+  font: 700 0.95rem / 1.3 var(--font-display, inherit);
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+  text-underline-offset: 0.2em;
+}
+.practiceLinks p { margin: 0.3rem 0 0; font-size: 0.78rem; line-height: 1.5; color: var(--muted-bright); }
+
+/* Desktop: the record list scrolls inside its column and the map holds the
+   viewport. Without the bounded row the list stretched the map to the full
+   length of the catalog, and the camera framed a canvas thousands of pixels
+   tall. */
+@media (min-width: 901px) {
+  /* As a flex item with flex: 1 its height was ignored and it grew to fit
+     the list; a fixed basis makes the declared height hold. */
+  .main { flex: none; grid-template-rows: minmax(0, 1fr); overflow: hidden; }
+  .searchPanel { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+  .graphPanel { height: 100%; }
+}

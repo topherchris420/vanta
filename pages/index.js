@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import CustomCursor from "../components/CustomCursor";
 import ErrorBoundary from "../components/ErrorBoundary";
 import FrequencyRail from "../components/FrequencyRail";
+import Intervals from "../components/Intervals";
 import Navbar from "../components/Navbar";
 import ProjectChannel from "../components/ProjectChannel";
 import Reveal from "../components/Reveal";
@@ -12,6 +13,9 @@ import ScrollToTop from "../components/ScrollToTop";
 import SignalConsole from "../components/SignalConsole";
 import useSignalAudio from "../hooks/useSignalAudio";
 import signalExperience from "../lib/signalExperience";
+import practiceModel from "../lib/practice";
+import practice from "../data/practice";
+import workbench from "../lib/research/workbench";
 import curatedKnowledge from "../data/research/curatedKnowledge.json";
 import styles from "../styles/Home.module.css";
 
@@ -24,148 +28,109 @@ const DisplayPedestalNoSSR = dynamic(
   { ssr: false }
 );
 
-const projectSections = [
-  {
-    id: "books",
-    number: "01",
-    title: "Books",
-    note: "C4",
-    color: "#8cf0c6",
-    visual: "waveform",
-    description:
-      "Coloring books, poetry, and health-focused writing for reflection and daily rituals.",
-    primaryLabel: "Read poetry book",
-    primaryHref: "https://a.co/d/078d1kaa",
-    secondaryLabel: "Lop Nur Twin game",
-    secondaryHref: "https://lop-nur-twin.vercel.app/",
-    frequency: 261.63,
-  },
-  {
-    id: "apps",
-    number: "02",
-    title: "Apps",
-    note: "E4",
-    color: "#8cf0c6",
-    visual: "nodes",
-    description:
-      "Sound-driven AI wellness tools and prototypes focused on mindful interaction.",
-    primaryLabel: "Explore AI/ML Projects",
-    primaryHref:
-      "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
-    secondaryLabel: "James Library",
-    secondaryHref: "https://github.com/topherchris420/james_library",
-    frequency: 329.63,
-  },
-  {
-    id: "art",
-    number: "03",
-    title: "Art",
-    note: "G4",
-    color: "#8cf0c6",
-    visual: "artwork",
-    description:
-      "Digital fragments and spatial-computing exhibitions that blend visual poetry with immersion.",
-    primaryLabel: "View Blockchain Gallery",
-    primaryHref: "https://oncyber.io/stanfordgsb",
-    secondaryLabel: "See Italian MADS Gallery Feature",
-    secondaryHref:
-      "https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/",
-    frequency: 392,
-  },
-  {
-    id: "frequency",
-    number: "04",
-    title: "Frequency",
-    note: "C5",
-    color: "#8cf0c6",
-    visual: "orbit",
-    description:
-      "A consciousness engine exploring patterned meaning, ritual, and symbolic systems.",
-    primaryLabel: "Open Frequency Experience",
-    primaryHref: "https://woodyard.dappling.network",
-    secondaryLabel: "Read Inspiration Source",
-    secondaryHref:
-      "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7",
-    frequency: 523.25,
-  },
-  {
-    id: "music",
-    number: "05",
-    title: "Music",
-    note: "G3",
-    color: "#8cf0c6",
-    visual: "spectrum",
-    description:
-      "Experimental sound compositions from my project Indigo People with lo-fi sonic textures.",
-    primaryLabel: "Listen on Bandcamp",
-    primaryHref: "https://chriswoodyard.bandcamp.com/",
-    secondaryLabel: "Play Featured Track",
-    secondaryHref:
-      "https://chriswoodyard.bandcamp.com/track/creators-innovators",
-    frequency: 196,
-  },
-];
+// The canonical content model lives in data/practice.js. This page only
+// arranges it; nothing about a channel or a work is restated here.
+const { channels: projectSections, works, threads, epigraph, now, person } =
+  practice;
 
 const {
   createResonanceDetail,
   measureHeadlineEm,
   resolvePreviewChannel,
   selectActiveChannel,
+  shouldReleaseHeldThread,
   validateChannels,
 } = signalExperience;
+const { threadChannels, threadChord, threadsForWork, validatePractice } =
+  practiceModel;
 
 validateChannels(projectSections);
+validatePractice(practice);
+
+const worksById = new Map(works.map((work) => [work.id, work]));
+const channelsById = new Map(projectSections.map((channel) => [channel.id, channel]));
+const threadsById = new Map(threads.map((thread) => [thread.id, thread]));
+const nowWork = worksById.get(now.work);
+const disciplineCount = workbench.DISCIPLINES.length - 1;
 
 const collaborationHeadline = "Make something that resonates.";
 
 const elsewhereLinks = [
-  { label: "Music", href: "https://chriswoodyard.bandcamp.com/" },
-  { label: "Open Source", href: "https://huggingface.co/ciaochris" },
+  { label: "GitHub", href: "https://github.com/topherchris420" },
+  { label: "Hugging Face", href: "https://huggingface.co/ciaochris" },
+  { label: "Bandcamp", href: "https://chriswoodyard.bandcamp.com/" },
   {
     label: "Papers",
-    href:
-      "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+    href: "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
   },
-  { label: "Latest build", href: "https://geotwn.vercel.app/" },
+  { label: "Vers3Dynamics", href: "https://vers3dynamics.com/" },
 ];
 
 const siteUrl = "https://mitpress.vercel.app";
 const siteDescription =
-  "Writing, sound, art, and open-source research by Christopher Woodyard. Explore five connected practices and a local research atlas from Vers3Dynamics.";
+  "Poems and speculative physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. The practice of Christopher Woodyard.";
 
-const personJsonLd = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Christopher Woodyard",
-  url: `${siteUrl}/`,
-  email: "mailto:christopher@vers3dynamics.com",
-  jobTitle: "Founder",
-  worksFor: {
-    "@type": "Organization",
-    name: "Vers3Dynamics",
-    url: "https://vers3dynamics.com/",
-  },
-  sameAs: [
-    "https://chriswoodyard.bandcamp.com/",
-    "https://huggingface.co/ciaochris",
-    "https://github.com/topherchris420",
-    "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: person.name,
+      url: `${siteUrl}/`,
+      email: `mailto:${person.email}`,
+      description: person.summary,
+      knowsAbout: [
+        "Poetry",
+        "Speculative physics",
+        "Biosignal instrumentation",
+        "Time-series analysis",
+        "Multi-agent research systems",
+        "Simulation",
+        "Painting",
+        "Music",
+      ],
+      affiliation: {
+        "@type": "Organization",
+        name: person.lab.name,
+        url: person.lab.url,
+        description: "An open-source laboratory for resonant intelligence.",
+      },
+      sameAs: person.sameAs,
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#site`,
+      name: "Vanta",
+      url: `${siteUrl}/`,
+      description: siteDescription,
+      author: { "@id": `${siteUrl}/#person` },
+    },
   ],
 };
 
 export default function Home() {
   const [scrollChannelId, setScrollChannelId] = useState("hero");
   const [previewChannelId, setPreviewChannelId] = useState(null);
+  const [previewThreadId, setPreviewThreadId] = useState(null);
+  const [heldThreadId, setHeldThreadId] = useState(null);
+  const [recordingPlaying, setRecordingPlaying] = useState(false);
   const effectiveChannelId = resolvePreviewChannel({
     scrollChannel: scrollChannelId,
     previewChannel: previewChannelId,
   });
+  const activeThread = threadsById.get(previewThreadId ?? heldThreadId) ?? null;
+  const chordIds = useMemo(
+    () => (activeThread ? threadChannels(activeThread, works, projectSections) : []),
+    [activeThread]
+  );
   const {
     soundEnabled,
     soundAvailable,
     enableSound,
     toggleSound,
     playFrequency,
+    playChord,
     stopFrequency,
   } = useSignalAudio();
 
@@ -185,6 +150,7 @@ export default function Home() {
             id: entry.target.dataset.signalChannel,
             isIntersecting: entry.isIntersecting,
             intersectionRatio: entry.intersectionRatio,
+            coverage: entry.intersectionRect.height,
             top: entry.boundingClientRect.top,
           });
         });
@@ -194,7 +160,9 @@ export default function Home() {
       },
       {
         rootMargin: "-34% 0px -44% 0px",
-        threshold: [0.2, 0.35, 0.5, 0.65],
+        // Channels are often taller than the band, so their ratio stays small;
+        // a zero threshold still reports every entry and exit.
+        threshold: [0, 0.05, 0.1, 0.2, 0.35, 0.5],
       }
     );
 
@@ -202,10 +170,49 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // A held chord belongs to the place it was tuned. Scrolling into a channel
+  // releases it, and Escape always does. Arriving in a rest zone does not: the
+  // observer can report that arrival after the visitor has already held a chord.
   useEffect(() => {
-    const channel = projectSections.find(
-      ({ id }) => id === effectiveChannelId
-    );
+    if (shouldReleaseHeldThread(scrollChannelId, channelsById)) {
+      setHeldThreadId(null);
+    }
+  }, [scrollChannelId]);
+
+  useEffect(() => {
+    if (!heldThreadId) return undefined;
+    const release = (event) => {
+      if (event.key === "Escape") setHeldThreadId(null);
+    };
+    window.addEventListener("keydown", release);
+    return () => window.removeEventListener("keydown", release);
+  }, [heldThreadId]);
+
+  useEffect(() => {
+    // A recording is the one sound on the page that is not a tone; while it
+    // plays, the instrument stays quiet.
+    if (recordingPlaying) {
+      stopFrequency();
+      return undefined;
+    }
+
+    if (activeThread) {
+      const chord = threadChord(activeThread, works, projectSections);
+      window.dispatchEvent(
+        new CustomEvent("vanta:resonance", {
+          detail: {
+            channelId: "thread-" + activeThread.id,
+            color: "#e4b65c",
+            frequency: chord[0],
+            intensity: 1,
+          },
+        })
+      );
+      playChord(chord);
+      return stopFrequency;
+    }
+
+    const channel = channelsById.get(effectiveChannelId);
     if (!channel) return undefined;
 
     window.dispatchEvent(
@@ -215,38 +222,55 @@ export default function Home() {
     );
     playFrequency(channel.frequency);
     return stopFrequency;
-  }, [effectiveChannelId, playFrequency, stopFrequency]);
+  }, [
+    activeThread,
+    effectiveChannelId,
+    recordingPlaying,
+    playChord,
+    playFrequency,
+    stopFrequency,
+  ]);
+
+  const endChannelPreview = useCallback(() => setPreviewChannelId(null), []);
+  const endThreadPreview = useCallback(() => setPreviewThreadId(null), []);
+  const toggleHeldThread = useCallback(
+    (id) => setHeldThreadId((current) => (current === id ? null : id)),
+    []
+  );
+  const threadsForWorkId = useCallback((id) => threadsForWork(id, threads), []);
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Christopher Woodyard — Vanta / Vers3Dynamics</title>
+        <title>Christopher Woodyard — Vanta</title>
         <link rel="icon" href="/Logo.jpg" />
         <meta name="description" content={siteDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="Christopher Woodyard" />
+        <meta name="author" content={person.name} />
         <link rel="canonical" href={`${siteUrl}/`} />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Vers3Dynamics" />
+        <meta property="og:type" content="profile" />
+        <meta property="og:site_name" content="Vanta" />
         <meta property="og:url" content={`${siteUrl}/`} />
-        <meta property="og:title" content="Christopher Woodyard — Vanta" />
+        <meta property="og:title" content="Christopher Woodyard — Five notes. One chord." />
         <meta property="og:description" content={siteDescription} />
-        <meta property="og:image" content={`${siteUrl}/surreal-sun.png`} />
+        <meta property="og:image" content={`${siteUrl}/og-vanta.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta
           property="og:image:alt"
-          content="Surreal sun artwork by Vers3Dynamics"
+          content="Five notes. One chord. Christopher Woodyard's Vanta, with the Event Horizon Archive."
         />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={`${siteUrl}/`} />
-        <meta name="twitter:title" content="Christopher Woodyard — Vanta" />
+        <meta name="twitter:title" content="Christopher Woodyard — Five notes. One chord." />
         <meta name="twitter:description" content={siteDescription} />
-        <meta name="twitter:image" content={`${siteUrl}/surreal-sun.png`} />
+        <meta name="twitter:image" content={`${siteUrl}/og-vanta.jpg`} />
 
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
 
@@ -265,6 +289,7 @@ export default function Home() {
           id="top"
           className={styles.signalHero}
           aria-labelledby="signal-title"
+          data-signal-channel="hero"
         >
           <div className={styles.heroCopy}>
             <p className={styles.instrumentLabel}>
@@ -274,8 +299,9 @@ export default function Home() {
               Five notes.<span>One chord.</span>
             </h1>
             <p className={styles.signalSummary}>
-              Writing, sound, art, and open-source experiments in how we
-              sense the world—and ourselves. One connected practice.
+              Poems and speculative physics. Open research instruments that
+              keep their evidence. Simulated worlds where people and AI agents
+              play by the same rules. Paintings, and songs as Indigo People.
             </p>
             <div className={styles.heroActions}>
               <a href="#work" className={styles.signalPrimary}>
@@ -296,16 +322,20 @@ export default function Home() {
             <p id="sound-entry-hint" className={styles.entryHint}>
               Enter the instrument adds sound. You can turn it off at any time.
             </p>
+            <p className={styles.nowSignal}>
+              <span className={styles.nowLabel}>Now</span>
+              <a href={`#work-${nowWork.id}`}>{now.text}</a>
+            </p>
             <nav
               className={styles.identityLinks}
-              aria-label="Christopher's work"
+              aria-label="Where the work lives"
             >
               <a
-                href="https://vers3dynamics.com/"
+                href={person.lab.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Vers3Dynamics
+                Vers3Dynamics<span className={styles.identityNote}>, the open lab</span>
               </a>
               <a
                 href="https://rainlabteam.vercel.app/"
@@ -315,17 +345,19 @@ export default function Home() {
                 R.A.I.N. Lab
               </a>
               <a
-                href="https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976"
+                href="https://github.com/topherchris420"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Papers
+                Source
               </a>
             </nav>
           </div>
           <ErrorBoundary className={styles.heroStage}>
             <DisplayPedestalNoSSR
               className={styles.heroStage}
+              workCount={works.length}
+              recordCount={curatedKnowledge.documents.length}
               onResonance={(detail) =>
                 window.dispatchEvent(
                   new CustomEvent("vanta:resonance", { detail })
@@ -341,14 +373,17 @@ export default function Home() {
         <FrequencyRail
           channels={projectSections}
           activeId={effectiveChannelId}
+          chordIds={chordIds}
           onPreview={setPreviewChannelId}
-          onPreviewEnd={() => setPreviewChannelId(null)}
+          onPreviewEnd={endChannelPreview}
         />
         <SignalConsole
           channels={projectSections}
           activeId={effectiveChannelId}
           soundEnabled={soundEnabled}
           soundAvailable={soundAvailable}
+          thread={activeThread}
+          chordSize={chordIds.length}
           onToggleSound={toggleSound}
         />
 
@@ -361,48 +396,74 @@ export default function Home() {
             <div className={styles.workIndexIntro}>
               <p className={styles.instrumentLabel}>Selected work / 01—05</p>
               <h2>Find your frequency.</h2>
-              <p>Five ways into the practice. Choose a medium, or keep scrolling to explore them all.</p>
-              <a href="/research" className={styles.signalTextLink}>Research explorer <span aria-hidden="true">↗</span></a>
+              <p>
+                Five instruments, one practice. Pick one, or keep scrolling and
+                listen for where they repeat each other.
+              </p>
             </div>
-            <nav className={styles.workIndexLinks} aria-label="Choose a medium">
+            <nav className={styles.workIndexLinks} aria-label="Choose an instrument">
               {projectSections.map((project) => (
                 <a key={project.id} href={`#signal-${project.id}`}>
                   <span className={styles.workIndexNumber}>{project.number}</span>
                   <span className={styles.workIndexName}>{project.title}</span>
-                  <span className={styles.workIndexPreview}>{project.primaryLabel}</span>
-                  <span className={styles.workIndexArrow} aria-hidden="true">↗</span>
+                  <span className={styles.workIndexPreview}>
+                    {project.works.map((id) => worksById.get(id).title).join(" · ")}
+                  </span>
+                  <span className={styles.workIndexArrow} aria-hidden="true">↘</span>
                 </a>
               ))}
             </nav>
           </div>
-          <section className={styles.researchGateway} aria-labelledby="research-gateway-title">
-            <div className={styles.gatewayIntro}>
-              <p className={styles.instrumentLabel}>Beyond the portfolio / Research atlas</p>
-              <h2 id="research-gateway-title">An idea is only<br />the beginning.</h2>
-              <p>Follow it into a paper, a dataset, a different discipline.
-                Keep a reading list. Find the next question.</p>
-              <a href="/research" className={styles.signalPrimary}>Enter the research atlas <span aria-hidden="true">↗</span></a>
-            </div>
-            <div className={styles.gatewayIndex}>
-              <div className={styles.gatewayStats}><span><strong>{curatedKnowledge.documents.length}</strong> indexed records</span><span><strong>08</strong> disciplines</span></div>
-              <nav aria-label="Research starting points">
-                <a href="/research?q=EEG"><span>01 / Living signals</span><strong>Brain, body & feedback</strong><span aria-hidden="true">↗</span></a>
-                <a href="/research?q=resonance"><span>02 / Sound & structure</span><strong>Where patterns emerge</strong><span aria-hidden="true">↗</span></a>
-                <a href="/research?q=open+source"><span>03 / Open systems</span><strong>Ideas you can inspect</strong><span aria-hidden="true">↗</span></a>
-              </nav>
-              <p>A local catalog for discovery. Follow original sources before citing.</p>
-            </div>
-          </section>
           {projectSections.map((project, index) => (
             <ProjectChannel
               key={project.id}
               project={project}
               index={index}
-              active={effectiveChannelId === project.id}
+              active={!activeThread && effectiveChannelId === project.id}
+              works={project.works.map((id) => worksById.get(id))}
+              channelsById={channelsById}
+              threadsForWork={threadsForWorkId}
               onPreview={setPreviewChannelId}
-              onPreviewEnd={() => setPreviewChannelId(null)}
+              onPreviewEnd={endChannelPreview}
+              onPlaybackChange={setRecordingPlaying}
             />
           ))}
+        </section>
+
+        <Intervals
+          threads={threads}
+          works={works}
+          channels={projectSections}
+          epigraph={epigraph}
+          heldThreadId={heldThreadId}
+          threadChannels={(thread) => threadChannels(thread, works, projectSections)}
+          onPreview={setPreviewThreadId}
+          onPreviewEnd={endThreadPreview}
+          onToggleHold={toggleHeldThread}
+        />
+
+        <section
+          className={styles.researchGateway}
+          aria-labelledby="research-gateway-title"
+          data-signal-channel="rest"
+        >
+          <div className={styles.gatewayIntro}>
+            <p className={styles.instrumentLabel}>Underneath / Research atlas</p>
+            <h2 id="research-gateway-title">An idea is only<br />the beginning.</h2>
+            <p>The papers and sources the work keeps returning to, his own
+              preprints beside other people&rsquo;s. Every stated link says why
+              it is there.</p>
+            <a href="/research" className={styles.signalPrimary}>Enter the research atlas <span aria-hidden="true">↗</span></a>
+          </div>
+          <div className={styles.gatewayIndex}>
+            <div className={styles.gatewayStats}><span><strong>{curatedKnowledge.documents.length}</strong> indexed records</span><span><strong>{String(disciplineCount).padStart(2, "0")}</strong> disciplines</span></div>
+            <nav aria-label="Research starting points">
+              <a href="/research?q=Dynamic+Location+Theory"><span>01 / Location</span><strong>A theory, and the clocks that bound it</strong><span aria-hidden="true">↗</span></a>
+              <a href="/research?q=Dynamic+Resonance+Rooting"><span>02 / Rhythm &amp; lag</span><strong>From paper to failed benchmark</strong><span aria-hidden="true">↗</span></a>
+              <a href="/research?q=Oversight"><span>03 / Oversight</span><strong>Who checks the record</strong><span aria-hidden="true">↗</span></a>
+            </nav>
+            <p>A local catalog for discovery, not verification. Follow the original source before citing.</p>
+          </div>
         </section>
 
         <Reveal
@@ -410,6 +471,7 @@ export default function Home() {
           id="contact"
           className={styles.signalFooter}
           aria-label="Contact"
+          data-signal-channel="rest"
           style={{ "--title-em": measureHeadlineEm(collaborationHeadline) }}
         >
           <p className={styles.instrumentLabel}>
@@ -417,10 +479,10 @@ export default function Home() {
           </p>
           <h2>{collaborationHeadline}</h2>
           <a
-            href="mailto:christopher@vers3dynamics.com"
+            href={`mailto:${person.email}`}
             className={styles.signalPrimary}
           >
-            christopher@vers3dynamics.com
+            {person.email}
           </a>
           <nav className={styles.footerLinks} aria-label="Elsewhere">
             {elsewhereLinks.map((link) => (
@@ -435,7 +497,8 @@ export default function Home() {
             ))}
           </nav>
           <p>
-            {"\u00a9"} {new Date().getFullYear()} Vers3Dynamics / R.A.I.N. Lab
+            {"©"} {new Date().getFullYear()} Christopher Woodyard. Built at
+            Vers3Dynamics, the open lab.
           </p>
         </Reveal>
       </main>

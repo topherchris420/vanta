@@ -19,7 +19,12 @@ const { resolveArchiveDetail, resolvePedestalMode, resolveWebGLPixelRatio } =
 const STATIC_FRAME_SECONDS = 9.4;
 const MAX_FRAME_DELTA = 1 / 24;
 
-const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
+const DisplayPedestal = ({
+  className = "",
+  workCount = 0,
+  recordCount = 0,
+  onResonance = () => {},
+}) => {
   const router = useRouter();
   const hostRef = useRef(null);
   const sceneApiRef = useRef(null);
@@ -294,11 +299,10 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
     };
   }, []);
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      triggerPortalTransition();
-    }
+  const crossIntoAtlas = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    triggerPortalTransition();
   };
 
   const handlePointerMove = (event) => {
@@ -312,13 +316,12 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
   };
 
   return (
+    // The stage itself is a pointer shortcut into the atlas; the keyboard and
+    // assistive-technology path is the explicit link in the HUD, so no control
+    // is ever nested inside another.
     <div
       className={`${styles.displayPedestal} ${className}`.trim()}
-      role="button"
-      tabIndex={0}
-      aria-label="Cross Event Horizon to Research Explorer"
       onClick={triggerPortalTransition}
-      onKeyDown={handleKeyDown}
       onPointerMove={handlePointerMove}
       onPointerEnter={() => {
         sceneApiRef.current?.setHover(true);
@@ -346,15 +349,26 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
       }}
     >
       <div ref={hostRef} className={styles.displayPedestalCanvas} aria-hidden="true" />
-      <div className={styles.displayPedestalHud} aria-hidden="true">
+      <p className={styles.displayPedestalCaption}>
+        <span>Event Horizon Archive</span>
+        {workCount} works, {recordCount} sources, one surface
+      </p>
+      <div className={styles.displayPedestalHud}>
         <button
           type="button"
           className={styles.displayPedestalModelBtn}
           onClick={swapModel}
-          aria-label={`Current model: ${activeModel.label}. Click to switch model.`}
+          aria-label={`Index model: ${activeModel.label}. Write the next model to the horizon.`}
         >
           {activeModel.label}
         </button>
+        <a
+          href="/research"
+          className={styles.displayPedestalCross}
+          onClick={crossIntoAtlas}
+        >
+          Cross into the atlas <span aria-hidden="true">↗</span>
+        </a>
         <span className={styles.displayPedestalSwatches}>
           {displayPedestalModels.map((model, index) => (
             <button
@@ -365,7 +379,8 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
               }`}
               style={{ "--swatch": model.primary }}
               onClick={(e) => selectModel(index, e)}
-              aria-label={`Select model ${model.label}`}
+              aria-label={`Index model ${model.label}`}
+              aria-pressed={index === modelIndex}
             />
           ))}
         </span>
@@ -381,9 +396,9 @@ const DisplayPedestal = ({ className = "", onResonance = () => {} }) => {
           }}
           aria-hidden="true"
         >
-          <div className={styles.eventHorizonBadge}>SINGULARITY PORTAL</div>
-          <div className={styles.eventHorizonLabel}>CROSS THE EVENT HORIZON</div>
-          <div className={styles.eventHorizonSub}>Click to Enter Research Explorer</div>
+          <div className={styles.eventHorizonBadge}>Event Horizon Archive</div>
+          <div className={styles.eventHorizonLabel}>Cross into the atlas</div>
+          <div className={styles.eventHorizonSub}>{recordCount} sources behind the work</div>
         </div>
       )}
     </div>

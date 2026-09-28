@@ -68,6 +68,22 @@ test("console readout reports the tuned channel and falls back to the hero", () 
   assert.equal(musicView.frequencyLabel, "196.00 Hz");
 });
 
+test("a tuned thread takes over the console readout without claiming a channel", () => {
+  const view = signal.createSignalConsoleView({
+    channels,
+    activeId: "music",
+    soundEnabled: true,
+    soundAvailable: true,
+    thread: { id: "agency", name: "Agency" },
+    chordSize: 2,
+  });
+
+  assert.equal(view.tuned, true);
+  assert.equal(view.channelLabel, "Agency");
+  assert.equal(view.frequencyLabel, "2 notes");
+  assert.equal(view.soundLabel, "Sound on");
+});
+
 test("console sound label reflects exactly the three contracted states", () => {
   const label = (soundEnabled, soundAvailable) =>
     signal.createSignalConsoleView({

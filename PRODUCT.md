@@ -8,151 +8,143 @@ Web, built with the Next.js Pages Router.
 
 ## Users
 
-Primary: press, curators, and collaborators evaluating Christopher Woodyard's art, writing, software, and music. Secondary: clients considering commissions or partnership work.
+Anyone meeting Christopher Woodyard's work for the first time: curators, researchers, engineers, musicians, collaborators, and press. Each should find something checkable within a minute: a repository, a preprint, a recording, a gallery.
 
 ## Product Purpose
 
-Vanta is Christopher Woodyard's five-channel Resonant Instrument. It presents Books, Apps, Art, Frequency, and Music as one connected practice, then links every claim to a real external artifact.
+Vanta is Christopher Woodyard's portfolio: one practice played on five instruments. It is not a résumé and not the Vers3Dynamics homepage. Vanta is the person; Vers3Dynamics is the open lab where much of the work is built.
+
+The page lets a visitor find the continuity themselves:
+
+1. First look: an unusual person and what he makes (the hero says it plainly).
+2. Second: the works, each with its question and its receipts.
+3. Third: the intervals, where the same questions turn out to recur across instruments.
+4. Fourth: the research atlas, the sources underneath.
+
+## Content Model
+
+The canonical content lives in `data/practice.js` and is checked by `lib/practice.js`. Pages arrange it and never restate it.
+
+- **Channels (five notes):** Writing (C4), Instruments (E4), Worlds (G4), Art (C5), Music (G3). Each has a lede, a list of works, and one real artifact.
+- **Works:** title, optional year, optional question (leads), body, optional detail or trace, one to three statuses, evidence links, optional `alsoIn` channels.
+- **Statuses** describe what happened, never how good it is: Live, Open source, Published, Preprint, Paper, Exhibited, Recorded, Simulation, Experiment, Prototype, Speculative.
+- **Threads (intervals):** Provenance, Agency, Translation, Resonance. A thread lists works; the channels it spans, and therefore its chord, are derived from those works. Each thread must span at least two channels, and no two threads may sound the same chord.
+- **Epigraph:** one sentence of Christopher's own, with its source.
+- **Now:** a single hand-picked pointer at a work. It is never generated from commit activity.
+
+Rules:
+
+- Every claim needs a receipt. No receipt, no claim.
+- A work lives in one channel. `alsoIn` is used only when the connection is literal and checkable (the same album is the Pine Gap radio and its cover is the painting shown in Art).
+- Unfinished work says so (Prototype, Speculative, Preprint, and the detail line).
 
 ## Experience Contract
 
-The page runs in this sequence:
+The page runs in this order:
 
-1. A hero identifies Christopher and offers two explicit paths: Enter the instrument or Explore without sound.
-2. A six-stop rail links the hero plus five project channels.
-3. Books, Apps, Art, Frequency, and Music render as semantic sections with two evidence links each.
-4. One active-channel id conducts rail state, channel emphasis, visual resonance, and optional sound.
-5. Pointer and keyboard previews temporarily override the scroll-selected channel, then restore it on exit.
-6. A single collaboration footer preserves contact and elsewhere destinations.
+1. Hero: the name and "captain of my soul", "Five notes. One chord.", a plain line saying what he makes, two explicit paths (Explore without sound, Enter the instrument), the Now line, and where the work lives (Vers3Dynamics, R.A.I.N. Lab, source). The Event Horizon Archive sits beside it.
+2. A six-stop rail: the hero plus five channels.
+3. A work index naming each channel's works.
+4. Five channel sections: works on one side, the artifact on the other.
+5. Intervals.
+6. The research atlas gateway.
+7. The collaboration footer: email first, then elsewhere links.
 
-The page reports its own state continuously:
+State:
 
-- A top meter and a rail trace both render document scroll depth from one published `--scroll-progress` value.
-- A fixed console reads out the conducting channel number, name, and frequency, and carries the single sound control. It reads `00 / Signal / Standby` until a channel takes the signal.
-- The tuned rail stop keeps its channel name visible; every other stop shows its number.
-- Each channel artifact reports `SIGNAL ACTIVE` or `STANDBY`, and only the conducting artifact runs a scan line.
-
-The canonical content source is `projectSections` in `pages/index.js`. Channel ids, labels, descriptions, frequencies, visuals, and evidence URLs must not be duplicated into a second content model.
+- One active-channel id drives rail location, channel emphasis, visual resonance, and optional sound. The channel covering most of the reading band wins; the hero, Intervals, gateway, and footer are rest zones that return the instrument to Standby.
+- Pointer and keyboard previews override the scroll channel and restore it on exit.
+- Tuning a thread (hover or focus previews, click holds) marks its channels on the rail with `data-chord`, takes over the console readout (thread name and note count), and, with sound on, plays their notes as one chord. A held chord is released by clicking again, by Escape, or when the scroll channel changes.
+- The console reads `00 / Signal / Standby` until something is tuned.
+- Each channel artifact reports `SIGNAL ACTIVE` or `STANDBY`; only the conducting artifact runs the scan line. Artifacts are never dimmed.
 
 ## Sound Contract
 
 - Every reload begins silent.
 - No `AudioContext` is created until the visitor selects Enter the instrument or the sound control.
-- Disabled sound never blocks navigation, project evidence, WebGL visuals, or channel previews.
-- The sound control reflects Sound off, Sound on, or Sound unavailable.
-- Frequency changes use a short release so project transitions do not leave oscillators running.
+- Disabled sound never blocks navigation, evidence, visuals, previews, or thread tuning.
+- The sound control reads Sound off, Sound on, or Sound unavailable.
+- One note or a chord: voicing comes from `createChordVoicing`. A chord is rolled from its lowest note, and its total level is capped so it is never louder than a note is allowed to be. Every change releases through the same short envelope.
+- The Music channel's recording is a 14-second excerpt of *Green Machine* by Indigo People, written and owned by Christopher. It loads only when asked (`preload="none"`), never autoplays, and silences the channel tone while it plays.
 
 ## Runtime Contract
 
 - Desktop with WebGL, a visible document, and normal motion uses continuous rendering.
 - Mobile and reduced-motion modes render static WebGL frames on demand.
-- A static frame shows the composed picture the drift settles into, not the first frame of it.
-- The archive builds one of two detail tiers. Single-frame visitors get the same composition from strictly less geometry.
-- Hidden documents pause background, archive, and cursor work.
-- The archive pauses outside its viewport and resumes when it returns.
+- A static frame shows the composed picture the drift settles into, not its first frame.
+- The archive builds one of two detail tiers; single-frame visitors get the same composition from less geometry.
+- Hidden documents pause the background, archive, and cursor work.
+- The archive pauses outside its viewport.
 - Device pixel ratio is capped at 2 on desktop and 1.5 on mobile.
 - WebGL construction or render failure switches the affected surface to a composed CSS fallback.
 - The custom cursor runs only for visible fine-pointer documents without reduced motion.
-- Visual resonance remains available even when sound is disabled or unavailable.
+- Artifact images are local, lazy, and declare their dimensions; each stays under 400 KB.
 
 ## Visual System
 
 The interface is a dark, sharp-edged signal instrument, not a card-grid portfolio.
 
-- Ink: `#060b09`
-- Surface: `#0b1210`
-- Paper: `#edf9f4`
-- Muted: `#a5b6ae`
-- Signal mint: `#8cf0c6`
-- Calibration amber: `#e4b65c`
-- Display type: Syne
-- Body type: Space Grotesk
-- Numeric and signal metadata: the system monospace stack
+- Ink `#050806`, surface `#0a110e`, paper `#f2fbf7`, muted `#9dafaa`, signal mint `#89f2c2`, calibration amber `#e7b85e` (tokens in `styles/globals.css`).
+- Display: Syne. Body: Space Grotesk. Metadata: the system monospace stack.
+- Works are ruled lists with mono metadata, not cards. Statuses are amber mono text, not pills.
+- Amber marks the practice's connective tissue: statuses, the Now line, threads, and the chord on the rail.
 
-The same mint/amber language applies to CSS artifacts, the Vanta shader, the hero archive, and its index models. Motion communicates active state or user feedback and must collapse under `prefers-reduced-motion`.
+The hero stage is the Event Horizon Archive: the whole practice written to one surface. Its caption counts what it holds (works on the page and sources in the atlas). Layers:
 
-The hero stage is the Event Horizon Archive: a black hole holding the practice's whole output on its surface. It renders in layers, and each layer states part of that idea rather than decorating it.
+- A spacetime lattice funnels into the throat.
+- An accretion platter of tracks cut into sectors, one bit per sector, spun at Keplerian rates and Doppler-beamed.
+- Filaments of infalling information.
+- A near-black horizon encoded with equal-area cells that show only at grazing angles.
+- A photon ring with the platter's lensed arcs.
+- A swappable index model in a containment shell, tethered by a write beam. Selecting one is a write event.
 
-- A spacetime lattice funnels into the throat as a polar wireframe.
-- An accretion platter carries concentric tracks cut into angular sectors, one bit per sector, spun at Keplerian rates so the tracks shear, and Doppler-beamed so the approaching limb burns brighter.
-- Filaments of infalling information wind inward and blueshift as they drop.
-- The horizon itself is near-black, encoded with equal-area cells that reveal themselves only at grazing angles.
-- A photon ring marks the shadow's edge, with the platter's lensed images arcing above and below it.
-- The visitor-swappable index model orbits in a containment shell, tethered to the horizon by a write beam.
+The stage is a pointer shortcut into the research atlas. The keyboard and assistive-technology path is the explicit "Cross into the atlas" link. Model buttons are real, exposed buttons; no control is nested in another.
 
-The background shader carries the same field, bent around a drifting mass, and must stay quiet enough to read body copy over.
-
-The stage has no edge of its own. Its fill is absolute black where the shadow has to read as absence, then dissolves into the page, and the scene dissolves with it so the canvas never exposes the rectangle the fill gave up. Only the instrument frame marks where the stage is.
-
-Selecting an index model is a write event: the horizon flares, the platter densifies, and a wave leaves the throat. The stage stays a single control — one click or Enter swaps the model and reports resonance.
-
-Active state is carried by colour, lighting, and the artifact. Inactive channels are never dimmed below legible contrast.
-
-Display headlines are single unbreakable words, so each publishes its width budget as `--title-em` from the content model and is capped at the width its column can hold. No headline is ever clipped at any viewport.
+Display headlines are single unbreakable words and publish their width budget as `--title-em`; no headline is clipped at any viewport.
 
 ## Evidence Set
 
-These project destinations are product data and must remain preserved:
+The receipts are the `evidence` links in `data/practice.js`; the rendered-page test checks that every one appears. The canonical URL is `https://mitpress.vercel.app/` (vers3dynamics.com links to it as the portfolio). Contact is `christopher@vers3dynamics.com`.
 
-- Books: https://a.co/d/078d1kaa
-- Books: https://woodyard.streamlit.app/
-- Apps: https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics
-- Apps: https://github.com/topherchris420/james_library
-- Art: https://oncyber.io/stanfordgsb
-- Art: https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/
-- Frequency: https://woodyard.dappling.network
-- Frequency: https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7
-- Music: https://chriswoodyard.bandcamp.com/
-- Music: https://chriswoodyard.bandcamp.com/track/creators-innovators
-
-The canonical URL remains `https://mitpress.vercel.app/`. Contact remains `christopher@vers3dynamics.com`.
-
-No testimonials, press quotes, endorsements, or performance claims are currently evidenced. Do not fabricate them.
+No testimonials, press quotes, endorsements, or performance claims are evidenced. Do not fabricate them. Do not attribute an image to Christopher unless its source says he made it.
 
 ## Accessibility
 
-- Preserve the skip link, visible focus treatment, semantic headings, project section labels, and `lang="en"`.
-- All mouse previews must also work with keyboard focus.
+- Keep the skip link, visible focus, semantic headings, labelled sections, and `lang="en"`.
+- Mouse previews also work with keyboard focus; thread tuning is a native `aria-pressed` button.
 - Arrow, Home, and End keys tune between rail stops; every other key stays with the browser.
-- The focus ring stays visible on the mint footer, where the default mint ring would disappear.
-- Section anchors clear the fixed nav and the mobile rail through `scroll-margin-top`.
-- Reduced motion stops continuous animation rather than merely freezing its clock.
-- `prefers-contrast: more` drops every decorative dim and the outline-only heading treatment.
-- The mobile page must not create horizontal document overflow, and no headline or control may be clipped by it.
-- The 404 page provides one clear recovery destination to `/`.
+- The focus ring stays visible on the mint footer.
+- Section and work anchors clear the fixed nav and rail through `scroll-margin-top`.
+- Reduced motion stops continuous animation.
+- `prefers-contrast: more` drops decorative dims, outline-only headings, and muted metadata.
+- No horizontal document overflow at 320 px; no clipped headline or control.
+- Decorative overlays (the scan line) never intercept pointer events.
+- The 404 page offers one recovery destination, `/`.
+
+## Research Atlas
+
+The atlas answers a different question from the portfolio: what ideas and sources the work keeps returning to.
+
+- Query, discipline, era, connection filter, sort, selected node, and mobile view live in an addressable URL, normalised against known values; searches are capped at 300 characters.
+- Reading lists live under `vanta:reading-list:v1` in local storage, never in URLs or on a server. Storage failures keep in-memory saving and export working.
+- Disciplines follow the records that exist: every offered discipline leads at least one record, and every record files under an offered discipline.
+- Records credited to Christopher point only at his own deposits (Zenodo, OSF) or repositories. Preprints and manuscripts say in their own summary that they are not peer reviewed.
+- `relations` are connections the records state themselves, each with a `basis` sentence; they become the only record-to-record catalog references. Everything else between records is inferred and labelled so.
+- `practice` links a record to the work on the home page that it is or describes.
+- Inclusion is not verification. The interface never infers verification from a source name or a DOI.
+- The inspector is a native modal dialog: inert background, Escape to close, focus restored.
+- On desktop the record list scrolls inside its column and the map holds the viewport. At 900 px and below, visitors switch between records and map, and the graph mounts only when the map is requested.
+
+## Deployment
+
+The site is a static export (`output: "export"`): `next build` writes `out/`, which Vercel and static hosts (dappling.network) serve. Nothing may require a server: no API routes, `getServerSideProps`, rewrites, or image optimisation. Hosts build on Node 22.
 
 ## Maintenance
-
-Run before shipping:
 
 ```bash
 npm test
 npm run build
+npm run build:research-graph   # after editing catalog records by hand
 ```
 
-The test suite includes production policy tests and rendered HTTP integration tests. It must not infer behavior from source-code grep assertions.
-
-## Research workbench
-
-The research explorer preserves query, discipline, era, connection filter, sort order,
-selected node, and mobile view in an addressable URL. URL state is normalized against
-known enum values and node IDs; searches are limited to 300 characters.
-
-Reading-list IDs are stored under `vanta:reading-list:v1` in local browser storage.
-They are never placed in shared URLs or sent to a backend. Storage failures keep
-in-memory saving and JSON export available. Unknown and duplicate saved IDs are
-ignored. The reading list shows saved records independently of search filters.
-
-No result means no graph. Catalog metadata is not independently verified, and the
-interface must not infer verification from a source name or DOI. Exported records
-include the same provenance qualification as the inspector. Internal legacy
-provenance values are data compatibility fields, not verification claims.
-
-The record inspector uses a native modal dialog: background content is inert,
-Escape closes it, and focus returns to its opener. Every connected record is a
-native button. On screens at or below 900px, the visitor switches between records
-and map; the graph component mounts only when the map is requested. The static
-map exposes every indexed node through keyboard-accessible controls.
-
-The home-page research gateway reads its record count from the bundled catalog
-and links into the same query-state contract as the explorer.
+The test suite includes production policy tests, model-integrity tests, and rendered HTTP integration tests. Browser checks are described in `docs/research-workbench.md`.

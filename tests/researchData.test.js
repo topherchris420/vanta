@@ -12,21 +12,14 @@ function isValidUrl(value) {
   }
 }
 
-test('curated knowledge dataset contains at least 25 structured records across all 8 core domains', () => {
+test('curated knowledge dataset contains at least 25 structured records across every offered discipline', () => {
   const { documents, graph } = normalizeKnowledgeData(rawCuratedKnowledge);
   assert.ok(Array.isArray(documents), 'Documents must be an array');
   assert.ok(documents.length >= 25, `Expected at least 25 records, found ${documents.length}`);
 
-  const expectedDomains = [
-    'Quantum Computing',
-    'Cymatics',
-    'Biosignal Processing',
-    'AI & Neural Interfaces',
-    'Neuroscience & Neural Datasets',
-    'Acoustics',
-    'Nuclear Engineering',
-    'Archival Intelligence & Institutional Oversight',
-  ];
+  const expectedDomains = require('../lib/research/workbench').DISCIPLINES.filter(
+    (discipline) => discipline !== 'All'
+  );
 
   const foundDomains = new Set();
   const ids = new Set();

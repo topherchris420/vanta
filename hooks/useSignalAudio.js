@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import signalExperience from "../lib/signalExperience";
 
-const { SOUND_PREF_KEY } = signalExperience;
+const { SOUND_PREF_KEY, RELEASE_SECONDS, createChordVoicing } = signalExperience;
 
 export default function useSignalAudio() {
   const contextRef = useRef(null);
-  const oscillatorRef = useRef(null);
+  // Every sounding oscillator shares one gain, so a single note and a chord
+  // release through exactly the same envelope.
+  const voicesRef = useRef([]);
   const gainRef = useRef(null);
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [soundAvailable, setSoundAvailable] = useState(true);
@@ -37,43 +39,53 @@ export default function useSignalAudio() {
   const stopFrequency = useCallback(() => {
     try {
       const context = contextRef.current;
-      const oscillator = oscillatorRef.current;
+      const voices = voicesRef.current;
       const gain = gainRef.current;
 
-      if (!context || !oscillator || !gain) return;
+      if (!context || !voices.length || !gain) return;
 
       gain.gain.cancelScheduledValues(context.currentTime);
       gain.gain.setValueAtTime(gain.gain.value, context.currentTime);
-      gain.gain.linearRampToValueAtTime(0, context.currentTime + 0.12);
-      oscillator.stop(context.currentTime + 0.14);
+      gain.gain.linearRampToValueAtTime(0, context.currentTime + RELEASE_SECONDS);
+      voices.forEach((oscillator) =>
+        oscillator.stop(context.currentTime + RELEASE_SECONDS + 0.02)
+      );
     } catch {
       // Ignore audio stop errors
     } finally {
-      oscillatorRef.current = null;
+      voicesRef.current = [];
       gainRef.current = null;
     }
   }, []);
 
-  const playFrequency = useCallback(
-    (frequency) => {
+  // One note or several, voiced by createChordVoicing.
+  const playChord = useCallback(
+    (frequencies) => {
       try {
         const context = contextRef.current;
+        const voicing = createChordVoicing(frequencies);
 
-        if (!soundEnabled || !context || !Number.isFinite(frequency)) return;
+        if (!soundEnabled || !context || !voicing.voices.length) return;
 
         stopFrequency();
 
-        const oscillator = context.createOscillator();
         const gain = context.createGain();
-
-        oscillator.type = "sine";
-        oscillator.frequency.setValueAtTime(frequency, context.currentTime);
-        gain.gain.setValueAtTime(0, context.currentTime);
-        gain.gain.linearRampToValueAtTime(0.09, context.currentTime + 0.08);
-        oscillator.connect(gain);
+        const now = context.currentTime;
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(voicing.level, now + voicing.attack);
         gain.connect(context.destination);
-        oscillator.start();
-        oscillatorRef.current = oscillator;
+
+        voicesRef.current = voicing.voices.map((voice) => {
+          const oscillator = context.createOscillator();
+          const level = context.createGain();
+          oscillator.type = "sine";
+          oscillator.frequency.setValueAtTime(voice.frequency, now);
+          level.gain.setValueAtTime(voice.gain, now);
+          oscillator.connect(level);
+          level.connect(gain);
+          oscillator.start(now + voice.delay);
+          return oscillator;
+        });
         gainRef.current = gain;
       } catch {
         setSoundAvailable(false);
@@ -81,6 +93,11 @@ export default function useSignalAudio() {
       }
     },
     [soundEnabled, stopFrequency]
+  );
+
+  const playFrequency = useCallback(
+    (frequency) => playChord([frequency]),
+    [playChord]
   );
 
   const persistMuted = useCallback((muted) => {
@@ -141,6 +158,7 @@ export default function useSignalAudio() {
     enableSound,
     toggleSound,
     playFrequency,
+    playChord,
     stopFrequency,
   };
 }
