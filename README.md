@@ -48,7 +48,7 @@ npm run build
 npm start
 ```
 
-Next.js Pages Router with prerendered pages; deploy to any Next.js host such as Vercel.
+Next.js Pages Router with prerendered pages; deploy to any Next.js host such as Vercel. Set the host's build image to Node 22 (Node 16 and 18 are end-of-life and refused by some hosts, including dappling.network).
 
 ## Quality checks
 
