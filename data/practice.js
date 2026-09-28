@@ -86,8 +86,16 @@ const channels = [
     lede: "Paint, rooms, and sound you can look at.",
     works: ["exhibitions", "cymatics", "signal-lab"],
     artifact: {
-      kind: "diptych",
+      kind: "gallery",
       panels: [
+        {
+          src: "/work/impasto-head.webp",
+          width: 720,
+          height: 898,
+          alt: "An impasto painting of a head and shoulders: thick blue strokes for hair, a band of red and orange across the eyes, green and yellow below, on a white ground.",
+          caption: "Painting, as featured by M.A.D.S. Art Gallery.",
+          href: "https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/",
+        },
         {
           src: "/work/green-machine-cover.webp",
           width: 512,

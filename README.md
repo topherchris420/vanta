@@ -8,7 +8,7 @@ The portfolio of Christopher Woodyard: poems and speculative physics, open resea
 
 ## The instrument
 
-Five channels, five notes: **Writing** (C4), **Instruments** (E4), **Worlds** (G4), **Art** (C5), **Music** (G3). Each carries a few works. Every work leads with the question it asks, says what actually happened to it (Live, Open source, Preprint, Prototype, Recorded…), and links to the thing itself. Each channel shows one real artifact in its own medium: a claim from the location papers, the CIRCLE polygraph, a frame of an agent on the Pine Gap coffee run, a painting beside a cymatics still, and fourteen seconds of *Green Machine*.
+Five channels, five notes: **Writing** (C4), **Instruments** (E4), **Worlds** (G4), **Art** (C5), **Music** (G3). Each carries a few works. Every work leads with the question it asks, says what actually happened to it (Live, Open source, Preprint, Prototype, Recorded…), and links to the thing itself. Each channel shows one real artifact in its own medium: a claim from the location papers, the CIRCLE polygraph, a frame of an agent on the Pine Gap coffee run, an impasto painting with the *Green Machine* cover painting and a cymatics still, and fourteen seconds of *Green Machine*.
 
 Scroll or use the arrow keys to tune a channel. Its frequency, visual state, and optional Web Audio tone move together. **Intervals** name the questions that keep recurring across channels (provenance, agency, translation, resonance). Tune one and its channels light together on the rail, and, with sound on, sound as a chord.
 

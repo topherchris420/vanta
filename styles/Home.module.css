@@ -1984,13 +1984,16 @@
   font: 400 0.8rem / 1.6 var(--font-body);
 }
 
-.artifactDiptych {
+/* The painting leads; the album cover and the cymatics still sit beneath it
+   as smaller evidence of the same eye. */
+.artifactGallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 1rem 0.75rem;
 }
 
-.artifactDiptych .artifactFigure figcaption { font-size: 0.72rem; }
+.artifactGallery .artifactFigure:first-child { grid-column: 1 / -1; }
+.artifactGallery .artifactFigure:not(:first-child) figcaption { font-size: 0.72rem; }
 
 .artifactQuote {
   min-height: min(30rem, 60vh);
@@ -2253,7 +2256,7 @@
 @media (max-width: 420px) {
   .brandFull { display: none; }
   .brandShort { display: inline; }
-  .artifactDiptych { grid-template-columns: minmax(0, 1fr); }
+  .artifactGallery { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-contrast: more) {
@@ -2279,3 +2282,7 @@
 @media (max-width: 420px) {
   .heroActions .signalTextLink { align-self: flex-start; text-align: left; }
 }
+
+/* The gallery is taller than a viewport; pinning it would hide its lower
+   panels until the section ends, so it scrolls with the works instead. */
+.channelArtifact[data-kind="gallery"] { position: relative; top: auto; }

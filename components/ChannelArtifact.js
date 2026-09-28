@@ -155,10 +155,10 @@ export default function ChannelArtifact({
         {artifact.kind === "figure" && (
           <Figure panel={artifact} href={artifact.href} />
         )}
-        {artifact.kind === "diptych" && (
-          <div className={styles.artifactDiptych}>
+        {artifact.kind === "gallery" && (
+          <div className={styles.artifactGallery}>
             {artifact.panels.map((panel) => (
-              <Figure key={panel.src} panel={panel} />
+              <Figure key={panel.src} panel={panel} href={panel.href} />
             ))}
           </div>
         )}

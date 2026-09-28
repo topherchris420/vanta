@@ -136,7 +136,7 @@ test(
     ].forEach((url) => assert.ok(html.includes(url), `missing rendered URL: ${url}`));
 
     // Real artifacts, not decoration: served locally, sized, lazy.
-    ["/work/circle-polygraph.webp", "/work/pine-gap-agent-run.webp", "/work/green-machine-cover.webp", "/work/cymatics-circular-bloom.webp"]
+    ["/work/circle-polygraph.webp", "/work/pine-gap-agent-run.webp", "/work/impasto-head.webp", "/work/green-machine-cover.webp", "/work/cymatics-circular-bloom.webp"]
       .forEach((src) => assert.match(html, new RegExp(`<img[^>]*src="${src}"[^>]*>`)));
     (html.match(/<img[^>]*>/g) ?? []).forEach((img) => {
       assert.match(img, /width="\d+"/);

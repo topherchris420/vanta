@@ -43,7 +43,7 @@ test("every artifact the page shows is a real file served from public/", () => {
   practice.channels.forEach((channel) => {
     const { artifact } = channel;
     const files =
-      artifact.kind === "diptych"
+      artifact.kind === "gallery"
         ? artifact.panels.map((panel) => panel.src)
         : artifact.src
           ? [artifact.src]
@@ -53,7 +53,7 @@ test("every artifact the page shows is a real file served from public/", () => {
       assert.ok(fs.existsSync(file), `${channel.id} artifact missing: ${src}`);
       assert.ok(fs.statSync(file).size < 400 * 1024, `${src} is heavier than the page can justify`);
     });
-    if (artifact.kind === "figure" || artifact.kind === "diptych") {
+    if (artifact.kind === "figure" || artifact.kind === "gallery") {
       (artifact.panels || [artifact]).forEach((panel) => {
         assert.ok(panel.alt.length > 20, `${channel.id} image needs a real description`);
         assert.ok(panel.width > 0 && panel.height > 0, "images reserve their space");
