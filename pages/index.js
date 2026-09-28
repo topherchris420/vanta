@@ -38,6 +38,7 @@ const {
   measureHeadlineEm,
   resolvePreviewChannel,
   selectActiveChannel,
+  shouldReleaseHeldThread,
   validateChannels,
 } = signalExperience;
 const { threadChannels, threadChord, threadsForWork, validatePractice } =
@@ -169,10 +170,13 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // A held chord belongs to the place it was tuned. Moving to another channel
-  // releases it, and Escape always does.
+  // A held chord belongs to the place it was tuned. Scrolling into a channel
+  // releases it, and Escape always does. Arriving in a rest zone does not: the
+  // observer can report that arrival after the visitor has already held a chord.
   useEffect(() => {
-    setHeldThreadId(null);
+    if (shouldReleaseHeldThread(scrollChannelId, channelsById)) {
+      setHeldThreadId(null);
+    }
   }, [scrollChannelId]);
 
   useEffect(() => {

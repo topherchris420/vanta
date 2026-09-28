@@ -54,22 +54,31 @@ if (flags.includes("reduced-motion")) flags.push("reduced");
   await page.waitForTimeout(1200);
   const audio = () => page.evaluate(() => ({ ...window.__audio, started: [...window.__audio.started] }));
   const rail = () => page.evaluate(() => Array.from(document.querySelectorAll('[aria-label="Signal channels"] a')).map((a) => ({ label: a.textContent.trim(), current: a.getAttribute("aria-current"), chord: a.dataset.chord === "true" })));
+  // Poll instead of sleeping: the scroll observer reports on its own schedule.
+  const until = async (check, label, timeout = 5000) => {
+    const start = Date.now();
+    for (;;) {
+      if (await check()) return;
+      if (Date.now() - start > timeout) throw new Error(`timed out: ${label}`);
+      await page.waitForTimeout(100);
+    }
+  };
   const consoleText = () => page.evaluate(() => document.querySelector('[data-tuned]').textContent.trim());
 
   // 1. Silent entry: scroll through every channel, no AudioContext.
   for (const id of ["writing", "instruments", "worlds", "art", "music"]) {
     await page.evaluate((q) => { const el = document.querySelector(q); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 150); }, `#signal-${id}`);
-    await page.waitForTimeout(1000);
-    const current = (await rail()).find((item) => item.current === "location");
-    assert.ok(current && current.label.toLowerCase().includes(id), `scrolling to ${id} tunes it (got ${current?.label})`);
+    await until(async () => {
+      const current = (await rail()).find((item) => item.current === "location");
+      return current && current.label.toLowerCase().includes(id);
+    }, `scrolling to ${id} tunes it`);
   }
   assert.equal((await audio()).contexts, 0, "no AudioContext before intent");
   console.log("ok silent scroll tunes every channel; contexts=0");
 
   // 2. Rest zones.
   await page.evaluate(() => { const el = document.querySelector("#intervals"); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 100); });
-  await page.waitForTimeout(500);
-  assert.ok((await rail()).every((item) => !item.current), "intervals rest the instrument");
+  await until(async () => (await rail()).every((item) => !item.current), "intervals rest the instrument");
   assert.match(await consoleText(), /Standby/);
   console.log("ok intervals are a rest zone:", await consoleText());
 

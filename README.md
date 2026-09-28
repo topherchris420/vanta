@@ -44,11 +44,15 @@ npm run dev
 Production:
 
 ```sh
-npm run build
-npm start
+npm run build   # static export to out/
+npm start       # serves out/ locally
 ```
 
-Next.js Pages Router with prerendered pages; deploy to any Next.js host such as Vercel. Set the host's build image to Node 22 (Node 16 and 18 are end-of-life and refused by some hosts, including dappling.network).
+Every page is static, and `next.config.js` sets `output: "export"`, so `next build` writes the whole site to `out/`. Vercel builds it as usual. For a static host such as dappling.network, use:
+
+- Build command: `npx next build` (not `next build && next export`; Next.js 15 removed `next export`)
+- Output directory: `out`
+- Node: 22 (Node 16 and 18 are end-of-life)
 
 ## Quality checks
 

@@ -59,7 +59,7 @@ Escape releasing a held chord, the recording silencing the channel tone,
 keyboard tuning, and that the archive exposes its controls without nesting.
 
 ```sh
-npm run build && npm start &
+npm run build && npm start &   # serves the static export in out/
 npm i --no-save playwright-core
 node scripts/browserChecks.js http://localhost:3000
 node scripts/browserChecks.js http://localhost:3000 --no-webgl

@@ -135,6 +135,10 @@ The atlas answers a different question from the portfolio: what ideas and source
 - The inspector is a native modal dialog: inert background, Escape to close, focus restored.
 - On desktop the record list scrolls inside its column and the map holds the viewport. At 900 px and below, visitors switch between records and map, and the graph mounts only when the map is requested.
 
+## Deployment
+
+The site is a static export (`output: "export"`): `next build` writes `out/`, which Vercel and static hosts (dappling.network) serve. Nothing may require a server: no API routes, `getServerSideProps`, rewrites, or image optimisation. Hosts build on Node 22.
+
 ## Maintenance
 
 ```bash

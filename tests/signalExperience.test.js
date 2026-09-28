@@ -80,6 +80,15 @@ test("a chord is rolled from the lowest note and never louder than its budget", 
   assert.equal(signal.createChordVoicing(null).voices.length, 0);
 });
 
+test("a held chord survives rest zones and is released by tuning a channel", () => {
+  // The observer may report arriving in Intervals after the visitor has
+  // already held a chord there; that report must not cancel it.
+  assert.equal(signal.shouldReleaseHeldThread("rest", channels), false);
+  assert.equal(signal.shouldReleaseHeldThread("hero", channels), false);
+  assert.equal(signal.shouldReleaseHeldThread("music", channels), true);
+  assert.equal(signal.shouldReleaseHeldThread("worlds", new Map(channels.map((c) => [c.id, c]))), true);
+});
+
 test("preview state overrides and restores scroll state", () => {
   assert.equal(signal.resolvePreviewChannel({
     scrollChannel: "books",
