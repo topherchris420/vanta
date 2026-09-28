@@ -849,7 +849,7 @@
   min-height: 72vh;
   display: grid;
   grid-template-columns: 5rem minmax(0, 1fr) minmax(280px, 0.8fr);
-  align-items: center;
+  align-items: start;
   gap: clamp(1.5rem, 5vw, 6rem);
   padding: clamp(4rem, 9vw, 9rem) clamp(1.25rem, 8vw, 9rem);
   border-bottom: 1px solid var(--line);
@@ -1067,6 +1067,8 @@
   position: absolute;
   z-index: 1;
   inset: 0;
+  /* The sweep is light, not a surface: the evidence under it stays clickable. */
+  pointer-events: none;
   background-image: linear-gradient(
     90deg,
     transparent,
@@ -1793,7 +1795,7 @@
 }
 
 
-.researchGateway { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 6vw, 7rem); padding: clamp(2rem, 5vw, 5rem) 0; margin: 2rem 0 5rem; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+.researchGateway { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 6vw, 7rem); max-width: 112rem; padding: clamp(3rem, 6vw, 6rem) clamp(1.25rem, 6vw, 7rem); margin: 0 auto 5rem; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
 .gatewayIntro h2 { font: 600 clamp(2.4rem, 4.8vw, 5rem)/1.02 var(--font-display); letter-spacing: -0.055em; margin: 1.5rem 0; }
 .gatewayIntro > p:not(:first-child) { max-width: 38ch; color: var(--muted-bright); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.8rem; }
 .gatewayStats { display: flex; gap: 2.5rem; margin-bottom: 1.5rem; font: 0.65rem/1.6 var(--font-mono); color: var(--muted); }
@@ -1806,3 +1808,474 @@
 .gatewayIndex nav a:hover > span:last-child { transform: translate(3px, -3px); }
 .gatewayIndex > p { color: var(--muted); font: 0.63rem/1.8 var(--font-mono); margin-top: 1rem; }
 @media (max-width: 760px) { .researchGateway { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; } .gatewayIntro h2 { font-size: clamp(2.2rem, 9vw, 3.7rem); } }
+
+/* ------------------------------------------------------------------
+   The practice: works, artifacts, intervals. Ruled lists, mono metadata,
+   no cards. Each medium keeps its own grammar inside the artifact frame.
+   ------------------------------------------------------------------ */
+
+.brandShort { display: none; }
+
+.nowSignal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.8rem;
+  max-width: 52ch;
+  margin: 0.25rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font: 500 0.72rem / 1.6 var(--font-mono);
+}
+
+.nowLabel {
+  color: var(--amber);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.nowSignal a {
+  color: var(--muted-bright);
+  text-decoration-color: color-mix(in srgb, var(--amber) 55%, transparent);
+  text-underline-offset: 0.3rem;
+}
+
+.nowSignal a:hover,
+.nowSignal a:focus-visible { color: var(--paper); }
+
+.identityNote { color: var(--muted); }
+
+.channelLede {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem) !important;
+  color: var(--muted-bright) !important;
+}
+
+.workList {
+  width: 100%;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.work {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1.6rem 0 1.8rem;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 9rem;
+}
+
+.work:target { box-shadow: -1.25rem 0 0 -1.1rem var(--amber); }
+
+.workHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.9rem;
+}
+
+.workHead h3 {
+  margin: 0;
+  color: var(--paper);
+  font: 700 clamp(1.25rem, 1.9vw, 1.6rem) / 1.15 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.workYear {
+  color: var(--muted);
+  font: 500 0.66rem / 1 var(--font-mono);
+}
+
+.workStatus {
+  margin-left: auto;
+  color: var(--amber);
+  font: 600 0.6rem / 1.4 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.channelCopy .workQuestion {
+  max-width: 34rem;
+  color: var(--paper);
+  font: 500 clamp(1.05rem, 1.5vw, 1.2rem) / 1.45 var(--font-body);
+}
+
+.channelCopy .workBody {
+  max-width: 38rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.channelCopy .workDetail {
+  max-width: 36rem;
+  padding-left: 0.9rem;
+  border-left: 1px solid var(--amber);
+  color: var(--muted-bright);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.channelCopy .workTrace {
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--amber) 45%, transparent);
+  background: color-mix(in srgb, var(--amber) 7%, transparent);
+  color: var(--amber);
+  font: 500 0.7rem / 1.5 var(--font-mono);
+  overflow-wrap: anywhere;
+}
+
+.work .channelLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  padding-top: 0.1rem;
+}
+
+.channelCopy .workEchoes {
+  color: var(--muted);
+  font: 500 0.66rem / 1.7 var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.workEchoes a {
+  color: var(--signal);
+  text-decoration-color: color-mix(in srgb, var(--signal) 40%, transparent);
+  text-underline-offset: 0.25rem;
+}
+
+/* Real artifacts are never dimmed: the active channel is marked by the frame,
+   the scan line and the status, not by fading the evidence. */
+.channelArtifact[data-kind] {
+  min-height: 0;
+  opacity: 1;
+  background: var(--ink);
+  align-self: start;
+  position: sticky;
+  top: 9.5rem;
+}
+
+.channelArtifact[data-kind]::before,
+.channelArtifact[data-kind]::after { display: none; }
+
+.projectChannel[data-active="true"] .channelArtifact[data-kind] { transform: none; }
+
+.artifactBody {
+  position: relative;
+  padding: 1rem 1rem 3rem;
+}
+
+.artifactFigure { margin: 0; }
+
+.artifactFigure a,
+.artifactFigure img { display: block; }
+
+.artifactFigure img {
+  width: 100%;
+  height: auto;
+  background: var(--surface);
+}
+
+.artifactFigure figcaption {
+  margin-top: 0.85rem;
+  color: var(--muted-bright);
+  font: 400 0.8rem / 1.6 var(--font-body);
+}
+
+.artifactDiptych {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.artifactDiptych .artifactFigure figcaption { font-size: 0.72rem; }
+
+.artifactQuote {
+  min-height: min(30rem, 60vh);
+  display: grid;
+  align-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+.artifactQuote p {
+  margin: 0;
+  color: var(--paper);
+  font: 600 clamp(2rem, 3.6vw, 3.4rem) / 1.02 var(--font-display);
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+.artifactQuote p::before { content: "\201C"; color: var(--signal); }
+.artifactQuote p::after { content: "\201D"; color: var(--signal); }
+
+.artifactQuote footer a,
+.epigraph footer a {
+  color: var(--muted-bright);
+  font: 500 0.7rem / 1.6 var(--font-mono);
+  text-decoration-color: color-mix(in srgb, var(--signal) 45%, transparent);
+  text-underline-offset: 0.3rem;
+}
+
+.artifactRecording {
+  display: grid;
+  gap: 1.1rem;
+  padding: clamp(0.5rem, 2vw, 1.5rem) 0.25rem 0;
+}
+
+.recordingWave {
+  width: 100%;
+  height: clamp(7rem, 16vw, 12rem);
+}
+
+.recordingWave rect { fill: color-mix(in srgb, var(--signal) 32%, var(--surface)); }
+.recordingWave rect[data-played="true"] { fill: var(--signal); }
+
+.recordingControls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.recordingButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 1px solid var(--signal);
+  background: transparent;
+  color: var(--signal);
+  font: 700 0.68rem / 1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.recordingButton[aria-pressed="true"],
+.recordingButton:hover,
+.recordingButton:focus-visible {
+  background: var(--signal);
+  color: var(--ink);
+}
+
+.recordingButton:disabled { border-color: var(--line); color: var(--muted); cursor: not-allowed; background: transparent; }
+
+.recordingCredit {
+  color: var(--muted);
+  font: 500 0.66rem / 1.5 var(--font-mono);
+}
+
+/* Intervals: the thread is tuned like a channel, and the rail shows its chord. */
+.intervals {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  max-width: 112rem;
+  margin: 0 auto;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 7rem);
+  scroll-margin-top: 8rem;
+}
+
+.intervalsIntro h2 {
+  max-width: 12ch;
+  margin: 1.25rem 0 2.5rem;
+  font: 700 clamp(2.4rem, 4.4vw, 4.6rem) / 1.02 var(--font-display);
+  letter-spacing: -0.055em;
+}
+
+.epigraph {
+  max-width: 30rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--amber);
+}
+
+.epigraph p {
+  margin: 0 0 1rem;
+  color: var(--paper);
+  font: 400 clamp(1.1rem, 1.6vw, 1.35rem) / 1.5 var(--font-body);
+}
+
+.intervalList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.interval {
+  padding: 0.4rem 0 1.4rem;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 9rem;
+}
+
+.intervalTune {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 0.35rem 1.5rem;
+  padding: 1rem 0.75rem 0.6rem;
+  border: 0;
+  background: transparent;
+  color: var(--paper);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.intervalTune:hover,
+.intervalTune:focus-visible,
+.intervalTune[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--amber) 8%, var(--surface));
+}
+
+.intervalName {
+  grid-row: span 2;
+  color: var(--amber);
+  font: 700 0.72rem / 1.6 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.intervalTune[aria-pressed="true"] .intervalName::after { content: " · held"; color: var(--muted); }
+
+.intervalQuestion {
+  font: 600 clamp(1.1rem, 1.6vw, 1.35rem) / 1.35 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.intervalNotes {
+  color: var(--muted);
+  font: 500 0.64rem / 1.6 var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+.intervalWorks,
+.intervalCoda {
+  margin: 0.4rem 0 0;
+  padding-left: calc(min(9rem, 30%) + 2.25rem);
+  font: 500 0.72rem / 1.8 var(--font-mono);
+}
+
+.intervalWorks { color: var(--muted); }
+
+.intervalWorks a {
+  color: var(--muted-bright);
+  text-decoration-color: color-mix(in srgb, var(--signal) 40%, transparent);
+  text-underline-offset: 0.25rem;
+}
+
+.intervalCoda { color: var(--amber); font-style: italic; }
+
+/* A thread's channels light together on the rail: the chord, made visible. */
+.frequencyRailLink[data-chord="true"] {
+  border-color: color-mix(in srgb, var(--amber) 70%, transparent);
+  color: var(--amber);
+  background: color-mix(in srgb, var(--amber) 10%, transparent);
+}
+
+.frequencyRailLink[data-chord="true"] .frequencyRailLabel {
+  max-width: 10rem;
+  opacity: 1;
+}
+
+.displayPedestalCaption {
+  position: absolute;
+  z-index: 3;
+  top: 1.9rem;
+  left: 2rem;
+  margin: 0;
+  color: var(--muted);
+  font: 500 0.6rem / 1.6 var(--font-mono);
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.displayPedestalCaption span {
+  display: block;
+  color: var(--paper);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.displayPedestalCross {
+  margin-left: auto;
+  color: var(--signal);
+  font: 600 0.62rem / 1 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.displayPedestalCross:hover,
+.displayPedestalCross:focus-visible { text-decoration: underline; text-underline-offset: 0.3rem; }
+
+/* Swatches keep their thin bar but get a touch-sized hit area. */
+.displayPedestalSwatch {
+  height: 1.5rem;
+  background: linear-gradient(
+    transparent calc(50% - 0.11rem),
+    color-mix(in srgb, var(--swatch) 36%, var(--surface)) calc(50% - 0.11rem) calc(50% + 0.11rem),
+    transparent calc(50% + 0.11rem)
+  );
+}
+
+.displayPedestalSwatchActive {
+  background: linear-gradient(
+    transparent calc(50% - 0.11rem),
+    var(--swatch) calc(50% - 0.11rem) calc(50% + 0.11rem),
+    transparent calc(50% + 0.11rem)
+  );
+}
+
+@media (max-width: 1000px) {
+  .intervals { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .channelArtifact[data-kind] { position: relative; top: auto; }
+  .workStatus { margin-left: 0; width: 100%; }
+  .intervalTune { grid-template-columns: minmax(0, 1fr); padding-inline: 0.25rem; }
+  .intervalName { grid-row: auto; }
+  .intervalWorks, .intervalCoda { padding-left: 0.25rem; }
+  .artifactQuote { min-height: 16rem; }
+  .displayPedestalCaption { top: 1.6rem; left: 1.6rem; }
+}
+
+@media (max-width: 420px) {
+  .brandFull { display: none; }
+  .brandShort { display: inline; }
+  .artifactDiptych { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-contrast: more) {
+  .workStatus,
+  .nowLabel,
+  .intervalName { color: var(--paper); }
+
+  .channelCopy .workEchoes,
+  .intervalNotes,
+  .intervalWorks,
+  .recordingCredit,
+  .displayPedestalCaption { color: var(--paper); }
+
+  .recordingWave rect { fill: var(--muted-bright); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intervalTune { transition: none; }
+}
+
+/* Stacked hero actions: the text link keeps its own width so its underline
+   starts where its words do. */
+@media (max-width: 420px) {
+  .heroActions .signalTextLink { align-self: flex-start; text-align: left; }
+}

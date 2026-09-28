@@ -69,9 +69,12 @@ const Navbar = () => {
       <a
         href={destination("#top")}
         className={styles.brand}
-        aria-label="Back to top"
+        aria-label="Christopher Woodyard, back to top"
       >
-        Vers<span className={styles.brandMark}>3</span>Dynamics
+        <span className={styles.brandFull}>Christopher Woodyard</span>
+        <span className={styles.brandShort} aria-hidden="true">
+          C<span className={styles.brandMark}>.</span> Woodyard
+        </span>
       </a>
       <nav className={styles.navLinks} aria-label="Primary">
         {navLinks.map((link) => (

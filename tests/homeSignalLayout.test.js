@@ -80,6 +80,7 @@ test(
   "rendered home is a silent five-channel Resonant Instrument",
   { timeout: 60000 },
   async (t) => {
+    const practice = require("../data/practice");
     const port = await findAvailablePort();
     const { child, output } = startNextServer(port);
     t.after(() => stopNextServer(child));
@@ -92,40 +93,68 @@ test(
     const html = await response.text();
 
     assert.equal(response.status, 200);
-    const workIndex = html.match(/<nav[^>]*aria-label="Choose a medium"[\s\S]*?<\/nav>/)?.[0] ?? "";
-    assert.ok(workIndex, "visitors can scan all five mediums before exploring");
-    for (const id of ["books", "apps", "art", "frequency", "music"]) {
+    const channelIds = practice.channels.map((channel) => channel.id);
+    assert.deepEqual(channelIds, ["writing", "instruments", "worlds", "art", "music"]);
+
+    const workIndex = html.match(/<nav[^>]*aria-label="Choose an instrument"[\s\S]*?<\/nav>/)?.[0] ?? "";
+    assert.ok(workIndex, "visitors can scan all five instruments before exploring");
+    for (const id of channelIds) {
       assert.ok(workIndex.includes(`href="#signal-${id}"`), `index reaches ${id}`);
     }
     assert.match(html, /href="\/research"[^>]*>\s*Research/);
-    ["Five notes.", "One chord.", "Enter the instrument", "Explore without sound"]
+    ["Five notes.", "One chord.", "Enter the instrument", "Explore without sound", "captain of my soul"]
       .forEach((copy) => assert.ok(html.includes(copy), `missing rendered copy: ${copy}`));
+
+    // A stranger learns what Christopher makes before any metaphor.
+    const hero = html.match(/<section[^>]*id="top"[\s\S]*?<\/section>/)?.[0] ?? "";
+    ["Poems", "speculative physics", "research instruments", "Simulated worlds", "Indigo People"]
+      .forEach((copy) => assert.ok(hero.includes(copy), `hero does not say: ${copy}`));
 
     assert.ok(html.includes('aria-label="Signal channels"'));
     assert.match(html, /<section[^>]*id="top"[^>]*aria-labelledby="signal-title"/);
     assert.doesNotMatch(html, /<div[^>]*id="top"/);
-    assert.equal((html.match(/data-signal-channel="/g) ?? []).length, 5);
-    ["books", "apps", "art", "frequency", "music"].forEach((id) =>
-      assert.ok(html.includes(`data-signal-channel="${id}"`))
+    channelIds.forEach((id) =>
+      assert.equal((html.match(new RegExp(`data-signal-channel="${id}"`, "g")) ?? []).length, 1)
     );
+    assert.equal((html.match(/data-signal-channel="hero"/g) ?? []).length, 1);
+    assert.equal((html.match(/data-signal-channel="rest"/g) ?? []).length, 3);
 
+    // Every work renders with an anchor, its question, and every receipt.
+    practice.works.forEach((work) => {
+      assert.ok(html.includes(`id="work-${work.id}"`), `missing work ${work.id}`);
+      work.evidence.forEach((link) =>
+        assert.ok(html.includes(link.href.replace(/&/g, "&amp;")), `missing receipt ${link.href}`)
+      );
+    });
     [
-      "https://a.co/d/078d1kaa",
-      "https://lop-nur-twin.vercel.app/",
-      "https://huggingface.co/spaces/ciaochris/vers3dynamics-cymatics",
-      "https://github.com/topherchris420/james_library",
-      "https://oncyber.io/stanfordgsb",
-      "https://madsgallery.art/item/085ddf21-f2f3-44d1-837b-6794109262af/artist/christopher-woodyard/",
-      "https://woodyard.dappling.network",
-      "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:254ea155-1ada-417d-8f60-4395a09faaf7",
-      "https://chriswoodyard.bandcamp.com/",
-      "https://chriswoodyard.bandcamp.com/track/creators-innovators",
       "https://mitpress.vercel.app/",
       "mailto:christopher@vers3dynamics.com",
       "https://huggingface.co/ciaochris",
+      "https://github.com/topherchris420",
       "https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=7684976",
-      "https://geotwn.vercel.app/",
+      "https://vers3dynamics.com/",
     ].forEach((url) => assert.ok(html.includes(url), `missing rendered URL: ${url}`));
+
+    // Real artifacts, not decoration: served locally, sized, lazy.
+    ["/work/circle-polygraph.webp", "/work/pine-gap-agent-run.webp", "/work/green-machine-cover.webp", "/work/cymatics-circular-bloom.webp"]
+      .forEach((src) => assert.match(html, new RegExp(`<img[^>]*src="${src}"[^>]*>`)));
+    (html.match(/<img[^>]*>/g) ?? []).forEach((img) => {
+      assert.match(img, /width="\d+"/);
+      assert.match(img, /height="\d+"/);
+      assert.match(img, /loading="lazy"/);
+      assert.match(img, /alt="[^"]{20,}"/);
+    });
+    // The recording waits to be asked.
+    assert.match(html, /<audio[^>]*preload="none"/);
+    assert.doesNotMatch(html, /<audio[^>]*autoplay/i);
+
+    // Intervals are tunable, and all start released.
+    assert.ok(html.includes("Same question, another instrument."));
+    assert.equal((html.match(/<li[^>]*id="interval-/g) ?? []).length, practice.threads.length);
+    assert.ok(html.includes(practice.epigraph.href.replace(/&/g, "&amp;")));
+
+    // Now is a curated pointer at a work, not a feed.
+    assert.match(html, new RegExp(`href="#work-${practice.now.work}"`));
 
     [
       "A studio of one, tuned to many frequencies.",
@@ -133,9 +162,28 @@ test(
       "Knicks in 5",
       "Hi, I",
       "Open to collaborations",
+      "Latest build",
+      "Lop Nur Twin game",
+      "Explore AI/ML Projects",
+      "Read Inspiration Source",
+      "consciousness engine",
+      "SINGULARITY PORTAL",
     ].forEach((copy) =>
       assert.ok(!html.includes(copy), `retired copy still rendered: ${copy}`)
     );
+
+    // Metadata puts the person first; the lab is an affiliation.
+    assert.match(html, /<title[^>]*>Christopher Woodyard — Vanta<\/title>/);
+    assert.match(html, /<link rel="canonical" href="https:\/\/mitpress\.vercel\.app\/"/);
+    assert.match(html, /<meta property="og:site_name" content="Vanta"/);
+    const jsonLd = JSON.parse(
+      html.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)[1]
+    );
+    const personNode = jsonLd["@graph"].find((node) => node["@type"] === "Person");
+    assert.equal(personNode.name, "Christopher Woodyard");
+    assert.equal(personNode.jobTitle, undefined, "a job title is not the person");
+    assert.equal(personNode.affiliation.name, "Vers3Dynamics");
+    assert.ok(personNode.sameAs.includes("https://github.com/topherchris420"));
 
     assert.ok(html.includes('aria-pressed="false"'));
     assert.ok(html.includes("Sound off"));
@@ -150,6 +198,7 @@ test(
     assert.ok(html.includes("Standby"));
     assert.equal((html.match(/STANDBY/g) ?? []).length, 5);
     assert.ok(!html.includes("SIGNAL ACTIVE"));
+    assert.ok(!html.includes('data-chord="true"'));
     assert.ok(html.includes("Scroll to tune"));
 
     // The rail is keyboard-tunable and says so to assistive technology.
@@ -158,8 +207,8 @@ test(
 
     // Every unbreakable headline publishes the width budget its column must
     // respect, so no display type is ever clipped.
-    assert.ok(html.includes("--title-em:10.44"));
-    assert.ok(html.includes("--title-em:11.6"));
+    assert.ok(html.includes("--title-em:12.76"), "Instruments publishes its width");
+    assert.ok(html.includes("--title-em:11.6"), "the footer publishes its width");
 
     const notFoundResponse = await fetch(
       `http://${HOST}:${port}/missing-signal-test-route`
@@ -181,11 +230,11 @@ test(
     );
     const researchHtml = await researchResponse.text();
     assert.equal(researchResponse.status, 200);
-    assert.ok(researchHtml.includes("Research Explorer"));
+    assert.ok(researchHtml.includes("Research atlas"));
     assert.ok(researchHtml.includes("Local catalog"));
     assert.ok(researchHtml.includes("Portfolio"));
     assert.ok(researchHtml.includes("Catalog entry"));
-    assert.ok(researchHtml.includes("Quantum Computing"));
+    assert.ok(researchHtml.includes("Quantum Information"));
+    assert.ok(researchHtml.includes("not an endorsement or a verification"));
   }
 );
-

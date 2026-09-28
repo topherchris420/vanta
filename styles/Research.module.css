@@ -1259,3 +1259,15 @@
   text-underline-offset: 0.2em;
 }
 .practiceLinks p { margin: 0.3rem 0 0; font-size: 0.78rem; line-height: 1.5; color: var(--muted-bright); }
+
+/* Desktop: the record list scrolls inside its column and the map holds the
+   viewport. Without the bounded row the list stretched the map to the full
+   length of the catalog, and the camera framed a canvas thousands of pixels
+   tall. */
+@media (min-width: 901px) {
+  /* As a flex item with flex: 1 its height was ignored and it grew to fit
+     the list; a fixed basis makes the declared height hold. */
+  .main { flex: none; grid-template-rows: minmax(0, 1fr); overflow: hidden; }
+  .searchPanel { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+  .graphPanel { height: 100%; }
+}
