@@ -31,10 +31,10 @@ test('LocalProvider supports discipline filtering and sorting', async () => {
   const provider = new LocalProvider(rawCuratedKnowledge);
 
   // Filter by discipline tag
-  const resPhysics = await provider.search('', { tag: 'Speculative Physics' });
+  const resPhysics = await provider.search('', { tag: 'Physics' });
   assert.ok(resPhysics.results.length >= 4);
   resPhysics.results.forEach((r) => {
-    assert.ok(r.document.tags.includes('Speculative Physics'));
+    assert.ok(r.document.tags.includes('Physics'));
   });
 
   // Sort by date descending

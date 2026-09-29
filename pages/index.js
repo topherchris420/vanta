@@ -68,7 +68,7 @@ const elsewhereLinks = [
 
 const siteUrl = "https://mitpress.vercel.app";
 const siteDescription =
-  "Poems and speculative physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. The practice of Christopher Woodyard.";
+  "Poems and physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. The practice of Christopher Woodyard.";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -82,7 +82,7 @@ const structuredData = {
       description: person.summary,
       knowsAbout: [
         "Poetry",
-        "Speculative physics",
+        "Physics",
         "Biosignal instrumentation",
         "Time-series analysis",
         "Multi-agent research systems",

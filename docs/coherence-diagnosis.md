@@ -31,8 +31,8 @@ and vers3dynamics.com.
    disciplines are made of these records. One click from a researcher would
    undo every honest caveat on the site. **This is the most urgent fix.** His
    real papers exist: sixteen manuscripts in the R.A.I.N. corpus, plus Dynamic
-   Location Theory. They are speculative, openly falsifiable, and
-   self-published, and should appear as exactly that.
+   Location Theory. They are openly falsifiable and self-published, and
+   should appear as exactly that.
 
 2. **The channels are drawers sized to UI slots, not to the work.**
    - *Books* holds a poetry book (*Life of a Line*, 2021) and a 3D desert

@@ -27,7 +27,7 @@ The canonical content lives in `data/practice.js` and is checked by `lib/practic
 
 - **Channels (five notes):** Writing (C4), Instruments (E4), Worlds (G4), Art (C5), Music (G3). Each has a lede, a list of works, and one real artifact.
 - **Works:** title, optional year, optional question (leads), body, optional detail or trace, one to three statuses, evidence links, optional `alsoIn` channels.
-- **Statuses** describe what happened, never how good it is: Live, Open source, Published, Preprint, Paper, Exhibited, Recorded, Simulation, Experiment, Prototype, Speculative.
+- **Statuses** describe what happened, never how good it is: Live, Open source, Published, Preprint, Paper, Exhibited, Recorded, Simulation, Experiment, Prototype.
 - **Threads (intervals):** Provenance, Agency, Translation, Resonance. A thread lists works; the channels it spans, and therefore its chord, are derived from those works. Each thread must span at least two channels, and no two threads may sound the same chord.
 - **Epigraph:** one sentence of Christopher's own, with its source.
 - **Now:** a single hand-picked pointer at a work. It is never generated from commit activity.
@@ -36,7 +36,7 @@ Rules:
 
 - Every claim needs a receipt. No receipt, no claim.
 - A work lives in one channel. `alsoIn` is used only when the connection is literal and checkable (the same album is the Pine Gap radio and its cover is the painting shown in Art).
-- Unfinished work says so (Prototype, Speculative, Preprint, and the detail line).
+- Unfinished work says so (Prototype, Preprint, and the detail line).
 
 ## Experience Contract
 
