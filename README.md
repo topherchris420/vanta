@@ -2,7 +2,7 @@
 
 **Five notes. One chord.**
 
-The portfolio of Christopher Woodyard: poems and speculative physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. Much of it is built at [Vers3Dynamics](https://vers3dynamics.com/), his open lab. Vanta is the person; the lab is where the work gets made.
+The portfolio of Christopher Woodyard: poems and physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. Much of it is built at [Vers3Dynamics](https://vers3dynamics.com/), his open lab. Vanta is the person; the lab is where the work gets made.
 
 [Explore Vanta](https://mitpress.vercel.app/) · [Open the research atlas](https://mitpress.vercel.app/research) · [Contact Christopher](mailto:christopher@vers3dynamics.com)
 

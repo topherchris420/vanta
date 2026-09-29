@@ -163,8 +163,8 @@ const works = [
     year: "2026",
     question:
       "What if location belonged to the object, not to the space around it?",
-    body: "A run of preprints on Dynamic Location Theory. Speculative physics that names its own tests: a follow-up uses 2024–25 atomic-clock comparisons to put an upper bound on the coupling constant the theory depends on.",
-    status: ["Preprint", "Speculative"],
+    body: "A run of preprints on Dynamic Location Theory. Physics that names its own tests: a follow-up uses 2024–25 atomic-clock comparisons to put an upper bound on the coupling constant the theory depends on.",
+    status: ["Preprint"],
     evidence: [
       { label: "Preprint", href: "https://doi.org/10.5281/zenodo.18263032" },
       { label: "The clock bound", href: "https://doi.org/10.5281/zenodo.18285322" },
@@ -377,7 +377,7 @@ const person = {
   url: "https://mitpress.vercel.app/",
   email: "christopher@vers3dynamics.com",
   summary:
-    "Christopher Woodyard writes poems and speculative physics, builds open research instruments and simulated worlds, paints, and records as Indigo People. Vers3Dynamics is the open lab where most of it is built.",
+    "Christopher Woodyard writes poems and physics, builds open research instruments and simulated worlds, paints, and records as Indigo People. Vers3Dynamics is the open lab where most of it is built.",
   lab: { name: "Vers3Dynamics", url: "https://vers3dynamics.com/" },
   sameAs: [
     "https://github.com/topherchris420",

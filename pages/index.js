@@ -68,7 +68,7 @@ const elsewhereLinks = [
 
 const siteUrl = "https://mitpress.vercel.app";
 const siteDescription =
-  "Poems and speculative physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. The practice of Christopher Woodyard.";
+  "Poems and physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. The practice of Christopher Woodyard.";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -82,7 +82,7 @@ const structuredData = {
       description: person.summary,
       knowsAbout: [
         "Poetry",
-        "Speculative physics",
+        "Physics",
         "Biosignal instrumentation",
         "Time-series analysis",
         "Multi-agent research systems",
@@ -298,11 +298,22 @@ export default function Home() {
             <h1 id="signal-title" className={styles.signalTitle}>
               Five notes.<span>One chord.</span>
             </h1>
-            <p className={styles.signalSummary}>
-              Poems and speculative physics. Open research instruments that
-              keep their evidence. Simulated worlds where people and AI agents
-              play by the same rules. Paintings, and songs as Indigo People.
-            </p>
+            <div className={styles.signalSummary}>
+              <p>I make strange things and test whether they work.</p>
+              <p>
+                Research systems that keep their evidence. Artificial worlds
+                where humans and AI play by the same rules. Experiments in
+                physics, intelligence, perception, and resonance.
+              </p>
+              <p>
+                And when code isn&rsquo;t the right medium, I write poems,
+                paint, and make music as Indigo People.
+              </p>
+              <p>The medium changes. The question usually doesn&rsquo;t:</p>
+              <p className={styles.signalQuestion}>
+                What happens if we actually try it?
+              </p>
+            </div>
             <div className={styles.heroActions}>
               <a href="#work" className={styles.signalPrimary}>
                 Explore without sound <span aria-hidden="true">↓</span>

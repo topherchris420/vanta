@@ -12,7 +12,7 @@
       "source": "Zenodo (preprint)",
       "url": "https://doi.org/10.5281/zenodo.18263032",
       "tags": [
-        "Speculative Physics",
+        "Physics",
         "Preprint",
         "Dynamic Location Theory",
         "Scalar Fields"
@@ -39,7 +39,7 @@
       "source": "Zenodo (preprint)",
       "url": "https://doi.org/10.5281/zenodo.18281960",
       "tags": [
-        "Speculative Physics",
+        "Physics",
         "Preprint",
         "Dynamic Location Theory",
         "Temporal Resonance"
@@ -69,7 +69,7 @@
       "source": "Zenodo (preprint)",
       "url": "https://doi.org/10.5281/zenodo.18285322",
       "tags": [
-        "Speculative Physics",
+        "Physics",
         "Preprint",
         "Dynamic Location Theory",
         "Precision Metrology",
@@ -104,7 +104,7 @@
       "source": "Zenodo (preprint)",
       "url": "https://doi.org/10.5281/zenodo.18300890",
       "tags": [
-        "Speculative Physics",
+        "Physics",
         "Preprint",
         "Dynamic Location Theory",
         "Quantum Geometry"
@@ -134,7 +134,7 @@
       "source": "Zenodo (preprint)",
       "url": "https://doi.org/10.5281/zenodo.18226242",
       "tags": [
-        "Speculative Physics",
+        "Physics",
         "Preprint",
         "Discrete Spacetime",
         "Holography"
@@ -164,7 +164,7 @@
       "source": "Zenodo (preprint)",
       "url": "https://doi.org/10.5281/zenodo.18087784",
       "tags": [
-        "Speculative Physics",
+        "Physics",
         "Preprint",
         "Discrete Spacetime",
         "Falsifiability"
@@ -583,7 +583,7 @@
       "tags": [
         "Simulation & Digital Twins",
         "Open Source",
-        "Speculative Physics"
+        "Physics"
       ],
       "entities": [
         "Scalar Field",
@@ -1147,7 +1147,7 @@
         "label": "Location Is a Dynamic Variable: A Scalar-Field Framework for Emergent Localization",
         "type": "Paper",
         "val": 28,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Source Verified",
         "document": {
           "id": "zenodo-location-dynamic-variable",
@@ -1161,7 +1161,7 @@
           "source": "Zenodo (preprint)",
           "url": "https://doi.org/10.5281/zenodo.18263032",
           "tags": [
-            "Speculative Physics",
+            "Physics",
             "Preprint",
             "Dynamic Location Theory",
             "Scalar Fields"
@@ -1196,7 +1196,7 @@
         "label": "Dynamic Location Theory",
         "type": "Concept",
         "val": 19,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 0,
         "y": 90,
@@ -1207,7 +1207,7 @@
         "label": "Frequency–Location Hypothesis",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 99.75,
         "y": 7.07,
@@ -1218,7 +1218,7 @@
         "label": "Scalar Field",
         "type": "Concept",
         "val": 16,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 15.52,
         "y": -108.9,
@@ -1229,7 +1229,7 @@
         "label": "Location Operator",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": -117.3,
         "y": -25.3,
@@ -1240,7 +1240,7 @@
         "label": "Temporal Re-Localization via Scalar Resonance",
         "type": "Paper",
         "val": 26,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Source Verified",
         "document": {
           "id": "zenodo-temporal-relocalization",
@@ -1254,7 +1254,7 @@
           "source": "Zenodo (preprint)",
           "url": "https://doi.org/10.5281/zenodo.18281960",
           "tags": [
-            "Speculative Physics",
+            "Physics",
             "Preprint",
             "Dynamic Location Theory",
             "Temporal Resonance"
@@ -1281,7 +1281,7 @@
         "label": "Temporal Re-Localization",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 97.04,
         "y": -120.66,
@@ -1292,7 +1292,7 @@
         "label": "Bounding the Scalar Coupling Constant γ from Precision Atomic Clock Comparisons",
         "type": "Paper",
         "val": 28,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Source Verified",
         "document": {
           "id": "zenodo-bounding-gamma",
@@ -1306,7 +1306,7 @@
           "source": "Zenodo (preprint)",
           "url": "https://doi.org/10.5281/zenodo.18285322",
           "tags": [
-            "Speculative Physics",
+            "Physics",
             "Preprint",
             "Dynamic Location Theory",
             "Precision Metrology",
@@ -1338,7 +1338,7 @@
         "label": "Scalar Coupling",
         "type": "Concept",
         "val": 13,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 227.02,
         "y": -30.42,
@@ -1349,7 +1349,7 @@
         "label": "Atomic Clock",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 142.79,
         "y": -146.39,
@@ -1360,7 +1360,7 @@
         "label": "Falsifiability",
         "type": "Concept",
         "val": 13,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 9.97,
         "y": -62.79,
@@ -1371,7 +1371,7 @@
         "label": "Geometric Dynamic Location Theory: Temporal Correlations from Quantum State Space Curvature",
         "type": "Paper",
         "val": 26,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Source Verified",
         "document": {
           "id": "zenodo-geometric-dlt",
@@ -1385,7 +1385,7 @@
           "source": "Zenodo (preprint)",
           "url": "https://doi.org/10.5281/zenodo.18300890",
           "tags": [
-            "Speculative Physics",
+            "Physics",
             "Preprint",
             "Dynamic Location Theory",
             "Quantum Geometry"
@@ -1412,7 +1412,7 @@
         "label": "Fubini–Study Metric",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 199.74,
         "y": -38.75,
@@ -1423,7 +1423,7 @@
         "label": "Discrete Celestial Holography: Deriving Asymptotic Symmetries from a Geometric Instruction Set",
         "type": "Paper",
         "val": 26,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Source Verified",
         "document": {
           "id": "zenodo-discrete-celestial-holography",
@@ -1437,7 +1437,7 @@
           "source": "Zenodo (preprint)",
           "url": "https://doi.org/10.5281/zenodo.18226242",
           "tags": [
-            "Speculative Physics",
+            "Physics",
             "Preprint",
             "Discrete Spacetime",
             "Holography"
@@ -1464,7 +1464,7 @@
         "label": "Geometric Instruction Set",
         "type": "Concept",
         "val": 13,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 123.59,
         "y": 10.27,
@@ -1475,7 +1475,7 @@
         "label": "BMS Symmetry",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 223.34,
         "y": -72.66,
@@ -1486,7 +1486,7 @@
         "label": "Discrete Spacetime",
         "type": "Concept",
         "val": 13,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 139.11,
         "y": -188.63,
@@ -1497,7 +1497,7 @@
         "label": "Reality Built on a Finite Set of Geometric Instructions: A Discrete Computational Model of Physical Reality",
         "type": "Paper",
         "val": 28,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Source Verified",
         "document": {
           "id": "zenodo-geometric-instructions",
@@ -1511,7 +1511,7 @@
           "source": "Zenodo (preprint)",
           "url": "https://doi.org/10.5281/zenodo.18087784",
           "tags": [
-            "Speculative Physics",
+            "Physics",
             "Preprint",
             "Discrete Spacetime",
             "Falsifiability"
@@ -1532,7 +1532,7 @@
         "label": "Dirac Equation",
         "type": "Concept",
         "val": 10,
-        "group": "Speculative Physics",
+        "group": "Physics",
         "provenance": "Local Index",
         "x": 153.12,
         "y": -228.65,
@@ -2535,7 +2535,7 @@
           "tags": [
             "Simulation & Digital Twins",
             "Open Source",
-            "Speculative Physics"
+            "Physics"
           ],
           "entities": [
             "Scalar Field",

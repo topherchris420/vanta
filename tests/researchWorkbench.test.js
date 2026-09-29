@@ -29,6 +29,12 @@ test("shared research links round-trip Unicode, filters, ordering, view, and a s
   assert.equal(serializeSession(DEFAULT_SESSION, nodes), "/research");
 });
 
+test("links shared under a renamed discipline keep their filter", () => {
+  const state = parseSession("?discipline=Speculative+Physics&sort=date-desc", nodes);
+  assert.deepEqual(state, { ...DEFAULT_SESSION, discipline: "Physics", sort: "date-desc" });
+  assert.equal(serializeSession(state, nodes), "/research?discipline=Physics&sort=date-desc");
+});
+
 test("malformed and unknown URL state cannot become active controls or selected nodes", () => {
   const state = parseSession(
     "?q=" +
