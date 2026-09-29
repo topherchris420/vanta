@@ -107,8 +107,10 @@ test(
 
     // A stranger learns what Christopher makes before any metaphor.
     const hero = html.match(/<section[^>]*id="top"[\s\S]*?<\/section>/)?.[0] ?? "";
-    ["Poems", "speculative physics", "research instruments", "Simulated worlds", "Indigo People"]
+    ["I make strange things", "Research systems", "Artificial worlds", "physics", "poems", "Indigo People"]
       .forEach((copy) => assert.ok(hero.includes(copy), `hero does not say: ${copy}`));
+    // The intro lands on its question, as a paragraph of its own.
+    assert.match(hero, /<p[^>]*class="[^"]*signalQuestion[^"]*"[^>]*>What happens if we actually try it\?<\/p>/);
 
     assert.ok(html.includes('aria-label="Signal channels"'));
     assert.match(html, /<section[^>]*id="top"[^>]*aria-labelledby="signal-title"/);
