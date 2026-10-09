@@ -28,6 +28,10 @@ There is no correct order to visit a life. Pick a doorway, then follow the threa
 
 **Vanta is the person. Vers3Dynamics is the open research lab.** Where a work lives in both, the distinction matters: a studio experience can be complete as art while an experiment still needs independent validation.
 
+### A mathematical question worth testing
+
+**Does shared mathematical vocabulary cause unsupported provenance links in the research atlas?** The [proposed study](docs/MATH_RESEARCH.md) names assumptions, an existing baseline and a negative control. Candidate mathematics can be explored through [R.A.I.N.'s shared reference scout](https://github.com/topherchris420/lop-nur-twin/blob/main/docs/MATH_PORTFOLIO.md). **No additional mathematical capability has been demonstrated here yet.**
+
 ## The instrument
 
 Five channels, five notes: **Writing** (C4), **Instruments** (E4), **Worlds** (G4), **Art** (C5), **Music** (G3). Each carries a few works. Every work leads with the question it asks, says what actually happened to it (Live, Open source, Preprint, Prototype, Recorded…), and links to the thing itself. Each channel shows one real artifact in its own medium: a claim from the location papers, the CIRCLE polygraph, a frame of an agent on the Pine Gap coffee run, an impasto painting with the *Green Machine* cover painting and a cymatics still, and fourteen seconds of *Green Machine*.
