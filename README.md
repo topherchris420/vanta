@@ -4,7 +4,29 @@
 
 The portfolio of Christopher Woodyard: poems and physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. Much of it is built at [Vers3Dynamics](https://vers3dynamics.com/), his open lab. Vanta is the person; the lab is where the work gets made.
 
-[Explore Vanta](https://mitpress.vercel.app/) · [Open the research atlas](https://mitpress.vercel.app/research) · [Contact Christopher](mailto:christopher@vers3dynamics.com)
+[**Enter Vanta →**](https://mitpress.vercel.app/) · [**Open the research atlas →**](https://mitpress.vercel.app/research) · [**Listen to Indigo People →**](https://chriswoodyard.bandcamp.com/) · [Contact](mailto:christopher@vers3dynamics.com)
+
+## Enter through a work
+
+There is no correct order to visit a life. Pick a doorway, then follow the thread that connects it to another.
+
+| Begin with… | Follow it to… |
+| --- | --- |
+| **A sound** | [Indigo People](https://chriswoodyard.bandcamp.com/): songs and recordings, some of which play inside the [Pine Gap world](https://github.com/topherchris420/satellite-vision-scape) |
+| **An instrument** | [CIRCLE](https://github.com/topherchris420/circle): simulated biosignal traces, bounded decisions, and a still-unbuilt device |
+| **A question** | [The research atlas](https://mitpress.vercel.app/research): papers, code and source-linked relationships with unreviewed claims clearly distinguished |
+| **A world** | [Lop Nur Twin and R.A.I.N. Lab](https://github.com/topherchris420/lop-nur-twin): documented geography, a simulated city and bounded research |
+
+<table>
+  <tr>
+    <td width="50%"><img src="public/work/impasto-head.webp" alt="An impasto portrait painting featured in Christopher Woodyard's portfolio" width="100%"></td>
+    <td width="50%"><img src="public/work/green-machine-cover.webp" alt="Green Machine album-cover painting, also shown in the Vanta portfolio" width="100%"></td>
+  </tr>
+</table>
+
+*Two real works, not generated interface mockups. The profile is an instrument for moving between media, not a catalog of fabricated achievements.*
+
+**Vanta is the person. Vers3Dynamics is the open research lab.** Where a work lives in both, the distinction matters: a studio experience can be complete as art while an experiment still needs independent validation.
 
 ## The instrument
 
@@ -37,6 +59,8 @@ Legacy internal names (`verifiedOnly`, `Source Verified`, edge `verified`) are k
 Use Node.js 22 (minimum 20.9) and npm.
 
 ```sh
+git clone https://github.com/topherchris420/vanta.git
+cd vanta
 npm ci
 npm run dev
 ```
