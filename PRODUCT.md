@@ -44,13 +44,16 @@ The page runs in this order:
 
 1. Hero: the name and "captain of my soul", "Five notes. One chord.", a plain line saying what he makes, two explicit paths (Explore without sound, Enter the instrument), the Now line, and where the work lives (Vers3Dynamics, R.A.I.N. Lab, source). The Event Horizon Archive sits beside it.
 2. A six-stop rail: the hero plus five channels.
-3. A work index naming each channel's works.
+3. A work index naming each channel's works, with previews drawn from the existing artifacts.
 4. Five channel sections: works on one side, the artifact on the other.
 5. Intervals.
 6. The research atlas gateway.
 7. The collaboration footer: email first, then elsewhere links.
 
 State:
+
+- The primary navigation's Find work button opens a searchable native dialog. `/` or Ctrl/Cmd+K opens it outside editable fields; Escape closes it and restores focus. Search matches titles, media, questions, descriptions, and statuses. Choosing a result navigates and focuses the work itself. No new data source or network search is involved.
+- The archive has a composed, linked fallback while its 3D bundle loads or if that bundle fails.
 
 - One active-channel id drives rail location, channel emphasis, visual resonance, and optional sound. The channel covering most of the reading band wins; the hero, Intervals, gateway, and footer are rest zones that return the instrument to Standby.
 - Pointer and keyboard previews override the scroll channel and restore it on exit.
@@ -134,6 +137,7 @@ The atlas answers a different question from the portfolio: what ideas and source
 - Inclusion is not verification. The interface never infers verification from a source name or a DOI.
 - The inspector is a native modal dialog: inert background, Escape to close, focus restored.
 - On desktop the record list scrolls inside its column and the map holds the viewport. At 900 px and below, visitors switch between records and map, and the graph mounts only when the map is requested.
+- `/` focuses catalog search outside editable fields or an open inspector. Active search filters can be removed individually without resetting the other filters. The reading list labels its separate scope and offers a direct return to the previous results.
 
 ## Deployment
 
