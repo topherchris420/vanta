@@ -9,7 +9,7 @@ function Work({ work, channelsById, threads }) {
   const echoes = (work.alsoIn || []).map((id) => channelsById.get(id)).filter(Boolean);
 
   return (
-    <li id={`work-${work.id}`} className={styles.work}>
+    <li id={`work-${work.id}`} className={styles.work} tabIndex={-1}>
       <div className={styles.workHead}>
         <h3>{work.title}</h3>
         {work.year && <span className={styles.workYear}>{work.year}</span>}

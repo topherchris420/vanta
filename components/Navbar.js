@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
+import WorkFinder from "./WorkFinder";
 
 const navLinks = [
   { label: "Work", href: "#work" },
@@ -89,6 +90,7 @@ const Navbar = () => {
             {link.label}
           </a>
         ))}
+        {pathname === "/" && <WorkFinder />}
       </nav>
     </header>
   );

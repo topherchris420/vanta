@@ -25,8 +25,26 @@ const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
 
 const DisplayPedestalNoSSR = dynamic(
   () => import("../components/DisplayPedestal"),
-  { ssr: false }
+  { ssr: false, loading: () => <ArchiveEntry /> }
 );
+
+// Keep a useful, composed entrance visible while the 3D bundle loads or fails.
+function ArchiveEntry() {
+  return <div className={`${styles.heroStage} ${styles.displayPedestal}`}>
+    <div className={styles.displayPedestalCanvas} data-webgl="fallback" aria-hidden="true" />
+    <p className={styles.displayPedestalCaption}><span>Event Horizon Archive</span>The sources behind the work</p>
+    <div className={styles.displayPedestalHud}><a className={styles.displayPedestalCross} href="/research">Cross into the atlas ↗</a></div>
+  </div>;
+}
+
+function IndexPreview({ artifact }) {
+  const picture = artifact.kind === "gallery" ? artifact.panels[0] : artifact.kind === "figure" ? artifact : null;
+  if (picture) return <img className={styles.indexImage} src={picture.src} width={picture.width} height={picture.height} alt={picture.alt} loading="lazy" />;
+  if (artifact.kind === "recording") return <svg className={styles.indexWave} viewBox="0 0 96 50" aria-hidden="true">
+    {artifact.peaks.filter((_, i) => i % 3 === 0).map((peak, i) => <rect key={i} x={i * 3} y={25 - peak * 23} width="1.5" height={Math.max(2, peak * 46)} />)}
+  </svg>;
+  return <span className={styles.indexQuote} aria-hidden="true">Aa<span>Verse &amp; theory</span></span>;
+}
 
 // The canonical content model lives in data/practice.js. This page only
 // arranges it; nothing about a channel or a work is restated here.
@@ -299,17 +317,12 @@ export default function Home() {
               Five notes.<span>One chord.</span>
             </h1>
             <div className={styles.signalSummary}>
-              <p>I make strange things and test whether they work.</p>
+              <p className={styles.heroStatement}>I make strange things<br />and test whether they work.</p>
               <p>
-                Research systems that keep their evidence. Artificial worlds
-                where humans and AI play by the same rules. Experiments in
-                physics, intelligence, perception, and resonance.
+                Research systems. Artificial worlds. Experiments in physics
+                and resonance. And when code isn&rsquo;t the right medium:
+                poems, paintings, and music as Indigo People.
               </p>
-              <p>
-                And when code isn&rsquo;t the right medium, I write poems,
-                paint, and make music as Indigo People.
-              </p>
-              <p>The medium changes. The question usually doesn&rsquo;t:</p>
               <p className={styles.signalQuestion}>
                 What happens if we actually try it?
               </p>
@@ -331,7 +344,7 @@ export default function Home() {
               </button>
             </div>
             <p id="sound-entry-hint" className={styles.entryHint}>
-              Enter the instrument adds sound. You can turn it off at any time.
+              Silent by default. Enter the instrument adds optional sound.
             </p>
             <p className={styles.nowSignal}>
               <span className={styles.nowLabel}>Now</span>
@@ -364,7 +377,7 @@ export default function Home() {
               </a>
             </nav>
           </div>
-          <ErrorBoundary className={styles.heroStage}>
+          <ErrorBoundary className={styles.heroStage} fallback={<ArchiveEntry />}>
             <DisplayPedestalNoSSR
               className={styles.heroStage}
               workCount={works.length}
@@ -408,13 +421,15 @@ export default function Home() {
               <p className={styles.instrumentLabel}>Selected work / 01—05</p>
               <h2>Find your frequency.</h2>
               <p>
-                Five instruments, one practice. Pick one, or keep scrolling and
-                listen for where they repeat each other.
+                A poem, a working prototype, a place to get lost.
+                Choose a medium. Follow the question.
               </p>
+              <p className={styles.indexCount}>{works.length} selected works <span aria-hidden="true">/</span> Five ways in</p>
             </div>
             <nav className={styles.workIndexLinks} aria-label="Choose an instrument">
               {projectSections.map((project) => (
                 <a key={project.id} href={`#signal-${project.id}`}>
+                  <div className={styles.indexPreview}><IndexPreview artifact={project.artifact} /></div>
                   <span className={styles.workIndexNumber}>{project.number}</span>
                   <span className={styles.workIndexName}>{project.title}</span>
                   <span className={styles.workIndexPreview}>

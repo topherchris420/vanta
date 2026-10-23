@@ -113,6 +113,10 @@ test(
     assert.match(hero, /<p[^>]*class="[^"]*signalQuestion[^"]*"[^>]*>What happens if we actually try it\?<\/p>/);
 
     assert.ok(html.includes('aria-label="Signal channels"'));
+    assert.match(html, /aria-haspopup="dialog"[^>]*aria-keyshortcuts="\/ Control\+k Meta\+k"/);
+    assert.match(html, /<dialog[^>]*aria-labelledby="finder-title"/);
+    assert.ok(html.includes('id="work-search"'));
+    assert.equal((html.match(/data-work-result=""/g) ?? []).length, practice.works.length);
     assert.match(html, /<section[^>]*id="top"[^>]*aria-labelledby="signal-title"/);
     assert.doesNotMatch(html, /<div[^>]*id="top"/);
     channelIds.forEach((id) =>

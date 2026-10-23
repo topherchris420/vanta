@@ -89,6 +89,19 @@ export default function ResearchExplorer() {
   const graph = showSaved ? savedSearch.graph : search.graph;
 
   useEffect(() => {
+    const focusSearch = (event) => {
+      if (event.key !== "/" || event.defaultPrevented || event.isComposing ||
+          event.metaKey || event.ctrlKey || event.altKey ||
+          document.querySelector("dialog[open]") ||
+          event.target.closest?.("input, textarea, select, [contenteditable]:not([contenteditable='false'])")) return;
+      event.preventDefault();
+      searchInputRef.current?.focus();
+    };
+    window.addEventListener("keydown", focusSearch);
+    return () => window.removeEventListener("keydown", focusSearch);
+  }, []);
+
+  useEffect(() => {
     const media = window.matchMedia("(min-width: 901px)");
     const update = () => setWideViewport(media.matches);
     update();
@@ -213,7 +226,10 @@ export default function ResearchExplorer() {
           <button
             type="button"
             aria-pressed={showSaved}
-            onClick={() => setShowSaved((value) => !value)}
+            onClick={() => {
+              setShowSaved((value) => !value);
+              updateSession({ node: "" });
+            }}
           >
             Reading list <span>{savedIds.length}</span>
           </button>
@@ -255,6 +271,9 @@ export default function ResearchExplorer() {
               and repositories, other people&rsquo;s papers, a few public
               records. Being here is not an endorsement or a verification.
             </p>
+            <label htmlFor="research-search" className={styles.searchLabel}>
+              Search the catalog <kbd aria-hidden="true">/</kbd>
+            </label>
             <div className={styles.searchBarWrapper}>
               <span className={styles.searchIcon} aria-hidden="true">
                 ⌕
@@ -446,13 +465,21 @@ export default function ResearchExplorer() {
                 finding.
               </p>
             </details>
-            {(session.q || filterCount > 0) && (
-              <div className={styles.activeFilters}>
-                <span>
-                  {filterCount
-                    ? `${filterCount} active ${filterCount === 1 ? "filter" : "filters"}`
-                    : "Search applied"}
-                </span>
+            {!showSaved && (session.q || filterCount > 0) && (
+              <div className={styles.activeFilters} aria-label="Active search filters">
+                {[
+                  ["q", session.q, "", "Search"],
+                  ["discipline", session.discipline, "All", "Discipline"],
+                  ["era", session.era, "All", "Era"],
+                  ["links", session.links, "all", "Connections"],
+                ].filter(([, value, fallback]) => value !== fallback).map(([key, value, fallback, label]) => (
+                  <button key={key} type="button" className={styles.filterChip}
+                    aria-label={`Remove ${label.toLowerCase()} filter: ${value}`}
+                    onClick={() => updateSession({ [key]: fallback })}>
+                    <span>{key === "links" ? LINK_OPTIONS.find((item) => item.id === value)?.label : value}</span>
+                    <span aria-hidden="true">×</span>
+                  </button>
+                ))}
                 <button
                   type="button"
                   onClick={resetSearch}
@@ -504,12 +531,17 @@ export default function ResearchExplorer() {
               </span>
             </div>
             {showSaved && (
-              <p className={styles.readingListNote}>
+              <div className={styles.readingListNote}>
+                <div className={styles.readingListHeader}><h2>Your reading list</h2>
+                  <button type="button" onClick={() => setShowSaved(false)}>Back to results ↗</button>
+                </div>
+                <p>
                 {storageAvailable
                   ? "Saved on this browser. Export a copy to take it with you."
                   : "Browser storage is unavailable. Export your list before leaving."}{" "}
                 Search filters do not apply to saved records.
-              </p>
+                </p>
+              </div>
             )}
             <div className={styles.resultsList}>
               {results.length === 0 ? (
