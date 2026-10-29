@@ -36,12 +36,20 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.65em;
   font: 700 0.82rem / 1 var(--font-mono);
   color: var(--paper);
   letter-spacing: 0.12em;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The same mark as the portfolio's nav, so both pages sign the same way. */
+.brandLogo {
+  flex: none;
+  width: 2.3em;
+  height: 1.45em;
 }
 
 .brandMark {
@@ -1270,4 +1278,17 @@
   .main { flex: none; grid-template-rows: minmax(0, 1fr); overflow: hidden; }
   .searchPanel { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
   .graphPanel { height: 100%; }
+}
+
+/* On the narrowest phones the mark tightens so the name stays within the
+   title's width and "← Portfolio" keeps to one line. */
+@media (max-width: 360px) {
+  .brand {
+    gap: 0.45em;
+  }
+
+  .brandLogo {
+    width: 1.9em;
+    height: 1.2em;
+  }
 }

@@ -98,17 +98,23 @@ a {
   }
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
+/* A styled scrollbar is a classic scrollbar: it takes layout width instead of
+   floating over the page. On a 320px phone that width plus the 320px floor
+   above made mobile browsers widen the page to fit, so the styling is kept
+   to devices with a fine pointer, and touch screens keep their overlay bar. */
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--ink);
-}
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
 
-::-webkit-scrollbar-thumb {
-  border: 2px solid var(--ink);
-  background: color-mix(in srgb, var(--signal) 42%, var(--surface));
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid var(--ink);
+    background: color-mix(in srgb, var(--signal) 42%, var(--surface));
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

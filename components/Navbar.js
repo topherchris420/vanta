@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import HorizonMark from "./HorizonMark";
 import styles from "../styles/Home.module.css";
 
 const navLinks = [
@@ -71,6 +72,7 @@ const Navbar = () => {
         className={styles.brand}
         aria-label="Christopher Woodyard, back to top"
       >
+        <HorizonMark className={styles.brandLogo} />
         <span className={styles.brandFull}>Christopher Woodyard</span>
         <span className={styles.brandShort} aria-hidden="true">
           C<span className={styles.brandMark}>.</span> Woodyard

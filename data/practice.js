@@ -121,7 +121,7 @@ const channels = [
     frequency: 196,
     color: "#8cf0c6",
     visual: "spectrum",
-    lede: "Indigo People. Written by Christopher Woodyard.",
+    lede: "Songs as Indigo People, written by Christopher Woodyard.",
     works: ["green-machine"],
     artifact: {
       kind: "recording",

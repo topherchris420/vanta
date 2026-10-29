@@ -119,7 +119,13 @@ test(
       assert.equal((html.match(new RegExp(`data-signal-channel="${id}"`, "g")) ?? []).length, 1)
     );
     assert.equal((html.match(/data-signal-channel="hero"/g) ?? []).length, 1);
-    assert.equal((html.match(/data-signal-channel="rest"/g) ?? []).length, 3);
+    // Intervals and the atlas gateway rest the instrument; the footer is the
+    // coda, where all five notes sound as the chord the headline promised.
+    assert.equal((html.match(/data-signal-channel="rest"/g) ?? []).length, 2);
+    const footer = html.match(/<footer[^>]*id="contact"[\s\S]*?<\/footer>/)?.[0] ?? "";
+    assert.match(footer, /data-signal-channel="coda"/);
+    assert.ok(footer.includes("G3 · C4 · E4 · G4 · C5"), "the coda names its notes");
+    assert.ok(footer.includes("C major"), "and the chord they make");
 
     // Every work renders with an anchor, its question, and every receipt.
     practice.works.forEach((work) => {

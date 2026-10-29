@@ -9,6 +9,7 @@ import useResearchSession from "../../hooks/useResearchSession";
 import curatedKnowledgeData from "../../data/research/curatedKnowledge.json";
 import ResearchDetails from "../../components/research/ResearchDetails";
 import ErrorBoundary from "../../components/ErrorBoundary";
+import HorizonMark from "../../components/HorizonMark";
 
 const ResearchGraphNoSSR = dynamic(
   () => import("../../components/research/ResearchGraph"),
@@ -180,7 +181,6 @@ export default function ResearchExplorer() {
         />
         <link rel="canonical" href="https://mitpress.vercel.app/research" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/Logo.jpg" />
       </Head>
       <a className={styles.skipLink} href="#research-search">
         Skip to research search
@@ -188,6 +188,7 @@ export default function ResearchExplorer() {
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <Link href="/" className={styles.brand} aria-label="Back to home">
+            <HorizonMark className={styles.brandLogo} />
             Christopher Woodyard
           </Link>
           <div className={styles.headerDivider} />
@@ -249,7 +250,7 @@ export default function ResearchExplorer() {
         >
           <div className={styles.searchHeader}>
             <p className={styles.eyebrow}>The ideas behind the work</p>
-            <h2 className={styles.searchHeadline}>Follow your curiosity.</h2>
+            <h2 className={styles.searchHeadline}>Pull a thread.</h2>
             <p className={styles.searchGuidance}>
               What the work keeps returning to: Christopher&rsquo;s preprints
               and repositories, other people&rsquo;s papers, a few public

@@ -367,7 +367,7 @@ const DisplayPedestal = ({
           className={styles.displayPedestalCross}
           onClick={crossIntoAtlas}
         >
-          Cross into the atlas <span aria-hidden="true">↗</span>
+          Cross into the atlas <span aria-hidden="true">→</span>
         </a>
         <span className={styles.displayPedestalSwatches}>
           {displayPedestalModels.map((model, index) => (
