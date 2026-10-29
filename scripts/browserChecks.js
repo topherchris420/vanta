@@ -1,6 +1,7 @@
 /**
  * Real-browser checks for the home page: silent entry, scroll tuning, rest
- * zones, thread chords, the recording, keyboard tuning, and archive controls.
+ * zones, the coda, thread chords, the strum when sound is switched on, the
+ * recording, keyboard tuning, and archive controls.
  * Needs playwright-core (not a dependency) and a running site.
  *
  * Usage: node scripts/browserChecks.js <url> [--no-webgl] [--reduced-motion]
@@ -76,13 +77,21 @@ if (flags.includes("reduced-motion")) flags.push("reduced");
   assert.equal((await audio()).contexts, 0, "no AudioContext before intent");
   console.log("ok silent scroll tunes every channel; contexts=0");
 
-  // 2. Rest zones.
+  // 2. The coda lights every channel on the rail, silently until asked.
+  await page.evaluate(() => { const el = document.querySelector("#contact"); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 120); });
+  await until(async () => (await rail()).filter((item) => item.chord).length === 5, "the coda lights every channel");
+  assert.ok((await rail()).every((item) => !item.current), "the coda is not a stop on the rail");
+  assert.match(await consoleText(), /One chord.*5 notes/);
+  assert.equal((await audio()).contexts, 0, "the coda is silent until sound is asked for");
+  console.log("ok coda lights the whole chord, silently:", await consoleText());
+
+  // 3. Rest zones.
   await page.evaluate(() => { const el = document.querySelector("#intervals"); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 100); });
-  await until(async () => (await rail()).every((item) => !item.current), "intervals rest the instrument");
+  await until(async () => (await rail()).every((item) => !item.current && !item.chord), "intervals rest the instrument");
   assert.match(await consoleText(), /Standby/);
   console.log("ok intervals are a rest zone:", await consoleText());
 
-  // 3. Thread preview lights its chord on the rail, still silent.
+  // 4. Thread preview lights its chord on the rail, still silent.
   await page.hover("#interval-provenance button");
   await page.waitForTimeout(300);
   const chordRail = (await rail()).filter((item) => item.chord).map((item) => item.label);
@@ -94,12 +103,20 @@ if (flags.includes("reduced-motion")) flags.push("reduced");
   await page.waitForTimeout(200);
   assert.equal((await rail()).filter((item) => item.chord).length, 0, "chord clears when preview ends");
 
-  // 4. Enable sound via the console control, then hold a chord.
+  // 5. Enable sound via the console control. Nothing is tuned in a rest zone,
+  // so the instrument answers with its whole chord, once. Then hold a chord.
+  // hover() above may have re-scrolled a target that was still revealing, so
+  // return to the rest zone first; a tuned channel would answer instead.
+  await page.evaluate(() => { const el = document.querySelector("#intervals"); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 100); });
+  await until(async () => (await rail()).every((item) => !item.current && !item.chord), "back in the intervals rest zone");
   await page.click('[data-sound]');
   await page.waitForTimeout(300);
   let a = await audio();
   assert.equal(a.contexts, 1, "one AudioContext after intent");
   assert.equal(await page.getAttribute("[data-sound]", "data-sound"), "on");
+  const C_MAJOR = [196, 262, 330, 392, 523];
+  assert.deepEqual(a.started.slice(-5).map(Math.round), C_MAJOR, "switching on strums the whole chord");
+  console.log("ok switching sound on strums", a.started.slice(-5).map(Math.round).join(" "));
   await page.click("#interval-agency button");
   await page.mouse.move(5, 450);
   await page.waitForTimeout(400);
@@ -118,7 +135,7 @@ if (flags.includes("reduced-motion")) flags.push("reduced");
   assert.ok(a.stopped >= stoppedBefore + 2, "both voices released");
   console.log("ok escape releases chord; stopped", a.stopped - stoppedBefore, "voices");
 
-  // 5. Music channel: tone plays; the recording silences it; pausing brings it back.
+  // 6. Music channel: tone plays; the recording silences it; pausing brings it back.
   await page.evaluate(() => { const el = document.querySelector("#signal-music"); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 150); });
   await page.waitForTimeout(600);
   a = await audio();
@@ -140,13 +157,21 @@ if (flags.includes("reduced-motion")) flags.push("reduced");
   assert.ok(a.started.length > startsBefore, "tone returns after pause");
   console.log("ok pause returns the channel tone");
 
-  // 6. Sound off stops everything.
+  // 7. With sound on, the coda sounds all five notes at once.
+  await page.evaluate(() => { const el = document.querySelector("#contact"); window.scrollTo(0, el.getBoundingClientRect().top + scrollY - 120); });
+  await until(async () => (await rail()).filter((item) => item.chord).length === 5, "the coda tunes with sound on");
+  await page.waitForTimeout(300);
+  a = await audio();
+  assert.deepEqual(a.started.slice(-5).map(Math.round), C_MAJOR, "the coda sounds C major");
+  console.log("ok the page resolves on", a.started.slice(-5).map(Math.round).join(" "), "|", await consoleText());
+
+  // 8. Sound off stops everything.
   await page.click('[data-sound]');
   await page.waitForTimeout(300);
   assert.equal(await page.getAttribute("[data-sound]", "data-sound"), "off");
   console.log("ok sound off");
 
-  // 7. Keyboard: tab to the rail, arrow-tune.
+  // 9. Keyboard: tab to the rail, arrow-tune.
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.focus('[aria-label="Signal channels"] a[href="#top"]');
   await page.keyboard.press("ArrowRight");
@@ -157,7 +182,7 @@ if (flags.includes("reduced-motion")) flags.push("reduced");
   assert.match(preview.label, /Instruments/);
   console.log("ok arrow keys tune the rail to", preview.label);
 
-  // 8. Keyboard reaches the archive's explicit atlas link and model buttons.
+  // 10. Keyboard reaches the archive's explicit atlas link and model buttons.
   if (!flags.includes("nowebgl")) {
     const cross = await page.locator('a:has-text("Cross into the atlas")').count();
     assert.equal(cross, 1, "archive offers a real link into the atlas");

@@ -197,19 +197,50 @@
   transform-origin: left;
 }
 
+/* The hero is one statement across the full width, then the practice and the
+   archive side by side. Every size below is derived from three properties, so
+   the two entry paths always land inside the first screen and the archive
+   always ends above the fixed console. */
 .signalHero {
+  --hero-pad-x: clamp(1.25rem, 6vw, 7rem);
+  --hero-pad-top: clamp(5.25rem, 11svh, 7rem);
+  /* "One chord." is the wider line: about 9.9em of tracked Syne. Size the
+     headline to fit it on one line, and never taller than the screen allows. */
+  --hero-type: min(
+    8.75rem,
+    calc((min(100vw, 112rem) - 2 * var(--hero-pad-x)) / 10.4),
+    13svh
+  );
+  --hero-row-gap: clamp(1.25rem, 3svh, 2.25rem);
+  --hero-console-clearance: 6.5rem;
+
   position: relative;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-  align-items: center;
-  gap: clamp(2rem, 6vw, 7rem);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+  grid-template-areas:
+    "head head"
+    "copy stage";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  column-gap: clamp(2rem, 5vw, 6rem);
+  row-gap: var(--hero-row-gap);
   max-width: 112rem;
   margin: 0 auto;
-  padding: 6rem clamp(1.25rem, 6vw, 7rem) 4rem;
+  padding: var(--hero-pad-top) var(--hero-pad-x) var(--hero-console-clearance);
+}
+
+.heroHead {
+  grid-area: head;
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  display: grid;
+  gap: 1.1rem;
 }
 
 .heroCopy {
+  grid-area: copy;
   position: relative;
   z-index: 3;
   min-width: 0;
@@ -219,7 +250,7 @@
      the kicker and summary past the viewport at the 320px minimum width. */
   grid-template-columns: minmax(0, 1fr);
   justify-items: start;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .instrumentLabel {
@@ -230,34 +261,34 @@
   text-transform: uppercase;
 }
 
+/* Two lines, call and answer: the notes set solid, the chord drawn in outline. */
 .signalTitle {
-  max-width: 10ch;
   margin: 0;
   color: var(--paper);
-  font: 800 clamp(4rem, 7.6vw, 7rem) / 0.88 var(--font-display);
+  font: 800 var(--hero-type) / 0.88 var(--font-display);
   letter-spacing: -0.075em;
   text-transform: uppercase;
   text-wrap: balance;
-  /* The display type deliberately crosses the archive stage. Its line boxes
-     reach further than its glyphs do, so without this the headline silently
-     swallows clicks on the stage behind it. Nothing here is interactive. */
-  pointer-events: none;
 }
 
 .signalTitle span {
   display: block;
-  /* A faint fill keeps the outlined line readable without losing the stroke. */
+}
+
+.signalTitle span + span {
+  /* A faint fill keeps the outlined line readable without losing the stroke,
+     and the stroke scales with the type so it never thins to a hairline. */
   color: color-mix(in srgb, var(--signal) 16%, transparent);
-  -webkit-text-stroke: 1px var(--signal);
+  -webkit-text-stroke: max(1px, 0.011em) var(--signal);
 }
 
 .signalSummary {
   width: 100%;
-  max-width: 48ch;
+  max-width: 54ch;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(1rem, 1.5vw, 1.22rem);
-  line-height: 1.65;
+  font-size: clamp(1rem, 0.35rem + 0.9vw, 1.14rem);
+  line-height: 1.6;
 }
 
 .signalSummary p {
@@ -266,11 +297,12 @@
 }
 
 .signalSummary p:first-child {
+  color: var(--muted-bright);
   text-wrap: balance;
 }
 
 .signalSummary p + p {
-  margin-top: 0.9em;
+  margin-top: 0.7em;
 }
 
 /* The intro lands on its question, set in the display face the intervals
@@ -295,6 +327,8 @@
   max-width: 100%;
   align-items: center;
   justify-content: center;
+  /* A flex container trims the space before the arrow; the gap restores it. */
+  gap: 0.6em;
   padding: 0 1.35rem;
   border: 1px solid var(--signal);
   background: var(--signal);
@@ -371,15 +405,26 @@
   color: var(--signal);
 }
 
+/* The archive takes whatever height the screen leaves under the headline, less
+   the corner the fixed console occupies. The head is the kicker (2.1rem with
+   its gap) plus two lines of display type. */
 .heroStage {
+  grid-area: stage;
   width: 100%;
-  min-height: clamp(25rem, 54vw, 43rem);
+  height: clamp(
+    20rem,
+    calc(
+      100svh - var(--hero-pad-top) - 2.1rem - var(--hero-type) * 1.76 -
+        var(--hero-row-gap) - var(--hero-console-clearance)
+    ),
+    42rem
+  );
 }
 
 .scrollCue {
   position: absolute;
   bottom: 2.1rem;
-  left: clamp(1.25rem, 6vw, 7rem);
+  left: var(--hero-pad-x);
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -418,7 +463,6 @@
    the page so the stage has no edge of its own — only the instrument frame. */
 .displayPedestal {
   position: relative;
-  min-height: 28rem;
   overflow: hidden;
   border: 1px solid var(--line);
   background: radial-gradient(
@@ -778,6 +822,24 @@
   }
 }
 
+/* On a phone the fixed controls sit over the reading column, so they shrink
+   to one thumb-sized control per corner. The rail already says where the
+   page is tuned; the readout comes back only to name a chord. */
+@media (max-width: 720px) {
+  .signalConsole {
+    right: 0.75rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .signalConsole[data-chord="false"] .consoleReadout {
+    display: none;
+  }
+
+  .soundControl {
+    min-height: 2.75rem;
+  }
+}
+
 .signalChannels {
   border-top: 1px solid var(--line);
   scroll-margin-top: 9rem;
@@ -838,19 +900,35 @@
   color: var(--signal);
 }
 
+/* Number over note, like a cue in a score: the index reads as five notes
+   before it reads as five sections. */
 .workIndexNumber {
-  grid-row: span 2;
+  grid-column: 1;
+  grid-row: 1;
   color: var(--signal);
   font: 500 0.7rem / 1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.workIndexNote {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  color: var(--amber);
+  font: 500 0.66rem / 1.5 var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 .workIndexName {
+  grid-column: 2;
+  grid-row: 1;
   font: 600 clamp(1.3rem, 2vw, 2rem) / 1.2 var(--font-display);
   letter-spacing: -0.03em;
 }
 
 .workIndexPreview {
   grid-column: 2;
+  grid-row: 2;
   color: var(--muted);
   font-size: 0.8rem;
   line-height: 1.5;
@@ -1013,6 +1091,10 @@
   transition:
     color 160ms ease,
     transform 160ms ease;
+}
+
+.channelLinks a > span {
+  margin-left: 0.25em;
 }
 
 .channelLinks a::after {
@@ -1249,9 +1331,27 @@
   outline-color: var(--ink);
 }
 
-.signalFooter > p:last-child {
-  margin: 1rem 0 0;
-  font: 500 0.65rem / 1.5 var(--font-mono);
+/* The colophon names the chord the page has been playing all along, then signs
+   off. One quiet block under one hairline, set like the back of a book. */
+.colophon {
+  display: grid;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 64rem;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+  font: 500 0.66rem / 1.6 var(--font-mono);
+}
+
+.colophon p {
+  margin: 0;
+}
+
+.colophonNotes {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
 .reveal {
@@ -1317,6 +1417,16 @@
 .scrollToTop.visible:hover,
 .scrollToTop.visible:focus-visible {
   transform: translateY(-2px);
+}
+
+/* Mirrors the phone console: same inset, same thumb-sized target. */
+@media (max-width: 720px) {
+  .scrollToTop {
+    left: 0.75rem;
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 }
 
 .cursorDot,
@@ -1400,12 +1510,24 @@
   }
 }
 
-@media (max-width: 1000px) {
+/* Below a laptop width the archive drops under the practice: the statement and
+   both entry paths keep the first screen, and the archive gets the full width. */
+@media (max-width: 959px) {
   .signalHero {
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
-    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "copy"
+      "stage";
+    grid-template-rows: auto auto auto;
   }
 
+  .heroStage {
+    height: clamp(22rem, 58vw, 34rem);
+  }
+}
+
+@media (max-width: 1000px) {
   .projectChannel {
     grid-template-columns: 3rem minmax(0, 1fr) minmax(240px, 0.72fr);
     gap: 2rem;
@@ -1450,10 +1572,14 @@
   }
 
   .signalHero {
+    --hero-pad-top: 6.75rem;
+    --hero-console-clearance: 4rem;
+    /* On a phone each word takes a line of its own, so the type is sized to
+       the widest word ("CHORD.", about 6.2em) and stands far taller than two
+       lines would allow. */
+    --hero-type: min(4.5rem, calc((100vw - 2 * var(--hero-pad-x)) / 6.6));
     min-height: auto;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    padding: 7rem 1.25rem 4rem;
+    row-gap: 2.25rem;
   }
 
   /* The hero is no longer viewport-tall, so the cue has nothing to point at. */
@@ -1461,17 +1587,8 @@
     display: none;
   }
 
-  .signalTitle {
-    max-width: 100%;
-    font-size: clamp(2.35rem, 10.5vw, 3.1rem);
-  }
-
   .heroStage {
-    min-height: 30rem;
-  }
-
-  .displayPedestal {
-    min-height: 30rem;
+    height: clamp(20rem, 104vw, 28rem);
   }
 
   .frequencyRail {
@@ -1638,7 +1755,7 @@
 /* Honour a stated preference for more contrast by dropping every decorative
    dim and the outline-only heading treatment. */
 @media (prefers-contrast: more) {
-  .signalTitle span {
+  .signalTitle span + span {
     color: var(--signal);
     -webkit-text-stroke: 0;
   }
@@ -1821,13 +1938,14 @@
 .gatewayIntro h2 { font: 600 clamp(2.4rem, 4.8vw, 5rem)/1.02 var(--font-display); letter-spacing: -0.055em; margin: 1.5rem 0; }
 .gatewayIntro > p:not(:first-child) { max-width: 38ch; color: var(--muted-bright); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.8rem; }
 .gatewayStats { display: flex; gap: 2.5rem; margin-bottom: 1.5rem; font: 0.65rem/1.6 var(--font-mono); color: var(--muted); }
-.gatewayStats strong { font: 500 2.5rem/1.4 var(--font-display); letter-spacing: -0.06em; display: block; color: var(--paper); }
+.gatewayStats strong { font: 500 2.5rem/1.4 var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: -0.06em; display: block; color: var(--paper); }
 .gatewayIndex nav { border-top: 1px solid var(--line); }
 .gatewayIndex nav a { display: grid; grid-template-columns: 1fr auto; gap: 0.6rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); text-decoration: none; }
 .gatewayIndex nav a > span:first-child { color: var(--signal); font: 0.6rem/1.5 var(--font-mono); grid-column: 1; text-transform: uppercase; letter-spacing: 0.06em; }
 .gatewayIndex nav strong { color: var(--paper); font: 500 1.1rem/1.5 var(--font-body); grid-column: 1; }
 .gatewayIndex nav a > span:last-child { grid-column: 2; grid-row: 1 / 3; align-self: center; color: var(--signal); font-size: 1.4rem; transition: transform 180ms; }
-.gatewayIndex nav a:hover > span:last-child { transform: translate(3px, -3px); }
+.gatewayIndex nav a:hover > span:last-child,
+.gatewayIndex nav a:focus-visible > span:last-child { transform: translateX(4px); }
 .gatewayIndex > p { color: var(--muted); font: 0.63rem/1.8 var(--font-mono); margin-top: 1rem; }
 @media (max-width: 760px) { .researchGateway { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; } .gatewayIntro h2 { font-size: clamp(2.2rem, 9vw, 3.7rem); } }
 
@@ -2032,6 +2150,9 @@
   font: 600 clamp(2rem, 3.6vw, 3.4rem) / 1.02 var(--font-display);
   letter-spacing: -0.05em;
   text-wrap: balance;
+  /* Hang the opening mark in the margin so the words, not the punctuation,
+     hold the left edge. */
+  text-indent: -0.42em;
 }
 
 .artifactQuote p::before { content: "\201C"; color: var(--signal); }
@@ -2125,6 +2246,19 @@
   margin: 0 0 1rem;
   color: var(--paper);
   font: 400 clamp(1.1rem, 1.6vw, 1.35rem) / 1.5 var(--font-body);
+}
+
+.intervalScore {
+  min-width: 0;
+}
+
+/* Instructions in the instrument's own register: mono, quiet, exact. */
+.intervalsHint {
+  max-width: 68ch;
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font: 500 0.68rem / 1.75 var(--font-mono);
+  letter-spacing: 0.03em;
 }
 
 .intervalList {
@@ -2284,9 +2418,11 @@
 @media (prefers-contrast: more) {
   .workStatus,
   .nowLabel,
+  .workIndexNote,
   .intervalName { color: var(--paper); }
 
   .channelCopy .workEchoes,
+  .intervalsHint,
   .intervalNotes,
   .intervalWorks,
   .recordingCredit,

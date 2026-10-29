@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import CustomCursor from "../components/CustomCursor";
@@ -25,7 +25,16 @@ const VantaEffectNoSSR = dynamic(() => import("../components/VantaEffect"), {
 
 const DisplayPedestalNoSSR = dynamic(
   () => import("../components/DisplayPedestal"),
-  { ssr: false }
+  {
+    ssr: false,
+    // Hold the archive's place, so the stage never pops in beside the copy.
+    loading: () => (
+      <div
+        className={`${styles.displayPedestal} ${styles.heroStage}`}
+        aria-hidden="true"
+      />
+    ),
+  }
 );
 
 // The canonical content model lives in data/practice.js. This page only
@@ -34,6 +43,8 @@ const { channels: projectSections, works, threads, epigraph, now, person } =
   practice;
 
 const {
+  CODA_ID,
+  createCoda,
   createResonanceDetail,
   measureHeadlineEm,
   resolvePreviewChannel,
@@ -52,6 +63,9 @@ const channelsById = new Map(projectSections.map((channel) => [channel.id, chann
 const threadsById = new Map(threads.map((thread) => [thread.id, thread]));
 const nowWork = worksById.get(now.work);
 const disciplineCount = workbench.DISCIPLINES.length - 1;
+// Five notes, one chord: the footer sounds every channel at once.
+const coda = createCoda(projectSections);
+const AMBER = "#e4b65c";
 
 const collaborationHeadline = "Make something that resonates.";
 
@@ -120,10 +134,21 @@ export default function Home() {
     previewChannel: previewChannelId,
   });
   const activeThread = threadsById.get(previewThreadId ?? heldThreadId) ?? null;
-  const chordIds = useMemo(
-    () => (activeThread ? threadChannels(activeThread, works, projectSections) : []),
-    [activeThread]
-  );
+  // What the instrument sounds as a chord, if anything: a tuned thread, or the
+  // coda, which spans every channel. The rail, console, field and tone all
+  // read this one value.
+  const chord = useMemo(() => {
+    if (activeThread) {
+      return {
+        id: "thread-" + activeThread.id,
+        name: activeThread.name,
+        channelIds: threadChannels(activeThread, works, projectSections),
+        frequencies: threadChord(activeThread, works, projectSections),
+      };
+    }
+    return effectiveChannelId === CODA_ID ? coda : null;
+  }, [activeThread, effectiveChannelId]);
+  const chordIds = chord ? chord.channelIds : [];
   const {
     soundEnabled,
     soundAvailable,
@@ -131,6 +156,7 @@ export default function Home() {
     toggleSound,
     playFrequency,
     playChord,
+    strumChord,
     stopFrequency,
   } = useSignalAudio();
 
@@ -170,9 +196,10 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  // A held chord belongs to the place it was tuned. Scrolling into a channel
-  // releases it, and Escape always does. Arriving in a rest zone does not: the
-  // observer can report that arrival after the visitor has already held a chord.
+  // A held chord belongs to the place it was tuned. Scrolling into a channel or
+  // the coda releases it, and Escape always does. Arriving in a rest zone does
+  // not: the observer can report that arrival after the visitor has already
+  // held a chord.
   useEffect(() => {
     if (shouldReleaseHeldThread(scrollChannelId, channelsById)) {
       setHeldThreadId(null);
@@ -196,19 +223,18 @@ export default function Home() {
       return undefined;
     }
 
-    if (activeThread) {
-      const chord = threadChord(activeThread, works, projectSections);
+    if (chord) {
       window.dispatchEvent(
         new CustomEvent("vanta:resonance", {
           detail: {
-            channelId: "thread-" + activeThread.id,
-            color: "#e4b65c",
-            frequency: chord[0],
+            channelId: chord.id,
+            color: AMBER,
+            frequency: chord.frequencies[0],
             intensity: 1,
           },
         })
       );
-      playChord(chord);
+      playChord(chord.frequencies);
       return stopFrequency;
     }
 
@@ -223,13 +249,31 @@ export default function Home() {
     playFrequency(channel.frequency);
     return stopFrequency;
   }, [
-    activeThread,
+    chord,
     effectiveChannelId,
     recordingPlaying,
     playChord,
     playFrequency,
     stopFrequency,
   ]);
+
+  // Switching sound on where nothing is tuned would answer with silence, so
+  // the instrument answers with its whole chord, once. Anywhere else, the note
+  // or chord already sounding is the answer.
+  const soundWasEnabled = useRef(false);
+  useEffect(() => {
+    const switchedOn = soundEnabled && !soundWasEnabled.current;
+    soundWasEnabled.current = soundEnabled;
+    if (
+      switchedOn &&
+      !chord &&
+      !recordingPlaying &&
+      !channelsById.has(effectiveChannelId)
+    ) {
+      strumChord(coda.frequencies);
+    }
+    // Only a change of the sound switch strums; tuning never does.
+  }, [soundEnabled, strumChord]);
 
   const endChannelPreview = useCallback(() => setPreviewChannelId(null), []);
   const endThreadPreview = useCallback(() => setPreviewThreadId(null), []);
@@ -243,7 +287,6 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Christopher Woodyard — Vanta</title>
-        <link rel="icon" href="/Logo.jpg" />
         <meta name="description" content={siteDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={person.name} />
@@ -291,13 +334,15 @@ export default function Home() {
           aria-labelledby="signal-title"
           data-signal-channel="hero"
         >
-          <div className={styles.heroCopy}>
+          <div className={styles.heroHead}>
             <p className={styles.instrumentLabel}>
               Christopher Woodyard / captain of my soul
             </p>
             <h1 id="signal-title" className={styles.signalTitle}>
-              Five notes.<span>One chord.</span>
+              <span>Five notes.</span> <span>One chord.</span>
             </h1>
+          </div>
+          <div className={styles.heroCopy}>
             <div className={styles.signalSummary}>
               <p>I make strange things and test whether they work.</p>
               <p>
@@ -331,7 +376,8 @@ export default function Home() {
               </button>
             </div>
             <p id="sound-entry-hint" className={styles.entryHint}>
-              Enter the instrument adds sound. You can turn it off at any time.
+              Enter the instrument adds sound: the chord once, then each
+              channel&rsquo;s note as you reach it. Turn it off at any time.
             </p>
             <p className={styles.nowSignal}>
               <span className={styles.nowLabel}>Now</span>
@@ -393,7 +439,7 @@ export default function Home() {
           activeId={effectiveChannelId}
           soundEnabled={soundEnabled}
           soundAvailable={soundAvailable}
-          thread={activeThread}
+          thread={chord}
           chordSize={chordIds.length}
           onToggleSound={toggleSound}
         />
@@ -406,16 +452,20 @@ export default function Home() {
           <div className={styles.workIndex}>
             <div className={styles.workIndexIntro}>
               <p className={styles.instrumentLabel}>Selected work / 01—05</p>
-              <h2>Find your frequency.</h2>
+              <h2>Begin anywhere.</h2>
               <p>
-                Five instruments, one practice. Pick one, or keep scrolling and
-                listen for where they repeat each other.
+                There is no correct order to visit a life. Choose an instrument,
+                or keep scrolling and listen for where they repeat each other.
               </p>
             </div>
             <nav className={styles.workIndexLinks} aria-label="Choose an instrument">
               {projectSections.map((project) => (
                 <a key={project.id} href={`#signal-${project.id}`}>
                   <span className={styles.workIndexNumber}>{project.number}</span>
+                  <span className={styles.workIndexNote}>
+                    <span className={styles.visuallyHidden}>Note </span>
+                    {project.note}
+                  </span>
                   <span className={styles.workIndexName}>{project.title}</span>
                   <span className={styles.workIndexPreview}>
                     {project.works.map((id) => worksById.get(id).title).join(" · ")}
@@ -430,7 +480,7 @@ export default function Home() {
               key={project.id}
               project={project}
               index={index}
-              active={!activeThread && effectiveChannelId === project.id}
+              active={!chord && effectiveChannelId === project.id}
               works={project.works.map((id) => worksById.get(id))}
               channelsById={channelsById}
               threadsForWork={threadsForWorkId}
@@ -460,18 +510,18 @@ export default function Home() {
         >
           <div className={styles.gatewayIntro}>
             <p className={styles.instrumentLabel}>Underneath / Research atlas</p>
-            <h2 id="research-gateway-title">An idea is only<br />the beginning.</h2>
+            <h2 id="research-gateway-title">What the work stands on.</h2>
             <p>The papers and sources the work keeps returning to, his own
               preprints beside other people&rsquo;s. Every stated link says why
               it is there.</p>
-            <a href="/research" className={styles.signalPrimary}>Enter the research atlas <span aria-hidden="true">↗</span></a>
+            <a href="/research" className={styles.signalPrimary}>Enter the research atlas <span aria-hidden="true">→</span></a>
           </div>
           <div className={styles.gatewayIndex}>
             <div className={styles.gatewayStats}><span><strong>{curatedKnowledge.documents.length}</strong> indexed records</span><span><strong>{String(disciplineCount).padStart(2, "0")}</strong> disciplines</span></div>
             <nav aria-label="Research starting points">
-              <a href="/research?q=Dynamic+Location+Theory"><span>01 / Location</span><strong>A theory, and the clocks that bound it</strong><span aria-hidden="true">↗</span></a>
-              <a href="/research?q=Dynamic+Resonance+Rooting"><span>02 / Rhythm &amp; lag</span><strong>From paper to failed benchmark</strong><span aria-hidden="true">↗</span></a>
-              <a href="/research?q=Oversight"><span>03 / Oversight</span><strong>Who checks the record</strong><span aria-hidden="true">↗</span></a>
+              <a href="/research?q=Dynamic+Location+Theory"><span>01 / Location</span><strong>A theory, and the clocks that bound it</strong><span aria-hidden="true">→</span></a>
+              <a href="/research?q=Dynamic+Resonance+Rooting"><span>02 / Rhythm &amp; lag</span><strong>From paper to failed benchmark</strong><span aria-hidden="true">→</span></a>
+              <a href="/research?q=Oversight"><span>03 / Oversight</span><strong>Who checks the record</strong><span aria-hidden="true">→</span></a>
             </nav>
             <p>A local catalog for discovery, not verification. Follow the original source before citing.</p>
           </div>
@@ -482,12 +532,10 @@ export default function Home() {
           id="contact"
           className={styles.signalFooter}
           aria-label="Contact"
-          data-signal-channel="rest"
+          data-signal-channel={CODA_ID}
           style={{ "--title-em": measureHeadlineEm(collaborationHeadline) }}
         >
-          <p className={styles.instrumentLabel}>
-            Channel open / collaboration
-          </p>
+          <p className={styles.instrumentLabel}>Coda / Channel open</p>
           <h2>{collaborationHeadline}</h2>
           <a
             href={`mailto:${person.email}`}
@@ -507,10 +555,20 @@ export default function Home() {
               </a>
             ))}
           </nav>
-          <p>
-            {"©"} {new Date().getFullYear()} Christopher Woodyard. Built at
-            Vers3Dynamics, the open lab.
-          </p>
+          <div className={styles.colophon}>
+            <p>
+              Tuned to one chord:{" "}
+              <span className={styles.colophonNotes}>
+                {coda.notes.join(" · ")}
+              </span>
+              {coda.chordName && `, ${coda.chordName}`}. Set in Syne and Space
+              Grotesk.
+            </p>
+            <p>
+              {"©"} {new Date().getFullYear()} Christopher Woodyard. Built at
+              Vers3Dynamics, the open lab.
+            </p>
+          </div>
         </Reveal>
       </main>
 

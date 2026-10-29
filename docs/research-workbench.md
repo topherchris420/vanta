@@ -55,7 +55,8 @@ not review the claims inside any paper. Inclusion is still not verification.
 `scripts/browserChecks.js` drives a real Chromium against a running site and
 checks what the HTML tests cannot: silent entry with no `AudioContext`, scroll
 tuning of every channel, rest zones, thread chords on the rail and in audio,
-Escape releasing a held chord, the recording silencing the channel tone,
+Escape releasing a held chord, the strum when sound is switched on, the coda
+lighting and sounding all five notes, the recording silencing the channel tone,
 keyboard tuning, and that the archive exposes its controls without nesting.
 
 ```sh

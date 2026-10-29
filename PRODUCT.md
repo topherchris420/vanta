@@ -42,20 +42,21 @@ Rules:
 
 The page runs in this order:
 
-1. Hero: the name and "captain of my soul", "Five notes. One chord.", a plain line saying what he makes, two explicit paths (Explore without sound, Enter the instrument), the Now line, and where the work lives (Vers3Dynamics, R.A.I.N. Lab, source). The Event Horizon Archive sits beside it.
+1. Hero: the name and "captain of my soul", "Five notes. One chord.", a plain line saying what he makes, two explicit paths (Explore without sound, Enter the instrument), the Now line, and where the work lives (Vers3Dynamics, R.A.I.N. Lab, source). The Event Horizon Archive sits beside it. Both paths are inside the first screen at every laptop size, and the archive never sits under the fixed console.
 2. A six-stop rail: the hero plus five channels.
 3. A work index naming each channel's works.
 4. Five channel sections: works on one side, the artifact on the other.
 5. Intervals.
 6. The research atlas gateway.
-7. The collaboration footer: email first, then elsewhere links.
+7. The coda: the collaboration footer (email first, then elsewhere links), where all five notes sound as one chord, closed by a colophon that names it.
 
 State:
 
-- One active-channel id drives rail location, channel emphasis, visual resonance, and optional sound. The channel covering most of the reading band wins; the hero, Intervals, gateway, and footer are rest zones that return the instrument to Standby.
+- One active-channel id drives rail location, channel emphasis, visual resonance, and optional sound. The channel covering most of the reading band wins; the hero, Intervals, and the gateway are rest zones that return the instrument to Standby.
+- The footer is the coda. G3, C4, E4, G4 and C5 are one chord, C major, so the headline is kept rather than stated: arriving lights all five channels on the rail with `data-chord`, the console reads `∿ / One chord / 5 notes`, and with sound on the five notes sound together. The chord's name is derived from the channel notes (`nameChord`), so retuning a channel can never leave the page naming a chord it no longer plays. Arriving at the coda releases a held thread.
 - Pointer and keyboard previews override the scroll channel and restore it on exit.
 - Tuning a thread (hover or focus previews, click holds) marks its channels on the rail with `data-chord`, takes over the console readout (thread name and note count), and, with sound on, plays their notes as one chord. A held chord is released by clicking again, by Escape, or when the scroll channel changes.
-- The console reads `00 / Signal / Standby` until something is tuned.
+- The console reads `00 / Signal / Standby` until something is tuned. On phones the rail already carries the location, so the readout appears only for a chord (a thread or the coda).
 - Each channel artifact reports `SIGNAL ACTIVE` or `STANDBY`; only the conducting artifact runs the scan line. Artifacts are never dimmed.
 
 ## Sound Contract
@@ -65,6 +66,7 @@ State:
 - Disabled sound never blocks navigation, evidence, visuals, previews, or thread tuning.
 - The sound control reads Sound off, Sound on, or Sound unavailable.
 - One note or a chord: voicing comes from `createChordVoicing`. A chord is rolled from its lowest note, and its total level is capped so it is never louder than a note is allowed to be. Every change releases through the same short envelope.
+- Switching sound on where nothing is tuned (the hero or a rest zone) would answer with silence, so the instrument sounds its whole chord once (`createStrum`): voiced and capped like any chord, held for half a second, then left to ring out. It is never held; any change of tuning, and Sound off, release it at once. Where a channel or chord is already tuned, that sound is the answer instead.
 - The Music channel's recording is a 14-second excerpt of *Green Machine* by Indigo People, written and owned by Christopher. It loads only when asked (`preload="none"`), never autoplays, and silences the channel tone while it plays.
 
 ## Runtime Contract
@@ -100,7 +102,9 @@ The hero stage is the Event Horizon Archive: the whole practice written to one s
 
 The stage is a pointer shortcut into the research atlas. The keyboard and assistive-technology path is the explicit "Cross into the atlas" link. Model buttons are real, exposed buttons; no control is nested in another.
 
-Display headlines are single unbreakable words and publish their width budget as `--title-em`; no headline is clipped at any viewport.
+Display headlines are single unbreakable words and publish their width budget as `--title-em`; no headline is clipped at any viewport. The hero headline is the one exception: two lines, call and answer, sized from its own width budget (about 10.4em for "One chord.") and capped by the screen height. On phones it stacks into four lines sized to its widest word. The archive's height is derived from the same properties, so it always ends above the console.
+
+The site mark (`public/icon.svg`) is the archive's horizon in the site tokens; `favicon.ico` and `apple-touch-icon.png` are rasterised from it. Never use another organisation's mark.
 
 ## Evidence Set
 
@@ -119,6 +123,7 @@ No testimonials, press quotes, endorsements, or performance claims are evidenced
 - `prefers-contrast: more` drops decorative dims, outline-only headings, and muted metadata.
 - No horizontal document overflow at 320 px; no clipped headline or control.
 - Decorative overlays (the scan line) never intercept pointer events.
+- On phones the fixed controls shrink to one 2.75rem control per corner and respect safe-area insets, so they never cover the reading column.
 - The 404 page offers one recovery destination, `/`.
 
 ## Research Atlas

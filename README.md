@@ -38,9 +38,11 @@ Five channels, five notes: **Writing** (C4), **Instruments** (E4), **Worlds** (G
 
 Scroll or use the arrow keys to tune a channel. Its frequency, visual state, and optional Web Audio tone move together. **Intervals** name the questions that keep recurring across channels (provenance, agency, translation, resonance). Tune one and its channels light together on the rail, and, with sound on, sound as a chord.
 
+The page ends on a **coda**. G3, C4, E4, G4 and C5 are one chord, C major, so the headline is arithmetic rather than metaphor: at the footer all five channels light together and, with sound on, sound at once. The chord's name is derived from the channel notes, so the colophon can never name a chord the page does not play.
+
 The hero stage is the Event Horizon Archive, a Three.js black hole holding the practice on one surface. Cross it to reach the research atlas.
 
-Every visit starts silent. Sound needs an explicit action, and the page is complete without it. Reduced motion, mobile, hidden tabs, and unavailable WebGL each have their own rendering path.
+Every visit starts silent. Sound needs an explicit action, and the page is complete without it. Switching it on where nothing is tuned answers with the whole chord, once, so silence is never mistaken for a broken control. Reduced motion, mobile, hidden tabs, and unavailable WebGL each have their own rendering path.
 
 ## The research atlas
 

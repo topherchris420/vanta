@@ -148,3 +148,66 @@ test("resonance detail exposes the stable event contract", () => {
     intensity: 1,
   });
 });
+
+test("the five channel notes are one chord, and the page can say which", () => {
+  const practice = require("../data/practice");
+  const coda = signal.createCoda(practice.channels);
+
+  assert.equal(coda.id, signal.CODA_ID);
+  assert.deepEqual(coda.notes, ["G3", "C4", "E4", "G4", "C5"], "rolled from the lowest note");
+  assert.deepEqual(coda.frequencies, [196, 261.63, 329.63, 392, 523.25]);
+  assert.deepEqual(coda.channelIds, practice.channels.map((channel) => channel.id));
+  // "Five notes. One chord." is arithmetic, not a metaphor. If a channel is
+  // ever retuned off the triad, this is the test that should fail first.
+  assert.equal(coda.chordName, "C major");
+});
+
+test("chord names are read from pitch classes, never assumed", () => {
+  assert.equal(signal.nameChord(["C4", "E4", "G4"]), "C major");
+  assert.equal(signal.nameChord(["G3", "C4", "E4", "G4", "C5"]), "C major");
+  assert.equal(signal.nameChord(["E4", "G4", "B4"]), "E minor");
+  assert.equal(signal.nameChord(["A3", "C4", "E4", "A4"]), "A minor");
+  assert.equal(signal.nameChord(["Bb3", "D4", "F4"]), "B♭ major");
+  assert.equal(signal.nameChord(["F#3", "A3", "C#4"]), "F♯ minor");
+  // Two notes are an interval, three unrelated ones are a cluster.
+  assert.equal(signal.nameChord(["E4", "G4"]), null);
+  assert.equal(signal.nameChord(["C4", "D4", "E4"]), null);
+  assert.equal(signal.nameChord(["C4", "E4", "G4", "B4"]), null);
+  assert.equal(signal.nameChord(null), null);
+  assert.equal(signal.nameChord(["H4", "", undefined]), null);
+});
+
+test("the coda takes the console and the whole rail, and resolves a held thread", () => {
+  const coda = signal.createCoda(channels);
+  const view = signal.createSignalConsoleView({
+    channels,
+    activeId: signal.CODA_ID,
+    soundEnabled: false,
+    soundAvailable: true,
+    thread: coda,
+    chordSize: coda.channelIds.length,
+  });
+  // The headline, read back at the end: one chord, five notes.
+  assert.equal(view.tuned, true);
+  assert.equal(view.channelLabel, "One chord");
+  assert.equal(view.frequencyLabel, "5 notes");
+
+  const items = signal.createFrequencyRailItems(channels, signal.CODA_ID, coda.channelIds);
+  assert.deepEqual(items.filter((item) => item.chord).map((item) => item.id), channels.map((c) => c.id));
+  assert.ok(items.every((item) => item.current === undefined), "the coda is not a stop on the rail");
+
+  assert.equal(signal.shouldReleaseHeldThread(signal.CODA_ID, channels), true);
+});
+
+test("switching sound on strums the chord once: capped, rolled, and brief", () => {
+  const strum = signal.createStrum([523.25, 196, 261.63, 392, 329.63]);
+  assert.deepEqual(
+    strum.voices.map((voice) => voice.frequency),
+    [196, 261.63, 329.63, 392, 523.25]
+  );
+  assert.ok(strum.level <= 0.12, "never louder than a held chord");
+  assert.ok(strum.hold > 0 && strum.ring > strum.hold, "a breath, then a ring-out");
+  assert.ok(strum.attack + strum.hold + strum.ring < 3, "an answer, not a drone");
+  assert.equal(strum.release, signal.RELEASE_SECONDS, "interrupted like anything else");
+  assert.equal(signal.createStrum([]).voices.length, 0);
+});

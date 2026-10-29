@@ -2,6 +2,9 @@
   position: relative;
   min-height: 100dvh;
   display: grid;
+  /* One column the width of the screen, so the sentence wraps instead of
+     running under the clipped edge on a phone. */
+  grid-template-columns: minmax(0, 1fr);
   align-content: center;
   justify-items: start;
   gap: 1.5rem;
@@ -33,8 +36,12 @@
 
 .title {
   position: relative;
-  margin: 0;
-  font: 800 clamp(8rem, 28vw, 24rem) / 0.72 var(--font-display);
+  /* Syne's fours descend about 0.13em below the zero; without this room the
+     glyphs cut through the sentence underneath. */
+  margin: 0 0 0.14em;
+  /* The numerals are about 3em wide; 26vw keeps them inside the page padding
+     at every width down to 320px. */
+  font: 800 clamp(4.5rem, 26vw, 24rem) / 0.72 var(--font-display);
   letter-spacing: -0.09em;
   color: var(--paper);
 }

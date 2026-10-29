@@ -5,7 +5,8 @@ const { createSignalConsoleView } = signalExperience;
 
 // The single fixed console: a live readout of the conducting channel plus the
 // one sound control. The readout is decorative for assistive tech because the
-// frequency rail already reports location through aria-current.
+// frequency rail already reports location through aria-current. On a phone the
+// rail carries the location too, so the readout only returns for a chord.
 export default function SignalConsole({
   channels,
   activeId,
@@ -28,6 +29,7 @@ export default function SignalConsole({
     <div
       className={styles.signalConsole}
       data-tuned={view.tuned ? "true" : "false"}
+      data-chord={view.chord ? "true" : "false"}
     >
       <div className={styles.visuallyHidden} aria-live="polite" aria-atomic="true">
         {soundEnabled ? "Audio output enabled" : "Audio output disabled"}
