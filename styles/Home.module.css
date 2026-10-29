@@ -142,12 +142,22 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
   color: var(--paper);
   font: 700 0.9rem / 1 var(--font-display);
   letter-spacing: 0.045em;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+/* The mark leads the name, sized in ems so it scales with the brand line. */
+.brandLogo {
+  flex: none;
+  width: 2.3em;
+  height: 1.45em;
 }
 
 .brandMark {

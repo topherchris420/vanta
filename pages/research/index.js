@@ -9,6 +9,7 @@ import useResearchSession from "../../hooks/useResearchSession";
 import curatedKnowledgeData from "../../data/research/curatedKnowledge.json";
 import ResearchDetails from "../../components/research/ResearchDetails";
 import ErrorBoundary from "../../components/ErrorBoundary";
+import HorizonMark from "../../components/HorizonMark";
 
 const ResearchGraphNoSSR = dynamic(
   () => import("../../components/research/ResearchGraph"),
@@ -187,6 +188,7 @@ export default function ResearchExplorer() {
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <Link href="/" className={styles.brand} aria-label="Back to home">
+            <HorizonMark className={styles.brandLogo} />
             Christopher Woodyard
           </Link>
           <div className={styles.headerDivider} />

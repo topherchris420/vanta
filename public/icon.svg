@@ -3,7 +3,8 @@
   <!-- The archive's horizon, drawn in the site's tokens: a black disc in its
        mint photon ring, the far side of the amber disk lensed over the top,
        and the near side passing in front. favicon.ico and
-       apple-touch-icon.png are rasterised from this file. -->
+       apple-touch-icon.png are rasterised from this file, and
+       components/HorizonMark.js draws the same geometry inline. -->
   <rect width="64" height="64" fill="#050806"/>
   <path d="M13.5 31a18.5 18.5 0 0 1 37 0" fill="none" stroke="#e7b85e" stroke-width="2.6" stroke-linecap="round"/>
   <circle cx="32" cy="33" r="12.5" fill="#000" stroke="#89f2c2" stroke-width="3"/>

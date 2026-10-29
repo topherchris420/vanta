@@ -104,7 +104,7 @@ The stage is a pointer shortcut into the research atlas. The keyboard and assist
 
 Display headlines are single unbreakable words and publish their width budget as `--title-em`; no headline is clipped at any viewport. The hero headline is the one exception: two lines, call and answer, sized from its own width budget (about 10.4em for "One chord.") and capped by the screen height. On phones it stacks into four lines sized to its widest word. The archive's height is derived from the same properties, so it always ends above the console.
 
-The site mark (`public/icon.svg`) is the archive's horizon in the site tokens; `favicon.ico` and `apple-touch-icon.png` are rasterised from it. Never use another organisation's mark.
+The site mark (`public/icon.svg`) is the archive's horizon in the site tokens; `favicon.ico` and `apple-touch-icon.png` are rasterised from it. It leads the name in the nav and in the atlas header (`components/HorizonMark.js` draws the same geometry inline). Never use another organisation's mark.
 
 ## Evidence Set
 

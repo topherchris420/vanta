@@ -1,3 +1,5 @@
+<img src="public/icon.svg" width="72" height="72" alt="The Vanta mark: a black disc in a mint ring, with an amber disk lensed over it and passing in front">
+
 # Vanta
 
 **Five notes. One chord.**
