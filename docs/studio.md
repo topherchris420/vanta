@@ -143,13 +143,35 @@ square root of its frequency.
   real file system. The only effects it can ask for are a closed list: open a window, walk
   to a room, sound the chord, leave.
 
+## Look
+
+The studio is lit the way a room is lit for filming, a few minutes after sunset:
+
+- **Outside:** a painted sky, a lake, and hills across it, with the far shore's lights
+  coming on. Low amber sun comes through the north and west windows.
+- **Light sources:** a softbox key light on a stand, a globe floor lamp, a brass desk lamp,
+  the pendant over each room, and warm LED strips under shelves and along walnut slat
+  walls. The washes those strips throw down the slats and plaster are baked into textures.
+- **Bounced light:** a few frames after load, a probe in the middle of the Hall
+  photographs the lit studio in every direction. That picture becomes everything's
+  ambient light and reflection, so floor light reaches the ceiling and the sunset shows in
+  the brass. High takes a second bounce.
+- **Post-processing:** the picture renders to a multisampled HDR buffer. Ground-truth
+  ambient occlusion seats things in the room, light sources are drawn brighter than paper
+  so they bloom, and one pass tone-maps the result. The archive's shaders write
+  display-ready colour, so the pipeline converts them to linear on the way out.
+- **Furniture:** boxes have eased edges, and there are leaf-shaped plants, an upholstered
+  task chair, a laptop and a boom-arm microphone on the desk, and record and book shelves.
+- **Prompt:** the use prompt sits on the object it's about, and a ring marks anything
+  nearby that can be used.
+
 ## Runtime
 
-| Tier | Pixel ratio | Shadows | Accent lights | Plate grains | Frame cap |
-| --- | --- | --- | --- | --- | --- |
-| High | ≤ 2 | 2048, soft | yes | 9,000 | none |
-| Balanced | ≤ 1.5 | 1024, soft | yes | 5,000 | none |
-| Light | 1 | none | no | 2,200 | 30 fps |
+| Tier | Pixel ratio | Shadows | Post-processing | Bounced light | Accent lights | Plate grains | Frame cap |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| High | ≤ 1.5, 4× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 2 bounces | yes | 9,000 | none |
+| Balanced | ≤ 1.5, 4× MSAA | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
+| Light | 1 | none | none | 1 bounce | no | 2,200 | 30 fps |
 
 - Phones start on Light. Machines with 4 GB of memory or 4 cores start on Balanced.
 - A frame governor steps down a tier after a sustained run of slow frames, never on a
@@ -158,8 +180,9 @@ square root of its frequency.
 - Rendering stops while the tab is hidden or the desktop covers the room. Under reduced
   motion it draws only when something changes.
 - All shaders are compiled before the first frame.
-- Static geometry is merged by material: about 220 draw calls and 99k triangles on High,
-  and 120 and 57k on Light.
+- Static geometry is merged by material. A frame costs about 260 draw calls and 260k
+  triangles on High, including both shadow passes, plus a normal pass for the ambient
+  occlusion. On Light it costs about 100 draw calls and 98k triangles.
 - Paintings and frames load progressively, and the room is usable before they arrive.
 - Losing the WebGL context switches to the text index.
 
@@ -170,9 +193,11 @@ square root of its frequency.
   scene is static merged geometry, so a reconciler would add a second rendering model and
   bundle weight without much benefit. Glides follow routed paths with their own easing,
   which GSAP wouldn't simplify.
-- **No postprocessing pass.** Tone mapping, physically based materials, soft shadows and
-  sprite glows carry the look. A bloom pass would need careful handling round the
-  archive's additive layers and would cost every frame on every tier.
+- **Post-processing by tier.** The first version had none, and it looked flat next to the
+  reference: no contact shadows, no glow off the lamps. High now runs ambient occlusion
+  and bloom, Balanced runs bloom only, and Light renders straight to the screen as before.
+  Transparent and additive layers (glass, light shafts, the archive's platter and
+  lensing) are left out of the occlusion so they don't darken what's behind them.
 - **The atlas is the atlas.** The computer's Atlas window is `/research` in a frame, not a
   reimplementation, so its provenance distinctions and reading lists can't drift.
 
@@ -206,4 +231,7 @@ timings, because software rendering can manage only a frame or two a second.
   unplaced.
 - Frame rates have been measured only under software rendering (SwiftShader, 1–3 fps), and
   those numbers say nothing about GPUs. Draw calls and triangle counts are the comparable
-  figures.
+  figures. Ambient occlusion is the most expensive addition. If High struggles on a given
+  GPU, the frame governor drops to Balanced, which has no ambient occlusion.
+- The light probe is taken once, a few frames after load. The pendants brightening as you
+  walk, and the reading lamp, change the direct light but not the bounced light.

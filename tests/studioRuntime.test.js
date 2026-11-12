@@ -9,6 +9,10 @@ test("tiers get cheaper in every dimension that costs frames", () => {
     assert.ok(medium[key] >= low[key], `${key}: medium >= low`);
   });
   assert.equal(low.shadowMapSize, 0, "the light tier casts no shadows");
+  assert.deepEqual([high.post, medium.post, low.post], ["full", "bloom", "none"], "post-processing thins out by tier");
+  assert.ok(high.probe >= medium.probe && medium.probe >= low.probe && low.probe >= 1, "every tier keeps bounced light");
+  assert.equal(low.keyShadow, 0);
+  assert.equal(low.samples, 0, "the light tier renders straight to the screen");
   assert.equal(low.archiveDetail, "reduced");
   assert.ok(low.frameInterval > 0, "the light tier caps its frame rate");
   assert.equal(high.frameInterval, 0);
@@ -24,7 +28,7 @@ test("devices start where they can hold a frame rate", () => {
 });
 
 test("pixel ratio never exceeds the site-wide caps or the tier", () => {
-  assert.equal(quality.resolveStudioPixelRatio(3, "high", false), 2);
+  assert.equal(quality.resolveStudioPixelRatio(3, "high", false), 1.5);
   assert.equal(quality.resolveStudioPixelRatio(3, "high", true), 1.5);
   assert.equal(quality.resolveStudioPixelRatio(3, "medium", false), 1.5);
   assert.equal(quality.resolveStudioPixelRatio(3, "low", true), 1);

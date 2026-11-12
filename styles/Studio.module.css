@@ -577,28 +577,41 @@
   color: var(--signal);
 }
 
-.prompt {
+.promptAnchor {
   position: absolute;
-  left: 50%;
-  bottom: max(28px, env(safe-area-inset-bottom));
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  min-height: 2.9rem;
-  padding: 0 1.1rem;
-  border: 1px solid var(--amber);
-  background: rgba(5, 8, 6, 0.78);
-  color: var(--paper);
-  font: 500 0.95rem/1 var(--font-body);
-  transform: translateX(-50%);
-  cursor: pointer;
-  backdrop-filter: blur(6px);
-  animation: rise 240ms ease-out both;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  will-change: transform;
+  transition: opacity 160ms ease;
 }
 
-.prompt kbd {
-  border-color: var(--amber);
-  color: var(--amber);
+.promptAnchor[data-placed="true"] {
+  opacity: 1;
+}
+
+.prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 2.6rem;
+  padding: 0 0.95rem 0 0.7rem;
+  border: 0;
+  background: var(--signal);
+  color: var(--ink);
+  font: 600 0.92rem/1 var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 0.6rem 1.8rem rgba(0, 0, 0, 0.45);
+}
+
+.prompt:hover {
+  background: var(--signal-soft);
+}
+
+.studio .prompt kbd {
+  border-color: rgba(5, 8, 6, 0.55);
+  color: var(--ink);
 }
 
 .found {
@@ -2234,14 +2247,6 @@
     flex-wrap: wrap;
   }
 
-  .prompt {
-    bottom: max(24px, env(safe-area-inset-bottom));
-    left: auto;
-    right: var(--hud-pad);
-    max-width: calc(100% - 12rem);
-    transform: none;
-  }
-
   .found {
     left: auto;
     right: var(--hud-pad);
@@ -2308,7 +2313,6 @@
 @media (prefers-reduced-motion: reduce) {
   .intro,
   .panel,
-  .prompt,
   .readerPage,
   .reveal,
   .helpCard,

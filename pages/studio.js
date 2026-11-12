@@ -715,6 +715,7 @@ export default function Studio({ documents, notes }) {
             touch={env.touch}
             showPrompt={mode === "walk" && live}
             canMap={live}
+            apiRef={apiRef}
           />
         )}
 

@@ -91,7 +91,7 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
     await until(async () => (await root.getAttribute("data-panel")) === "false", "Escape closes the panel");
   };
 
-  await page.goto(`${base}/studio?inspect`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/studio?inspect`, { waitUntil: "domcontentloaded", timeout: 120000 });
   const expected = flags.has("no-webgl") ? "fallback" : "active";
   await until(async () => (await root.getAttribute("data-webgl")) === expected, `WebGL is ${expected}`, 90000);
   const live = expected === "active";
@@ -244,7 +244,7 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
     await until(() => page.evaluate(() => window.__vantaStudio.getPose().zone === "art"), "the map walks to the Gallery", 30000);
     console.log("ok map: goes to a room");
   }
-  await page.goto(`${base}/studio?inspect`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/studio?inspect`, { waitUntil: "domcontentloaded", timeout: 120000 });
   await until(async () => (await root.getAttribute("data-webgl")) === expected, "reload", 90000);
   await page.getByRole("button", { name: "Guided Tour" }).click();
   const tour = page.locator('section[aria-labelledby="tour-title"]');

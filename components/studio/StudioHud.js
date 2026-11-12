@@ -1,5 +1,39 @@
+import { useEffect, useRef } from "react";
 import styles from "../../styles/Studio.module.css";
 import HorizonMark from "../HorizonMark";
+
+// The prompt sits on the thing it is about. Its position is read from the
+// scene every frame and written straight to the element, so walking never
+// re-renders React.
+function AnchoredPrompt({ apiRef, label, onInteract, touch }) {
+  const anchorRef = useRef(null);
+  useEffect(() => {
+    let frame = 0;
+    const tick = () => {
+      const element = anchorRef.current;
+      const point = apiRef.current?.projectTarget?.();
+      if (element && point) {
+        const width = element.offsetWidth;
+        const height = element.offsetHeight;
+        const x = Math.min(Math.max(point.x - width / 2, 12), point.width - width - 12);
+        const y = Math.min(Math.max(point.y + 26, 84), point.height - height - 20);
+        element.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+        element.dataset.placed = "true";
+      }
+      frame = window.requestAnimationFrame(tick);
+    };
+    frame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frame);
+  }, [apiRef]);
+  return (
+    <div ref={anchorRef} className={styles.promptAnchor}>
+      <button type="button" className={styles.prompt} onClick={onInteract}>
+        {!touch && <kbd>E</kbd>}
+        <span>{label}</span>
+      </button>
+    </div>
+  );
+}
 
 const TIER_OPTIONS = [
   { value: "auto", label: "Auto" },
@@ -26,6 +60,7 @@ export default function StudioHud({
   touch,
   showPrompt,
   canMap = true,
+  apiRef,
 }) {
   const tuned = zone?.kind === "channel";
   return (
@@ -83,10 +118,7 @@ export default function StudioHud({
       </header>
 
       {showPrompt && target && (
-        <button type="button" className={styles.prompt} onClick={onInteract}>
-          {!touch && <kbd>E</kbd>}
-          <span>{interactLabel}</span>
-        </button>
+        <AnchoredPrompt apiRef={apiRef} label={interactLabel} onInteract={onInteract} touch={touch} />
       )}
 
       <button
