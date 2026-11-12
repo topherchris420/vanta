@@ -6,7 +6,7 @@
 
 The portfolio of Christopher Woodyard: poems and physics, open research instruments, simulated worlds, paintings, and songs as Indigo People. Much of it is built at [Vers3Dynamics](https://vers3dynamics.com/), his open lab. Vanta is the person; the lab is where the work gets made.
 
-[**Enter Vanta →**](https://mitpress.vercel.app/) · [**Open the research atlas →**](https://mitpress.vercel.app/research) · [**Listen to Indigo People →**](https://chriswoodyard.bandcamp.com/) · [Contact](mailto:christopher@vers3dynamics.com)
+[**Enter Vanta →**](https://mitpress.vercel.app/) · [**Walk into the studio →**](https://mitpress.vercel.app/studio) · [**Open the research atlas →**](https://mitpress.vercel.app/research) · [**Listen to Indigo People →**](https://chriswoodyard.bandcamp.com/) · [Contact](mailto:christopher@vers3dynamics.com)
 
 ## Enter through a work
 
@@ -45,6 +45,27 @@ The page ends on a **coda**. G3, C4, E4, G4 and C5 are one chord, C major, so th
 The hero stage is the Event Horizon Archive, a Three.js black hole holding the practice on one surface. Cross it to reach the research atlas.
 
 Every visit starts silent. Sound needs an explicit action, and the page is complete without it. Switching it on where nothing is tuned answers with the whole chord, once, so silence is never mistaken for a broken control. Reduced motion, mobile, hidden tabs, and unavailable WebGL each have their own rendering path.
+
+## The studio
+
+`/studio` is the same practice as a place you can walk around. There's a Library, a
+Workbench, a Simulation Room, a Gallery and a Recording Studio, one room per channel, with
+the Event Horizon Archive in an instrument of its own and a computer you can sit at. Every
+object is a work from `data/practice.js` and links to its receipts.
+
+- **Instruments that work.** A signal generator drives the bench oscilloscope, a resonance
+  plate sorts sand onto its nodal lines, and a two-octave synthesizer has the five channel
+  notes marked. Each is labelled as a simulation where it is one.
+- **The computer.** It has a sandboxed terminal (`help`, `ls`, `cd`, `open`, `projects`,
+  `research`…), a projects browser, a reader, the research atlas itself, the music player,
+  the artwork viewer, a file explorer, and Resolve, a tuning game for the chord.
+- **The chord, built into the rooms.** Each room's lamp hangs one wavelength of its note,
+  and the five chimes in the Hall sound G3 · C4 · E4 · G4 · C5. Each thread is hidden in a
+  room it spans.
+- **Same contracts.** Every visit starts silent. Reduced motion, phones, three graphics
+  tiers, and a full text index cover visitors without WebGL or the 3D.
+
+See [the studio notes](docs/studio.md).
 
 ## The research atlas
 
@@ -93,7 +114,7 @@ npm test
 npm run build
 ```
 
-The Node test suite covers the practice model (every claim has a receipt, statuses are factual, threads span channels, artifacts exist and stay light), catalog provenance, search, graph extraction, URL round trips, reading-list persistence, audio voicing and render policies, and rendered HTTP contracts for home, research, and 404. `scripts/browserChecks.js` drives a real browser through sound, tuning, and keyboard checks; see [the workbench notes](docs/research-workbench.md).
+The Node test suite covers the practice model (every claim has a receipt, statuses are factual, threads span channels, artifacts exist and stay light), catalog provenance, search, graph extraction, URL round trips, reading-list persistence, audio voicing and render policies, and rendered HTTP contracts for home, research, and 404. `scripts/browserChecks.js` drives a real browser through sound, tuning, and keyboard checks; see [the workbench notes](docs/research-workbench.md). `scripts/studioBrowserChecks.js` does the same for `/studio`, including its no-WebGL, reduced-motion, and phone paths; see [the studio notes](docs/studio.md).
 
 ## Code map
 
@@ -110,6 +131,10 @@ The Node test suite covers the practice model (every claim has a receipt, status
 | URL and reading-list contracts | `lib/research/workbench.js` |
 | Search and graph extraction | `lib/research/searchEngine.js`, `lib/research/graphEngine.js` |
 | Bundled catalog | `data/research/curatedKnowledge.json` |
+| Studio page and its state | `pages/studio.js` |
+| Studio floor plan, walking, tiers, instruments, library, terminal | `lib/studio/` |
+| Studio scene (three.js) | `lib/studio/scene/` |
+| Studio interface | `components/studio/`, `hooks/useStudioAudio.js` |
 | Design and behaviour contracts | `PRODUCT.md` |
 
 ## Updating the work

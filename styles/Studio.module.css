@@ -2274,6 +2274,14 @@
     min-width: 3.4rem;
   }
 
+  .menuClock {
+    display: none;
+  }
+
+  .leave {
+    margin-left: auto;
+  }
+
   .dockLabel {
     display: none;
   }

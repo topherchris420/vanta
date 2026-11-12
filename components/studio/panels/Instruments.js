@@ -174,7 +174,7 @@ export function PlatePanel({ plate, setPlate, soundEnabled, onScatter, patched, 
   return (
     <div className={styles.instrument}>
       <p className={styles.panelLede}>
-        An aluminium plate on a driver, with sand on it. Drive it at one of its modes and the sand
+        A metal plate on a driver, painted black, with sand on it. Drive it at one of its modes and the sand
         leaves the parts that move and gathers on the lines that stay still.
       </p>
       <LogSlider
