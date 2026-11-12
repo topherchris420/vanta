@@ -244,5 +244,34 @@ test(
     assert.ok(researchHtml.includes("Catalog entry"));
     assert.ok(researchHtml.includes("Quantum Information"));
     assert.ok(researchHtml.includes("not an endorsement or a verification"));
+
+    // The studio: reachable from the nav, rendered on the server as text
+    // first, silent, and complete without WebGL.
+    assert.match(html, /href="\/studio"[^>]*>\s*Studio/);
+    const studioResponse = await fetch(`http://${HOST}:${port}/studio`);
+    const studioHtml = await studioResponse.text();
+    assert.equal(studioResponse.status, 200);
+    ["VANTA", "Five notes. One chord.", "Enter the Studio", "Explore the Original Portfolio", "Guided Tour"].forEach(
+      (copy) => assert.ok(studioHtml.includes(copy), `studio intro says: ${copy}`)
+    );
+    assert.match(studioHtml, /<a[^>]*href="\/"[^>]*>Explore the Original Portfolio<\/a>/);
+    assert.match(studioHtml, /href="#studio-index"/, "a skip link reaches the text index");
+    assert.match(studioHtml, /<link rel="canonical" href="https:\/\/mitpress\.vercel\.app\/studio"/);
+    const index = studioHtml.match(/<section[^>]*id="studio-index"[\s\S]*?<\/section>/)?.[0] ?? "";
+    assert.ok(index, "the studio index is server-rendered");
+    ["The Library", "The Workbench", "The Simulation Room", "The Gallery", "The Recording Studio", "Event Horizon Archive"].forEach(
+      (room) => assert.ok(index.includes(room), `the index lists ${room}`)
+    );
+    practice.works.forEach((work) => {
+      assert.ok(index.includes(work.title.replace(/&/g, "&amp;")), `the index names ${work.id}`);
+      work.evidence.forEach((link) =>
+        assert.ok(index.includes(link.href.replace(/&/g, "&amp;")), `the index keeps receipt ${link.href}`)
+      );
+    });
+    assert.match(studioHtml, /<audio[^>]*preload="none"/);
+    assert.doesNotMatch(studioHtml, /<audio[^>]*autoplay/i);
+    assert.ok(studioHtml.includes("Sound off"));
+    assert.ok(!studioHtml.includes("Sound on"));
+    assert.ok(!studioHtml.includes("<canvas"), "no canvas is rendered before the browser asks for one");
   }
 );

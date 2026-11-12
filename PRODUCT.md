@@ -140,9 +140,42 @@ The atlas answers a different question from the portfolio: what ideas and source
 - The inspector is a native modal dialog: inert background, Escape to close, focus restored.
 - On desktop the record list scrolls inside its column and the map holds the viewport. At 900 px and below, visitors switch between records and map, and the graph mounts only when the map is requested.
 
+## Studio
+
+`/studio` is the practice as a walkable place. It's a second way in, never a gate: the
+home page and the atlas stand alone, and the studio links back to both.
+
+- **Content.** The studio reads `data/practice.js` and the catalog, and states nothing of
+  its own. `lib/studio/layout.js` gives every work an object in its own channel's room, and
+  hides every thread in a room it spans. The build fails if either is missing. Library
+  volumes come from the model, the catalog's records, and `docs/`. Where a text isn't in
+  the repository (the poems of Life of a Line), the volume says so.
+- **First screen.** The room, dimly lit, behind "VANTA / Five notes. One chord." and three
+  choices: Enter the Studio, Explore the Original Portfolio (`/`), and Guided Tour. There
+  is no forced cinematic.
+- **State.** The page decides; the scene draws. Walking, panels, the computer, and the tour
+  are modes. Escape always returns to walking, and the map and index can always reach any
+  room.
+- **Sound.** The site's contract applies unchanged. A room's note sounds once on entry,
+  from its pendant. The chimes sound the coda, and a found thread sounds its chord. All of
+  it is voiced by `createChordVoicing`/`createStrum`. The synthesizer's total level never
+  exceeds a chord's. Visual reaction is computed from what is played, never from audio
+  output.
+- **Honesty.** Simulations are labelled as such. The Pine Gap projection is a still frame
+  and says so. The launcher offers only works whose status includes Live, through their own
+  evidence links. The terminal is a fixed command table over a virtual tree, with no eval
+  or network.
+- **Runtime.** There are three tiers (High, Balanced, Light) with pixel-ratio caps no
+  higher than the site's. A frame governor only ever steps down. Rendering pauses while
+  the tab is hidden or the desktop covers the room. Reduced motion draws on demand, and a
+  WebGL failure or lost context falls back to the text index.
+- **Accessibility.** A server-rendered index lists every room, object, work, and receipt,
+  and is the whole studio without WebGL. It appears whenever anything inside it takes
+  focus. Panels move focus to their heading, and every control is a native button or input.
+
 ## Deployment
 
-The site is a static export (`output: "export"`): `next build` writes `out/`, which Vercel and static hosts (dappling.network) serve. Nothing may require a server: no API routes, `getServerSideProps`, rewrites, or image optimisation. Hosts build on Node 22.
+The site is a static export (`output: "export"`): `next build` writes `out/` (including `studio.html`, whose catalog and notes are read at build time by `getStaticProps`), which Vercel and static hosts (dappling.network) serve. Nothing may require a server: no API routes, `getServerSideProps`, rewrites, or image optimisation. Hosts build on Node 22.
 
 ## Maintenance
 
