@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 
 const navLinks = [
   { label: "Work", href: "#work" },
+  { label: "Studio", href: "/studio" },
   { label: "Research", href: "/research" },
   { label: "Contact", href: "#contact" },
 ];
