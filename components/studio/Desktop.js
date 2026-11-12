@@ -288,9 +288,11 @@ export default function Desktop({
   const areaRef = useRef(null);
   const [windows, setWindows] = useState(() => {
     windowSerial += 2;
+    // Keep the first two windows on screen at any width.
+    const room = typeof window === "undefined" ? 1280 : window.innerWidth;
     return [
-      { id: windowSerial - 1, app: "projects", props: {}, x: 300, y: 70, z: 1 },
-      { id: windowSerial, app: "terminal", props: {}, x: 56, y: 40, z: 2 },
+      { id: windowSerial - 1, app: "projects", props: {}, x: Math.max(16, Math.min(300, room - APPS.projects.size[0] - 16)), y: 70, z: 1 },
+      { id: windowSerial, app: "terminal", props: {}, x: Math.max(8, Math.min(56, room - APPS.terminal.size[0] - 8)), y: 40, z: 2 },
     ];
   });
   const [focused, setFocused] = useState(windowSerial);

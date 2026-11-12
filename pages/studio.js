@@ -685,7 +685,15 @@ export default function Studio({ documents, notes }) {
       )}
       <div className={styles.vignette} aria-hidden="true" />
 
-      <main id="studio-main" ref={mainRef} tabIndex={-1} className={styles.main}>
+      <main
+        id="studio-main"
+        ref={mainRef}
+        tabIndex={-1}
+        className={styles.main}
+        // The desktop is modal: nothing behind it can take focus.
+        inert={desktop ? "" : undefined}
+        aria-hidden={desktop ? "true" : undefined}
+      >
         {phase === "intro" && (
           <StudioIntro onEnter={enter} onTour={startTour} soundControl={soundControl} webgl={webgl} />
         )}
