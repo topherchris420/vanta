@@ -48,6 +48,9 @@ export default function StudioIndex({ content, practice, onOpen, open, fallback,
                 return (
                   <li key={object.id}>
                     <button type="button" className={styles.indexObject} onClick={() => onOpen(object.id)}>
+                      <span aria-hidden="true" className={styles.indexArrow}>
+                        →{" "}
+                      </span>
                       {object.verb}
                     </button>
                     {work && (

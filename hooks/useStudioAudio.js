@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import signalExperience from "../lib/signalExperience";
 import instruments from "../lib/studio/instruments";
 
@@ -365,7 +365,9 @@ export default function useStudioAudio() {
     [stopAll]
   );
 
-  return {
+  // One object per sound state, so effects that depend on the engine only
+  // re-run when sound is switched, not on every render.
+  return useMemo(() => ({
     soundEnabled,
     soundAvailable,
     enableSound,
@@ -382,5 +384,22 @@ export default function useStudioAudio() {
     pluck,
     spatializeRecording,
     setListener,
-  };
+  }), [
+    soundEnabled,
+    soundAvailable,
+    enableSound,
+    toggleSound,
+    stopAll,
+    strum,
+    bell,
+    releaseStrums,
+    noteOn,
+    noteOff,
+    allNotesOff,
+    setGenerator,
+    setDrive,
+    pluck,
+    spatializeRecording,
+    setListener,
+  ]);
 }

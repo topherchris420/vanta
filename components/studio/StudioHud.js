@@ -25,6 +25,7 @@ export default function StudioHud({
   onTier,
   touch,
   showPrompt,
+  canMap = true,
 }) {
   const tuned = zone?.kind === "channel";
   return (
@@ -61,9 +62,11 @@ export default function StudioHud({
         </p>
         <div className={styles.hudControls}>
           {soundControl}
-          <button type="button" className={styles.hudButton} aria-pressed={panels.map} onClick={() => onToggle("map")}>
-            Map
-          </button>
+          {canMap && (
+            <button type="button" className={styles.hudButton} aria-pressed={panels.map} onClick={() => onToggle("map")}>
+              Map
+            </button>
+          )}
           <button
             type="button"
             className={styles.hudButton}

@@ -236,11 +236,15 @@ export function PlatePanel({ plate, setPlate, soundEnabled, onScatter, patched, 
 export function SynthPanel({ channels, params, setParams, held, onNoteOn, onNoteOff, soundEnabled, patched }) {
   const { keys, whiteCount } = createKeyboard(channels);
   const dragging = useRef(null);
-  const heldRef = useRef(held);
-  heldRef.current = held;
+  const callbacks = useRef({ onNoteOn, onNoteOff });
+  callbacks.current = { onNoteOn, onNoteOff };
 
-  // The computer keyboard plays two octaves while the synth is open.
+  // The computer keyboard plays two octaves while the synth is open. The
+  // listener is attached once; it reads the latest callbacks through a ref,
+  // so a re-render can never release a key that is still held.
   useEffect(() => {
+    const onNoteOn = (midi) => callbacks.current.onNoteOn(midi);
+    const onNoteOff = (midi) => callbacks.current.onNoteOff(midi);
     const down = new Set();
     const onKeyDown = (event) => {
       if (event.repeat || event.metaKey || event.ctrlKey || event.altKey) return;
@@ -270,7 +274,7 @@ export function SynthPanel({ channels, params, setParams, held, onNoteOn, onNote
       window.removeEventListener("blur", releaseAll);
       releaseAll();
     };
-  }, [onNoteOn, onNoteOff]);
+  }, []);
 
   const press = (midi) => {
     if (dragging.current !== null && dragging.current !== midi) onNoteOff(dragging.current);

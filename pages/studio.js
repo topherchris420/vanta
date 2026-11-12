@@ -406,21 +406,23 @@ export default function Studio({ documents, notes }) {
   const controllersRef = useRef(controllersUp);
   controllersRef.current = controllersUp;
 
+  const audioRef = useRef(audio);
+  audioRef.current = audio;
+  const playingRef = useRef(recording.playing);
+  playingRef.current = recording.playing;
+
   const noteOn = useCallback(
     (midi) => {
       setHeld((current) => (current.includes(midi) ? current : [...current, midi]));
-      if (!recording.playing) audio.noteOn(midi, synthRef.current);
+      if (!playingRef.current) audioRef.current.noteOn(midi, synthRef.current);
       if (controllersRef.current && midi === 60) discover("third-note");
     },
-    [audio, discover, recording.playing]
+    [discover]
   );
-  const noteOff = useCallback(
-    (midi) => {
-      setHeld((current) => current.filter((value) => value !== midi));
-      audio.noteOff(midi);
-    },
-    [audio]
-  );
+  const noteOff = useCallback((midi) => {
+    setHeld((current) => current.filter((value) => value !== midi));
+    audioRef.current.noteOff(midi);
+  }, []);
 
   const instrumentsState = {
     scope,
@@ -704,6 +706,7 @@ export default function Studio({ documents, notes }) {
             onTier={onTier}
             touch={env.touch}
             showPrompt={mode === "walk" && live}
+            canMap={live}
           />
         )}
 

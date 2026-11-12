@@ -926,8 +926,7 @@
   cursor: pointer;
 }
 
-.indexObject::before {
-  content: "→ ";
+.indexArrow {
   color: var(--signal);
 }
 
@@ -2309,4 +2308,22 @@
   .map {
     animation: none;
   }
+}
+
+/* Without WebGL the index is the studio, scrolling as a page; the controls
+   and panels float above it. */
+.studio[data-webgl="fallback"] .hudTop {
+  position: fixed;
+  z-index: 20;
+  background: rgba(5, 8, 6, 0.94);
+  border-bottom: 1px solid var(--panel-line);
+}
+
+.studio[data-webgl="fallback"] .panel,
+.studio[data-webgl="fallback"] .found,
+.studio[data-webgl="fallback"] .helpCard,
+.studio[data-webgl="fallback"] .foundCard,
+.studio[data-webgl="fallback"] .tour {
+  position: fixed;
+  z-index: 30;
 }
