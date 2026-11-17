@@ -288,8 +288,10 @@ export default function Desktop({
   const areaRef = useRef(null);
   const [windows, setWindows] = useState(() => {
     windowSerial += 2;
-    // Keep the first two windows on screen at any width.
-    const room = typeof window === "undefined" ? 1280 : window.innerWidth;
+    // Keep the first two windows on screen at any width. On a large screen
+    // the desktop sits inside a bezel, so it has a little less room.
+    const framed = typeof window !== "undefined" && !compact && window.innerWidth >= 1100 && window.innerHeight >= 680;
+    const room = typeof window === "undefined" ? 1280 : framed ? window.innerWidth * 0.94 - 24 : window.innerWidth;
     return [
       { id: windowSerial - 1, app: "projects", props: {}, x: Math.max(16, Math.min(300, room - APPS.projects.size[0] - 16)), y: 70, z: 1 },
       { id: windowSerial, app: "terminal", props: {}, x: Math.max(8, Math.min(56, room - APPS.terminal.size[0] - 8)), y: 40, z: 2 },
@@ -303,11 +305,14 @@ export default function Desktop({
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root || !originRect || reducedMotion) return;
-    const scaleX = originRect.width / window.innerWidth;
-    const scaleY = originRect.height / window.innerHeight;
+    // Measured, because on a large screen the desktop is framed rather than
+    // full-bleed.
+    const box = root.getBoundingClientRect();
+    const scaleX = originRect.width / Math.max(box.width, 1);
+    const scaleY = originRect.height / Math.max(box.height, 1);
     root.animate(
       [
-        { transformOrigin: "0 0", transform: `translate(${originRect.left}px, ${originRect.top}px) scale(${scaleX}, ${scaleY})`, opacity: 0.4 },
+        { transformOrigin: "0 0", transform: `translate(${originRect.left - box.left}px, ${originRect.top - box.top}px) scale(${scaleX}, ${scaleY})`, opacity: 0.4 },
         { transformOrigin: "0 0", transform: "translate(0, 0) scale(1, 1)", opacity: 1 },
       ],
       { duration: 520, easing: "cubic-bezier(0.2, 0.7, 0.1, 1)" }
@@ -439,6 +444,8 @@ export default function Desktop({
 
   const ordered = [...windows].sort((a, b) => a.z - b.z);
   return (
+    <>
+    <div className={styles.desktopBackdrop} aria-hidden="true" />
     <div
       ref={rootRef}
       className={styles.desktop}
@@ -515,6 +522,8 @@ export default function Desktop({
           );
         })}
       </nav>
+      <span className={styles.screenGlare} aria-hidden="true" />
     </div>
+    </>
   );
 }
