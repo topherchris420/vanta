@@ -60,6 +60,7 @@ studio does with each part.
 | Renderer, lights, camera, picking, frame loop | `lib/studio/scene/index.js` |
 | Walls, windows, sky, light shafts | `lib/studio/scene/architecture.js` |
 | What is in each room | `lib/studio/scene/rooms.js` |
+| Turned, bevelled and upholstered furniture | `lib/studio/scene/furniture.js` |
 | Page state, panels, sound, tour | `pages/studio.js` |
 | Desktop and its apps | `components/studio/Desktop.js`, `components/studio/apps/` |
 | Object panels | `components/studio/panels/` |
@@ -135,7 +136,12 @@ square root of its frequency.
   else (timber, plaster, felt, the sky, labels) is painted on a canvas at start-up.
 - **Simulations are labelled.** The scope and the plate say they are models, computed from
   their controls. The Pine Gap projection is labelled *Still frame, not a live feed*. The
-  dioramas say they were made for the room.
+  dioramas say they were made for the room, and so do the three plan drawings on the
+  Simulation Room's monitors (*Drawn for the room · not a live feed*). The Workbench's
+  mode table is computed from the same equation that drives the plate, and says so.
+- **Furniture is furniture.** Chairs, a sofa, rugs, plants, lamps, acoustic panels, a
+  diffuser, headphones and an audio interface make the place lived in. None of it is
+  presented as Christopher's work or as a claim about him.
 - **Live means Live.** The Experiments launcher only offers works whose status includes
   Live, through their own evidence links. CIRCLE, a prototype, isn't offered.
 - **The terminal is a sandbox.** It's a fixed command table over a virtual tree built from
@@ -145,25 +151,49 @@ square root of its frequency.
 
 ## Look
 
-The studio is lit the way a room is lit for filming, a few minutes after sunset:
+The studio is a creative loft in the last hour of afternoon light:
 
-- **Outside:** a painted sky, a lake, and hills across it, with the far shore's lights
-  coming on. Low amber sun comes through the north and west windows.
-- **Light sources:** a softbox key light on a stand, a globe floor lamp, a brass desk lamp,
-  the pendant over each room, and warm LED strips under shelves and along walnut slat
-  walls. The washes those strips throw down the slats and plaster are baked into textures.
-- **Bounced light:** a few frames after load, a probe in the middle of the Hall
+- **Palette.** Cream trowelled lime plaster, oiled oak boards, walnut joinery, charcoal
+  powder-coated steel and brass. The Library is panelled in walnut to the dado, the
+  Gallery is lined in a paler plaster, and the Simulation Room in charcoal, so its screens
+  hold the eye. Every surface is painted on a canvas at start-up from tileable noise
+  (flat-sawn figure and pores in the timber, planks with their own tone and joints,
+  plaster clouds and trowel arcs, woven upholstery, basket-weave jute); plaster and floor
+  carry their own bump.
+- **Outside.** Floor-to-ceiling steel-framed glass either side of the archive's slatted
+  panel and in the Library's west wall, a tall window over the Workbench. Beyond: a stone
+  terrace on a plinth rising from a lake, hills stepping back into haze, high cloud, and
+  the sun low in the north-north-west. One constant (`SUN` in `textures.js`) places the
+  painted sun, the directional light, the sun disc and the window shafts, so the light on
+  the floor comes from where the sun is in the sky.
+- **Light sources.** The sun, long and gold, laying the window grids across the floor and
+  up the archive bay's east wall; recessed downlights, the ones near a wall throwing a
+  scallop down the plaster; a spun charcoal-and-brass dome pendant in each room; a
+  softbox key light; a globe floor lamp; a brass desk lamp; a green-glass banker's lamp on
+  the Library table; a drum lamp in the Recording Studio; warm LED strips under shelves
+  and along the walnut slat walls. Lamps near pale walls sit inside their shades, toward
+  the room, so they don't burn hot spots into the plaster.
+- **Bounced light.** A few frames after load, a probe in the middle of the Hall
   photographs the lit studio in every direction. That picture becomes everything's
   ambient light and reflection, so floor light reaches the ceiling and the sunset shows in
-  the brass. High takes a second bounce.
-- **Post-processing:** the picture renders to a multisampled HDR buffer. Ground-truth
-  ambient occlusion seats things in the room, light sources are drawn brighter than paper
-  so they bloom, and one pass tone-maps the result. The archive's shaders write
-  display-ready colour, so the pipeline converts them to linear on the way out.
-- **Furniture:** boxes have eased edges, and there are leaf-shaped plants, an upholstered
-  task chair, a laptop and a boom-arm microphone on the desk, and record and book shelves.
-- **Prompt:** the use prompt sits on the object it's about, and a ring marks anything
-  nearby that can be used.
+  the brass. High takes a second bounce. The hemisphere fill is kept low so rooms keep
+  their falloff: bright by the glass and the lamps, darker in the corners.
+- **Post-processing.** The picture renders to a multisampled HDR buffer. Ground-truth
+  ambient occlusion seats things in the room, light sources and the sun are drawn brighter
+  than paper so they bloom, and one ACES pass tone-maps the result. The archive's shaders
+  write display-ready colour, so the pipeline converts them to linear on the way out.
+- **Furniture.** `furniture.js` builds pieces the way they are made: tub chairs whose
+  barrel is an extruded, bevelled arc wrapping into the arms; a three-seat sofa with loose
+  cushions; bent-back side chairs; a leather gallery bench; turned pedestal tables with
+  marble tops; museum vitrines over the dioramas; lathe-turned planters; a quadratic-
+  residue diffuser; fabric acoustic panels; jute rugs under the patterned ones. All of it
+  is static, so it joins the merged batches and costs no extra draw calls per piece.
+- **Interaction.** The use prompt sits on the object it's about, a ring marks anything
+  nearby that can be used, and viewfinder corners frame the thing in reach.
+- **The computer.** Sitting down glides the camera to the desk. On a screen at least
+  1100 × 680 the desktop then grows out of the monitor into a bezelled screen with a faint
+  glass sheen, and the room stays visible round it, held still and dimmed. On smaller
+  screens it fills the view, one window at a time, as before.
 
 ## Runtime
 
@@ -180,9 +210,20 @@ The studio is lit the way a room is lit for filming, a few minutes after sunset:
 - Rendering stops while the tab is hidden or the desktop covers the room. Under reduced
   motion it draws only when something changes.
 - All shaders are compiled before the first frame.
-- Static geometry is merged by material. A frame costs about 260 draw calls and 260k
-  triangles on High, including both shadow passes, plus a normal pass for the ambient
-  occlusion. On Light it costs about 100 draw calls and 98k triangles.
+- Static geometry is merged by material. Measured for one complete frame (every pass:
+  shadow maps, the ambient-occlusion normal pass, the main pass and post) from the Hall
+  looking north, at 1280 × 760:
+
+  | Tier | Draw calls | Triangles |
+  | --- | --- | --- |
+  | High | 588 | 820k |
+  | Balanced | 259 | 283k |
+  | Light | 130 | 148k |
+
+  The loft redesign added about 12% to draw calls and about 60% to triangles on every
+  tier, mostly upholstery bevels, steel window frames and the new furniture. Round-edged
+  boxes use two segments per bevel rather than three, and extrusions keep their curve
+  counts low, to hold that down.
 - Paintings and frames load progressively, and the room is usable before they arrive.
 - Losing the WebGL context switches to the text index.
 
@@ -221,8 +262,9 @@ timings, because software rendering can manage only a frame or two a second.
 
 ## Known limitations
 
-- Everything in the studio is built from primitives. It is authored and consistent, but
-  it isn't photogrammetry, and the furniture is deliberately simple.
+- Everything in the studio is generated in code: boxes, lathes, extrusions and canvas
+  textures, with no downloaded models or scanned materials. It is authored and
+  consistent, but it isn't photogrammetry, and up close the furniture shows its geometry.
 - Changing tier at runtime can't rebuild the archive's geometry, so the detail tier chosen
   at load stays until the next visit.
 - The terminal's `research` command uses the catalog's documents without the stored graph.
@@ -235,3 +277,6 @@ timings, because software rendering can manage only a frame or two a second.
   GPU, the frame governor drops to Balanced, which has no ambient occlusion.
 - The light probe is taken once, a few frames after load. The pendants brightening as you
   walk, and the reading lamp, change the direct light but not the bounced light.
+- The sun is fixed at one hour of one afternoon. There is no time-of-day cycle.
+- The framed desktop shows the room as it was when you sat down; the scene is paused
+  behind it, as it was when the desktop covered the whole screen.

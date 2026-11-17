@@ -1684,6 +1684,12 @@
   outline: none;
 }
 
+/* While seated, the interface behind the monitor is inert and hidden, so
+   only the room shows round the bezel. */
+.main[aria-hidden="true"] {
+  visibility: hidden;
+}
+
 /* Behind the screen, the room the visitor is sitting in, held still and
    dimmed toward the edges. */
 .desktopBackdrop {
