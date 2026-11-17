@@ -5,8 +5,12 @@ import HorizonMark from "../HorizonMark";
 // The prompt sits on the thing it is about. Its position is read from the
 // scene every frame and written straight to the element, so walking never
 // re-renders React.
+// Four corner marks frame the thing in reach, the way a viewfinder does.
+// They are decoration: hidden from assistive technology, and they never take
+// the pointer.
 function AnchoredPrompt({ apiRef, label, onInteract, touch }) {
   const anchorRef = useRef(null);
+  const frameRef = useRef(null);
   useEffect(() => {
     let frame = 0;
     const tick = () => {
@@ -20,18 +24,45 @@ function AnchoredPrompt({ apiRef, label, onInteract, touch }) {
         element.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
         element.dataset.placed = "true";
       }
+      const brackets = frameRef.current;
+      const box = apiRef.current?.projectTargetBox?.();
+      if (brackets) {
+        if (box) {
+          const pad = 10;
+          const left = Math.max(box.left - pad, 8);
+          const top = Math.max(box.top - pad, 8);
+          const right = Math.min(box.right + pad, box.width - 8);
+          const bottom = Math.min(box.bottom + pad, box.height - 8);
+          const w = Math.max(right - left, 36);
+          const h = Math.max(bottom - top, 36);
+          brackets.style.transform = `translate(${left.toFixed(1)}px, ${top.toFixed(1)}px)`;
+          brackets.style.width = `${w.toFixed(1)}px`;
+          brackets.style.height = `${h.toFixed(1)}px`;
+          brackets.dataset.placed = "true";
+        } else {
+          brackets.dataset.placed = "false";
+        }
+      }
       frame = window.requestAnimationFrame(tick);
     };
     frame = window.requestAnimationFrame(tick);
     return () => window.cancelAnimationFrame(frame);
   }, [apiRef]);
   return (
-    <div ref={anchorRef} className={styles.promptAnchor}>
-      <button type="button" className={styles.prompt} onClick={onInteract}>
-        {!touch && <kbd>E</kbd>}
-        <span>{label}</span>
-      </button>
-    </div>
+    <>
+      <div ref={frameRef} className={styles.inspectFrame} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+      <div ref={anchorRef} className={styles.promptAnchor}>
+        <button type="button" className={styles.prompt} onClick={onInteract}>
+          {!touch && <kbd>E</kbd>}
+          <span>{label}</span>
+        </button>
+      </div>
+    </>
   );
 }
 
