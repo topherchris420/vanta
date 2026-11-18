@@ -8,7 +8,7 @@ test("tiers get cheaper in every dimension that costs frames", () => {
     assert.ok(high[key] >= medium[key], `${key}: high >= medium`);
     assert.ok(medium[key] >= low[key], `${key}: medium >= low`);
   });
-  assert.equal(low.shadowMapSize, 0, "the light tier casts no shadows");
+  assert.equal(low.shadowMapSize, 1024, "the light tier keeps a modest cached sun map");
   assert.deepEqual([high.post, medium.post, low.post], ["full", "bloom", "none"], "post-processing thins out by tier");
   assert.ok(high.probe >= medium.probe && medium.probe >= low.probe && low.probe >= 1, "every tier keeps bounced light");
   assert.equal(low.keyShadow, 0);

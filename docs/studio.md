@@ -132,8 +132,9 @@ square root of its frequency.
 - **No invented writing.** The Life of a Line volume holds its title page and says the
   poems are in the paperback. Preprint pages are the catalog's own records and say they
   are not peer reviewed.
-- **No generated art.** The only images are the five already in `public/work/`. Everything
-  else (timber, plaster, felt, the sky, labels) is painted on a canvas at start-up.
+- **Artwork and scenery.** The works on display come from `public/work/`. Photographic
+  building materials and the landscape are credited below. Labels and instrument displays
+  are drawn in the browser.
 - **Simulations are labelled.** The scope and the plate say they are models, computed from
   their controls. The Pine Gap projection is labelled *Still frame, not a live feed*. The
   dioramas say they were made for the room, and so do the three plan drawings on the
@@ -153,19 +154,18 @@ square root of its frequency.
 
 The studio is a creative loft in the last hour of afternoon light:
 
-- **Palette.** Cream trowelled lime plaster, oiled oak boards, walnut joinery, charcoal
-  powder-coated steel and brass. The Library is panelled in walnut to the dado, the
-  Gallery is lined in a paler plaster, and the Simulation Room in charcoal, so its screens
-  hold the eye. Every surface is painted on a canvas at start-up from tileable noise
-  (flat-sawn figure and pores in the timber, planks with their own tone and joints,
-  plaster clouds and trowel arcs, woven upholstery, basket-weave jute); plaster and floor
-  carry their own bump.
-- **Outside.** Floor-to-ceiling steel-framed glass either side of the archive's slatted
-  panel and in the Library's west wall, a tall window over the Workbench. Beyond: a stone
-  terrace on a plinth rising from a lake, hills stepping back into haze, high cloud, and
-  the sun low in the north-north-west. One constant (`SUN` in `textures.js`) places the
-  painted sun, the directional light, the sun disc and the window shafts, so the light on
-  the floor comes from where the sun is in the sky.
+- **Surfaces.** Oak planks, walnut veneer and plaster use photographic colour and surface
+  detail at a fixed scale in metres. Separate roughness maps control the finish on wood.
+  The walnut grain follows long rails and vertical stiles. Woven seats and the pleated
+  linen at the window have a fine normal map and a soft grazing highlight.
+- **Windows.** Steel frames and a stone terrace stand in front of a photographed lakeshore.
+  The sun in the panorama sits 8.44° above the horizon. Its position sets the direct light
+  and the shafts through the panes.
+- **Daylight.** A grid of 1,995 probes stores the direction and colour of skylight entering
+  the openings and one diffuse bounce from the room shell. The same grid shades moving
+  and fixed objects. Regenerate it with `node scripts/bakeStudioDaylight.mjs` when the walls
+  or windows move. A separate one-time height capture gives nearby furniture soft contact
+  shadows on the floor and all three rugs.
 - **Light sources.** The sun, long and gold, laying the window grids across the floor and
   up the archive bay's east wall; recessed downlights, the ones near a wall throwing a
   scallop down the plaster; a spun charcoal-and-brass dome pendant in each room; a
@@ -195,13 +195,27 @@ The studio is a creative loft in the last hour of afternoon light:
   glass sheen, and the room stays visible round it, held still and dimmed. On smaller
   screens it fills the view, one window at a time, as before.
 
+## Scenery credits
+
+The following [CC0 assets from Poly Haven](https://polyhaven.com/license) are served from
+`public/materials/studio/`. The panorama was tone-mapped from HDR, the plaster tinted,
+and the maps resized for the web.
+
+| Studio surface | Source |
+| --- | --- |
+| Oiled oak | [Oak Wood Planks](https://polyhaven.com/a/oak_wood_planks) |
+| Walnut joinery | [Walnut Veneer](https://polyhaven.com/a/walnut_veneer) |
+| Plaster | [Plastered Wall 04](https://polyhaven.com/a/plastered_wall_04) |
+| Textile weave | [Fabric Pattern 07](https://polyhaven.com/a/fabric_pattern_07) |
+| View through the windows | [Lakes](https://polyhaven.com/a/lakes) |
+
 ## Runtime
 
 | Tier | Pixel ratio | Shadows | Post-processing | Bounced light | Accent lights | Plate grains | Frame cap |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | High | ≤ 1.5, 4× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 2 bounces | yes | 9,000 | none |
 | Balanced | ≤ 1.5, 4× MSAA | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
-| Light | 1 | none | none | 1 bounce | no | 2,200 | 30 fps |
+| Light | 1 | cached sun 1024 | none | 1 bounce | no | 2,200 | 30 fps |
 
 - Phones start on Light. Machines with 4 GB of memory or 4 cores start on Balanced.
 - A frame governor steps down a tier after a sustained run of slow frames, never on a
@@ -210,20 +224,9 @@ The studio is a creative loft in the last hour of afternoon light:
 - Rendering stops while the tab is hidden or the desktop covers the room. Under reduced
   motion it draws only when something changes.
 - All shaders are compiled before the first frame.
-- Static geometry is merged by material. Measured for one complete frame (every pass:
-  shadow maps, the ambient-occlusion normal pass, the main pass and post) from the Hall
-  looking north, at 1280 × 760:
-
-  | Tier | Draw calls | Triangles |
-  | --- | --- | --- |
-  | High | 588 | 820k |
-  | Balanced | 259 | 283k |
-  | Light | 130 | 148k |
-
-  The loft redesign added about 12% to draw calls and about 60% to triangles on every
-  tier, mostly upholstery bevels, steel window frames and the new furniture. Round-edged
-  boxes use two segments per bevel rather than three, and extrusions keep their curve
-  counts low, to hold that down.
+- Static geometry is merged by material. The library's shelf books share one texture atlas
+  for cloth covers, cut page edges and stamped spines. Light reuses its sun shadow map
+  while the camera moves.
 - Paintings and frames load progressively, and the room is usable before they arrive.
 - Losing the WebGL context switches to the text index.
 
@@ -262,9 +265,8 @@ timings, because software rendering can manage only a frame or two a second.
 
 ## Known limitations
 
-- Everything in the studio is generated in code: boxes, lathes, extrusions and canvas
-  textures, with no downloaded models or scanned materials. It is authored and
-  consistent, but it isn't photogrammetry, and up close the furniture shows its geometry.
+- The room and its furnishings are modeled. Flat maps supply fine surface relief, and
+  the photographic shore has a fixed viewpoint beyond the modeled terrace.
 - Changing tier at runtime can't rebuild the archive's geometry, so the detail tier chosen
   at load stays until the next visit.
 - The terminal's `research` command uses the catalog's documents without the stored graph.
@@ -275,7 +277,7 @@ timings, because software rendering can manage only a frame or two a second.
   those numbers say nothing about GPUs. Draw calls and triangle counts are the comparable
   figures. Ambient occlusion is the most expensive addition. If High struggles on a given
   GPU, the frame governor drops to Balanced, which has no ambient occlusion.
-- The light probe is taken once, a few frames after load. The pendants brightening as you
+- The Hall reflection probe updates after the surface assets load and when the graphics tier changes. The pendants brightening as you
   walk, and the reading lamp, change the direct light but not the bounced light.
 - The sun is fixed at one hour of one afternoon. There is no time-of-day cycle.
 - The framed desktop shows the room as it was when you sat down; the scene is paused
