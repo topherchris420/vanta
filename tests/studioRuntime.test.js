@@ -10,7 +10,7 @@ test("tiers get cheaper in every dimension that costs frames", () => {
   });
   assert.equal(low.shadowMapSize, 1024, "the light tier keeps a modest cached sun map");
   assert.deepEqual([high.post, medium.post, low.post], ["full", "bloom", "none"], "post-processing thins out by tier");
-  assert.ok(high.probe >= medium.probe && medium.probe >= low.probe && low.probe >= 1, "every tier keeps bounced light");
+  assert.ok(high.samples > medium.samples, "multisampling is reserved for High");
   assert.equal(low.keyShadow, 0);
   assert.equal(low.samples, 0, "the light tier renders straight to the screen");
   assert.equal(low.archiveDetail, "reduced");

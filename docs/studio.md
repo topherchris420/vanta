@@ -152,7 +152,9 @@ square root of its frequency.
 
 ## Look
 
-The studio is a creative loft in the last hour of afternoon light:
+The studio is a creative loft in the last hour of afternoon light.
+
+![The Library from the same camera on the Balanced graphics tier, before and after the lighting and materials update.](screenshots/studio/daylight-comparison.jpg)
 
 - **Surfaces.** Oak planks, walnut veneer and plaster use photographic colour and surface
   detail at a fixed scale in metres. Separate roughness maps control the finish on wood.
@@ -176,9 +178,9 @@ The studio is a creative loft in the last hour of afternoon light:
 - **Bounced light.** A few frames after load, a probe in the middle of the Hall
   photographs the lit studio in every direction. That picture becomes everything's
   ambient light and reflection, so floor light reaches the ceiling and the sunset shows in
-  the brass. High takes a second bounce. The hemisphere fill is kept low so rooms keep
+  the brass. The hemisphere fill is kept low so rooms keep
   their falloff: bright by the glass and the lamps, darker in the corners.
-- **Post-processing.** The picture renders to a multisampled HDR buffer. Ground-truth
+- **Post-processing.** High renders to a multisampled HDR buffer. Ground-truth
   ambient occlusion seats things in the room, light sources and the sun are drawn brighter
   than paper so they bloom, and one ACES pass tone-maps the result. The archive's shaders
   write display-ready colour, so the pipeline converts them to linear on the way out.
@@ -213,8 +215,8 @@ and the maps resized for the web.
 
 | Tier | Pixel ratio | Shadows | Post-processing | Bounced light | Accent lights | Plate grains | Frame cap |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| High | ≤ 1.5, 4× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 2 bounces | yes | 9,000 | none |
-| Balanced | ≤ 1.5, 4× MSAA | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
+| High | ≤ 1.5, 2× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 1 bounce | yes | 9,000 | none |
+| Balanced | ≤ 1.5 | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
 | Light | 1 | cached sun 1024 | none | 1 bounce | no | 2,200 | 30 fps |
 
 - Phones start on Light. Machines with 4 GB of memory or 4 cores start on Balanced.
@@ -225,8 +227,8 @@ and the maps resized for the web.
   motion it draws only when something changes.
 - All shaders are compiled before the first frame.
 - Static geometry is merged by material. The library's shelf books share one texture atlas
-  for cloth covers, cut page edges and stamped spines. Light reuses its sun shadow map
-  while the camera moves.
+  for cloth covers, cut page edges and stamped spines. All tiers reuse the static architectural shadow maps
+  while the camera moves. High computes screen-space ambient occlusion at half resolution.
 - Paintings and frames load progressively, and the room is usable before they arrive.
 - Losing the WebGL context switches to the text index.
 
