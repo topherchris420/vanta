@@ -132,8 +132,9 @@ square root of its frequency.
 - **No invented writing.** The Life of a Line volume holds its title page and says the
   poems are in the paperback. Preprint pages are the catalog's own records and say they
   are not peer reviewed.
-- **No generated art.** The only images are the five already in `public/work/`. Everything
-  else (timber, plaster, felt, the sky, labels) is painted on a canvas at start-up.
+- **Artwork and scenery.** The works on display come from `public/work/`. Photographic
+  building materials and the landscape are credited below. Labels and instrument displays
+  are drawn in the browser.
 - **Simulations are labelled.** The scope and the plate say they are models, computed from
   their controls. The Pine Gap projection is labelled *Still frame, not a live feed*. The
   dioramas say they were made for the room, and so do the three plan drawings on the
@@ -151,21 +152,39 @@ square root of its frequency.
 
 ## Look
 
-The studio is a creative loft in the last hour of afternoon light:
+The studio is a creative loft in the last hour of afternoon light.
 
-- **Palette.** Cream trowelled lime plaster, oiled oak boards, walnut joinery, charcoal
-  powder-coated steel and brass. The Library is panelled in walnut to the dado, the
-  Gallery is lined in a paler plaster, and the Simulation Room in charcoal, so its screens
-  hold the eye. Every surface is painted on a canvas at start-up from tileable noise
-  (flat-sawn figure and pores in the timber, planks with their own tone and joints,
-  plaster clouds and trowel arcs, woven upholstery, basket-weave jute); plaster and floor
-  carry their own bump.
-- **Outside.** Floor-to-ceiling steel-framed glass either side of the archive's slatted
-  panel and in the Library's west wall, a tall window over the Workbench. Beyond: a stone
-  terrace on a plinth rising from a lake, hills stepping back into haze, high cloud, and
-  the sun low in the north-north-west. One constant (`SUN` in `textures.js`) places the
-  painted sun, the directional light, the sun disc and the window shafts, so the light on
-  the floor comes from where the sun is in the sky.
+![The Library from the same camera on the Balanced graphics tier, before and after the lighting and materials update.](screenshots/studio/daylight-comparison.jpg)
+
+![The Hall, Recording Studio and Gallery in the walkable studio.](screenshots/studio/studio-details.jpg)
+
+- In the Recording Studio, the 25-note keyboard has full-size keys, a sloped instrument
+  panel and four working knobs. The monitor cones travel along their voice coils. The
+  turntable cues its stylus into the lead-in, tracks inward at 33⅓ rpm and lifts before
+  returning to its rest. Platter phase follows the recording's playhead. The cover beside
+  it is Christopher's *Green Machine* painting. On a narrow screen the camera pulls
+  back to keep the deck and sleeve together, or to show both ends of the keyboard.
+- The gallery's track heads aim at the displayed works. A floating frame leaves a shadow
+  gap around the impasto portrait. A shallow bump map derived from the painting photograph
+  approximates brush relief. The two paper mounts have bevelled openings and mitred wood
+  frames.
+- A laminated walnut chair curves from seat to back at the Hall desk. The softbox grid
+  limits how much of its diffuser is visible from the side. Each patterned rug uses a
+  different museum photograph and a separate weave map.
+- **Surfaces.** Oak planks, walnut veneer and plaster use photographic colour and surface
+  detail at a fixed scale in metres. Separate roughness maps control the finish on wood.
+  The walnut grain follows long rails and vertical stiles. Woven seats and the pleated
+  linen at the window have a fine normal map and a soft grazing highlight.
+- **Windows.** Steel frames and a stone terrace stand in front of a photographed lakeshore.
+  The sun in the panorama sits 8.44° above the horizon. Its position sets the direct light
+  and the shafts through the panes.
+- **Daylight.** A grid of 1,995 probes stores the direction and colour of skylight entering
+  the openings and one diffuse bounce from the room shell. The same grid shades moving
+  and fixed objects. Regenerate it with `node scripts/bakeStudioDaylight.mjs` when the walls
+  or windows move. A separate one-time height capture gives nearby furniture soft contact
+  shadows on the floor and all three rugs. A second atlas stores short-range ambient
+  visibility on the walls, ceiling, desk, reading table and record cabinet. It was baked
+  against the finished furnishings, so a shelf darkens the plaster behind it even on Light.
 - **Light sources.** The sun, long and gold, laying the window grids across the floor and
   up the archive bay's east wall; recessed downlights, the ones near a wall throwing a
   scallop down the plaster; a spun charcoal-and-brass dome pendant in each room; a
@@ -176,9 +195,9 @@ The studio is a creative loft in the last hour of afternoon light:
 - **Bounced light.** A few frames after load, a probe in the middle of the Hall
   photographs the lit studio in every direction. That picture becomes everything's
   ambient light and reflection, so floor light reaches the ceiling and the sunset shows in
-  the brass. High takes a second bounce. The hemisphere fill is kept low so rooms keep
+  the brass. The hemisphere fill is kept low so rooms keep
   their falloff: bright by the glass and the lamps, darker in the corners.
-- **Post-processing.** The picture renders to a multisampled HDR buffer. Ground-truth
+- **Post-processing.** High renders to a multisampled HDR buffer. Ground-truth
   ambient occlusion seats things in the room, light sources and the sun are drawn brighter
   than paper so they bloom, and one ACES pass tone-maps the result. The archive's shaders
   write display-ready colour, so the pipeline converts them to linear on the way out.
@@ -195,13 +214,38 @@ The studio is a creative loft in the last hour of afternoon light:
   glass sheen, and the room stays visible round it, held still and dimmed. On smaller
   screens it fills the view, one window at a time, as before.
 
+## Scenery credits
+
+The following [CC0 assets from Poly Haven](https://polyhaven.com/license) are served from
+`public/materials/studio/`. The panorama was tone-mapped from HDR, the plaster tinted,
+and the maps resized for the web.
+
+| Studio surface | Source |
+| --- | --- |
+| Oiled oak | [Oak Wood Planks](https://polyhaven.com/a/oak_wood_planks) |
+| Walnut joinery | [Walnut Veneer](https://polyhaven.com/a/walnut_veneer) |
+| Plaster | [Plastered Wall 04](https://polyhaven.com/a/plastered_wall_04) |
+| Textile weave | [Fabric Pattern 07](https://polyhaven.com/a/fabric_pattern_07) |
+| View through the windows | [Lakes](https://polyhaven.com/a/lakes) |
+| Leather surface grain and finish | [Leather Red 02](https://polyhaven.com/a/leather_red_02) |
+
+The three rug images are public-domain collection photographs released through
+[The Metropolitan Museum of Art Open Access](https://www.metmuseum.org/about-the-met/policies-and-documents/open-access).
+Their backgrounds were removed and the images resized for the studio.
+
+| Room | Museum object |
+| --- | --- |
+| Hall | [Star Ushak Carpet, 08.235](https://www.metmuseum.org/art/collection/search/445364) |
+| Library | [Star Ushak Carpet, 22.100.110](https://www.metmuseum.org/art/collection/search/447568) |
+| Recording Studio | [Star Kazak Carpet, 22.100.17](https://www.metmuseum.org/art/collection/search/447483) |
+
 ## Runtime
 
 | Tier | Pixel ratio | Shadows | Post-processing | Bounced light | Accent lights | Plate grains | Frame cap |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| High | ≤ 1.5, 4× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 2 bounces | yes | 9,000 | none |
-| Balanced | ≤ 1.5, 4× MSAA | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
-| Light | 1 | none | none | 1 bounce | no | 2,200 | 30 fps |
+| High | ≤ 1.5, 2× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 1 bounce | yes | 9,000 | none |
+| Balanced | ≤ 1.5 | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
+| Light | 1 | cached sun 1024 | none | 1 bounce | gallery track and record shelf | 2,200 | 30 fps |
 
 - Phones start on Light. Machines with 4 GB of memory or 4 cores start on Balanced.
 - A frame governor steps down a tier after a sustained run of slow frames, never on a
@@ -210,20 +254,9 @@ The studio is a creative loft in the last hour of afternoon light:
 - Rendering stops while the tab is hidden or the desktop covers the room. Under reduced
   motion it draws only when something changes.
 - All shaders are compiled before the first frame.
-- Static geometry is merged by material. Measured for one complete frame (every pass:
-  shadow maps, the ambient-occlusion normal pass, the main pass and post) from the Hall
-  looking north, at 1280 × 760:
-
-  | Tier | Draw calls | Triangles |
-  | --- | --- | --- |
-  | High | 588 | 820k |
-  | Balanced | 259 | 283k |
-  | Light | 130 | 148k |
-
-  The loft redesign added about 12% to draw calls and about 60% to triangles on every
-  tier, mostly upholstery bevels, steel window frames and the new furniture. Round-edged
-  boxes use two segments per bevel rather than three, and extrusions keep their curve
-  counts low, to hold that down.
+- Static geometry is merged by material. The library's shelf books share one texture atlas
+  for cloth covers, cut page edges and stamped spines. All tiers reuse the static architectural shadow maps
+  while the camera moves. High computes screen-space ambient occlusion at half resolution.
 - Paintings and frames load progressively, and the room is usable before they arrive.
 - Losing the WebGL context switches to the text index.
 
@@ -260,11 +293,19 @@ contract, the threads, the chord, the record, the archive, the map, the tour, ho
 overflow, and page errors. They run on the Light tier and wait on positions rather than
 timings, because software rendering can manage only a frame or two a second.
 
+After changing the walls, worktops or static furniture, run the surface-contact bake
+against an up-to-date build or development server. It reads the actual static triangle
+batches from `/studio?inspect`. Chromium and Blender with its Python Pillow module are
+development tools for this step. Visitors download a single greyscale WebP.
+
+```sh
+node scripts/bakeStudioContact.cjs http://localhost:3000
+```
+
 ## Known limitations
 
-- Everything in the studio is generated in code: boxes, lathes, extrusions and canvas
-  textures, with no downloaded models or scanned materials. It is authored and
-  consistent, but it isn't photogrammetry, and up close the furniture shows its geometry.
+- The room and its furnishings are modeled. Flat maps supply fine surface relief, and
+  the photographic shore has a fixed viewpoint beyond the modeled terrace.
 - Changing tier at runtime can't rebuild the archive's geometry, so the detail tier chosen
   at load stays until the next visit.
 - The terminal's `research` command uses the catalog's documents without the stored graph.
@@ -275,7 +316,7 @@ timings, because software rendering can manage only a frame or two a second.
   those numbers say nothing about GPUs. Draw calls and triangle counts are the comparable
   figures. Ambient occlusion is the most expensive addition. If High struggles on a given
   GPU, the frame governor drops to Balanced, which has no ambient occlusion.
-- The light probe is taken once, a few frames after load. The pendants brightening as you
+- The Hall reflection probe updates after the surface assets load and when the graphics tier changes. The pendants brightening as you
   walk, and the reading lamp, change the direct light but not the bounced light.
 - The sun is fixed at one hour of one afternoon. There is no time-of-day cycle.
 - The framed desktop shows the room as it was when you sat down; the scene is paused

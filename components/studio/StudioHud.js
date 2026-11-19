@@ -16,16 +16,17 @@ function AnchoredPrompt({ apiRef, label, onInteract, touch }) {
     const tick = () => {
       const element = anchorRef.current;
       const point = apiRef.current?.projectTarget?.();
+      const box = apiRef.current?.projectTargetBox?.();
       if (element && point) {
         const width = element.offsetWidth;
         const height = element.offsetHeight;
         const x = Math.min(Math.max(point.x - width / 2, 12), point.width - width - 12);
-        const y = Math.min(Math.max(point.y + 26, 84), point.height - height - 20);
+        const below = box ? Math.min(box.bottom + 10, point.y + point.height * 0.17) : point.y + 32;
+        const y = Math.min(Math.max(below, 84), point.height - height - 20);
         element.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
         element.dataset.placed = "true";
       }
       const brackets = frameRef.current;
-      const box = apiRef.current?.projectTargetBox?.();
       if (brackets) {
         if (box) {
           const pad = 10;
