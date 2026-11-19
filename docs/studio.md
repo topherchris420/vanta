@@ -156,6 +156,21 @@ The studio is a creative loft in the last hour of afternoon light.
 
 ![The Library from the same camera on the Balanced graphics tier, before and after the lighting and materials update.](screenshots/studio/daylight-comparison.jpg)
 
+![The Hall, Recording Studio and Gallery in the walkable studio.](screenshots/studio/studio-details.jpg)
+
+- In the Recording Studio, the 25-note keyboard has full-size keys, a sloped instrument
+  panel and four working knobs. The monitor cones travel along their voice coils. The
+  turntable cues its stylus into the lead-in, tracks inward at 33⅓ rpm and lifts before
+  returning to its rest. Platter phase follows the recording's playhead. The cover beside
+  it is Christopher's *Green Machine* painting. On a narrow screen the camera pulls
+  back to keep the deck and sleeve together, or to show both ends of the keyboard.
+- The gallery's track heads aim at the displayed works. A floating frame leaves a shadow
+  gap around the impasto portrait. A shallow bump map derived from the painting photograph
+  approximates brush relief. The two paper mounts have bevelled openings and mitred wood
+  frames.
+- A laminated walnut chair curves from seat to back at the Hall desk. The softbox grid
+  limits how much of its diffuser is visible from the side. Each patterned rug uses a
+  different museum photograph and a separate weave map.
 - **Surfaces.** Oak planks, walnut veneer and plaster use photographic colour and surface
   detail at a fixed scale in metres. Separate roughness maps control the finish on wood.
   The walnut grain follows long rails and vertical stiles. Woven seats and the pleated
@@ -167,7 +182,9 @@ The studio is a creative loft in the last hour of afternoon light.
   the openings and one diffuse bounce from the room shell. The same grid shades moving
   and fixed objects. Regenerate it with `node scripts/bakeStudioDaylight.mjs` when the walls
   or windows move. A separate one-time height capture gives nearby furniture soft contact
-  shadows on the floor and all three rugs.
+  shadows on the floor and all three rugs. A second atlas stores short-range ambient
+  visibility on the walls, ceiling, desk, reading table and record cabinet. It was baked
+  against the finished furnishings, so a shelf darkens the plaster behind it even on Light.
 - **Light sources.** The sun, long and gold, laying the window grids across the floor and
   up the archive bay's east wall; recessed downlights, the ones near a wall throwing a
   scallop down the plaster; a spun charcoal-and-brass dome pendant in each room; a
@@ -210,6 +227,17 @@ and the maps resized for the web.
 | Plaster | [Plastered Wall 04](https://polyhaven.com/a/plastered_wall_04) |
 | Textile weave | [Fabric Pattern 07](https://polyhaven.com/a/fabric_pattern_07) |
 | View through the windows | [Lakes](https://polyhaven.com/a/lakes) |
+| Leather surface grain and finish | [Leather Red 02](https://polyhaven.com/a/leather_red_02) |
+
+The three rug images are public-domain collection photographs released through
+[The Metropolitan Museum of Art Open Access](https://www.metmuseum.org/about-the-met/policies-and-documents/open-access).
+Their backgrounds were removed and the images resized for the studio.
+
+| Room | Museum object |
+| --- | --- |
+| Hall | [Star Ushak Carpet, 08.235](https://www.metmuseum.org/art/collection/search/445364) |
+| Library | [Star Ushak Carpet, 22.100.110](https://www.metmuseum.org/art/collection/search/447568) |
+| Recording Studio | [Star Kazak Carpet, 22.100.17](https://www.metmuseum.org/art/collection/search/447483) |
 
 ## Runtime
 
@@ -217,7 +245,7 @@ and the maps resized for the web.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | High | ≤ 1.5, 2× MSAA | sun 2048 and key light 1024, soft | AO and bloom | 1 bounce | yes | 9,000 | none |
 | Balanced | ≤ 1.5 | sun 1024, soft | bloom | 1 bounce | yes | 5,000 | none |
-| Light | 1 | cached sun 1024 | none | 1 bounce | no | 2,200 | 30 fps |
+| Light | 1 | cached sun 1024 | none | 1 bounce | gallery track and record shelf | 2,200 | 30 fps |
 
 - Phones start on Light. Machines with 4 GB of memory or 4 cores start on Balanced.
 - A frame governor steps down a tier after a sustained run of slow frames, never on a
@@ -264,6 +292,15 @@ its sandbox, the atlas window, the instruments with and without sound, the conse
 contract, the threads, the chord, the record, the archive, the map, the tour, horizontal
 overflow, and page errors. They run on the Light tier and wait on positions rather than
 timings, because software rendering can manage only a frame or two a second.
+
+After changing the walls, worktops or static furniture, run the surface-contact bake
+against an up-to-date build or development server. It reads the actual static triangle
+batches from `/studio?inspect`. Chromium and Blender with its Python Pillow module are
+development tools for this step. Visitors download a single greyscale WebP.
+
+```sh
+node scripts/bakeStudioContact.cjs http://localhost:3000
+```
 
 ## Known limitations
 

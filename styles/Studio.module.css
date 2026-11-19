@@ -604,7 +604,7 @@
 }
 
 .inspectFrame[data-placed="true"] {
-  opacity: 0.9;
+  opacity: 0.58;
 }
 
 .inspectFrame span {
@@ -653,24 +653,25 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  min-height: 2.6rem;
-  padding: 0 0.95rem 0 0.7rem;
-  border: 0;
-  background: var(--signal);
-  color: var(--ink);
-  font: 600 0.92rem/1 var(--font-body);
+  min-height: 2.75rem;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(202, 223, 209, 0.38);
+  background: rgba(13, 20, 17, 0.91);
+  color: var(--paper);
+  font: 550 0.88rem/1.2 var(--font-body);
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 0.6rem 1.8rem rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.22);
 }
 
-.prompt:hover {
-  background: var(--signal-soft);
+.prompt:hover, .prompt:focus-visible {
+  background: #183328;
+  border-color: var(--signal);
 }
 
 .studio .prompt kbd {
-  border-color: rgba(5, 8, 6, 0.55);
-  color: var(--ink);
+  border-color: rgba(137, 242, 194, 0.5);
+  color: var(--signal);
 }
 
 .found {
