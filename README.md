@@ -12,6 +12,8 @@ If something catches your interest, I'd love to hear about it. You can find me o
 
 *Five notes. One chord.*
 
+The studio invites you to **explore, influence, and discover**: enter a room, try an instrument, observe what changes, then follow the source of the work. Sound begins only when you choose it, and the non-3D index remains a complete route through the practice. [Experience design](docs/EXPERIENCE_DESIGN.md).
+
 ---
 
 Curious how the site works? The [project guide](docs/PROJECT_GUIDE.md) has the setup instructions, interactive studio details, research provenance notes, and code map.
