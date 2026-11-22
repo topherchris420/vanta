@@ -10,7 +10,7 @@ I'm curious about sound, consciousness, physics, biological rhythms, storytellin
 
 You can [explore the portfolio](https://mitpress.vercel.app/), [wander through the studio](https://mitpress.vercel.app/studio), [browse the research atlas](https://mitpress.vercel.app/research), or [listen to my music](https://chriswoodyard.bandcamp.com/). Start anywhere.
 
-I’m also building [the Listening Room](https://vanta-studio-resonance.ciao-chris.chatgpt.site/studio/), a private prototype of Vanta’s playable studio. It requires the site owner’s ChatGPT sign-in.
+You can also [play the Listening Room](https://vanta-studio-resonance.ciao-chris.chatgpt.site/studio/), a prototype of Vanta’s hands-on instrument studio.
 
 If something catches your interest, I'd love to hear about it. You can find me on [GitHub](https://github.com/topherchris420) or [send me a note](mailto:christopher@vers3dynamics.com).
 
