@@ -16,9 +16,9 @@ export default function StudioIntro({ onEnter, onTour, soundControl, webgl }) {
         </h1>
         <p className={styles.introTagline}>Five notes. One chord.</p>
         <p className={styles.introLede}>
-          A walkable studio built from the portfolio: a library, a workbench, a simulation room, a
-          gallery, and a recording studio, one for each of the five channels. Everything in it is
-          real work, and every piece links to where it can be checked.
+          Walk into the workbench to shape sound, visit a simulation, or follow a work back to its
+          source. Five rooms, five ways to explore one artistic practice. Choose what interests you;
+          what you touch should lead somewhere you can hear, see, or check.
         </p>
         <div className={styles.introActions}>
           <button type="button" className={styles.primary} onClick={onEnter} autoFocus>
