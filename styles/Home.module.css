@@ -526,28 +526,14 @@
   mask-image: var(--archive-falloff);
 }
 
-/* Composed shadow, photon ring, and platter for visitors without WebGL. */
+/* A frame from the same archive renderer for touch, reduced motion and
+   displays without WebGL. Keep the full disk visible on narrow screens. */
 .displayPedestalCanvas[data-webgl="fallback"] {
-  background:
-    radial-gradient(
-      circle at 50% 46%,
-      #010302 0 5.4rem,
-      rgba(237, 249, 244, 0.92) 5.5rem 5.62rem,
-      rgba(140, 240, 198, 0.22) 5.7rem 6.4rem,
-      transparent 8.6rem
-    ),
-    radial-gradient(
-      ellipse 20rem 2.6rem at 50% 46%,
-      transparent 0 5.6rem,
-      rgba(228, 182, 92, 0.3) 5.7rem 9rem,
-      rgba(140, 240, 198, 0.14) 9rem 15rem,
-      transparent 100%
-    ),
-    repeating-radial-gradient(
-      ellipse 20rem 2.6rem at 50% 46%,
-      transparent 0 0.52rem,
-      rgba(140, 240, 198, 0.045) 0.54rem 0.6rem
-    );
+  background: #030605 url("/event-horizon.webp") center / contain no-repeat;
+}
+
+.displayPedestalCanvas[data-webgl="fallback"] canvas {
+  display: none;
 }
 
 .displayPedestalHud {
