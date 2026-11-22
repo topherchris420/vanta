@@ -1,14 +1,10 @@
-# Christopher Woodyard | Artist, Musician & Independent Researcher
+# Vanta
 
-Hi, I'm Chris. 👋
+**An interactive studio, research atlas, and portfolio by Christopher Woodyard.**
 
-Welcome to **Vanta**, my little corner of the internet.
+Start in the [studio](https://mitpress.vercel.app/studio) and play, or open the [research atlas](https://mitpress.vercel.app/research) and follow the questions behind the work. The [portfolio](https://mitpress.vercel.app/) brings the instruments, simulations, paintings, and poems together.
 
-It's a home for the things I make: paintings, poems, music as [Indigo People](https://chriswoodyard.bandcamp.com/), and experiments that sometimes grow into instruments, simulations, and worlds you can explore. I don't really separate art from science. One tends to lead me back to the other.
-
-I'm curious about sound, consciousness, physics, biological rhythms, storytelling, and what happens when technology helps us notice something we couldn't see before. Some of those questions become open research at [Vers3Dynamics](https://vers3dynamics.com/), my independent lab. Others are just things I wanted to make.
-
-You can [explore the portfolio](https://mitpress.vercel.app/), [wander through the studio](https://mitpress.vercel.app/studio), [browse the research atlas](https://mitpress.vercel.app/research), or [listen to my music](https://chriswoodyard.bandcamp.com/). Start anywhere.
+I make music as [Indigo People](https://chriswoodyard.bandcamp.com/) and run [Vers3Dynamics](https://vers3dynamics.com/), an independent, open-source research lab. I keep coming back to sound, perception, and the ways an instrument can help us notice something we missed.
 
 You can also [play the Listening Room](https://vanta-studio-resonance.ciao-chris.chatgpt.site/studio/), a prototype of Vanta’s hands-on instrument studio.
 

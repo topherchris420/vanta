@@ -1,16 +1,16 @@
-import { Space_Grotesk, Syne } from "next/font/google";
+import localFont from "next/font/local";
 import "../styles/globals.css";
 
-const display = Syne({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
+const display = localFont({
+  src: "../styles/fonts/syne-latin.woff2",
+  weight: "600 800",
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const body = localFont({
+  src: "../styles/fonts/space-grotesk-latin.woff2",
+  weight: "400 600",
   variable: "--font-body",
   display: "swap",
 });
