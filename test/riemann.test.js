@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { ZEROS, primePowers, psi, coefficients, zeroWave, smoothCorrection, reconstruct, trace, pulseSchedule } = require("../lib/studio/riemann");
+const { ZEROS, primePowers, psi, coefficients, zeroWave, smoothCorrection, reconstruct, trace, pulseSchedule, primeScanPlan, chartLayout } = require("../lib/studio/riemann");
 
 test("64 positive ordinates in increasing order with known endpoints",()=>{
   assert.equal(ZEROS.length,64);
@@ -43,4 +43,28 @@ test("pulse timing preserves logarithmic distances and mathematical weights",()=
   assert.equal(events.at(-1).time,8);
   assert.ok(Math.abs(events.find(e=>e.n===4).time-8/3)<1e-12);
   assert.ok(events.every((e,i)=>i===0||e.time>events[i-1].time));
+});
+
+test("master gain is constant across every prime pulse, including the first and last",()=>{
+  for(const limit of [20,50,100,200]){
+    const plan=primeScanPlan(limit);
+    const two=plan.events.find(e=>e.n===2);
+    const four=plan.events.find(e=>e.n===4);
+    assert.equal(two.peakGain,four.peakGain);
+    for(const e of plan.events){
+      assert.ok(e.onset>=plan.fadeIn);
+      assert.ok(e.onset+plan.pulseEnd<=plan.fadeOutStart);
+    }
+    assert.ok(plan.end>plan.fadeOutStart);
+  }
+});
+test("compact chart uses pixel coordinates, endpoints, and nonoverlapping ticks",()=>{
+  for(const width of [200,240,286,900]) for(const limit of [20,50,100,200]){
+    const layout=chartLayout(width,limit);
+    assert.equal(layout.W,width);
+    assert.equal(layout.ticks[0],2);
+    assert.equal(layout.ticks.at(-1),limit);
+    const x=n=>layout.left+(layout.W-layout.left-layout.right)*Math.log(n/2)/Math.log(limit/2);
+    for(let i=1;i<layout.ticks.length;i++) assert.ok(x(layout.ticks[i])-x(layout.ticks[i-1])>=36-1e-10);
+  }
 });
