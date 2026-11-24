@@ -57,7 +57,9 @@ export default function RiemannInstrument() {
       await context.resume();
       if(session.current!==active)return;
       const start=context.currentTime+0.05;
-      const length=mode==="zeros"?duration:8.12;
+      // Scan: delay pulses until the master fade-in is done, and start the fade-out after the last pulse ends.
+      const lead=mode==="zeros"?0:0.05;
+      const length=mode==="zeros"?duration:lead+8+0.037+0.12;
       const master=context.createGain();
       master.gain.setValueAtTime(0,start);
       master.gain.linearRampToValueAtTime(volume/100*0.36,start+0.035);
@@ -82,7 +84,7 @@ export default function RiemannInstrument() {
         for(const event of powers){
           const oscillator=context.createOscillator();
           const envelope=context.createGain();
-          const t=start+event.time;
+          const t=start+lead+event.time;
           // Audible carrier is a convention; position and relative peak weight are arithmetic.
           oscillator.frequency.value=event.k===1?520:320;
           envelope.gain.setValueAtTime(0,t);
@@ -171,6 +173,7 @@ export default function RiemannInstrument() {
       .legend{font-size:12px;color:var(--muted);padding:8px}
       .legend span:before{content:"";display:inline-block;width:16px;height:2px;background:var(--muted);vertical-align:middle;margin-right:6px}
       .legend .reconstructed:before{background:var(--signal)} .legend em{color:var(--amber);font-style:normal}
+      @media (max-width:720px){.chart{overflow-x:auto} .chart svg{min-width:720px} .chart svg text{font-size:14px}}
       .controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;margin:24px 0}
       label{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted)}
       label strong{font:16px var(--font-mono);color:var(--paper)}
