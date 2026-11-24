@@ -73,7 +73,7 @@ export default function StudioIndex({ content, practice, onOpen, open, fallback,
         ))}
       </ol>
       <p className={styles.indexFoot}>
-        <a href="/">The portfolio page</a> · <a href="/research">The research atlas</a> ·{" "}
+        <a href="/riemann">The Music of the Primes</a> · <a href="/">The portfolio page</a> · <a href="/research">The research atlas</a> ·{" "}
         <a href={`mailto:${practice.person.email}`}>{practice.person.email}</a>
       </p>
     </section>
