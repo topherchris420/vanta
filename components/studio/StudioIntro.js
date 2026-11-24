@@ -27,6 +27,7 @@ export default function StudioIntro({ onEnter, onTour, soundControl, webgl }) {
           <a className={styles.secondary} href="/">
             Explore the Original Portfolio
           </a>
+          <a className={styles.secondary} href="/riemann">The Music of the Primes</a>
           <button type="button" className={styles.textButton} onClick={onTour}>
             Guided Tour
           </button>
