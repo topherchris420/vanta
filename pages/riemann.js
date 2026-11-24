@@ -2,8 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Head from "next/head";
 import math from "../lib/studio/riemann";
 
-const { ZEROS, coefficients, trace, pulseSchedule } = math;
-const W=900, H=300, left=50, right=20, top=24, bottom=40;
+const { ZEROS, coefficients, trace, pulseSchedule, primeScanPlan, chartLayout } = math;
 const duration=5;
 
 export default function RiemannInstrument() {
@@ -15,6 +14,19 @@ export default function RiemannInstrument() {
   const [playing,setPlaying]=useState(null);
   const [error,setError]=useState("");
   const session=useRef(null);
+  const plotRef=useRef(null);
+  const [plotWidth,setPlotWidth]=useState(900);
+  const {W,H,left,right,top,bottom,ticks}=chartLayout(plotWidth,limit);
+  useEffect(()=>{
+    const node=plotRef.current;
+    if(!node)return;
+    const measure=()=>setPlotWidth(Math.max(1,Math.floor(node.getBoundingClientRect().width)));
+    measure();
+    const observer=typeof ResizeObserver!=="undefined"?new ResizeObserver(measure):null;
+    observer?.observe(node);
+    window.addEventListener("resize",measure);
+    return ()=>{observer?.disconnect();window.removeEventListener("resize",measure);};
+  },[]);
   const zeros=useMemo(()=>solo>=0 ? [ZEROS[solo]] : ZEROS.slice(0,count),[count,solo]);
   const points=useMemo(()=>trace(limit,zeros),[limit,zeros]);
   const powers=useMemo(()=>pulseSchedule(limit),[limit]);
@@ -57,11 +69,12 @@ export default function RiemannInstrument() {
       await context.resume();
       if(session.current!==active)return;
       const start=context.currentTime+0.05;
-      const length=mode==="zeros"?duration:8.12;
+      const plan=mode==="primes"?primeScanPlan(limit):null;
+      const length=plan?plan.end:duration;
       const master=context.createGain();
       master.gain.setValueAtTime(0,start);
-      master.gain.linearRampToValueAtTime(volume/100*0.36,start+0.035);
-      master.gain.setValueAtTime(volume/100*0.36,start+length-0.12);
+      master.gain.linearRampToValueAtTime(volume/100*0.36,start+(plan?plan.fadeIn:0.035));
+      master.gain.setValueAtTime(volume/100*0.36,start+(plan?plan.fadeOutStart:length-0.12));
       master.gain.linearRampToValueAtTime(0,start+length);
       master.connect(context.destination);
       if(mode==="zeros"){
@@ -79,17 +92,17 @@ export default function RiemannInstrument() {
           oscillator.start(start);oscillator.stop(start+length);
         }
       } else {
-        for(const event of powers){
+        for(const event of plan.events){
           const oscillator=context.createOscillator();
           const envelope=context.createGain();
-          const t=start+event.time;
+          const t=start+event.onset;
           // Audible carrier is a convention; position and relative peak weight are arithmetic.
           oscillator.frequency.value=event.k===1?520:320;
           envelope.gain.setValueAtTime(0,t);
-          envelope.gain.linearRampToValueAtTime(0.13*event.weight/Math.log(limit),t+0.003);
-          envelope.gain.exponentialRampToValueAtTime(0.0001,t+0.035);
+          envelope.gain.linearRampToValueAtTime(event.peakGain,t+plan.attack);
+          envelope.gain.exponentialRampToValueAtTime(0.0001,t+plan.decay);
           oscillator.connect(envelope);envelope.connect(master);
-          oscillator.start(t);oscillator.stop(t+0.037);
+          oscillator.start(t);oscillator.stop(t+plan.pulseEnd);
         }
       }
       active.timer=setTimeout(()=>{if(session.current===active)stop();},(length+0.15)*1000);
@@ -111,13 +124,13 @@ export default function RiemannInstrument() {
       <section className="instrument" aria-labelledby="instrument-title">
         <div className="sectionhead"><div><p className="eyebrow">01 / INTERFERENCE</p><h2 id="instrument-title">Reconstruct the arithmetic</h2></div><span className="number">{zeros.length} <small>zero pairs</small></span></div>
         <div className="chart">
-          <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Normalized prime-power residual and reconstruction with ${zeros.length} zero pairs, x from 2 to ${limit}`}>
+          <div ref={plotRef} className="plot"><svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Normalized prime-power residual and reconstruction with ${zeros.length} zero pairs, x from 2 to ${limit}`}>
             {[-1,-.5,0,.5,1].map(v=><g key={v}><line x1={left} x2={W-right} y1={y(v*max)} y2={y(v*max)} stroke="var(--line)" strokeDasharray={v===0?"":"3 5"}/><text x={left-8} y={y(v*max)+4} textAnchor="end">{(v*max).toFixed(1)}</text></g>)}
             {powers.map(e=><line key={e.n} x1={x(Math.log(e.n))} x2={x(Math.log(e.n))} y1={H-bottom} y2={H-bottom+7} stroke={e.k===1?"var(--signal)":"var(--amber)"} opacity=".75"/>)}
             <path d={line("actual")} fill="none" stroke="var(--muted)" strokeWidth="1.4" vectorEffect="non-scaling-stroke"/>
             <path d={line("reconstructed")} fill="none" stroke="var(--signal)" strokeWidth="2" vectorEffect="non-scaling-stroke"/>
-            {[2,5,10,20,50,100,200].filter(v=>v<=limit).map(v=><text key={v} x={x(Math.log(v))} y={H-12} textAnchor="middle">{v}</text>)}
-          </svg>
+            {ticks.map(v=><text key={v} x={x(Math.log(v))} y={H-12} textAnchor="middle">{v}</text>)}
+          </svg></div>
           <div className="legend"><span className="actual">Exact midpoint residual</span><span className="reconstructed">Finite zero reconstruction</span><span>Ticks: primes / <em>higher powers</em> · logarithmic x</span></div>
         </div>
         <div className="controls">
@@ -167,7 +180,7 @@ export default function RiemannInstrument() {
       .number{font-size:32px;font-family:var(--font-mono);color:var(--signal)}
       .number small{font-size:12px;color:var(--muted)}
       .chart{background:var(--ink);border:1px solid var(--line);padding:8px;border-radius:6px}
-      svg{width:100%;display:block} svg text{font:12px var(--font-mono);fill:var(--muted)}
+       .plot{width:100%;min-width:0} svg{width:100%;display:block} svg text{font:12px var(--font-mono);fill:var(--muted)}
       .legend{font-size:12px;color:var(--muted);padding:8px}
       .legend span:before{content:"";display:inline-block;width:16px;height:2px;background:var(--muted);vertical-align:middle;margin-right:6px}
       .legend .reconstructed:before{background:var(--signal)} .legend em{color:var(--amber);font-style:normal}
