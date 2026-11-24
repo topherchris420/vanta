@@ -35,10 +35,11 @@ export default function RiemannInstrument() {
   useEffect(()=>{
     const hide=()=>{if(document.hidden) stop();};
     document.addEventListener("visibilitychange",hide);
-    window.addEventListener("pagehide",hide);
+    const leave=()=>stop();
+    window.addEventListener("pagehide",leave);
     return ()=>{
       document.removeEventListener("visibilitychange",hide);
-      window.removeEventListener("pagehide",hide);
+      window.removeEventListener("pagehide",leave);
       stop(false);
     };
   },[]);
@@ -137,7 +138,7 @@ export default function RiemannInstrument() {
         <div className="sectionhead"><div><p className="eyebrow">02 / SPECTRAL REGISTER</p><h2>Isolate a zero</h2></div><button className="quiet" onClick={()=>change(setSolo,-1)} disabled={solo<0}>Restore ensemble</button></div>
         <p className="muted">Select a partial to isolate its contribution in the chart and audio. Heights show the exact relative amplitude 2 / √(¼ + γ²). No pitches are rounded to musical notes.</p>
         <div className="spectrum" aria-label="Zero spectrum, select a partial to isolate">
-          {ZEROS.slice(0,count).map((g,i)=><button key={g} className={solo===i?"selected":""} aria-pressed={solo===i} aria-label={`Zero ${i+1}, gamma ${g.toFixed(5)}, ${(g*scale).toFixed(2)} hertz`} title={`γ ${g.toFixed(5)} / ${(g*scale).toFixed(2)} Hz`} onClick={()=>change(setSolo,solo===i?-1:i)}><span style={{height:`${100*Math.hypot(.5,ZEROS[0])/Math.hypot(.5,g)}%`}}/><small>{i+1}</small></button>)}
+          {ZEROS.slice(0,count).map((g,i)=><button key={g} className={solo===i?"selected":""} aria-pressed={solo===i} aria-label={`Zero ${i+1}, gamma ${g.toFixed(5)}, ${(g*scale).toFixed(2)} hertz`} title={`γ ${g.toFixed(5)} / ${(g*scale).toFixed(2)} Hz`} onClick={()=>change(setSolo,solo===i?-1:i)}><span style={{height:`${60*Math.hypot(.5,ZEROS[0])/Math.hypot(.5,g)}px`}}/><small>{i+1}</small></button>)}
         </div>
         <p className="readout">{solo>=0?`Zero ${solo+1} · γ = ${ZEROS[solo].toFixed(9)} · ${(ZEROS[solo]*scale).toFixed(2)} Hz`:`Ensemble · ${(ZEROS[0]*scale).toFixed(1)}–${(ZEROS[count-1]*scale).toFixed(1)} Hz`}</p>
       </section>
