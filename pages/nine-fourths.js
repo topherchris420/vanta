@@ -4,6 +4,18 @@ import math from "../lib/studio/nineFourths";
 
 const { multiply, seededMatrices, rowNotes } = math;
 
+function MatrixCell({ value, label, onEdit }) {
+  const [draft,setDraft]=useState(null);
+  return <input type="text" inputMode="text" value={draft ?? String(value)} aria-label={label}
+    onChange={e=>{
+      const text=e.target.value;
+      if(!/^-?[0-9]?$/.test(text))return;
+      setDraft(text);
+      if(/^-?[0-9]$/.test(text))onEdit(Number(text));
+    }}
+    onBlur={()=>setDraft(null)}/>;
+}
+
 function Matrix({ title, values, onEdit, onRow, selected }) {
   const n = values.length;
   const peak = Math.max(1, ...values.flat().map(Math.abs));
@@ -11,9 +23,8 @@ function Matrix({ title, values, onEdit, onRow, selected }) {
     <h2>{title}</h2>
     <div className="cells" style={{gridTemplateColumns:`repeat(${n}, minmax(0, 1fr))`}}>
       {values.map((row,i)=>row.map((v,j)=>onEdit ?
-        <input key={i+":"+j} type="number" min="-9" max="9" step="1" value={v}
-          aria-label={`${title} row ${i+1}, column ${j+1}`}
-          onChange={e=>{const next=Number(e.target.value); if(Number.isInteger(next)&&Math.abs(next)<=9)onEdit(i,j,next);}}/> :
+        <MatrixCell key={i+":"+j} value={v} label={`${title} row ${i+1}, column ${j+1}`}
+          onEdit={next=>onEdit(i,j,next)}/> :
         <button key={i+":"+j} onClick={()=>onRow(i)} aria-pressed={selected===i}
           aria-label={`Result row ${i+1}, column ${j+1}: ${v}; select row ${i+1}`}
           style={{background:v<0?`rgba(245,161,107,${0.06+0.24*Math.abs(v)/peak})`:`rgba(130,225,200,${0.06+0.24*Math.abs(v)/peak})`}}>{v}</button>))}
@@ -92,7 +103,7 @@ export default function NineFourths() {
           <div><label htmlFor="algorithm">Algorithm</label><select id="algorithm" value={algorithm} onChange={e=>{stop();setAlgorithm(e.target.value);}}><option value="strassen">Strassen</option><option value="classical">Classical</option></select></div>
           <button onClick={()=>reset(n,seed+1)}>New matrices</button></div>
         <p className="muted">Edit the integers in A and B. Select a row of the product to listen to it.</p>
-        <div className="matrices"><Matrix title="A" values={matrices[0]} onEdit={(i,j,v)=>edit(0,i,j,v)}/><span className="operator">×</span><Matrix title="B" values={matrices[1]} onEdit={(i,j,v)=>edit(1,i,j,v)}/><span className="operator">=</span><Matrix title="AB" values={active.result} selected={row} onRow={i=>{stop();setRow(i);}}/></div>
+        <div className="matrices"><Matrix key={"A:"+n+":"+seed} title="A" values={matrices[0]} onEdit={(i,j,v)=>edit(0,i,j,v)}/><span className="operator">×</span><Matrix key={"B:"+n+":"+seed} title="B" values={matrices[1]} onEdit={(i,j,v)=>edit(1,i,j,v)}/><span className="operator">=</span><Matrix title="AB" values={active.result} selected={row} onRow={i=>{stop();setRow(i);}}/></div>
         <div className="controls"><button onClick={playing?()=>stop():listen}>{playing?"Stop sound":`Listen to row ${row+1}`}</button><span className="muted" role="status">{message||"Audio is opt-in. Signed output values map to pitch; magnitude maps to gain."}</span></div>
       </section>
       <section className="panel"><p className="eyebrow">01 / WORK ACCOUNTING</p><h2>Same product, different work</h2>
