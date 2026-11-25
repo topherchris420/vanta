@@ -12,6 +12,8 @@ If something catches your interest, I'd love to hear about it. You can find me o
 
 *Five notes. One chord.*
 
+**Dynamic Resonance Rooting** ([read the November 25, 2026 manuscript](https://github.com/topherchris420/dynamic-resonance-rooting/blob/main/paper/drr-v3/main.pdf) · [reconstruction results](https://github.com/topherchris420/dynamic-resonance-rooting/blob/main/results/expected/v3_reconstruction/README.md)): calibrated resonance and lead–lag diagnostics that distinguish temporal structure from memory-induced artifacts under tested conditions. All 12 registered reconstruction findings held; none of 123 rate comparisons differed significantly after correction (not proof of equivalence). All three preregistered external claims were not supported. Open research, not a causal or predictive guarantee.
+
 **The Music of the Primes** ([open the instrument](https://mitpress.vercel.app/riemann)): hear the oscillatory terms of Riemann’s explicit formula and compare a finite reconstruction against the prime-power staircase. The November 2026 proof announcement motivates the experiment; it is not a validation of the proof.
 
 **The Geometry of Computation** ([open the instrument](https://mitpress.vercel.app/nine-fourths)): edit integer matrices, compare exact classical and Strassen work counts, and listen to the resulting matrix. The nine-fourths exponent is a theoretical reference, not a browser algorithm.
