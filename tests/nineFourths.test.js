@@ -81,3 +81,10 @@ test("shared grouping preserves operations and bounds audio",()=>{
   assert.throws(()=>processFrames([{kind:"other"}],1),RangeError);
   assert.throws(()=>processNotes({order:["add"]},0),RangeError);
 });
+
+test("negative times zero yields the same integer matrix",()=>{
+  const a=[[-1,-2],[-3,-4]], b=[[0,0],[0,0]];
+  for(const algorithm of ["classical","strassen"]){
+    assert.deepEqual(multiply(a,b,algorithm,{trace:true}).result,b);
+  }
+});
