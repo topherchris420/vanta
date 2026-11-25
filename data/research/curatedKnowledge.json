@@ -382,8 +382,8 @@
     {
       "id": "app-drr-framework",
       "title": "Dynamic Resonance Rooting (software)",
-      "abstract": "The Python implementation of DRR, with a validation substrate of synthetic ground truth, specification and leakage tests, surrogate inference, and a preregistered external comparison on the NOAA quasi-biennial oscillation series, whose recorded verdict is not_supported.",
-      "date": "2026-09-25",
+      "abstract": "The open-source Python implementation of DRR, with synthetic ground truth, specification and leakage tests, surrogate inference, a claim-status evidence ledger, and three preregistered external evaluations (NOAA QBO disruptions, cryptocurrency returns, and lead–lag breakdown), all not supported. The November 25, 2026 update adds a public v3 reconstruction module for prewhitened rooting and spectral excess, registered protocol, machine-readable results and a dedicated CI replay workflow. The reconstructed operators are not yet part of the main analysis API. Diagnostics do not establish causation or validated real-world prediction.",
+      "date": "2026-11-25",
       "authors": [
         "Christopher Woodyard"
       ],
@@ -1138,6 +1138,43 @@
         "Qubit",
         "Quantum Teleportation"
       ]
+    },
+    {
+      "id": "paper-drr-calibrated-2026",
+      "title": "Dynamic Resonance Rooting: Calibrated Resonance and Lead–Lag Diagnostics for Complex Adaptive Systems",
+      "abstract": "The November 25, 2026 manuscript establishes spectral sufficiency in distribution for gain- and offset-invariant scores of stationary Gaussian processes, defines a spectral-excess test against a fitted monotone spectral continuum, and studies prewhitened lead–lag diagnostics. In the original simulations, spectral excess had measured false-alarm rates of 3.7–6.7% across 1,500 null series and 80% detection of a −9 dB line in AR(0.9) noise; exact-lag recovery improved from 40.3% to 100% at phi = 0.9, 512 samples and coupling 0.3. A registered reconstruction after loss of original scripts reproduced all 12 registered findings; none of 123 Monte Carlo rate comparisons differed significantly after Holm correction, which does not establish equivalence. All three preregistered external claims were not supported. The theoretical family-wise error bound requires circular stationarity and mutual independence; empirical calibration has narrower tested boundaries. Open manuscript; not peer reviewed.",
+      "date": "2026-11-25",
+      "authors": [
+        "Christopher Woodyard"
+      ],
+      "source": "GitHub / Vers3Dynamics (research preprint)",
+      "url": "https://github.com/topherchris420/dynamic-resonance-rooting/blob/main/paper/drr-v3/main.pdf",
+      "tags": [
+        "Complex Systems & Signals",
+        "Preprint",
+        "Dynamic Resonance Rooting",
+        "Time Series"
+      ],
+      "entities": [
+        "Dynamic Resonance Rooting",
+        "Resonance Depth",
+        "Lead–Lag Analysis",
+        "Surrogate Testing",
+        "Preregistration",
+        "Spectral Excess",
+        "Prewhitening",
+        "Statistical Calibration"
+      ],
+      "practice": [
+        "drr"
+      ],
+      "relations": [
+        {
+          "target": "app-drr-framework",
+          "type": "USES",
+          "basis": "The November manuscript cites the DRR software and links to its committed studies and public reconstruction."
+        }
+      ]
     }
   ],
   "graph": {
@@ -1702,7 +1739,7 @@
         "id": "concept-dynamic-resonance-rooting",
         "label": "Dynamic Resonance Rooting",
         "type": "Concept",
-        "val": 19,
+        "val": 22,
         "group": "Complex Systems & Signals",
         "provenance": "Local Index",
         "x": 132.27,
@@ -1846,7 +1883,7 @@
         "id": "concept-resonance-depth",
         "label": "Resonance Depth",
         "type": "Concept",
-        "val": 10,
+        "val": 13,
         "group": "Complex Systems & Signals",
         "provenance": "Local Index",
         "x": 174.88,
@@ -1857,7 +1894,7 @@
         "id": "concept-lead-lag-analysis",
         "label": "Lead–Lag Analysis",
         "type": "Concept",
-        "val": 13,
+        "val": 16,
         "group": "Complex Systems & Signals",
         "provenance": "Local Index",
         "x": 90.65,
@@ -2037,8 +2074,8 @@
         "document": {
           "id": "app-drr-framework",
           "title": "Dynamic Resonance Rooting (software)",
-          "abstract": "The Python implementation of DRR, with a validation substrate of synthetic ground truth, specification and leakage tests, surrogate inference, and a preregistered external comparison on the NOAA quasi-biennial oscillation series, whose recorded verdict is not_supported.",
-          "date": "2026-09-25",
+          "abstract": "The open-source Python implementation of DRR, with synthetic ground truth, specification and leakage tests, surrogate inference, a claim-status evidence ledger, and three preregistered external evaluations (NOAA QBO disruptions, cryptocurrency returns, and lead–lag breakdown), all not supported. The November 25, 2026 update adds a public v3 reconstruction module for prewhitened rooting and spectral excess, registered protocol, machine-readable results and a dedicated CI replay workflow. The reconstructed operators are not yet part of the main analysis API. Diagnostics do not establish causation or validated real-world prediction.",
+          "date": "2026-11-25",
           "authors": [
             "Christopher Woodyard"
           ],
@@ -2074,7 +2111,7 @@
         "id": "concept-surrogate-testing",
         "label": "Surrogate Testing",
         "type": "Concept",
-        "val": 10,
+        "val": 13,
         "group": "Complex Systems & Signals",
         "provenance": "Local Index",
         "x": 254.22,
@@ -2085,7 +2122,7 @@
         "id": "concept-preregistration",
         "label": "Preregistration",
         "type": "Concept",
-        "val": 10,
+        "val": 13,
         "group": "Complex Systems & Signals",
         "provenance": "Local Index",
         "x": 169.99,
@@ -4634,6 +4671,87 @@
         "x": -139.19,
         "y": -290.27,
         "z": 298.33
+      },
+      {
+        "id": "paper-drr-calibrated-2026",
+        "label": "Dynamic Resonance Rooting: Calibrated Resonance and Lead–Lag Diagnostics for Complex Adaptive Systems",
+        "type": "Paper",
+        "val": 32,
+        "group": "Complex Systems & Signals",
+        "provenance": "Source Verified",
+        "document": {
+          "id": "paper-drr-calibrated-2026",
+          "title": "Dynamic Resonance Rooting: Calibrated Resonance and Lead–Lag Diagnostics for Complex Adaptive Systems",
+          "abstract": "The November 25, 2026 manuscript establishes spectral sufficiency in distribution for gain- and offset-invariant scores of stationary Gaussian processes, defines a spectral-excess test against a fitted monotone spectral continuum, and studies prewhitened lead–lag diagnostics. In the original simulations, spectral excess had measured false-alarm rates of 3.7–6.7% across 1,500 null series and 80% detection of a −9 dB line in AR(0.9) noise; exact-lag recovery improved from 40.3% to 100% at phi = 0.9, 512 samples and coupling 0.3. A registered reconstruction after loss of original scripts reproduced all 12 registered findings; none of 123 Monte Carlo rate comparisons differed significantly after Holm correction, which does not establish equivalence. All three preregistered external claims were not supported. The theoretical family-wise error bound requires circular stationarity and mutual independence; empirical calibration has narrower tested boundaries. Open manuscript; not peer reviewed.",
+          "date": "2026-11-25",
+          "authors": [
+            "Christopher Woodyard"
+          ],
+          "source": "GitHub / Vers3Dynamics (research preprint)",
+          "url": "https://github.com/topherchris420/dynamic-resonance-rooting/blob/main/paper/drr-v3/main.pdf",
+          "tags": [
+            "Complex Systems & Signals",
+            "Preprint",
+            "Dynamic Resonance Rooting",
+            "Time Series"
+          ],
+          "entities": [
+            "Dynamic Resonance Rooting",
+            "Resonance Depth",
+            "Lead–Lag Analysis",
+            "Surrogate Testing",
+            "Preregistration",
+            "Spectral Excess",
+            "Prewhitening",
+            "Statistical Calibration"
+          ],
+          "practice": [
+            "drr"
+          ],
+          "relations": [
+            {
+              "target": "app-drr-framework",
+              "type": "USES",
+              "basis": "The November manuscript cites the DRR software and links to its committed studies and public reconstruction."
+            }
+          ]
+        },
+        "x": 133.82,
+        "y": -354.08,
+        "z": -155.17
+      },
+      {
+        "id": "concept-spectral-excess",
+        "label": "Spectral Excess",
+        "type": "Concept",
+        "val": 10,
+        "group": "Complex Systems & Signals",
+        "provenance": "Local Index",
+        "x": 265.14,
+        "y": -305.55,
+        "z": -255.17
+      },
+      {
+        "id": "concept-prewhitening",
+        "label": "Prewhitening",
+        "type": "Concept",
+        "val": 10,
+        "group": "Complex Systems & Signals",
+        "provenance": "Local Index",
+        "x": 195.64,
+        "y": -490.75,
+        "z": -47.17
+      },
+      {
+        "id": "concept-statistical-calibration",
+        "label": "Statistical Calibration",
+        "type": "Concept",
+        "val": 10,
+        "group": "Complex Systems & Signals",
+        "provenance": "Local Index",
+        "x": -6.93,
+        "y": -430.17,
+        "z": -271.17
       }
     ],
     "edges": [
@@ -6339,6 +6457,69 @@
         "verified": true
       },
       {
+        "source": "paper-drr-calibrated-2026",
+        "target": "author-christopher-woodyard",
+        "relationship": "USES",
+        "weight": 0.8,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-dynamic-resonance-rooting",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-resonance-depth",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-lead-lag-analysis",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-surrogate-testing",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-preregistration",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-spectral-excess",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-prewhitening",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "concept-statistical-calibration",
+        "relationship": "BUILDS_ON",
+        "weight": 0.7,
+        "verified": true
+      },
+      {
         "source": "zenodo-temporal-relocalization",
         "target": "zenodo-location-dynamic-variable",
         "relationship": "EXTENDS",
@@ -6449,6 +6630,14 @@
         "weight": 0.95,
         "verified": true,
         "basis": "The manuscript lives in its reading corpus (papers/)."
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "app-drr-framework",
+        "relationship": "USES",
+        "weight": 0.95,
+        "verified": true,
+        "basis": "The November manuscript cites the DRR software and links to its committed studies and public reconstruction."
       },
       {
         "source": "zenodo-location-dynamic-variable",
@@ -6563,6 +6752,13 @@
         "verified": false
       },
       {
+        "source": "paper-drr-calibrated-2026",
+        "target": "zenodo-riemann-recursive-resonance",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
         "source": "zenodo-rrs",
         "target": "zenodo-resonant-friction",
         "relationship": "CITES",
@@ -6572,6 +6768,13 @@
       {
         "source": "zenodo-rrs",
         "target": "zenodo-ions-x",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "zenodo-rrs",
         "relationship": "CITES",
         "weight": 0.5,
         "verified": false
@@ -6591,6 +6794,27 @@
         "verified": false
       },
       {
+        "source": "paper-drr-calibrated-2026",
+        "target": "zenodo-resonant-friction",
+        "relationship": "BUILDS_ON",
+        "weight": 0.85,
+        "verified": false
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "zenodo-ions-x",
+        "relationship": "CITES",
+        "weight": 0.5,
+        "verified": false
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "osf-drr",
+        "relationship": "BUILDS_ON",
+        "weight": 1,
+        "verified": false
+      },
+      {
         "source": "app-drr-framework",
         "target": "paper-resonant-intelligence",
         "relationship": "BUILDS_ON",
@@ -6601,6 +6825,13 @@
         "source": "paper-resonant-intelligence",
         "target": "app-pordenone",
         "relationship": "EXTENDS",
+        "weight": 0.85,
+        "verified": false
+      },
+      {
+        "source": "paper-drr-calibrated-2026",
+        "target": "paper-resonant-intelligence",
+        "relationship": "BUILDS_ON",
         "weight": 0.85,
         "verified": false
       },

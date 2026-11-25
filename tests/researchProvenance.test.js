@@ -90,3 +90,25 @@ test('the stored graph is the graph the documents produce', () => {
   );
   assert.equal(graph.edges.length, rebuilt.edges.length);
 });
+
+
+test('DRR exposes the current manuscript and reconstruction without rewriting the historical OSF record', () => {
+  const original = byId.get('osf-drr');
+  const current = byId.get('paper-drr-calibrated-2026');
+  const software = byId.get('app-drr-framework');
+  assert.equal(original.doi, '10.17605/osf.io/32ag9');
+  assert.equal(current.date, '2026-11-25');
+  assert.match(current.url, /\/paper\/drr-v3\/main\.pdf$/);
+  assert.match(current.abstract, /12 registered findings/);
+  assert.match(current.abstract, /does not establish equivalence/);
+  assert.match(current.abstract, /three preregistered external claims were not supported/i);
+  assert.match(software.abstract, /not yet part of the main analysis API/);
+  assert.ok(graph.edges.some((edge) => edge.source === current.id &&
+    edge.target === software.id && edge.verified && edge.basis));
+  const work = practice.works.find((entry) => entry.id === 'drr');
+  assert.ok(work.evidence.some((entry) => entry.href === current.url));
+  assert.ok(work.evidence.some((entry) => entry.href.includes('/v3_reconstruction/README.md')));
+  assert.ok(work.evidence.some((entry) => entry.href.includes('/v3_reconstruction/protocol.json')));
+  assert.match(work.detail, /not equivalence/);
+  assert.match(work.detail, /3\/3 external claims not supported/);
+});
