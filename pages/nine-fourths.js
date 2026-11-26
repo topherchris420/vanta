@@ -192,7 +192,7 @@ export default function NineFourths() {
         </div>
       </section>
       <section className="panel"><p className="eyebrow">03 / A LIMIT, NOT A LIBRARY</p><h2>Beyond the instrument</h2>
-        <p>Classical multiplication scales as n³; Strassen uses seven recursive products in place of eight. The paper reports the asymptotic exponent 9/4 over every field. This does not supply a browser implementation with that exponent.</p>
+        <p>Classical multiplication scales as n³; Strassen uses seven recursive products in place of eight. OpenAI’s <a href="https://github.com/openai/math/blob/main/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf">November 24 preprint</a> reports that the asymptotic arithmetic exponent for square matrices is 9/4 over every field. This instrument counts scalar operations for classical multiplication and Strassen at the selected size. It neither implements the preprint’s construction nor measures running time.</p>
         <p>Tensor-network research studies how shared indices and contraction structure determine computational work. Here the output-row melody is identical for either algorithm, but the process sonification exposes the different arithmetic traces. The sound mapping is an artistic convention, not a physical acoustic property of computation.</p>
         <p><a href="https://github.com/topherchris420/rain-atlas">R.A.I.N. ATLAS</a> · <a href="https://github.com/topherchris420/dynamic-resonance-rooting">DRR</a></p>
       </section>
