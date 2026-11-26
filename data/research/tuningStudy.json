@@ -1,0 +1,325 @@
+{
+  "schema": "vanta-tuning-study/v1",
+  "revision": "384848cf21a06a8d34a5e9b5713fdeb2af9f4f47",
+  "experiment": "experiments/results/tuning-control-magnitude",
+  "seed": 1,
+  "windowMs": 18000,
+  "conditions": [
+    {
+      "id": "graded",
+      "runId": "graded-01",
+      "file": "runs/graded-01.trace.json.gz",
+      "traceSha256": "eb420b33cedf925e29bb61c0dc2f9e5f3d8caf1017b222b7317dff4afe318026",
+      "turns": [
+        [
+          0,
+          1083,
+          "up",
+          "long"
+        ],
+        [
+          1650,
+          2183,
+          "up",
+          "short"
+        ],
+        [
+          2500,
+          3033,
+          "up",
+          "short"
+        ],
+        [
+          3450,
+          3650,
+          "up",
+          "tap"
+        ],
+        [
+          3950,
+          4150,
+          "up",
+          "tap"
+        ]
+      ],
+      "overshoots": [],
+      "lockMs": 5550,
+      "runTotals": {
+        "inputs": 20,
+        "locks": 4,
+        "overshoots": 0
+      }
+    },
+    {
+      "id": "long",
+      "runId": "long-01",
+      "file": "runs/long-01.trace.json.gz",
+      "traceSha256": "fc7297d71543d95aeae70e4b88e9b121d4d2f57db9c686d47c55fa7148e4c300",
+      "turns": [
+        [
+          0,
+          1083,
+          "up",
+          "long"
+        ],
+        [
+          1650,
+          2733,
+          "up",
+          "long"
+        ],
+        [
+          3050,
+          4133,
+          "up",
+          "long"
+        ],
+        [
+          4550,
+          5633,
+          "down",
+          "long"
+        ],
+        [
+          5933,
+          7017,
+          "down",
+          "long"
+        ],
+        [
+          7317,
+          8400,
+          "up",
+          "long"
+        ],
+        [
+          8683,
+          9767,
+          "up",
+          "long"
+        ],
+        [
+          10067,
+          11150,
+          "down",
+          "long"
+        ],
+        [
+          11483,
+          12567,
+          "down",
+          "long"
+        ],
+        [
+          12850,
+          13933,
+          "up",
+          "long"
+        ],
+        [
+          14267,
+          15350,
+          "up",
+          "long"
+        ],
+        [
+          15650,
+          16733,
+          "down",
+          "long"
+        ],
+        [
+          17067,
+          18000,
+          "down",
+          "long"
+        ]
+      ],
+      "overshoots": [
+        2483,
+        6450,
+        8150,
+        12000,
+        13683,
+        17583
+      ],
+      "lockMs": null,
+      "runTotals": {
+        "inputs": 307,
+        "locks": 0,
+        "overshoots": 153
+      }
+    },
+    {
+      "id": "tap",
+      "runId": "tap-01",
+      "file": "runs/tap-01.trace.json.gz",
+      "traceSha256": "b3a65587558e40b08698376daebd86080243c1a722224411aabf881d043a2507",
+      "turns": [
+        [
+          0,
+          200,
+          "up",
+          "tap"
+        ],
+        [
+          767,
+          967,
+          "up",
+          "tap"
+        ],
+        [
+          1283,
+          1483,
+          "up",
+          "tap"
+        ],
+        [
+          1900,
+          2100,
+          "up",
+          "tap"
+        ],
+        [
+          2400,
+          2600,
+          "up",
+          "tap"
+        ],
+        [
+          2900,
+          3100,
+          "up",
+          "tap"
+        ],
+        [
+          3383,
+          3583,
+          "up",
+          "tap"
+        ],
+        [
+          3883,
+          4083,
+          "up",
+          "tap"
+        ],
+        [
+          4417,
+          4617,
+          "up",
+          "tap"
+        ],
+        [
+          4900,
+          5100,
+          "up",
+          "tap"
+        ],
+        [
+          5433,
+          5633,
+          "up",
+          "tap"
+        ],
+        [
+          5933,
+          6133,
+          "up",
+          "tap"
+        ],
+        [
+          6467,
+          6667,
+          "up",
+          "tap"
+        ],
+        [
+          7000,
+          7200,
+          "up",
+          "tap"
+        ],
+        [
+          7517,
+          7717,
+          "up",
+          "tap"
+        ],
+        [
+          8117,
+          8317,
+          "up",
+          "tap"
+        ],
+        [
+          8750,
+          8950,
+          "up",
+          "tap"
+        ],
+        [
+          9367,
+          9567,
+          "up",
+          "tap"
+        ],
+        [
+          9850,
+          10050,
+          "up",
+          "tap"
+        ],
+        [
+          10450,
+          10650,
+          "up",
+          "tap"
+        ],
+        [
+          10983,
+          11183,
+          "up",
+          "tap"
+        ],
+        [
+          11667,
+          11867,
+          "up",
+          "tap"
+        ],
+        [
+          12167,
+          12367,
+          "up",
+          "tap"
+        ],
+        [
+          12667,
+          12867,
+          "up",
+          "tap"
+        ],
+        [
+          13250,
+          13450,
+          "up",
+          "tap"
+        ],
+        [
+          13717,
+          13917,
+          "up",
+          "tap"
+        ]
+      ],
+      "overshoots": [],
+      "lockMs": 15317,
+      "runTotals": {
+        "inputs": 104,
+        "locks": 4,
+        "overshoots": 0
+      }
+    }
+  ]
+}

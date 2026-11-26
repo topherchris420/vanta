@@ -1,0 +1,34 @@
+.study { margin: auto; max-width: 54rem; padding: clamp(1rem, 4vw, 3.5rem); color: #eef2f4; line-height: 1.55; }
+.study nav, .small, .axis { color: #b3bec4; font-size: .9rem; }
+.study a { color: #a2ebd8; text-underline-offset: .22em; }
+.study a:focus-visible, .study button:focus-visible { outline: 2px solid #f9e9ad; outline-offset: 3px; }
+.study h2 { margin: 0 0 .35rem; font-size: 1.25rem; }
+.header { margin: 3rem 0 1.6rem; }
+.header h1 { margin: .2rem 0 .6rem; font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; letter-spacing: -.05em; }
+.header > p:last-child { max-width: 31rem; font-size: 1.12rem; }
+.eyebrow { letter-spacing: .16em; color: #a2ebd8; font-size: .7rem; font-weight: 600; }
+.listen { padding: 1rem 0 1.1rem; border-block: 1px solid #36424b; margin-bottom: 1.6rem; }
+.listen audio { width: min(100%, 29rem); margin-top: .65rem; display: block; }
+.buttons { display: flex; gap: .45rem; flex-wrap: wrap; }
+.buttons button { border: 1px solid #657680; background: #1c252b; color: #eef2f4; border-radius: .35rem; min-height: 44px; padding: .4rem .8rem; }
+.buttons button[aria-pressed="true"] { background: #a2ebd8; color: #072019; border-color: #a2ebd8; }
+.lane { border: 1px solid #36424b; border-radius: .45rem; padding: .65rem; margin: .55rem 0; background: #131c22; }
+.lane.active { border-color: #a2ebd8; }
+.lane figcaption { display: flex; justify-content: space-between; gap: .4rem; flex-wrap: wrap; font-size: .95rem; }
+.lane figcaption span { color: #c2ccd2; }
+.lane svg { display: block; width: 100%; margin-top: .35rem; }
+.tick { fill: #c2ccd2; font-size: 14px; }
+.tick line { stroke: #415059; }
+.up { fill: #9be8d2; } .down { fill: #b9b8fa; } .loss { fill: #ffd29a; }
+.lock { fill: none; stroke: #f3f8fc; stroke-width: 3; }
+.cursor { stroke: #fff; stroke-width: 2; }
+.axis { margin-top: .15rem; text-align: right; }
+.results { margin-block: 1.45rem; }
+.results table { width: min(100%, 35rem); border-collapse: collapse; text-align: left; }
+.results caption { text-align: left; padding: .3rem 0 .6rem; }
+.results th, .results td { border-bottom: 1px solid #36424b; padding: .45rem .5rem; }
+.study footer { margin-top: 1.8rem; border-top: 1px solid #36424b; }
+@media (max-width: 520px) {
+  .tick { font-size: 22px; }
+  .results th, .results td { padding-inline: .3rem; }
+}
