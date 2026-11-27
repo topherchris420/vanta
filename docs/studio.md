@@ -5,6 +5,10 @@
 instrument of its own, and a computer you can sit down at. The home page and `/research`
 are unchanged and work without it. The studio is one more way in.
 
+![Chrisw reading at the desk beneath the five-piece enamel mobile, with a terrace maple beyond the glass.](screenshots/studio/entrance.webp)
+
+Four brass pivots carry the five enamel shapes above the Hall. Their motion pauses with reduced motion enabled. Potted maples on the north and west terraces frame the lake from the Hall and Library.
+
 ## The audit
 
 The studio began with a read of the existing site. This is what it found, and what the

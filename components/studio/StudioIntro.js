@@ -9,35 +9,28 @@ export default function StudioIntro({ onEnter, onTour, soundControl, webgl }) {
       <div className={styles.introInner}>
         <p className={styles.introLabel}>
           <HorizonMark className={styles.introMark} />
-          Christopher Woodyard / the studio
+          VANTA <span aria-hidden="true">/</span> Christopher Woodyard
         </p>
-        <h1 id="studio-title" className={styles.introTitle}>
-          VANTA
-        </h1>
-        <p className={styles.introTagline}>Five notes. One chord.</p>
+        <h1 id="studio-title" className={styles.introTitle}>The studio</h1>
         <p className={styles.introLede}>
-          Explore as Chrisw, Christopher Woodyard’s avatar. Shape sound at the workbench, visit a simulation, or follow a work back to its
-          source. Five rooms, five ways to explore one artistic practice. Choose what interests you;
-          what you touch should lead somewhere you can hear, see, or check.
+          Five notes. One chord. Walk the rooms as Chrisw, from the Library shelves to the keyboard in the Recording Studio.
         </p>
         <div className={styles.introActions}>
           <button type="button" className={styles.primary} onClick={onEnter} autoFocus>
-            Enter the Studio
+            Enter the Studio <span className={styles.entryArrow} aria-hidden="true" />
           </button>
-          <a className={styles.secondary} href="/">
-            Explore the Original Portfolio
-          </a>
-          <a className={styles.secondary} href="/riemann">The Music of the Primes</a>
-          <button type="button" className={styles.textButton} onClick={onTour}>
-            Guided Tour
-          </button>
+          <button type="button" className={styles.tourLink} onClick={onTour}>Guided Tour</button>
         </div>
+        <nav className={styles.introLinks} aria-label="Elsewhere in Vanta">
+          <a href="/">Explore the Original Portfolio</a>
+          <a href="/riemann">The Music of the Primes</a>
+        </nav>
         <div className={styles.introFoot}>
           {soundControl}
           <p className={styles.introHint}>
             {webgl === "fallback"
               ? "This browser cannot draw the 3D studio, so it opens as a text index with every room, instrument and work."
-              : "Walk with WASD or the arrow keys, drag to look, click what you want to use. On a phone, use the pad and tap. Silent until you switch sound on."}
+              : "WASD or arrows to walk. Drag to look. On touchscreens, use the pad and tap."}
           </p>
         </div>
       </div>
