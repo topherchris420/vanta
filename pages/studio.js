@@ -63,6 +63,7 @@ export default function Studio({ documents, notes }) {
   const [webgl, setWebgl] = useState("pending");
   const [apiReady, setApiReady] = useState(false);
   const [tierId, setTierId] = useState(null);
+  const [avatarView, setAvatarView] = useState(true);
   const [tierChoice, setTierChoice] = useState("auto");
   const [phase, setPhase] = useState("intro");
   const [mode, setMode] = useState("walk");
@@ -584,6 +585,7 @@ export default function Studio({ documents, notes }) {
 
   const stageEvents = {
     onReady: (scene) => {
+      scene.setAvatarView(avatarView);
       setWebgl("active");
       setApiReady(true);
       // Browser checks drive the camera through this; visitors never need it.
@@ -712,6 +714,8 @@ export default function Studio({ documents, notes }) {
             onToggle={toggleOverlay}
             tierChoice={tierChoice}
             onTier={onTier}
+            avatarView={avatarView}
+            onAvatarView={(enabled) => { setAvatarView(enabled); api()?.setAvatarView(enabled); }}
             touch={env.touch}
             showPrompt={mode === "walk" && live}
             canMap={live}

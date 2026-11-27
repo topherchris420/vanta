@@ -89,6 +89,8 @@ export default function StudioHud({
   onToggle,
   tierChoice,
   onTier,
+  avatarView,
+  onAvatarView,
   touch,
   showPrompt,
   canMap = true,
@@ -175,6 +177,13 @@ export default function StudioHud({
             <div><dt>Leave</dt><dd>Escape, or Back to the studio, always returns you to your feet.</dd></div>
             <div><dt>Lost?</dt><dd>The map sends you to any room; the index lists everything as text.</dd></div>
           </dl>
+          {canMap && <div className={styles.control}>
+            <label htmlFor="studio-view">Walking view</label>
+            <select id="studio-view" value={avatarView ? "avatar" : "eyes"} onChange={(event) => onAvatarView(event.target.value === "avatar")}>
+              <option value="avatar">Over Chrisw’s shoulder</option>
+              <option value="eyes">Through Chrisw’s eyes</option>
+            </select>
+          </div>}
           <div className={styles.control}>
             <label htmlFor="studio-quality">Graphics</label>
             <select id="studio-quality" value={tierChoice} onChange={(event) => onTier(event.target.value)}>
