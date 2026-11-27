@@ -208,6 +208,11 @@ export default function ResearchExplorer() {
           {DISCIPLINES.length - 1} disciplines
         </div>
         <div className={styles.workbenchActions}>
+          {/* Use a full navigation so the atlas's debounced search URL
+              cannot replace the experiment URL during a client transition. */}
+          <a href="/research/sum-first" className={styles.experimentLink}>
+            Try Sum First <span aria-hidden="true">↗</span>
+          </a>
           <button type="button" onClick={shareSearch}>
             Copy search link ↗
           </button>
