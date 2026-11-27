@@ -1307,3 +1307,14 @@
 .experimentLink:focus-visible {
   color: var(--signal);
 }
+
+.replayEntry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1rem;
+  padding: .7rem clamp(1rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted-bright);
+  font-size: .85rem;
+}
+.replayEntry a { color: var(--signal); text-underline-offset: .2em; }
