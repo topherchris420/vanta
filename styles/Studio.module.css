@@ -407,9 +407,10 @@
   display: flex;
   align-items: flex-end;
   padding: clamp(1.5rem, 5vw, 4.5rem);
+  overflow-y: auto;
   background:
-    linear-gradient(90deg, rgba(5, 8, 6, 0.92) 0%, rgba(5, 8, 6, 0.7) 34%, rgba(5, 8, 6, 0.1) 70%, transparent 100%),
-    linear-gradient(0deg, rgba(5, 8, 6, 0.7) 0%, transparent 40%);
+    linear-gradient(90deg, #111710ec, #141710a6 31%, transparent 66%),
+    linear-gradient(0deg, #120f0bbd, transparent 62%);
   animation: rise 900ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
 }
 
@@ -431,74 +432,93 @@
 }
 
 .introInner {
-  max-width: 40rem;
+  width: min(100%, 25rem);
+  margin-block: auto 0;
+  color: #fff5e5;
 }
 
 .introLabel {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin: 0 0 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
+  gap: 0.65rem;
+  margin: 0 0 0.9rem;
+  font: 500 0.74rem/1.4 var(--font-mono);
+  color: #eee3d1;
 }
 
-.introMark {
-  width: 2.2rem;
-  height: auto;
-}
+.introLabel span { color: #dec290; }
+.introMark { width: 1.85rem; height: auto; }
 
 .introTitle {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(4rem, min(14vw, 22vh), 10.5rem);
-  font-weight: 800;
-  line-height: 0.86;
-  letter-spacing: 0.02em;
-}
-
-.introTagline {
-  margin: 0.4rem 0 1.4rem;
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
-  font-weight: 700;
-  color: var(--signal);
+  font: 400 clamp(4rem, 7.8vw, 7.5rem)/0.98 Georgia, "Times New Roman", serif;
+  letter-spacing: -0.065em;
+  color: #fff4e1;
 }
 
 .introLede {
-  max-width: 34rem;
-  margin: 0 0 1.8rem;
-  font-size: 1.04rem;
-  line-height: 1.6;
-  color: var(--muted-bright);
+  max-width: 31ch;
+  margin: 1.1rem 0 1.5rem;
+  font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  line-height: 1.55;
+  color: #f0e9db;
 }
 
-.introActions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.8rem 1.2rem;
+.introActions, .introLinks, .introFoot { display: flex; align-items: center; flex-wrap: wrap; }
+.introActions { gap: 0.6rem 1.35rem; }
+
+.introActions .primary {
+  gap: 1rem;
+  border-color: #f1d8a5;
+  background: #f1d8a5;
+  color: #202019;
 }
 
-.introFoot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.8rem 1.2rem;
-  margin-top: 1.6rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--panel-line);
+.introActions .primary:hover { background: #ffedc8; }
+.entryArrow {
+  width: 0.7em;
+  height: 0.7em;
+  border-top: 1.6px solid currentColor;
+  border-right: 1.6px solid currentColor;
+  position: relative;
+}
+.entryArrow::after {
+  position: absolute; content: ""; width: 0.87em; height: 1.6px;
+  background: currentColor; right: 0; top: 0; transform-origin: right center; transform: rotate(-45deg);
+}
+.introFoot .soundControl { flex-shrink: 0; white-space: nowrap; }
+
+.tourLink, .introLinks a {
+  border: 0;
+  padding: 0.6rem 0;
+  background: transparent;
+  color: #f2e8d8;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: #b8a48c;
+  text-underline-offset: 0.29em;
+  cursor: pointer;
 }
 
-.introHint {
-  flex: 1 1 18rem;
-  margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.5;
-  color: var(--muted);
+.introLinks { gap: 1.3rem; margin-top: 0.65rem; font-size: 0.83rem; }
+.introFoot { flex-wrap: nowrap; gap: 1rem; margin-top: 1rem; border-top: 1px solid #dac6a952; padding-top: 0.9rem; }
+.introHint { margin: 0; font-size: 0.77rem; line-height: 1.45; color: #e4dbcb; }
+
+@media (max-width: 620px) {
+  .intro {
+    padding: 1.4rem max(1.35rem, env(safe-area-inset-right)) max(1.35rem, env(safe-area-inset-bottom)) max(1.35rem, env(safe-area-inset-left));
+    background: linear-gradient(0deg, #10160ff7 10%, #10160fd9 36%, #15161088 52%, transparent 69%);
+  }
+  .introLinks { column-gap: 0.95rem; row-gap: 0; font-size: 0.77rem; }
+  .introLabel { margin-bottom: 0.6rem; }
+  .introLede { margin: 0.7rem 0 0.95rem; }
+  .introFoot { margin-top: 0.45rem; padding-top: 0.6rem; }
+}
+
+@media (max-height: 510px) {
+  .intro { align-items: flex-start; padding-block: 1rem; }
+  .introTitle { font-size: 3.2rem; }
+  .introLede { margin-block: 0.5rem; }
 }
 
 /* ------------------------------------------------------------------ HUD */
