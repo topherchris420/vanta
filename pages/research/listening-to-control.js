@@ -13,9 +13,13 @@ const x = (ms) => 42 + (ms / study.windowMs) * 670;
 const eventTime = (ms) => `${(ms / 1000).toFixed(3)} s`;
 
 function EventTranscript({ run }) {
+  const cutoff = run.lockMs ?? study.windowMs;
   const events = [
     ...run.turns.map(([start, end, direction]) => ({
-      start, label: `Turn ${direction} from ${eventTime(start)} to ${eventTime(end)}.`,
+      start,
+      label: end === cutoff
+        ? `Turn ${direction} from ${eventTime(start)} through the excerpt cutoff at ${eventTime(end)}.`
+        : `Turn ${direction} from ${eventTime(start)} to ${eventTime(end)}.`,
     })),
     ...run.overshoots.map((start) => ({
       start, label: `Alignment lost at ${eventTime(start)}.`,
@@ -88,7 +92,7 @@ export default function ListeningToControl() {
       </section>
       <section aria-labelledby="first-terminal">
         <h2 id="first-terminal">The first terminal</h2>
-        <p className={styles.small}>Same seed, first 18 simulated seconds, aligned to the first turn. Each bar lasts as long as the input was held. Diamonds mark lost alignment; a check marks the lock. After the lock chord, the track stays silent so all three clips share the same timeline.</p>
+        <p className={styles.small}>Same seed, first 18 simulated seconds, aligned to the first turn. Each bar shows the part of a held input captured in the excerpt. Diamonds mark lost alignment; a check marks the lock. After the lock chord, the track stays silent so all three clips share the same timeline.</p>
         {study.conditions.map((r) => <Lane key={r.id} run={r} active={r.id === selected} cursor={cursor} />)}
         <p className={styles.axis}>Simulated seconds since first turn</p>
       </section>
