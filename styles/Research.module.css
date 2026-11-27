@@ -1292,3 +1292,18 @@
     height: 1.2em;
   }
 }
+
+.experimentLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  color: var(--paper);
+  font: 700 0.76rem var(--font-mono);
+  text-underline-offset: 0.2em;
+}
+
+.experimentLink:hover,
+.experimentLink:focus-visible {
+  color: var(--signal);
+}
