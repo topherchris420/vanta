@@ -161,9 +161,8 @@ The studio is a creative loft in the last hour of afternoon light.
 - In the Recording Studio, the 25-note keyboard has full-size keys, a sloped instrument
   panel and four working knobs. The monitor cones travel along their voice coils. The
   turntable cues its stylus into the lead-in, tracks inward at 33⅓ rpm and lifts before
-  returning to its rest. Platter phase follows the recording's playhead. The cover beside
-  it is Christopher's *Green Machine* painting. On a narrow screen the camera pulls
-  back to keep the deck and sleeve together, or to show both ends of the keyboard.
+  returning to its rest. Platter phase follows the recording's playhead. On a narrow screen the camera
+  pulls back to keep the deck and sleeve together, or to show both ends of the keyboard.
 - The gallery's track heads aim at the displayed works. A floating frame leaves a shadow
   gap around the impasto portrait. A shallow bump map derived from the painting photograph
   approximates brush relief. The two paper mounts have bevelled openings and mitred wood
