@@ -1,6 +1,6 @@
 const assert = require("node:assert/strict");
 const { test } = require("node:test");
-const { compareSums, MAX_TERMS, SCALES } = require("../lib/sumFirst");
+const { chartLayout, compareSums, MAX_TERMS, SCALES } = require("../lib/sumFirst");
 
 test("example finishes the finite sum and expands only the phase for comparison", () => {
   const { sumFirst, expandFirst } = compareSums(16, MAX_TERMS);
@@ -34,5 +34,17 @@ test("complex series agrees with Li₂(−i), independently splitting even and o
 test("cutoff and scale are bounded before allocating arrays", () => {
   for (const [scale, n] of [[NaN, 1], [0, 1], [-2, 1], [1, 0], [1, 1.5], [1, MAX_TERMS + 1]]) {
     assert.throws(() => compareSums(scale, n), RangeError);
+  }
+});
+
+test("chart uses responsive pixel coordinates and leaves room for the longest tick on phones", () => {
+  for (const width of [248, 328, 690]) {
+    const { x, y, left, right, bottom, top, ticks } = chartLayout(width);
+    assert.equal(x(1), left);
+    assert.equal(x(MAX_TERMS), right);
+    assert.equal(y(0), bottom);
+    assert.equal(y(11), top);
+    for (let i = 1; i < ticks.length; i++) assert.ok(x(ticks[i]) - x(ticks[i - 1]) >= 44);
+    assert.equal(ticks.at(-1), MAX_TERMS);
   }
 });

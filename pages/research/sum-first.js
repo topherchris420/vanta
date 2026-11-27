@@ -1,16 +1,13 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import sums from "../../lib/sumFirst";
 import styles from "../../styles/SumFirst.module.css";
 import HorizonMark from "../../components/HorizonMark";
 
-const { compareSums, MAX_TERMS, SCALES } = sums;
-const x = (n) => 40 + (Math.log2(n) / 14) * 358;
-const y = (value) => 211 - value * 17;
+const { chartLayout, compareSums, MAX_TERMS, SCALES } = sums;
 const sampleTerms = [...new Set(Array.from({ length: 281 }, (_, i) =>
   Math.round(2 ** (i / 20))))];
-const cutoff = [1, 16, 256, 4096, MAX_TERMS];
 const number = (n) => n.toFixed(6);
 const presets = [
   { name: "Start with 4 modes", scale: 2, exponent: 2 },
@@ -19,6 +16,25 @@ const presets = [
 ];
 
 function Trace({ series, terms, scale }) {
+  const chart = useRef(null);
+  const [chartWidth, setChartWidth] = useState(430);
+  useEffect(() => {
+    const node = chart.current;
+    if (!node) return;
+    const measure = () => {
+      const width = node.getBoundingClientRect().width;
+      if (width > 0) setChartWidth(width);
+    };
+    measure();
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(measure);
+      observer.observe(node);
+      return () => observer.disconnect();
+    }
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+  const { width, height, left, right, top, bottom, x, y, ticks } = chartLayout(chartWidth);
   const dataAt = (n, values) => `${x(n).toFixed(2)},${y(values[n]).toFixed(2)}`;
   const trace = (values, points) => points.map((n, i) => `${i ? "L" : "M"}${dataAt(n, values)}`).join(" ");
   const included = [...sampleTerms.filter((n) => n < terms), terms];
@@ -29,28 +45,28 @@ function Trace({ series, terms, scale }) {
         <span><i className={styles.solid} />Sum first</span>
         <span><i className={styles.dashed} />Expand first</span>
       </div>
-      <svg viewBox="0 0 430 259" role="img" aria-labelledby="sum-chart-title sum-chart-description">
+      <svg ref={chart} viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby="sum-chart-title sum-chart-description">
         <title id="sum-chart-title">Two ways to add the same modes</title>
         <desc id="sum-chart-description">
           Solid line: finite sum with the original phases. Dashed line: the first-order phase expansion.
           Both are plotted on the same vertical scale against the number of modes on a logarithmic axis.
           Brighter lines and dots show the selected cutoff. A vertical guide marks where the phase reaches one radian.
         </desc>
-        <rect x="40" y="19" width={x(terms) - 40} height="192" className={styles.selection} />
+        <rect x={left} y={top} width={x(terms) - left} height={bottom - top} className={styles.selection} />
         {[0, 2, 4, 6, 8, 10].map((value) => (
           <g key={value}>
-            <line x1="40" x2="398" y1={y(value)} y2={y(value)} className={styles.grid} />
-            <text x="31" y={y(value) + 4} textAnchor="end">{value}</text>
+            <line x1={left} x2={right} y1={y(value)} y2={y(value)} className={styles.grid} />
+            <text x={left - 7} y={y(value) + 4} textAnchor="end">{value}</text>
           </g>
         ))}
-        {cutoff.map((n) => (
+        {ticks.map((n) => (
           <g key={n}>
-            <line x1={x(n)} x2={x(n)} y1="211" y2="216" className={styles.grid} />
-            <text x={x(n)} y="232" textAnchor="middle">{n.toLocaleString("en-US")}</text>
+            <line x1={x(n)} x2={x(n)} y1={bottom} y2={bottom + 5} className={styles.grid} />
+            <text x={x(n)} y={bottom + 20} textAnchor="middle">{n.toLocaleString("en-US")}</text>
           </g>
         ))}
-        <line x1={guide} x2={guide} y1="19" y2="211" className={styles.guide} />
-        <line x1={x(terms)} x2={x(terms)} y1="19" y2="211" className={styles.cursor} />
+        <line x1={guide} x2={guide} y1={top} y2={bottom} className={styles.guide} />
+        <line x1={x(terms)} x2={x(terms)} y1={top} y2={bottom} className={styles.cursor} />
         {Object.entries({ sum: series.sumFirst, expand: series.expandFirst }).map(([key, values]) => (
           <g key={key} className={styles[key]}>
             <path d={trace(values, sampleTerms)} className={styles.ghost} />
@@ -58,7 +74,7 @@ function Trace({ series, terms, scale }) {
             <circle cx={x(terms)} cy={y(values[terms])} r={key === "sum" ? 4 : 3} />
           </g>
         ))}
-        <text x="219" y="253" textAnchor="middle">Modes included (log scale)</text>
+        <text x={(left + right) / 2} y={height - 5} textAnchor="middle">Modes included (log scale)</text>
       </svg>
       <figcaption>
         Both curves show the same scaled imaginary contribution. The dotted guide marks mode {scale / 2},
