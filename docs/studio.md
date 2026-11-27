@@ -327,7 +327,7 @@ node scripts/bakeStudioContact.cjs http://localhost:3000
 
 ### Walking as Chrisw
 
-Enter the Studio to walk as Christopher Woodyard’s 6 ft 1 in avatar. He reads by the desk
+Enter the Studio to walk as Christopher Woodyard’s 6 ft 1 in avatar. He reads G. I. Gurdjieff’s *Beelzebub’s Tales to His Grandson* by the desk
 in the opening shot. Once you enter, your movement drives his stride and your look direction
 guides his gaze. Walk to the glass to look outside, open a work in the Library, or sit at the
 Hall computer. Object views keep the framing of the book, screen, or instrument.
