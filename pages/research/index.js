@@ -248,7 +248,7 @@ export default function ResearchExplorer() {
         )}
       </div>
       <aside className={styles.replayEntry}>
-        <Link href="/research/listening-to-control">Listening to Control →</Link>
+        <a href="/research/listening-to-control">Listening to Control →</a>
         <span>Hear a control experiment from Pine Gap.</span>
       </aside>
       <main className={styles.main} data-view={session.view}>

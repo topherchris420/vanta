@@ -10,6 +10,27 @@ const source = `https://github.com/topherchris420/satellite-vision-scape/blob/${
 const time = (ms) => (ms / 1000).toFixed(2);
 const x = (ms) => 42 + (ms / study.windowMs) * 670;
 
+const eventTime = (ms) => `${(ms / 1000).toFixed(3)} s`;
+
+function EventTranscript({ run }) {
+  const events = [
+    ...run.turns.map(([start, end, direction]) => ({
+      start, label: `Turn ${direction} from ${eventTime(start)} to ${eventTime(end)}.`,
+    })),
+    ...run.overshoots.map((start) => ({
+      start, label: `Alignment lost at ${eventTime(start)}.`,
+    })),
+  ];
+  if (run.lockMs !== null) {
+    events.push({ start: run.lockMs, label: `Locked at ${eventTime(run.lockMs)}.` });
+  }
+  events.sort((a, b) => a.start - b.start);
+  return <details>
+    <summary>{labels[run.id]} event transcript</summary>
+    <ol>{events.map((event, index) => <li key={index}>{event.label}</li>)}</ol>
+  </details>;
+}
+
 function Lane({ run, active, cursor }) {
   return <figure className={`${styles.lane} ${active ? styles.active : ""}`}>
     <figcaption><strong>{labels[run.id]}</strong><span>{run.lockMs === null
@@ -30,6 +51,7 @@ function Lane({ run, active, cursor }) {
         d={`M ${x(run.lockMs) - 5} 37 l 4 5 7 -10`} />}
       {active && cursor !== null && <line x1={x(cursor)} x2={x(cursor)} y1="5" y2="73" className={styles.cursor} />}
     </svg>
+    <EventTranscript run={run} />
   </figure>;
 }
 
