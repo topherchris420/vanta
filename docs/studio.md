@@ -320,3 +320,14 @@ node scripts/bakeStudioContact.cjs http://localhost:3000
 - The sun is fixed at one hour of one afternoon. There is no time-of-day cycle.
 - The framed desktop shows the room as it was when you sat down; the scene is paused
   behind it, as it was when the desktop covered the whole screen.
+
+### Walking as Chrisw
+
+Enter the Studio to walk as Christopher Woodyard’s 6 ft 1 in avatar. He reads by the desk
+in the opening shot. Once you enter, your movement drives his stride and your look direction
+guides his gaze. Walk to the glass to look outside, open a work in the Library, or sit at the
+Hall computer. Object views keep the framing of the book, screen, or instrument.
+Help → Walking view switches between the shoulder camera and first person.
+
+The studio GLB packages the original CHRISW mesh, 32-joint skeleton, and four painted textures
+from [the Pine Gap character](https://github.com/topherchris420/satellite-vision-scape/tree/49626bf71f56cf6db84c669e6a04accdb5a77865/gta-sa-99-9-percent-sure/assets/character).

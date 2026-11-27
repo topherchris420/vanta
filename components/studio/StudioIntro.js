@@ -16,7 +16,7 @@ export default function StudioIntro({ onEnter, onTour, soundControl, webgl }) {
         </h1>
         <p className={styles.introTagline}>Five notes. One chord.</p>
         <p className={styles.introLede}>
-          Walk into the workbench to shape sound, visit a simulation, or follow a work back to its
+          Explore as Chrisw, Christopher Woodyard’s avatar. Shape sound at the workbench, visit a simulation, or follow a work back to its
           source. Five rooms, five ways to explore one artistic practice. Choose what interests you;
           what you touch should lead somewhere you can hear, see, or check.
         </p>
