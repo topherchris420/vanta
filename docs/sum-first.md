@@ -1,7 +1,7 @@
 # Sum First
 
-Open **Try Sum First** in the [Research atlas](/research), or visit
-[/research/sum-first](/research/sum-first). The atlas is the destination of
+Open **Try Sum First** in the [Research atlas](https://mitpress.vercel.app/research), or visit
+[Sum First](https://mitpress.vercel.app/research/sum-first). The atlas is the destination of
 the Event Horizon Archive on Vanta's home page.
 
 The experiment reproduces one mode-sum calculation from
