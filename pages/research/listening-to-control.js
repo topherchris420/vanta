@@ -10,6 +10,31 @@ const source = `https://github.com/topherchris420/satellite-vision-scape/blob/${
 const time = (ms) => (ms / 1000).toFixed(2);
 const x = (ms) => 42 + (ms / study.windowMs) * 670;
 
+const eventTime = (ms) => `${(ms / 1000).toFixed(3)} s`;
+
+function EventTranscript({ run }) {
+  const cutoff = run.lockMs ?? study.windowMs;
+  const events = [
+    ...run.turns.map(([start, end, direction]) => ({
+      start,
+      label: end === cutoff
+        ? `Turn ${direction} from ${eventTime(start)} through the excerpt cutoff at ${eventTime(end)}.`
+        : `Turn ${direction} from ${eventTime(start)} to ${eventTime(end)}.`,
+    })),
+    ...run.overshoots.map((start) => ({
+      start, label: `Alignment lost at ${eventTime(start)}.`,
+    })),
+  ];
+  if (run.lockMs !== null) {
+    events.push({ start: run.lockMs, label: `Locked at ${eventTime(run.lockMs)}.` });
+  }
+  events.sort((a, b) => a.start - b.start);
+  return <details>
+    <summary>{labels[run.id]} event transcript</summary>
+    <ol>{events.map((event, index) => <li key={index}>{event.label}</li>)}</ol>
+  </details>;
+}
+
 function Lane({ run, active, cursor }) {
   return <figure className={`${styles.lane} ${active ? styles.active : ""}`}>
     <figcaption><strong>{labels[run.id]}</strong><span>{run.lockMs === null
@@ -30,6 +55,7 @@ function Lane({ run, active, cursor }) {
         d={`M ${x(run.lockMs) - 5} 37 l 4 5 7 -10`} />}
       {active && cursor !== null && <line x1={x(cursor)} x2={x(cursor)} y1="5" y2="73" className={styles.cursor} />}
     </svg>
+    <EventTranscript run={run} />
   </figure>;
 }
 
@@ -66,7 +92,7 @@ export default function ListeningToControl() {
       </section>
       <section aria-labelledby="first-terminal">
         <h2 id="first-terminal">The first terminal</h2>
-        <p className={styles.small}>Same seed, first 18 simulated seconds, aligned to the first turn. Each bar lasts as long as the input was held. Diamonds mark lost alignment; a check marks the lock. After the lock chord, the track stays silent so all three clips share the same timeline.</p>
+        <p className={styles.small}>Same seed, first 18 simulated seconds, aligned to the first turn. Each bar shows the part of a held input captured in the excerpt. Diamonds mark lost alignment; a check marks the lock. After the lock chord, the track stays silent so all three clips share the same timeline.</p>
         {study.conditions.map((r) => <Lane key={r.id} run={r} active={r.id === selected} cursor={cursor} />)}
         <p className={styles.axis}>Simulated seconds since first turn</p>
       </section>
