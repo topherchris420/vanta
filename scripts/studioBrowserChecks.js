@@ -212,9 +212,16 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   await page.getByRole("button", { name: "Plug it in" }).click();
   await page.getByRole("heading", { name: "Translation" }).waitFor();
   await closePanel();
-  await openFromIndex("Sound the five chimes");
-  await page.getByRole("button", { name: "Sound the chord" }).click();
+  await openFromIndex("Play the Chord Press");
+  await page.getByRole("button", { name: "Pull a print" }).click();
   assert.match(await page.locator('p[class*="hudReadout"]').innerText().catch(() => "One chord"), /One chord|chord/);
+  const keys = page.getByRole("group", { name: "Notes in your print" });
+  const bass = keys.getByRole("button", { name: /G3/ });
+  await bass.click();
+  assert.equal(await bass.getAttribute("aria-pressed"), "false");
+  const download = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Save print (PNG)", exact: true }).click();
+  assert.equal((await download).suggestedFilename(), "Vanta-Chord-Press-0F.png");
   await closePanel();
   await openFromIndex("Approach the Event Horizon Archive");
   await page.getByRole("button", { name: "Write the next model" }).click();
@@ -250,7 +257,7 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   const tour = page.locator('section[aria-labelledby="tour-title"]');
   await tour.waitFor();
   for (let step = 0; step < 7; step += 1) await tour.getByRole("button", { name: "Next", exact: true }).click();
-  await tour.getByText("The chord").waitFor();
+  await tour.getByRole("heading", { name: "The Chord Press" }).waitFor();
   await tour.getByRole("button", { name: "End the tour" }).click();
   await until(async () => (await root.getAttribute("data-mode")) === "walk", "the tour ends on your feet");
   console.log("ok tour: every room, ends on the chord");

@@ -78,6 +78,7 @@ export default function Studio({ documents, notes }) {
   const [cut, setCut] = useState(false);
   const [chord, setChord] = useState(null);
   const chordTimer = useRef(0);
+  const [impression, setImpression] = useState(() => ({ ids: content.coda.channelIds, animate: false }));
 
   const [scope, setScopeState] = useState({ frequency: 440, shape: "sine", amplitude: 0.8, mode: "time", ratio: 1.5, ratioLabel: "3:2", output: false });
   const [plate, setPlateState] = useState({ frequency: CHLADNI_MODES[5].frequency, drive: false });
@@ -188,6 +189,9 @@ export default function Studio({ documents, notes }) {
   useEffect(() => {
     api()?.setChord(chord ? chord.channelIds : null);
   }, [chord, apiReady, live]);
+  useEffect(() => {
+    api()?.setPrint(impression.ids, impression.animate);
+  }, [impression, apiReady, live]);
   useEffect(() => {
     api()?.setScope(scope);
     audio.setGenerator({ on: scope.output && audio.soundEnabled && !recording.playing, ...scope });
@@ -306,7 +310,7 @@ export default function Studio({ documents, notes }) {
     }
     if (object.kind === "scope") setScopeState((current) => ({ ...current, output: false }));
     if (object.kind === "chladni") setPlateState((current) => ({ ...current, drive: false }));
-    if (object.kind === "coda") setChord((current) => (current && (current.id === "coda" || current.id.startsWith("thread-")) ? null : current));
+    if (object.kind === "coda") setChord((current) => (current && (current.id === "coda" || current.id === "press" || current.id.startsWith("thread-")) ? null : current));
   }, [audio]);
 
   const closePanel = useCallback(() => {
@@ -393,6 +397,7 @@ export default function Studio({ documents, notes }) {
       scene.view(stop.view);
     }
     if (stop.object === "coda") {
+      setImpression({ ids: codaChord.channelIds, animate: true });
       scene?.strikeChimes(codaChord.channelIds);
       sound(codaChord, { position: [-3.12, 2, 0] });
     }
@@ -439,6 +444,17 @@ export default function Studio({ documents, notes }) {
     recording,
   };
 
+  const pullPrint = (ids, preset) => {
+    const voices = practice.channels.filter(channel => ids.includes(channel.id)).sort((a, b) => a.frequency - b.frequency);
+    const next = preset || (ids.length === practice.channels.length ? codaChord : {
+      id: "press", name: voices.map(channel => channel.note).join(" · "),
+      channelIds: ids, frequencies: voices.map(channel => channel.frequency),
+    });
+    setImpression({ ids, animate: true });
+    api()?.strikeChimes(ids);
+    if (ids.length === practice.channels.length) discover("coda");
+    sound(next, { position: [-3.12, 2, 0.54], hold: Boolean(preset) });
+  };
   const actions = {
     close: closePanel,
     open: openObject,
@@ -491,23 +507,18 @@ export default function Studio({ documents, notes }) {
         sound(threadChord("translation"), { position: anchorOf("patch") });
       }
     },
-    soundChord: () => {
-      if (chord?.id === "coda" && panelId === "coda") {
-        setChord(null);
-        return;
-      }
-      api()?.strikeChimes(codaChord.channelIds);
-      discover("coda");
-      sound(codaChord, { hold: panelId === "coda", position: [-3.12, 2, 0] });
+    togglePrintNote: (id) => {
+      const ids = impression.ids.includes(id) ? impression.ids.filter(note => note !== id) : [...impression.ids, id];
+      if (ids.length) pullPrint(ids);
     },
+    pullPrint: () => pullPrint(impression.ids),
     tuneThread: (id) => {
       const next = threadChord(id);
       if (chord?.id === next.id) {
         setChord(null);
         return;
       }
-      api()?.strikeChimes(next.channelIds);
-      sound(next, { hold: true, position: [-3.12, 2, 0] });
+      pullPrint(next.channelIds, next);
     },
     setArchiveModel: (index) => {
       setArchiveModel(index);
@@ -632,6 +643,8 @@ export default function Studio({ documents, notes }) {
   const panelObject = panelId ? objectsById.get(panelId) : null;
   const panelZone = panelObject ? zonesById.get(panelObject.room) : null;
   const panelState = {
+    printIds: impression.ids,
+    fallback,
     soundEnabled: audio.soundEnabled,
     lampOn,
     patched,
