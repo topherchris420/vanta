@@ -89,12 +89,20 @@ place, and `npm test` says so.
 | The Simulation Room | Worlds, G4 | Inspect the Pine Gap, Lop Nur and Mannahatta dioramas and launch the live sites. Look at the one real Pine Gap frame, labelled as a still. Pick up the person's controller. |
 | The Gallery | Art, C5 | Look closely at the three works in the Art channel, under track lights, with their captions and associated works. Read the Rooms, Cymatics and Signal Lab cards. |
 | The Recording Studio | Music, G3 | Play the two-octave synthesizer, with its five channel keys marked. Put on Green Machine. Patch the loose cable. |
-| The Hall | rest | Sit at the computer. Sound the five chimes. Read the Now card. |
+| The Hall | rest | Sit at the computer. Play the Chord Press and take home a print. Read the Now card. |
 | Event Horizon Archive | rest | Change its index model, then cross into the atlas. |
 
 Each room's pendant lamp hangs one wavelength of the room's note below the ceiling
 (343 m/s ÷ frequency), so G3 hangs lowest. Each chime is cut to length as one over the
 square root of its frequency.
+
+### The Chord Press
+
+In the Hall, face the five chimes on the walnut wall or choose **Play the Chord Press** from the Index. Each room contributes a note and a different ink. Switch notes in or out to watch the brass pen trace the new figure. **Pull a print** plays the selection again. **Save print (PNG)** gives you the same design at 1600 × 2000 pixels, with the notes and edition printed in the margins.
+
+![Five tuned chimes beside the framed plotter and its finished five-voice print in the Hall.](screenshots/studio/chord-press.webp)
+
+The pen works with sound off. Reduced motion shows the finished sheet immediately. The text studio also displays the print and offers the same download.
 
 ## Musical structure
 

@@ -100,8 +100,8 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   if (live) await page.evaluate(() => window.__vantaStudio.setTier("low"));
 
   // 1. The intro: three plain choices, silent.
-  await page.getByRole("heading", { name: "VANTA" }).waitFor();
-  assert.ok(await page.getByText("Five notes. One chord.").isVisible());
+  await page.getByRole("heading", { name: "The studio", exact: true }).waitFor();
+  assert.ok(await page.getByText(/Come in\. I’ve left a little of myself/).isVisible());
   assert.equal(await page.getByRole("link", { name: "Explore the Original Portfolio" }).getAttribute("href"), "/");
   assert.ok(await page.getByRole("button", { name: "Guided Tour" }).isVisible());
   assert.equal((await audio()).contexts, 0, "no AudioContext before intent");
@@ -212,9 +212,20 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   await page.getByRole("button", { name: "Plug it in" }).click();
   await page.getByRole("heading", { name: "Translation" }).waitFor();
   await closePanel();
-  await openFromIndex("Sound the five chimes");
-  await page.getByRole("button", { name: "Sound the chord" }).click();
+  await openFromIndex("Play the Chord Press");
+  await page.getByRole("button", { name: "Pull a print" }).click();
   assert.match(await page.locator('p[class*="hudReadout"]').innerText().catch(() => "One chord"), /One chord|chord/);
+  const keys = page.getByRole("group", { name: "Notes in your print" });
+  const bass = keys.getByRole("button", { name: /G3/ });
+  await bass.click();
+  assert.equal(await bass.getAttribute("aria-pressed"), "false");
+  const startVoice = (await audio()).started.length;
+  await page.getByRole("button", { name: "Sound off" }).first().click();
+  assert.deepEqual((await audio()).started.slice(startVoice), [261.63, 329.63, 392, 523.25]);
+  await page.getByRole("button", { name: "Sound on" }).first().click();
+  const download = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Save print (PNG)", exact: true }).click();
+  assert.equal((await download).suggestedFilename(), "Vanta-Chord-Press-0F.png");
   await closePanel();
   await openFromIndex("Approach the Event Horizon Archive");
   await page.getByRole("button", { name: "Write the next model" }).click();
@@ -250,7 +261,7 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   const tour = page.locator('section[aria-labelledby="tour-title"]');
   await tour.waitFor();
   for (let step = 0; step < 7; step += 1) await tour.getByRole("button", { name: "Next", exact: true }).click();
-  await tour.getByText("The chord").waitFor();
+  await tour.getByRole("heading", { name: "The Chord Press" }).waitFor();
   await tour.getByRole("button", { name: "End the tour" }).click();
   await until(async () => (await root.getAttribute("data-mode")) === "walk", "the tour ends on your feet");
   console.log("ok tour: every room, ends on the chord");

@@ -31,6 +31,7 @@ const { TIERS, initialTier } = quality;
 const { CHLADNI_MODES, SYNTH_DEFAULTS, normalizeSynth, midiToFrequency } = instruments;
 
 const FOUND_KEY = "vanta:studio:found:v1";
+const PRESS_POSITION = [-3.12, 2, 0.54];
 const siteUrl = "https://mitpress.vercel.app";
 const description =
   "A walkable studio built from Christopher Woodyard's portfolio: a library, a workbench, a simulation room, a gallery, and a recording studio, one for each of Vanta's five channels.";
@@ -78,6 +79,7 @@ export default function Studio({ documents, notes }) {
   const [cut, setCut] = useState(false);
   const [chord, setChord] = useState(null);
   const chordTimer = useRef(0);
+  const [impression, setImpression] = useState(() => ({ ids: content.coda.channelIds, animate: false }));
 
   const [scope, setScopeState] = useState({ frequency: 440, shape: "sine", amplitude: 0.8, mode: "time", ratio: 1.5, ratioLabel: "3:2", output: false });
   const [plate, setPlateState] = useState({ frequency: CHLADNI_MODES[5].frequency, drive: false });
@@ -165,6 +167,15 @@ export default function Studio({ documents, notes }) {
     [content]
   );
 
+  const printChord = useCallback((ids) => {
+    if (ids.length === practice.channels.length) return codaChord;
+    const voices = practice.channels.filter(channel => ids.includes(channel.id)).sort((a, b) => a.frequency - b.frequency);
+    return {
+      id: "press", name: voices.map(channel => channel.note).join(" · "),
+      channelIds: ids, frequencies: voices.map(channel => channel.frequency),
+    };
+  }, [codaChord]);
+
   // A chord lights its rooms and, with sound on, sounds once. A held chord
   // stays lit until released; an unheld one lets go after a few seconds.
   const sound = useCallback(
@@ -188,6 +199,9 @@ export default function Studio({ documents, notes }) {
   useEffect(() => {
     api()?.setChord(chord ? chord.channelIds : null);
   }, [chord, apiReady, live]);
+  useEffect(() => {
+    api()?.setPrint(impression.ids, impression.animate);
+  }, [impression, apiReady, live]);
   useEffect(() => {
     api()?.setScope(scope);
     audio.setGenerator({ on: scope.output && audio.soundEnabled && !recording.playing, ...scope });
@@ -306,7 +320,10 @@ export default function Studio({ documents, notes }) {
     }
     if (object.kind === "scope") setScopeState((current) => ({ ...current, output: false }));
     if (object.kind === "chladni") setPlateState((current) => ({ ...current, drive: false }));
-    if (object.kind === "coda") setChord((current) => (current && (current.id === "coda" || current.id.startsWith("thread-")) ? null : current));
+    if (object.kind === "coda") {
+      audio.releaseStrums();
+      setChord((current) => (current && (current.id === "coda" || current.id === "press" || current.id.startsWith("thread-")) ? null : current));
+    }
   }, [audio]);
 
   const closePanel = useCallback(() => {
@@ -390,11 +407,13 @@ export default function Studio({ documents, notes }) {
     const scene = api();
     if (scene) {
       flashCut();
-      scene.view(stop.view);
+      if (stop.object) scene.focus(stop.object);
+      else scene.view(stop.view);
     }
     if (stop.object === "coda") {
+      setImpression({ ids: codaChord.channelIds, animate: true });
       scene?.strikeChimes(codaChord.channelIds);
-      sound(codaChord, { position: [-3.12, 2, 0] });
+      sound(codaChord, { position: PRESS_POSITION });
     }
   }, [tourIndex, apiReady, live]);
 
@@ -439,6 +458,14 @@ export default function Studio({ documents, notes }) {
     recording,
   };
 
+  const pullPrint = (ids, preset) => {
+    const next = preset || printChord(ids);
+    audio.releaseStrums();
+    setImpression({ ids, animate: true });
+    api()?.strikeChimes(ids);
+    if (ids.length === practice.channels.length) discover("coda");
+    sound(next, { position: PRESS_POSITION, hold: Boolean(preset) });
+  };
   const actions = {
     close: closePanel,
     open: openObject,
@@ -491,23 +518,19 @@ export default function Studio({ documents, notes }) {
         sound(threadChord("translation"), { position: anchorOf("patch") });
       }
     },
-    soundChord: () => {
-      if (chord?.id === "coda" && panelId === "coda") {
-        setChord(null);
-        return;
-      }
-      api()?.strikeChimes(codaChord.channelIds);
-      discover("coda");
-      sound(codaChord, { hold: panelId === "coda", position: [-3.12, 2, 0] });
+    togglePrintNote: (id) => {
+      const ids = impression.ids.includes(id) ? impression.ids.filter(note => note !== id) : [...impression.ids, id];
+      if (ids.length) pullPrint(ids);
     },
+    pullPrint: () => pullPrint(impression.ids),
     tuneThread: (id) => {
       const next = threadChord(id);
       if (chord?.id === next.id) {
+        audio.releaseStrums();
         setChord(null);
         return;
       }
-      api()?.strikeChimes(next.channelIds);
-      sound(next, { hold: true, position: [-3.12, 2, 0] });
+      pullPrint(next.channelIds, next);
     },
     setArchiveModel: (index) => {
       setArchiveModel(index);
@@ -541,13 +564,18 @@ export default function Studio({ documents, notes }) {
     const on = await audio.toggleSound();
     if (on) {
       announce("Sound on.");
-      if (zone?.kind === "channel") audio.bell(zone.frequency, [zone.pendant.x, zone.pendant.y, zone.pendant.z]);
-      else audio.strum(content.coda.frequencies);
+      if (panelId === "coda") {
+        if (!recording.playing) audio.strum(printChord(impression.ids).frequencies, { position: PRESS_POSITION });
+      } else if (zone?.kind === "channel") {
+        audio.bell(zone.frequency, [zone.pendant.x, zone.pendant.y, zone.pendant.z]);
+      } else {
+        audio.strum(content.coda.frequencies);
+      }
     } else {
       announce("Sound off.");
       setScopeState((current) => ({ ...current, output: false }));
     }
-  }, [audio, zone, content, announce]);
+  }, [audio, zone, content, announce, panelId, impression, printChord, recording.playing]);
 
   const toggleOverlay = useCallback(
     (name) => setOverlays((current) => ({ ...current, [name]: !current[name] })),
@@ -632,6 +660,8 @@ export default function Studio({ documents, notes }) {
   const panelObject = panelId ? objectsById.get(panelId) : null;
   const panelZone = panelObject ? zonesById.get(panelObject.room) : null;
   const panelState = {
+    printIds: impression.ids,
+    fallback,
     soundEnabled: audio.soundEnabled,
     lampOn,
     patched,

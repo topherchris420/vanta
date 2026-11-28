@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../../../styles/Studio.module.css";
+import { composePrint, drawInk, INKS, PAPER, preparePaper, saveChordPrint } from "../../../lib/studio/chordPrint";
 import archiveModels from "../../../lib/displayPedestalModels.json";
 import WorkDetail from "../WorkDetail";
 import Reader from "../Reader";
@@ -70,23 +71,42 @@ export function ArchivePanel({ content, practice, state, actions }) {
 
 /* --------------------------------------------------------------------- coda */
 
+function PaperPreview({ channels, ids }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const study = composePrint(channels, ids);
+    const ctx = ref.current.getContext("2d");
+    preparePaper(ctx, study);
+    drawInk(ctx, study, 0, 1);
+  }, [channels, ids]);
+  return <canvas className={styles.printPreview} ref={ref} width={PAPER.width} height={PAPER.height}
+    role="img" aria-label={`Chord print for ${channels.filter(c => ids.includes(c.id)).map(c => c.note).join(", ")}`} />;
+}
+
 export function CodaPanel({ content, practice, state, actions }) {
-  const { coda } = content;
-  const codaHeld = state.chord?.id === "coda";
+  const voices = [...practice.channels].sort((a, b) => a.frequency - b.frequency);
   return (
     <div>
       <p className={styles.panelLede}>
-        Five tubes, one for each room, cut to the lengths their notes ask for.{" "}
-        {coda.notes.join(", ")} are one chord{coda.chordName ? `: ${coda.chordName}` : ""}. The headline is
-        arithmetic, not metaphor.
+        Each room lends a note and a color of ink. Choose which ones the pen will draw.
       </p>
-      <button type="button" className={styles.primarySmall} aria-pressed={codaHeld} onClick={actions.soundChord}>
-        {codaHeld ? "Let the chord go" : "Sound the chord"}
-      </button>
+      <div className={styles.pressKeys} role="group" aria-label="Notes in your print">
+        {voices.map(channel => {
+          const selected = state.printIds.includes(channel.id);
+          return <button key={channel.id} type="button" aria-pressed={selected} style={{ "--key-ink": INKS[channel.id] }}
+            disabled={selected && state.printIds.length === 1} onClick={() => actions.togglePrintNote(channel.id)}>
+            <strong>{channel.note}</strong><span>{channel.title}</span>
+          </button>;
+        })}
+      </div>
+      {state.fallback && <PaperPreview channels={practice.channels} ids={state.printIds} />}
+      <div className={styles.buttonRow}>
+        <button type="button" onClick={actions.pullPrint}>Pull a print</button>
+        <button type="button" onClick={() => saveChordPrint(practice.channels, state.printIds)}>Save print (PNG)</button>
+      </div>
       <h3 className={styles.subhead}>Intervals</h3>
       <p className={styles.meta}>
-        The questions that keep recurring across the rooms. Tune one and the rooms it spans light, and,
-        with sound on, sound together.
+        Choose a question to print the notes of the rooms that share it.
       </p>
       <ul className={styles.intervals}>
         {content.threads.map((thread) => {
