@@ -31,6 +31,7 @@ const { TIERS, initialTier } = quality;
 const { CHLADNI_MODES, SYNTH_DEFAULTS, normalizeSynth, midiToFrequency } = instruments;
 
 const FOUND_KEY = "vanta:studio:found:v1";
+const PRESS_POSITION = [-3.12, 2, 0.54];
 const siteUrl = "https://mitpress.vercel.app";
 const description =
   "A walkable studio built from Christopher Woodyard's portfolio: a library, a workbench, a simulation room, a gallery, and a recording studio, one for each of Vanta's five channels.";
@@ -165,6 +166,15 @@ export default function Studio({ documents, notes }) {
     () => ({ id: "coda", name: content.coda.name, channelIds: content.coda.channelIds, frequencies: content.coda.frequencies }),
     [content]
   );
+
+  const printChord = useCallback((ids) => {
+    if (ids.length === practice.channels.length) return codaChord;
+    const voices = practice.channels.filter(channel => ids.includes(channel.id)).sort((a, b) => a.frequency - b.frequency);
+    return {
+      id: "press", name: voices.map(channel => channel.note).join(" · "),
+      channelIds: ids, frequencies: voices.map(channel => channel.frequency),
+    };
+  }, [codaChord]);
 
   // A chord lights its rooms and, with sound on, sounds once. A held chord
   // stays lit until released; an unheld one lets go after a few seconds.
@@ -310,7 +320,10 @@ export default function Studio({ documents, notes }) {
     }
     if (object.kind === "scope") setScopeState((current) => ({ ...current, output: false }));
     if (object.kind === "chladni") setPlateState((current) => ({ ...current, drive: false }));
-    if (object.kind === "coda") setChord((current) => (current && (current.id === "coda" || current.id === "press" || current.id.startsWith("thread-")) ? null : current));
+    if (object.kind === "coda") {
+      audio.releaseStrums();
+      setChord((current) => (current && (current.id === "coda" || current.id === "press" || current.id.startsWith("thread-")) ? null : current));
+    }
   }, [audio]);
 
   const closePanel = useCallback(() => {
@@ -400,7 +413,7 @@ export default function Studio({ documents, notes }) {
     if (stop.object === "coda") {
       setImpression({ ids: codaChord.channelIds, animate: true });
       scene?.strikeChimes(codaChord.channelIds);
-      sound(codaChord, { position: [-3.12, 2, 0] });
+      sound(codaChord, { position: PRESS_POSITION });
     }
   }, [tourIndex, apiReady, live]);
 
@@ -446,15 +459,12 @@ export default function Studio({ documents, notes }) {
   };
 
   const pullPrint = (ids, preset) => {
-    const voices = practice.channels.filter(channel => ids.includes(channel.id)).sort((a, b) => a.frequency - b.frequency);
-    const next = preset || (ids.length === practice.channels.length ? codaChord : {
-      id: "press", name: voices.map(channel => channel.note).join(" · "),
-      channelIds: ids, frequencies: voices.map(channel => channel.frequency),
-    });
+    const next = preset || printChord(ids);
+    audio.releaseStrums();
     setImpression({ ids, animate: true });
     api()?.strikeChimes(ids);
     if (ids.length === practice.channels.length) discover("coda");
-    sound(next, { position: [-3.12, 2, 0.54], hold: Boolean(preset) });
+    sound(next, { position: PRESS_POSITION, hold: Boolean(preset) });
   };
   const actions = {
     close: closePanel,
@@ -516,6 +526,7 @@ export default function Studio({ documents, notes }) {
     tuneThread: (id) => {
       const next = threadChord(id);
       if (chord?.id === next.id) {
+        audio.releaseStrums();
         setChord(null);
         return;
       }
@@ -553,13 +564,18 @@ export default function Studio({ documents, notes }) {
     const on = await audio.toggleSound();
     if (on) {
       announce("Sound on.");
-      if (zone?.kind === "channel") audio.bell(zone.frequency, [zone.pendant.x, zone.pendant.y, zone.pendant.z]);
-      else audio.strum(content.coda.frequencies);
+      if (panelId === "coda") {
+        if (!recording.playing) audio.strum(printChord(impression.ids).frequencies, { position: PRESS_POSITION });
+      } else if (zone?.kind === "channel") {
+        audio.bell(zone.frequency, [zone.pendant.x, zone.pendant.y, zone.pendant.z]);
+      } else {
+        audio.strum(content.coda.frequencies);
+      }
     } else {
       announce("Sound off.");
       setScopeState((current) => ({ ...current, output: false }));
     }
-  }, [audio, zone, content, announce]);
+  }, [audio, zone, content, announce, panelId, impression, printChord, recording.playing]);
 
   const toggleOverlay = useCallback(
     (name) => setOverlays((current) => ({ ...current, [name]: !current[name] })),

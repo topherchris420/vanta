@@ -100,8 +100,8 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   if (live) await page.evaluate(() => window.__vantaStudio.setTier("low"));
 
   // 1. The intro: three plain choices, silent.
-  await page.getByRole("heading", { name: "VANTA" }).waitFor();
-  assert.ok(await page.getByText("Five notes. One chord.").isVisible());
+  await page.getByRole("heading", { name: "The studio", exact: true }).waitFor();
+  assert.ok(await page.getByText(/Come in\. I’ve left a little of myself/).isVisible());
   assert.equal(await page.getByRole("link", { name: "Explore the Original Portfolio" }).getAttribute("href"), "/");
   assert.ok(await page.getByRole("button", { name: "Guided Tour" }).isVisible());
   assert.equal((await audio()).contexts, 0, "no AudioContext before intent");
@@ -219,6 +219,10 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   const bass = keys.getByRole("button", { name: /G3/ });
   await bass.click();
   assert.equal(await bass.getAttribute("aria-pressed"), "false");
+  const startVoice = (await audio()).started.length;
+  await page.getByRole("button", { name: "Sound off" }).first().click();
+  assert.deepEqual((await audio()).started.slice(startVoice), [261.63, 329.63, 392, 523.25]);
+  await page.getByRole("button", { name: "Sound on" }).first().click();
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Save print (PNG)", exact: true }).click();
   assert.equal((await download).suggestedFilename(), "Vanta-Chord-Press-0F.png");
