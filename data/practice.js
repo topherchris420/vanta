@@ -30,7 +30,7 @@ const channels = [
       kind: "quote",
       text: "Location is a property of the object.",
       source: "Dynamic Location Theory, the claim the preprints test",
-      href: "https://topherchris420.github.io/research/",
+      href: "https://doi.org/10.5281/zenodo.18263032",
     },
   },
   {
@@ -168,7 +168,6 @@ const works = [
     evidence: [
       { label: "Preprint", href: "https://doi.org/10.5281/zenodo.18263032" },
       { label: "The clock bound", href: "https://doi.org/10.5281/zenodo.18285322" },
-      { label: "Paper site", href: "https://topherchris420.github.io/research/" },
     ],
     atlas: "Dynamic Location Theory",
   },
