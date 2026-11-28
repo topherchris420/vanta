@@ -100,7 +100,7 @@ const flags = new Set(process.argv.slice(3).map((flag) => flag.replace(/^--/, ""
   if (live) await page.evaluate(() => window.__vantaStudio.setTier("low"));
 
   // 1. The intro: three plain choices, silent.
-  await page.getByRole("heading", { name: "The studio", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "Deus sive Natura", exact: true }).waitFor();
   assert.ok(await page.getByText(/Come in\. I’ve left a little of myself/).isVisible());
   assert.equal(await page.getByRole("link", { name: "Explore the Original Portfolio" }).getAttribute("href"), "/");
   assert.ok(await page.getByRole("button", { name: "Guided Tour" }).isVisible());

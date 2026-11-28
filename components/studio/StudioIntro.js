@@ -11,7 +11,7 @@ export default function StudioIntro({ onEnter, onTour, soundControl, webgl }) {
           <HorizonMark className={styles.introMark} />
           VANTA <span aria-hidden="true">/</span> Christopher Woodyard
         </p>
-        <h1 id="studio-title" className={styles.introTitle}>The studio</h1>
+        <h1 id="studio-title" className={styles.introTitle}>Deus sive Natura</h1>
         <p className={styles.introLede}>
           Come in. I’ve left a little of myself in the music, the margins, and the light between rooms.
         </p>
