@@ -1,5 +1,4 @@
 import styles from "../../styles/Studio.module.css";
-import { studioReading } from "../../data/studioReading";
 import HorizonMark from "../HorizonMark";
 
 // The first screen: the room, dimly lit, behind three plain choices. It asks
@@ -14,7 +13,7 @@ export default function StudioIntro({ onEnter, onTour, soundControl, webgl }) {
         </p>
         <h1 id="studio-title" className={styles.introTitle}>The studio</h1>
         <p className={styles.introLede}>
-          Five notes. One chord. Chrisw is reading <cite>{studioReading.title}</cite> by {studioReading.author}.
+          Come in. I’ve left a little of myself in the music, the margins, and the light between rooms.
         </p>
         <div className={styles.introActions}>
           <button type="button" className={styles.primary} onClick={onEnter} autoFocus>

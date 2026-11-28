@@ -251,7 +251,7 @@ test(
     const studioResponse = await fetch(`http://${HOST}:${port}/studio`);
     const studioHtml = await studioResponse.text();
     assert.equal(studioResponse.status, 200);
-    ["VANTA", "Five notes. One chord.", "Enter the Studio", "Explore the Original Portfolio", "Guided Tour"].forEach(
+    ["VANTA", "Come in. I’ve left a little of myself", "Enter the Studio", "Explore the Original Portfolio", "Guided Tour"].forEach(
       (copy) => assert.ok(studioHtml.includes(copy), `studio intro says: ${copy}`)
     );
     assert.match(studioHtml, /<a[^>]*href="\/"[^>]*>Explore the Original Portfolio<\/a>/);
