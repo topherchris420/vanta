@@ -685,14 +685,14 @@ export default function Studio({ documents, notes }) {
       data-panel={panelObject ? "true" : "false"}
     >
       <Head>
-        <title>The Studio — Christopher Woodyard · Vanta</title>
+        <title>Deus sive Natura — Christopher Woodyard · Vanta</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <link rel="canonical" href={`${siteUrl}/studio`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Vanta" />
         <meta property="og:url" content={`${siteUrl}/studio`} />
-        <meta property="og:title" content="The Studio — Five notes. One chord." />
+        <meta property="og:title" content="Deus sive Natura — Christopher Woodyard · Vanta" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={`${siteUrl}/og-vanta.jpg`} />
       </Head>
