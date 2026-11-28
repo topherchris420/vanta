@@ -394,7 +394,8 @@ export default function Studio({ documents, notes }) {
     const scene = api();
     if (scene) {
       flashCut();
-      scene.view(stop.view);
+      if (stop.object) scene.focus(stop.object);
+      else scene.view(stop.view);
     }
     if (stop.object === "coda") {
       setImpression({ ids: codaChord.channelIds, animate: true });
